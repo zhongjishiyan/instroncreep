@@ -20,7 +20,7 @@ namespace TabHeaderDemo
 {
     public partial class UserControlTest : UserControl
     {
-
+       
         private int mlaststepi = 0;
         class btnstep
         {
@@ -1159,7 +1159,7 @@ namespace TabHeaderDemo
             }
             else
             {
-
+                /*
                 if (CComLibrary.GlobeVal.filesave.Samplingmode == 0)
                 {
                     if (Convert.ToInt16(CComLibrary.GlobeVal.filesave.dt.Rows[CComLibrary.GlobeVal.filesave.currentspenumber]["试样状态"]) == Convert.ToInt16(CComLibrary.TestStatus.tested))
@@ -1175,6 +1175,7 @@ namespace TabHeaderDemo
                         }
                     }
                 }
+                */
             }
 
 
@@ -1248,7 +1249,7 @@ namespace TabHeaderDemo
 
             if (GlobeVal.UserControlSpe1 != null)
             {
-                GlobeVal.UserControlSpe1.Enabled = false;
+                GlobeVal.UserControlSpe1.SetEnabled(false);
 
             }
 
@@ -1274,12 +1275,33 @@ namespace TabHeaderDemo
 
             if (GlobeVal.UserControlGraph1 != null)
             {
-                GlobeVal.UserControlGraph1.startrun();
+              if  (GlobeVal.UserControlGraph1.startrun()==false)
+                {
+                    btnStart.Enabled = true;
+                    btnStart.BackgroundImage = imageList4.Images[0];
+                    btnStart.Refresh();
+                    btnend.Enabled = false;
+                    btnend.BackgroundImage = imageList4.Images[3];
+                    btnend.Refresh();
+
+                    return;
+                }
             }
 
             if (GlobeVal.UserControlGraph2 != null)
             {
-                GlobeVal.UserControlGraph2.startrun();
+              
+              if (  GlobeVal.UserControlGraph2.startrun()==false)
+                {
+                    btnStart.Enabled = true;
+                    btnStart.BackgroundImage = imageList4.Images[0];
+                    btnStart.Refresh();
+                    btnend.Enabled = false;
+                    btnend.BackgroundImage = imageList4.Images[3];
+                    btnend.Refresh();
+
+                    return;
+                }
             }
 
 
@@ -1293,6 +1315,16 @@ namespace TabHeaderDemo
                 btnend.Enabled = false;
                 btnend.BackgroundImage = imageList4.Images[3];
                 btnend.Refresh();
+
+                if (GlobeVal.UserControlGraph1 != null)
+                {
+                    GlobeVal.UserControlGraph1.endrun();
+                }
+
+                if (GlobeVal.UserControlGraph2 != null)
+                {
+                    GlobeVal.UserControlGraph2.endrun();
+                }
                 return;
             }
 
@@ -1307,6 +1339,7 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btnmreport.Visible = false;
             GlobeVal.UserControlMain1.btnmmanage.Visible = false;
             GlobeVal.UserControlMain1.btnmain.Visible = false;
+            GlobeVal.UserControlMain1.btngroupcontrol.Visible = false;
 
             GlobeVal.MainStatusStrip.Items["tslblstate"].Text = "状态：运行";
 
@@ -1333,7 +1366,7 @@ namespace TabHeaderDemo
 
             if (GlobeVal.UserControlSpe1 != null)
             {
-                GlobeVal.UserControlSpe1.Enabled = true;
+                GlobeVal.UserControlSpe1.SetEnabled(true);
                 GlobeVal.UserControlSpe1.btnright.Enabled = true;
 
             }
@@ -1509,6 +1542,8 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btnmreport.Visible = true;
             GlobeVal.UserControlMain1.btnmmanage.Visible = true;
             GlobeVal.UserControlMain1.btnmain.Visible = true;
+            GlobeVal.UserControlMain1.btngroupcontrol.Visible = true;
+
             GlobeVal.dopanel.Visible = false;
             TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
             ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed = false;
@@ -1619,6 +1654,10 @@ namespace TabHeaderDemo
             imageList4.Images.Add(TabHeaderDemo.Properties.Resources._50_1);
             imageList4.Images.Add(TabHeaderDemo.Properties.Resources.r2_2);
             imageList4.Images.Add(TabHeaderDemo.Properties.Resources.r2);
+
+
+            
+            
 
             timermain.Enabled = true;
 

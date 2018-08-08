@@ -261,6 +261,15 @@ namespace TabHeaderDemo
             }
         }
 
+        public void SetEnabled(bool b)
+        {
+          
+                this.tlp1.Enabled = b;
+                this.tableLayoutPanel1.Enabled = b;
+
+         
+        }
+
         private void btnleft_Click(object sender, EventArgs e)
         {
 

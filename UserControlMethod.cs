@@ -22,7 +22,7 @@ namespace TabHeaderDemo
         private UserControl控制 UserControl控制1;
         private UserControl计算 UserControl计算1;
         private UserControl结果 UserControl结果1;
-        private UserControl测试提示 UserControl测试提示1;
+        
         private UserControl控制台 UserControl控制台1;
         private UserControl额外显示 UserControl额外显示1;
         private UserControl曲线 UserControl曲线1;
@@ -120,7 +120,7 @@ namespace TabHeaderDemo
             UserControl控制1 = new UserControl控制();
             UserControl计算1 = new UserControl计算();
             UserControl结果1 = new UserControl结果();
-            UserControl测试提示1 = new UserControl测试提示();
+           
             UserControl控制台1 = new UserControl控制台();
             UserControl额外显示1 = new UserControl额外显示();
             UserControl曲线1 = new UserControl曲线();
@@ -137,7 +137,7 @@ namespace TabHeaderDemo
             UserControl控制1.musercontrolmethod = this;
             UserControl计算1.musercontrolmethod = this;
             UserControl结果1.musercontrolmethod = this;
-            UserControl测试提示1.musercontrolmethod = this;
+        
             UserControl控制台1.musercontrolmethod = this;
             UserControl额外显示1.musercontrolmethod = this;
             UserControl曲线1.musercontrolmethod = this;
@@ -198,19 +198,63 @@ namespace TabHeaderDemo
             {
                 if (CComLibrary.GlobeVal.filesave.mcontrolprocess != 2)
                 {
-                    panelbutton.Visible = false;
-                    treeView1.Visible = false;
+                    panelbutton.Visible = true;
+
+                    btnexopen.Visible = true;
+
+                    btnexsave1.Visible = true;
+
+                    btnexsaveclose.Visible = false;
+
+                    btnexsave.Visible = false;
+
+                    btnsaveas.Visible = false;
+
+                    btnexprint.Visible = false;
+
+
+                    // InitTree();
+                    // treeView1.Visible = false;
+
+                   // treeView1.SelectedNode = treeView1.Nodes["控制"].Nodes["测试"];
+
                 }
                 else
                 {
+                    //InitTree();
                     panelbutton.Visible = true;
-                    treeView1.Visible = true;
-                } 
+                   // treeView1.Visible = true;
+
+                    btnexopen.Visible = false;
+
+                    btnexsave1.Visible = false;
+
+                    btnexsaveclose.Visible = true;
+
+                    btnexsave.Visible = true;
+
+                    btnsaveas.Visible = true;
+
+                    btnexprint.Visible = true;
+
+                }
             }
             else
             {
                 panelbutton.Visible = true;
                 treeView1.Visible = true;
+
+                btnexopen.Visible = false;
+
+                btnexsave1.Visible = false;
+
+                btnexsaveclose.Visible = true;
+
+                btnexsave.Visible = true ;
+
+                btnsaveas.Visible = true;
+
+                btnexprint.Visible = true;
             }
         }
 
@@ -471,82 +515,8 @@ namespace TabHeaderDemo
             }
 
 
-            if (t == "提示顺序")
-            {
-                UserControl测试提示1.Init(0);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
-            if (t == "开始前")
-            {
-                UserControl测试提示1.Init(1);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
-
-
-            if (t == "试样试验前")
-            {
-                UserControl测试提示1.Init(2);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
-
-            if (t == "试验前")
-            {
-                UserControl测试提示1.Init(3);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
-
-            if (t == "计算前")
-            {
-                UserControl测试提示1.Init(4);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
-            if (t == "试样试验后")
-            {
-                UserControl测试提示1.Init(5);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
-            if (t == "结束前")
-            {
-                UserControl测试提示1.Init(6);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
-            if (t == "结束")
-            {
-                UserControl测试提示1.Init(7);
-                panelback.Visible = false;
-                panelback.Controls.Clear();
-                UserControl测试提示1.Dock = DockStyle.Fill;
-                panelback.Controls.Add(UserControl测试提示1);
-                panelback.Visible = true;
-            }
+           
+           
 
             if (t == "实时显示")
             {
@@ -823,8 +793,169 @@ namespace TabHeaderDemo
             
             
         }
+        public void InitTree1()
+        {
+            treeView1.Nodes.Clear();
+            
+
+            treeView1.Nodes.Add("试样", "试样");
+            treeView1.Nodes["试样"].StateImageIndex = 1;
+
+            treeView1.Nodes["试样"].Nodes.Add("尺寸");
+            treeView1.Nodes["试样"].Nodes.Add("数字输入");
+            treeView1.Nodes["试样"].Nodes.Add("文本输入");
+            treeView1.Nodes["试样"].Nodes.Add("选项输入");
+            treeView1.Nodes.Add("控制", "控制");
+            treeView1.Nodes["控制"].StateImageIndex = 2;
+
+            treeView1.Nodes["控制"].Nodes.Add("试验选项");
+            treeView1.Nodes["控制"].Nodes.Add("应变");
+            //  treeView1.Nodes[2].Nodes.Add("测试前");
+            treeView1.Nodes["控制"].Nodes.Add("测试");
+            treeView1.Nodes["控制"].Nodes.Add("数据采集");
+            treeView1.Nodes["控制"].Nodes.Add("测试结束");
+            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
+            {
+                treeView1.Nodes.Add("计算", "计算");
+                treeView1.Nodes["计算"].StateImageIndex = 3;
+
+                treeView1.Nodes["计算"].Nodes.Add("设定");
+            }
+
+           
+
+            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
+            {
+                treeView1.Nodes.Add("结果1", "结果1");
+                treeView1.Nodes["结果1"].StateImageIndex = 4;
+                treeView1.Nodes["结果1"].Nodes.Add("列");
+                treeView1.Nodes["结果1"].Nodes.Add("统计");
+                treeView1.Nodes["结果1"].Nodes.Add("格式");
+            }
+            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
+            {
+                treeView1.Nodes.Add("结果2", "结果2");
+                treeView1.Nodes["结果2"].StateImageIndex = 5;
+                treeView1.Nodes["结果2"].Nodes.Add("列");
+                treeView1.Nodes["结果2"].Nodes.Add("统计");
+                treeView1.Nodes["结果2"].Nodes.Add("格式");
+            }
+            treeView1.Nodes.Add("曲线图1", "曲线图1");
+            treeView1.Nodes["曲线图1"].StateImageIndex = 6;
+
+            treeView1.Nodes["曲线图1"].Nodes.Add("类型");
+            treeView1.Nodes["曲线图1"].Nodes.Add("X轴数据");
+            treeView1.Nodes["曲线图1"].Nodes.Add("Y轴数据");
+            treeView1.Nodes["曲线图1"].Nodes.Add("高级");
+            treeView1.Nodes.Add("曲线图2", "曲线图2");
+
+            treeView1.Nodes["曲线图2"].StateImageIndex = 7;
+            treeView1.Nodes["曲线图2"].Nodes.Add("类型");
+            treeView1.Nodes["曲线图2"].Nodes.Add("X轴数据");
+            treeView1.Nodes["曲线图2"].Nodes.Add("Y轴数据");
+            treeView1.Nodes["曲线图2"].Nodes.Add("高级");
+            treeView1.Nodes.Add("其它显示", "其它显示");
+
+            treeView1.Nodes["其它显示"].StateImageIndex = 14;
+            treeView1.Nodes["其它显示"].Nodes.Add("电表设置");
+            treeView1.Nodes["其它显示"].Nodes.Add("操作输入");
+            treeView1.Nodes["其它显示"].Nodes.Add("摄像");
+            treeView1.Nodes.Add("报告", "报告");
+            treeView1.Nodes["报告"].StateImageIndex = 9;
+            treeView1.Nodes["报告"].Nodes.Add("文档设置");
+            treeView1.Nodes["报告"].Nodes.Add("原始数据输出");
+            treeView1.Nodes["报告"].Nodes.Add("数据库设置");
+            treeView1.Nodes["报告"].Nodes.Add("峰值趋势数据输出");
+        }
+        public void  InitTree()
+        {
+            treeView1.Nodes.Clear();
+            treeView1.Nodes.Add("常规", "常规");
+            treeView1.Nodes["常规"].StateImageIndex = 0;
 
 
+
+            treeView1.Nodes["常规"].Nodes.Add("方法");
+            treeView1.Nodes["常规"].Nodes.Add("样品");
+            treeView1.Nodes["常规"].Nodes.Add("基本布局");
+            treeView1.Nodes["常规"].Nodes.Add("高级布局");
+
+
+            treeView1.Nodes.Add("试样", "试样");
+            treeView1.Nodes["试样"].StateImageIndex = 1;
+
+            treeView1.Nodes["试样"].Nodes.Add("尺寸");
+            treeView1.Nodes["试样"].Nodes.Add("数字输入");
+            treeView1.Nodes["试样"].Nodes.Add("文本输入");
+            treeView1.Nodes["试样"].Nodes.Add("选项输入");
+            treeView1.Nodes.Add("控制", "控制");
+            treeView1.Nodes["控制"].StateImageIndex = 2;
+
+            treeView1.Nodes["控制"].Nodes.Add("试验选项", "试验选项");
+            treeView1.Nodes["控制"].Nodes.Add("应变", "应变");
+            //  treeView1.Nodes[2].Nodes.Add("测试前");
+            treeView1.Nodes["控制"].Nodes.Add("测试", "测试");
+            treeView1.Nodes["控制"].Nodes.Add("数据采集", "数据采集");
+            treeView1.Nodes["控制"].Nodes.Add("测试结束", "测试结束");
+            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
+            {
+                treeView1.Nodes.Add("计算", "计算");
+                treeView1.Nodes["计算"].StateImageIndex = 3;
+
+                treeView1.Nodes["计算"].Nodes.Add("设定");
+            }
+
+            treeView1.Nodes.Add("控制台", "控制台");
+            treeView1.Nodes["控制台"].StateImageIndex = 13;
+
+            treeView1.Nodes["控制台"].Nodes.Add("实时显示");
+            treeView1.Nodes["控制台"].Nodes.Add("按键");
+            treeView1.Nodes["控制台"].Nodes.Add("主机");
+
+            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
+            {
+                treeView1.Nodes.Add("结果1", "结果1");
+                treeView1.Nodes["结果1"].StateImageIndex = 4;
+                treeView1.Nodes["结果1"].Nodes.Add("列");
+                treeView1.Nodes["结果1"].Nodes.Add("统计");
+                treeView1.Nodes["结果1"].Nodes.Add("格式");
+            }
+            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
+            {
+                treeView1.Nodes.Add("结果2", "结果2");
+                treeView1.Nodes["结果2"].StateImageIndex = 5;
+                treeView1.Nodes["结果2"].Nodes.Add("列");
+                treeView1.Nodes["结果2"].Nodes.Add("统计");
+                treeView1.Nodes["结果2"].Nodes.Add("格式");
+            }
+            treeView1.Nodes.Add("曲线图1", "曲线图1");
+            treeView1.Nodes["曲线图1"].StateImageIndex = 6;
+
+            treeView1.Nodes["曲线图1"].Nodes.Add("类型");
+            treeView1.Nodes["曲线图1"].Nodes.Add("X轴数据");
+            treeView1.Nodes["曲线图1"].Nodes.Add("Y轴数据");
+            treeView1.Nodes["曲线图1"].Nodes.Add("高级");
+            treeView1.Nodes.Add("曲线图2", "曲线图2");
+
+            treeView1.Nodes["曲线图2"].StateImageIndex = 7;
+            treeView1.Nodes["曲线图2"].Nodes.Add("类型");
+            treeView1.Nodes["曲线图2"].Nodes.Add("X轴数据");
+            treeView1.Nodes["曲线图2"].Nodes.Add("Y轴数据");
+            treeView1.Nodes["曲线图2"].Nodes.Add("高级");
+            treeView1.Nodes.Add("其它显示", "其它显示");
+
+            treeView1.Nodes["其它显示"].StateImageIndex = 14;
+            treeView1.Nodes["其它显示"].Nodes.Add("电表设置");
+            treeView1.Nodes["其它显示"].Nodes.Add("操作输入");
+            treeView1.Nodes["其它显示"].Nodes.Add("摄像");
+            treeView1.Nodes.Add("报告", "报告");
+            treeView1.Nodes["报告"].StateImageIndex = 9;
+            treeView1.Nodes["报告"].Nodes.Add("文档设置");
+            treeView1.Nodes["报告"].Nodes.Add("原始数据输出");
+            treeView1.Nodes["报告"].Nodes.Add("数据库设置");
+            treeView1.Nodes["报告"].Nodes.Add("峰值趋势数据输出");
+
+        }
         public void OpenTheMethod(string fileName)
         {
             mmethodfilename = fileName; 
@@ -844,8 +975,11 @@ namespace TabHeaderDemo
                 GlobeVal.UserControlMain1.userreport1.mReportApp = GlobeVal.UserControlMain1.userreport1.mReportApp.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\report\\" + CComLibrary.GlobeVal.filesave.ReportTemplate);
 
             }
-            GlobeVal.filesavecmp = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName); 
+            GlobeVal.filesavecmp = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName);
 
+
+            InitTree();
+      
 
             CComLibrary.GlobeVal.currentfilesavename = fileName;
             UserControl常规1.Open_method();
@@ -858,6 +992,7 @@ namespace TabHeaderDemo
 
             CComLibrary.GlobeVal.InitUserCalcChannel();
 
+            
             treeView1.Nodes["控制"].Nodes.Clear();
 
             if (CComLibrary.GlobeVal.filesave._flow试验选项 ==  CheckState.Checked)
@@ -896,6 +1031,10 @@ namespace TabHeaderDemo
 
             }
 
+          
+
+
+
         }
 
 
@@ -928,11 +1067,58 @@ namespace TabHeaderDemo
 
                     
                 }
+
                 ClsStaticStation.m_Global.mycls.initchannel();
                 ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
                 ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
+
+                string f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
+
+                if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device") == false)
+                {
+                    System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device");
+                }
+
+                if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim()) == false)
+                {
+                    System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim());
+                }
+
+                if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para") == false)
+                {
+                    System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para");
+                }
+                GlobeVal.mmethodfilename = f;
+
+
+                CComLibrary.GlobeVal.filesave.SegName = "方法.seg";
+
+                CComLibrary.GlobeVal.filesave.SerializeNow(GlobeVal.mmethodfilename);
+
+                f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\seg\\方法.seg";
+                if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\seg") == false)
+                {
+                    System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\seg");
+                }
+
+                CComLibrary.SegFile sf=new CComLibrary.SegFile();
+
+
+
+                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + CComLibrary.GlobeVal.filesave.SegName);
+
+                sf.SerializeNow(f);
+                CComLibrary.GlobeVal.filesave.SegName = "方法.seg";
+
+
+                // btnexopen.Visible = false;
+
+                // buttonExNext.Visible = true;
             }
             controlex.Dispose();
+
+
+
 
         }
 
@@ -1046,6 +1232,19 @@ namespace TabHeaderDemo
 
             linesPrinted = 0;
             e.HasMorePages = false;
+        }
+
+        private void buttonExNext_Click(object sender, EventArgs e)
+        {
+            methodon("测试", "控制");
+            btnexopen.Visible = true;
+            buttonExNext.Visible = false;
+
+        }
+
+        private void btnexsave1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

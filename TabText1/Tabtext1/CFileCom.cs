@@ -26,6 +26,8 @@ using System.Data.SqlClient;
 
 namespace CComLibrary
 {
+   
+
     [Serializable]
     public class Student
     {
@@ -2898,7 +2900,7 @@ namespace CComLibrary
         public CheckState _flow试验选项 = CheckState.Unchecked;
         public CheckState _flow测试 = CheckState.Unchecked;
 
-
+        public bool  _flow计算和结果 =false;
 
 
         public List<string> m_namelist;
@@ -3003,6 +3005,8 @@ namespace CComLibrary
         public int[] cbomeasurement;//数据采集通道
         public double[] numinterval;//数据采集间隔
         public double[] numintervallast;//作为变量使用
+        public double[] numintervallast1;//作为变量使用
+
 
 
         public bool endoftest1 = false;// 试验结束1
@@ -3059,6 +3063,8 @@ namespace CComLibrary
 
         public string SegName = "default.seg";
 
+       
+
         public string SequenceName = "default.seg";
 
         public List<CmdSeg> mseglist; //seg文件
@@ -3092,6 +3098,8 @@ namespace CComLibrary
         public int Extensometer_Action;//引伸计去除时动作
         public bool  Extensometer_DataFrozen;//引伸计摘除时数据冻结
 
+        public bool Extensometer_DataFrozenFlag;//引伸计摘除时数据冻结判断标志 运行时使用
+
         public Boolean UseDatabase;//数据库是否有效
         public List<DatabaseItem> mdatabaseitemlist;
         public List<DatabaseItem> mdatabaseitemselect;
@@ -3106,7 +3114,7 @@ namespace CComLibrary
         public string play_avi_datafile = "";
 
 
-       
+        public int currentmachineId = 0;//当前主机号蠕变使用
 
         public double StrainToLoad(double l)
         {
@@ -3233,8 +3241,15 @@ namespace CComLibrary
 
                 CComLibrary.SegFile sf = new CComLibrary.SegFile();
 
-                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
-                    + CComLibrary.GlobeVal.filesave.SegName);
+                if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
+                {
+                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
+                       + CComLibrary.GlobeVal.filesave.SegName);
+                }
+                else
+                {
+                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (CComLibrary.GlobeVal.filesave.currentmachineId+1).ToString().Trim() + "\\seg\\方法.seg");
+                }
 
                 int i = 0;
 
@@ -4027,6 +4042,7 @@ namespace CComLibrary
             cbomeasurement = new int[3];
             numinterval = new double[3];
             numintervallast = new double[3];
+            numintervallast1 = new double[3];
 
             teststep = new List<CTestStep>();
             for (int i = 0; i < 9; i++)
@@ -4582,6 +4598,15 @@ namespace CComLibrary
                         } 
                     }
 
+                    if (c.numintervallast1 ==null)
+                    {
+                        c.numintervallast1 = new double[3];
+                        for (int i=0;i<3;i++)
+                        {
+                            c.numintervallast1[i] = 0;
+                        }
+                    }
+
                     if (c.cbomeasurement == null)
                     {
                         c.cbomeasurement = new int[3];
@@ -4725,9 +4750,17 @@ namespace CComLibrary
                         {
                             SegFile sf = new SegFile();
 
-                            sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
-                                + SegName);
+                            if (SegName != "方法.seg")
+                            {
+                                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
+                                   + SegName);
+                            }
+                            else
+                            {
+                                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (CComLibrary.GlobeVal.filesave.currentmachineId + 1).ToString().Trim() + "\\seg\\方法.seg");
 
+
+                            }
                             int i = 0;
 
 

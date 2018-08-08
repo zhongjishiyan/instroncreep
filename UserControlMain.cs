@@ -22,6 +22,8 @@ namespace TabHeaderDemo
         private UserControlTest userControlTest1;
         public UserReport  userreport1;
         private UserManage usermanage1;
+        private UserGroupControl usergroupcontrol1;
+
         public List<Button> mlist;
 
         private Point[] buttonxy;
@@ -74,6 +76,8 @@ namespace TabHeaderDemo
             usercontrolopenmetho1 = new UserControlOpenMethod();
             usercontrolpretest1 = new UserControlPretest();
             userControlTest1 = new UserControlTest();
+            usergroupcontrol1 = new UserGroupControl();
+            usergroupcontrol1.Init();
 
             usermanage1.Dock = DockStyle.Fill;
             userreport1.Dock = DockStyle.Fill;
@@ -81,7 +85,7 @@ namespace TabHeaderDemo
             usercontrolopenmetho1.Dock = DockStyle.Fill;
             usercontrolpretest1.Dock = DockStyle.Fill;
             userControlTest1.Dock = DockStyle.Fill;
-            
+            usergroupcontrol1.Dock = DockStyle.Fill;
 
 
             tabPage1.Controls.Add(usercontrolopenmetho1);
@@ -90,6 +94,7 @@ namespace TabHeaderDemo
             tabPage4.Controls.Add(userControlTest1);
             tabPage5.Controls.Add(userreport1);
             tabPage6.Controls.Add(usermanage1);
+            tabPage7.Controls.Add(usergroupcontrol1);
 
             
 
@@ -99,15 +104,16 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1 = this;
             GlobeVal.userControlpretest1 = usercontrolpretest1;
             GlobeVal.userControlmethod1 = usercontrolmethod1;
-
+            GlobeVal.userGroupControl1 = usergroupcontrol1;
 
             GlobeVal.mbtntest = this.btnmtest;
             mlist.Add(btnmtest);
             mlist.Add(btnmmethod);
             mlist.Add(btnmreport);
             mlist.Add(btnmmanage);
-
-            buttonxy = new Point[4];
+            mlist.Add(btngroupcontrol);
+            
+            buttonxy = new Point[5];
 
             buttonxy[0].X = 161;
             buttonxy[0].Y = 9;
@@ -121,6 +127,10 @@ namespace TabHeaderDemo
             buttonxy[3].X = 644;
             buttonxy[3].Y = 9;
 
+            buttonxy[4].X = 644 + 644 - 483;
+            buttonxy[4].Y = 9;
+            
+
             btnmtest.Left = buttonxy[0].X;
             btnmtest.Top = buttonxy[0].Y;
 
@@ -132,6 +142,9 @@ namespace TabHeaderDemo
 
             btnmmanage.Left = buttonxy[3].X;
             btnmmanage.Top  = buttonxy[3].Y;
+
+            btngroupcontrol.Left = buttonxy[4].X;
+            btngroupcontrol.Top = buttonxy[4].Y;
 
 
         }
@@ -173,6 +186,7 @@ namespace TabHeaderDemo
                 btnmmethod.Visible = true;
                 btnmreport.Visible = false;
                 btnmmanage.Visible = false;
+                btngroupcontrol.Visible = false;
 
                 btnmmethod.Left = buttonxy[0].X;
                 btnmmethod.Top = buttonxy[0].Y;
@@ -204,6 +218,7 @@ namespace TabHeaderDemo
             btnmmethod.Visible = false ;
             btnmreport.Visible = true;
             btnmmanage.Visible = false;
+            btngroupcontrol.Visible = false;
 
             btnmreport.Left = buttonxy[0].X;
             btnmreport.Top = buttonxy[0].Y;
@@ -225,6 +240,7 @@ namespace TabHeaderDemo
             btnmmethod.Visible = false;
             btnmreport.Visible = false;
             btnmmanage.Visible = true;
+            btngroupcontrol.Visible = false;
 
             btnmmanage.Left = buttonxy[0].X;
             btnmmanage.Top = buttonxy[0].Y;
@@ -247,7 +263,7 @@ namespace TabHeaderDemo
             btnmmethod.Visible = false ;
             btnmreport.Visible = false ;
             btnmmanage.Visible = false ;
-
+            btngroupcontrol.Visible = false;
            
 
 
@@ -271,6 +287,7 @@ namespace TabHeaderDemo
                 btnmmethod.ForeColor = Color.White;
                 btnmreport.ForeColor = Color.White;
                 btnmmanage.ForeColor = Color.White;
+            btngroupcontrol.ForeColor = Color.White;
 
                 tabControl1.SelectedIndex = 2;
                 
@@ -317,7 +334,7 @@ namespace TabHeaderDemo
                 btnmmethod.ForeColor = Color.White;
                 btnmreport.ForeColor = Color.White;
                 btnmmanage.ForeColor = Color.White;
-
+                btngroupcontrol.ForeColor = Color.White;
               
                 tabControl1.SelectedIndex =3;
              
@@ -331,6 +348,7 @@ namespace TabHeaderDemo
 
                 }
 
+               
 
 
             }
@@ -345,6 +363,7 @@ namespace TabHeaderDemo
                 btnmmethod.ForeColor = Color.Yellow;
                 btnmreport.ForeColor = Color.White;
                 btnmmanage.ForeColor = Color.White;
+                btngroupcontrol.ForeColor = Color.White;
 
                 tabControl1.SelectedIndex = 1;
 
@@ -361,7 +380,7 @@ namespace TabHeaderDemo
                     
                 }
 
-                
+              
             }
         }
 
@@ -374,11 +393,12 @@ namespace TabHeaderDemo
                     btnmmethod.ForeColor = Color.White;
                     btnmreport.ForeColor = Color.Yellow;
                     btnmmanage.ForeColor = Color.White;
+                    btngroupcontrol.ForeColor = Color.White;
                    
                     userreport1.Refresh();
                    
                     tabControl1.SelectedIndex = 4;
-                
+
                 
             }
         }
@@ -391,9 +411,12 @@ namespace TabHeaderDemo
                 btnmmethod.ForeColor = Color.White;
                 btnmreport.ForeColor = Color.White;
                 btnmmanage.ForeColor = Color.Yellow;
-            
+                btngroupcontrol.ForeColor = Color.White;
+
                 tabControl1.SelectedIndex = 5;
                 usermanage1.panelback.Enabled  = false;
+
+              
             }
         }
 
@@ -460,6 +483,22 @@ namespace TabHeaderDemo
             }
 
             GlobeVal.lastindex = tabControl1.SelectedIndex; 
+        }
+
+        private void btngroupcontrol_Click(object sender, EventArgs e)
+        {
+            if (this.btngroupcontrol.ForeColor == Color.White)
+            {
+                btnmtest.ForeColor = Color.White;
+                btnmmethod.ForeColor = Color.White;
+                btnmreport.ForeColor = Color.White;
+                btnmmanage.ForeColor = Color.White ;
+                btngroupcontrol.ForeColor = Color.Yellow;
+
+                tabControl1.SelectedIndex = 6;
+
+                
+            }
         }
     }
 }

@@ -17,21 +17,11 @@ namespace TabHeaderDemo
         public WaitForm()
         {
            
-            SetText("");
+            
         }
 
         private delegate void SetTextHandler(string text);
-        public void SetText(string text)
-        {
-            if (this.label2.InvokeRequired)
-            {
-                this.Invoke(new SetTextHandler(SetText), text);
-            }
-            else
-            {
-                this.label2.Text = text;
-            }
-        }
+      
     }
     public class WaitFormService
     {
@@ -126,7 +116,7 @@ namespace TabHeaderDemo
             {
                 try
                 {
-                    waitForm.SetText(text);
+                    
                 }
                 catch (Exception)
                 {

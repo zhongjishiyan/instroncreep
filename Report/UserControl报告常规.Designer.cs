@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl报告常规));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -110,8 +109,8 @@
             this.btnheaderup = new System.Windows.Forms.Button();
             this.btnheaderremove = new System.Windows.Forms.Button();
             this.btnheaderadd = new System.Windows.Forms.Button();
-            this.listBox2 = new TabHeaderDemo.ListReport(this.components);
-            this.listReport2 = new TabHeaderDemo.ListReport(this.components);
+            this.listBox2 = new TabHeaderDemo.ListReport();
+            this.listReport2 = new TabHeaderDemo.ListReport();
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
             this.label25 = new System.Windows.Forms.Label();
             this.cbopostionheader = new System.Windows.Forms.ComboBox();
@@ -126,8 +125,8 @@
             this.btnreportup = new System.Windows.Forms.Button();
             this.btnreportremove = new System.Windows.Forms.Button();
             this.btnreportadd = new System.Windows.Forms.Button();
-            this.listBox1 = new TabHeaderDemo.ListReport(this.components);
-            this.listReport1 = new TabHeaderDemo.ListReport(this.components);
+            this.listBox1 = new TabHeaderDemo.ListReport();
+            this.listReport1 = new TabHeaderDemo.ListReport();
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.lblcaption = new System.Windows.Forms.Label();
@@ -171,8 +170,8 @@
             this.btnfooterup = new System.Windows.Forms.Button();
             this.btnfooterremove = new System.Windows.Forms.Button();
             this.btnfooteradd = new System.Windows.Forms.Button();
-            this.listBox3 = new TabHeaderDemo.ListReport(this.components);
-            this.listReport3 = new TabHeaderDemo.ListReport(this.components);
+            this.listBox3 = new TabHeaderDemo.ListReport();
+            this.listReport3 = new TabHeaderDemo.ListReport();
             this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
             this.label26 = new System.Windows.Forms.Label();
             this.cbopostionfooter = new System.Windows.Forms.ComboBox();
@@ -267,7 +266,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -282,7 +281,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(857, 4);
+            this.panel4.Location = new System.Drawing.Point(853, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(32, 36);
             this.panel4.TabIndex = 1;
@@ -294,7 +293,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(846, 63);
+            this.panel1.Size = new System.Drawing.Size(842, 63);
             this.panel1.TabIndex = 2;
             // 
             // label2
@@ -302,7 +301,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Location = new System.Drawing.Point(0, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(846, 20);
+            this.label2.Size = new System.Drawing.Size(842, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "    在此屏幕中可以设置报告模板的基本框架，包括页面走向和页边距。 ";
             // 
@@ -313,7 +312,7 @@
             this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(846, 16);
+            this.label1.Size = new System.Drawing.Size(842, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "设置报告模板 － 常规 ";
             // 
@@ -331,7 +330,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -346,7 +345,7 @@
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(858, 4);
+            this.panel3.Location = new System.Drawing.Point(854, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(32, 36);
             this.panel3.TabIndex = 1;
@@ -358,7 +357,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(847, 61);
+            this.panel5.Size = new System.Drawing.Size(843, 61);
             this.panel5.TabIndex = 2;
             // 
             // label3
@@ -366,7 +365,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Location = new System.Drawing.Point(0, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(847, 48);
+            this.label3.Size = new System.Drawing.Size(843, 48);
             this.label3.TabIndex = 2;
             this.label3.Text = "    在此屏幕中可以设置每页顶部的页眉的内容。 ";
             // 
@@ -377,7 +376,7 @@
             this.label4.ForeColor = System.Drawing.Color.Teal;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(847, 16);
+            this.label4.Size = new System.Drawing.Size(843, 16);
             this.label4.TabIndex = 1;
             this.label4.Text = "设置报告模板 － 页眉 ";
             // 
@@ -395,7 +394,7 @@
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel2.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel7, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -410,7 +409,7 @@
             // 
             this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Location = new System.Drawing.Point(855, 4);
+            this.panel6.Location = new System.Drawing.Point(851, 4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(32, 36);
             this.panel6.TabIndex = 1;
@@ -422,7 +421,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(4, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(844, 61);
+            this.panel7.Size = new System.Drawing.Size(840, 61);
             this.panel7.TabIndex = 2;
             // 
             // label5
@@ -430,7 +429,7 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Location = new System.Drawing.Point(0, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(844, 48);
+            this.label5.Size = new System.Drawing.Size(840, 48);
             this.label5.TabIndex = 2;
             this.label5.Text = "     在此屏幕中可以选择要包含在报告中的单元。";
             // 
@@ -441,7 +440,7 @@
             this.label6.ForeColor = System.Drawing.Color.Teal;
             this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(844, 16);
+            this.label6.Size = new System.Drawing.Size(840, 16);
             this.label6.TabIndex = 1;
             this.label6.Text = "设置报告模板 － 正文";
             // 
@@ -459,7 +458,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel4.Controls.Add(this.panel8, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel9, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -474,7 +473,7 @@
             // 
             this.panel8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel8.BackgroundImage")));
             this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel8.Location = new System.Drawing.Point(860, 4);
+            this.panel8.Location = new System.Drawing.Point(856, 4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(32, 36);
             this.panel8.TabIndex = 1;
@@ -486,7 +485,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(849, 61);
+            this.panel9.Size = new System.Drawing.Size(845, 61);
             this.panel9.TabIndex = 2;
             // 
             // label7
@@ -494,7 +493,7 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.Location = new System.Drawing.Point(0, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(849, 48);
+            this.label7.Size = new System.Drawing.Size(845, 48);
             this.label7.TabIndex = 2;
             this.label7.Text = "     在此屏幕中可以设置每页底部的页脚的内容。";
             // 
@@ -505,7 +504,7 @@
             this.label8.ForeColor = System.Drawing.Color.Teal;
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(849, 16);
+            this.label8.Size = new System.Drawing.Size(845, 16);
             this.label8.TabIndex = 1;
             this.label8.Text = "设置报告模板 － 页脚";
             // 

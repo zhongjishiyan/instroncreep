@@ -541,132 +541,10 @@ namespace TabHeaderDemo
 
         }
 
-        private void Init_Grid3()
-        {
-            grid3.RowsCount = 0;
-            grid3.AutoStretchColumnsToFitWidth = true;
+  
 
-            grid3.BorderStyle = BorderStyle.FixedSingle;
-
-            grid3.ColumnsCount = 4;
-            grid3.Columns[0].Width = grid3.Width / 4;
-            grid3.Columns[1].Width = grid3.Width / 4;
-            grid3.Columns[2].Width = grid3.Width / 4;
-
-            grid3.Columns[3].Width = grid3.Width - grid3.Columns[0].Width - 1;
-
-            grid3.Columns[1].AutoSizeMode = SourceGrid2.AutoSizeMode.EnableStretch;
-            grid3.FixedRows = 0;
-            grid3.Rows.Insert(0);
-
-            SourceGrid2.Cells.Real.ColumnHeader head = new SourceGrid2.Cells.Real.ColumnHeader("准则");
-            head.EnableSort = false;
-            grid3[0, 0] = head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("通道");
-            head.EnableSort = false;
-            grid3[0, 1] = head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("间隔");
-            head.EnableSort = false;
-            grid3[0, 2] = head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("单位");
-            head.EnableSort = false;
-            grid3[0, 3] = head;
-
-
-            double v = 0;
-            for (int i = 1; i <= ClsStaticStation.m_Global.mycls.allsignals.Count; i++)
-            {
-                grid3.Rows.Insert(i);
-
-                grid3[i, 0] = new SourceGrid2.Cells.Real.CheckBox(false);
-
-
-                grid3[i, 1] = new SourceGrid2.Cells.Real.Cell(
-                    ClsStaticStation.m_Global.mycls.allsignals[i - 1].cName, typeof(string));
-                grid3[i, 2] = new SourceGrid2.Cells.Real.Cell(
-                v, typeof(double));
-
-                grid3[i, 3] = new SourceGrid2.Cells.Real.ComboBox(
-                    ClsStaticStation.m_Global.mycls.allsignals[i - 1].cUnits[
-                    ClsStaticStation.m_Global.mycls.allsignals[i - 1].cUnitsel], typeof(string),
-                    ClsStaticStation.m_Global.mycls.allsignals[i - 1].cUnits, false);
-
-
-            }
-
-        }
-
-        public void Init_块谱()
-        {
-            tlpblock.ColumnStyles[0].Width = 50;
-            tlpblock.ColumnStyles[2].Width = 50;
-        }
-        public void Init_高级()
-        {
-
-
-            // Put it in the first column of the fourth row
-
-            cbomethod.Items.Clear();
-            cbomethod.Items.Add("试验方法默认");
-            cbomethod.Items.Add("自定义采集");
-            cbomethod.Items.Add("不采集");
-
-            cbomethod.SelectedIndex = 0;
-
-            
-
-            cbocontrol.Items.Clear();
-
-            for (int i = 0; i < m_Global.mycls.hardsignals.Count; i++)
-            {
-                cbocontrol.Items.Add(m_Global.mycls.hardsignals[i].cName);
-            }
-            cbocontrol.SelectedIndex = 0;
-            cbodestcontrol.Items.Clear();
-
-            for (int i = 0; i < m_Global.mycls.hardsignals.Count; i++)
-            {
-                cbodestcontrol.Items.Add(m_Global.mycls.hardsignals[i].cName);
-            }
-            cbodestcontrol.SelectedIndex = 0;
-
-
-            tscbos.Items.Clear();
-            DirectoryInfo info = new DirectoryInfo(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence");
-            FileInfo[] files = info.GetFiles("*.seq");
-            foreach (FileInfo file in files)
-            {
-                tscbos.Items.Add(file.Name);
-
-                if (CComLibrary.GlobeVal.filesave.SequenceName == file.Name)
-                {
-                    tscbos.Text = file.Name;
-                }
-            }
-
-
-            imageList1.ImageSize = new Size(16, listViewEx1.Height - 17);
-
-
-
-
-
-            tlpscroll.ColumnStyles[0].Width = 50;
-            tlpscroll.ColumnStyles[2].Width = 50;
-
-
-            Init_Grid3();
-
-            if (listViewEx1.mlist.Count > 0)
-            {
-                UserControlStep1_btnselectevent(listViewEx1.mlist[0], 0);
-
-            }
-        }
+       
+   
         public void Init_中级()
         {
 
@@ -751,6 +629,7 @@ namespace TabHeaderDemo
 
             if (tscbo.Text == "")
             {
+                
             }
             else
             {
@@ -758,7 +637,10 @@ namespace TabHeaderDemo
 
 
             }
-
+            if (CComLibrary.GlobeVal.filesave.SegName=="方法.seg")
+            {
+                tscbo_SelectedIndexChanged(null, null);
+            }
 
 
         }
@@ -876,14 +758,16 @@ namespace TabHeaderDemo
             cbocontrolprocess.Items.Add("中级测试");
             cbocontrolprocess.Items.Add("简单测试");
 
-            if ((GlobeVal.mysys.controllerkind == 0)||(GlobeVal.mysys.controllerkind == 1) || (GlobeVal.mysys.controllerkind == 2))
+        
+
+            if ((CComLibrary.GlobeVal.filesave.mcontrolprocess>=0) && (CComLibrary.GlobeVal.filesave.mcontrolprocess<=2))
             {
-                cbocontrolprocess.Items.Add("高级测试");
-               // cbocontrolprocess.Items.Add("块谱测试");
+
             }
-
-
-
+            else
+            {
+                CComLibrary.GlobeVal.filesave.mcontrolprocess = 1;
+            }
             cbocontrolprocess.SelectedIndex = CComLibrary.GlobeVal.filesave.mcontrolprocess;
 
             
@@ -1487,38 +1371,15 @@ namespace TabHeaderDemo
             {
                 Init_简单();
             }
-            if (sel == 8)
-            {
-                Init_高级();
-
-                if (GlobeVal.UserControlMain1.btnmtest.Visible == true)
-                {
-                    tscbos.Enabled = false;
-                    tsopens.Enabled = false;
-                    tsdels.Enabled = false;
-
-                }
-                else
-                {
-                    tscbos.Enabled = true;
-                    tsopens.Enabled =true;
-                    tsdels.Enabled = true;
-                }
-
-
-            }
-            if (sel == 9)
-            {
-                Init_块谱();
-            }
+           
+           
 
          }
         public UserControl控制()
         {
             InitializeComponent();
             tabControl1.ItemSize = new Size(1, 1);
-            tabControl3.ItemSize = new System.Drawing.Size(1, 1);
-            tabControl4.ItemSize = new System.Drawing.Size(1, 1);
+           
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
@@ -1570,392 +1431,13 @@ namespace TabHeaderDemo
 
         }
 
-        private void waveshape0_sel()
-        {
-            cbocontrol.SelectedIndex = getselect().msequence.controlmode;
-           
+       
+    
+      
 
-            cbodestcontrol.SelectedIndex = getselect().msequence.destcontrolmode;
+       
 
-            cbocontrol_SelectionChangeCommitted(null, null);
-            cbodestcontrol_SelectionChangeCommitted(null, null);
-
-
-            getselect().msequence.rate = (ItemSignal)m_Global.mycls.chsignals[cbocontrol.SelectedIndex].speedSignal.Clone();
-
-           
-
-            cbospeedunit.Items.Clear();
-            for (int i = 0; i < getselect().msequence.rate.cUnitCount; i++)
-            {
-                cbospeedunit.Items.Add(getselect().msequence.rate.cUnits[i]);
-            }
-
-            cbospeedunit.SelectedIndex = getselect().msequence.mrateunit;
-            numspeed.Value = getselect().msequence.mrate;
-            cbodestmode.Items.Clear();
-            cbodestmode.Items.Add("切换");
-            cbodestmode.Items.Add("不切换");
-            cbodestmode.Items.Add("跟随");
-            cbodestmode.SelectedIndex = getselect().msequence.destmode;
-
-           
-        }
-
-        private void waveshape1_sel()
-        {
-
-            cbocontrol.SelectedIndex = getselect().msequence.controlmode;
-            cbocontrol_SelectionChangeCommitted(null, null);
-            numkeeptime.Value = getselect().msequence.keeptime;
-            cbokeeptimeunit.Items.Clear();
-            cbokeeptimeunit.Items.Add("S");
-            cbokeeptimeunit.SelectedIndex = 0;
-
-        }
-
-        private void waveshape2_sel()
-        {
-            cbocontrol.SelectedIndex = getselect().msequence.controlmode;
-            cbocontrol_SelectionChangeCommitted(null, null);
-            numtrispeed.Value = getselect().msequence.mtrirate;
-
-            numtricount.Value = getselect().msequence.mcount;
-            numtrifinishedcount.Value = getselect().msequence.mfinishedcount;
-
-
-            cbotriinitdir.Items.Clear();
-            cbotriinitdir.Items.Add("向上");
-            cbotriinitdir.Items.Add("向下");
-            cbotriinitdir.SelectedIndex = getselect().msequence.mtriinitdir;
-
-
-            numtrimax.Value = getselect().msequence.mtrimax;
-            numtrimin.Value = getselect().msequence.mtrimin;
-
-
-            chksavetracking.Checked = getselect().msequence.msavetracking;
-            chksavepeaktrenddata.Checked = getselect().msequence.msavepeaktrend;
-
-
-            dgridsavetrack.Rows.Clear();
-            dgridsavetrack.Rows.Add(10);
-            dgridsavepeaktrend.Rows.Clear();
-            dgridsavepeaktrend.Rows.Add(10);
-
-            for (int i = 0; i < 10; i++)
-            {
-                dgridsavetrack.Rows[i].Cells[0].Value = getselect().msequence.msavetrackingrow1[i];
-                dgridsavetrack.Rows[i].Cells[1].Value = getselect().msequence.msavetrackingrow2[i];
-                dgridsavetrack.Rows[i].Cells[2].Value = getselect().msequence.msavetrackingrow3[i];
-                dgridsavepeaktrend.Rows[i].Cells[0].Value = getselect().msequence.msavepeaktrendrow1[i];
-                dgridsavepeaktrend.Rows[i].Cells[1].Value = getselect().msequence.msavepeaktrendrow2[i];
-                dgridsavepeaktrend.Rows[i].Cells[2].Value = getselect().msequence.msavepeaktrendrow3[i];
-            }
-
-
-            cbopeakmode.Items.Clear();
-            cbopeakmode.Items.Add("覆盖");
-            cbopeakmode.Items.Add("追加");
-            cbopeakmode.SelectedIndex = getselect().msequence.msavemode_forflow ;
-
-            cboflowmode.Items.Clear();
-            cboflowmode.Items.Add("覆盖");
-            cboflowmode.Items.Add("追加");
-            cboflowmode.SelectedIndex = getselect().msequence.msavemode_forappend;
-        }
-
-
-        private void waveshape3_sel()
-        {
-            cbocontrol.SelectedIndex = getselect().msequence.controlmode;
-            cbocontrol_SelectionChangeCommitted(null, null);
-            cbosinspeedunit.SelectedIndex = getselect().msequence.msinrateunit;
-            numsinspeed.Value = getselect().msequence.msinrate;
-            numsincount.Value = getselect().msequence.mcount;
-            numsinfinishedcount.Value = getselect().msequence.mfinishedcount;
-
-            cbosininitdir.Items.Clear();
-            cbosininitdir.Items.Add("向上");
-            cbosininitdir.Items.Add("向下");
-            cbosininitdir.SelectedIndex = getselect().msequence.msininitdir;
-            numfreq.Value = getselect().msequence.msinfreq;
-            numsinmax.Value = getselect().msequence.msinmax;
-            numsinmin.Value = getselect().msequence.msinmin;
-
-            chksavetracking.Checked = getselect().msequence.msavetracking;
-            chksavepeaktrenddata.Checked = getselect().msequence.msavepeaktrend;
-
-
-            dgridsavetrack.Rows.Clear();
-            dgridsavetrack.Rows.Add(10);
-            dgridsavepeaktrend.Rows.Clear();
-            dgridsavepeaktrend.Rows.Add(10);
-
-            for(int i=0;i<10;i++)
-            {
-                dgridsavetrack.Rows[i].Cells[0].Value = getselect().msequence.msavetrackingrow1[i];
-                dgridsavetrack.Rows[i].Cells[1].Value = getselect().msequence.msavetrackingrow2[i];
-                dgridsavetrack.Rows[i].Cells[2].Value = getselect().msequence.msavetrackingrow3[i];
-                dgridsavepeaktrend.Rows[i].Cells[0].Value = getselect().msequence.msavepeaktrendrow1[i];
-                dgridsavepeaktrend.Rows[i].Cells[1].Value = getselect().msequence.msavepeaktrendrow2[i];
-                dgridsavepeaktrend.Rows[i].Cells[2].Value = getselect().msequence.msavepeaktrendrow3[i];
-            }
-
-
-        }
-
-        private void waveshape4_sel()
-        {
-            cbocontrol.SelectedIndex = getselect().msequence.controlmode;
-            cbocontrol_SelectionChangeCommitted(null, null);
-
-            numrectspeed.Value = getselect().msequence.mrectrate;
-            cborectspeedunit.SelectedIndex = getselect().msequence.mrectrateunit;
-            numrectcount.Value = getselect().msequence.mrectcount;
-            cborectinitdir.Items.Clear();
-            cborectinitdir.Items.Add("向上");
-            cborectinitdir.Items.Add("向下");
-            cborectinitdir.SelectedIndex = getselect().msequence.mrectinitdir;
-
-            numrectupspeed.Value = getselect().msequence.mrectuprate;
-            numrectdownspeed.Value = getselect().msequence.mrectdownrate;
-            numrectupdest.Value = getselect().msequence.mrectupdest;
-            numrectdowndest.Value = getselect().msequence.mrectdowndest;
-            numrectupkeeptime.Value = getselect().msequence.mrectupkeeptime;
-            numrectdownkeeptime.Value = getselect().msequence.mrectdownkeeptime;
-        }
-
-        private void UserControlStep1_btnselectevent(object sender, int index)
-        {
-            if ((sender as UserControlStep).selected)
-            {
-                return;
-            }
-            for (int i = 0; i < listViewEx1.mlist.Count; i++)
-            {
-                listViewEx1.mlist[i].selected = false;
-            }
-
-
-
-            (sender as UserControlStep).selected = true;
-
-
-            for (int i = 0; i < toolStripWave.Items.Count; i++)
-            {
-                (toolStripWave.Items[i] as ToolStripButton).Checked = false;
-            }
-            (toolStripWave.Items[(sender as UserControlStep).Kind] as ToolStripButton).Checked = true;
-
-
-            lblstep.Text = "步骤" + ((sender as UserControlStep).Id + 1).ToString() + "名称：";
-
-            txtstep.Text = (sender as UserControlStep).msequence.stepname;
-
-
-            chkjump.Checked = (sender as UserControlStep).msequence.loop;
-            cbojump.Items.Clear();
-
-            for( int i=0;i<listViewEx1.mlist.Count;i++)
-            {
-                cbojump.Items.Add((i+1).ToString());
-            }
-            cbojump.SelectedIndex = (sender as UserControlStep).msequence.returnstep-1;
-            numcount.Value = (sender as UserControlStep).msequence.loopcount ;
-
-            numfinishedcount.Value= (sender as UserControlStep).msequence.finishedloopcount ;
-
-            cbomethod.SelectedIndex = (sender as UserControlStep).msequence.samplingmode;
-
-            cbomethod_SelectionChangeCommitted(null, null);
-
-
-            
-
-            for (int i = 1; i < grid3.Rows.Count ; i++)
-            {
-
-
-                grid3[i, 0].Value = (sender as UserControlStep).msequence.chkchannel[i - 1];
-
-                grid3[i, 2].Value = (sender as UserControlStep).msequence.sampleinterval[i - 1];
-            }
-
-
-                if ((sender as UserControlStep).msequence.wavekind == 0)
-            {
-
-
-              
-                tbtnramp_Click (null, null);
-            }
-
-            if ((sender as UserControlStep).msequence.wavekind == 1)
-            {
-                
-               tbtnkeep_Click (null, null);
-            }
-
-            if ((sender as UserControlStep).msequence.wavekind == 2)
-            {
-                toolStripButton3_Click(null, null);
-            }
-
-            if ((sender as UserControlStep).msequence.wavekind ==3)
-            {
-               
-                toolStripButton7_Click(null, null);
-            }
-
-            if ((sender as UserControlStep).msequence.wavekind ==4)
-            {
-               
-                toolStripButton8_Click(null, null);
-            }
-
-            return;
-        }
-
-        private void UserControlStep1_btnrightevent(object sender, int index)
-        {
-            UserControlStep p = new UserControlStep();
-
-            p.Kind = 0;
-            p.selected = false;
-            p.settail(1);
-
-            p.btnrightevent += this.UserControlStep1_btnrightevent;
-            p.btncopyevent += this.UserControlStep1_btncopyevent;
-            p.btncutevent += this.UserControlStep1_btncutevent;
-            p.btnleftevent += this.UserControlStep1_btnleftevent;
-            p.btnselectevent += this.UserControlStep1_btnselectevent;
-
-            int mm = (sender as UserControlStep).Id;
-            ColumnHeader m = new ColumnHeader();
-            p.Width = 270;
-            m.Width = p.Width;
-
-
-            listViewEx1.mlist.Insert(mm + 1, p);
-            listViewEx1.Columns.Insert(mm + 1, m);
-
-            listViewEx1.reset();
-
-            return;
-        }
-
-        private void UserControlStep1_btnleftevent(object sender, int index)
-        {
-            UserControlStep p = new UserControlStep();
-
-            p.Kind = 0;
-            p.selected = false;
-            p.settail(1);
-
-            p.btnrightevent += this.UserControlStep1_btnrightevent;
-            p.btncopyevent += this.UserControlStep1_btncopyevent;
-            p.btncutevent += this.UserControlStep1_btncutevent;
-            p.btnleftevent += this.UserControlStep1_btnleftevent;
-            p.btnselectevent += this.UserControlStep1_btnselectevent;
-
-            int mm = (sender as UserControlStep).Id;
-            ColumnHeader m = new ColumnHeader();
-            p.Width = 270;
-            m.Width = p.Width;
-
-
-            listViewEx1.mlist.Insert(mm, p);
-            listViewEx1.Columns.Insert(mm, m);
-
-
-            listViewEx1.reset();
-
-
-
-            return;
-        }
-
-        private void UserControlStep1_btncutevent(object sender, int index)
-        {
-
-            DialogResult a = MessageBox.Show("是否删除当前模块？", "提示", MessageBoxButtons.YesNo);
-
-            if (a == DialogResult.Yes)
-            {
-                UserControlStep p;
-                int b = 0;
-                for (int i = 0; i < listViewEx1.mlist.Count; i++)
-                {
-                    if (listViewEx1.mlist[i].selected == true)
-                    {
-                        b = i;
-                    }
-                }
-
-                p = listViewEx1.mlist[b];
-
-                p.btnrightevent -= this.UserControlStep1_btnrightevent;
-                p.btncopyevent -= this.UserControlStep1_btncopyevent;
-                p.btncutevent -= this.UserControlStep1_btncutevent;
-                p.btnleftevent -= this.UserControlStep1_btnleftevent;
-                p.btnselectevent -= this.UserControlStep1_btnselectevent;
-
-
-                listViewEx1.mlist.RemoveAt(b);
-                listViewEx1.Columns.RemoveAt(b);
-                listViewEx1.reset();
-                p.Dispose();
-            }
-            return;
         
-           
-        }
-
-        private void UserControlStep1_btncopyevent(object sender, int index)
-        {
-            UserControlStep p1;
-            UserControlStep p;
-            int b = 0;
-            for (int i = 0; i < listViewEx1.mlist.Count; i++)
-            {
-                if (listViewEx1.mlist[i].selected == true)
-                {
-                    b = i;
-                }
-            }
-
-            p1 = listViewEx1.mlist[b];
-
-           p = new UserControlStep();
-
-            p.Kind = p1.Kind;
-            p.msequence.stepname = p1.msequence.stepname;
-            p.msequence.wavekind = p1.msequence.wavekind;
-
-            p.selected = false;
-            p.settail(1);
-
-            p.btnrightevent += this.UserControlStep1_btnrightevent;
-            p.btncopyevent += this.UserControlStep1_btncopyevent;
-            p.btncutevent += this.UserControlStep1_btncutevent;
-            p.btnleftevent += this.UserControlStep1_btnleftevent;
-            p.btnselectevent += this.UserControlStep1_btnselectevent;
-
-            int mm = (sender as UserControlStep).Id;
-            ColumnHeader m = new ColumnHeader();
-            p.Width = 270;
-            m.Width = p.Width;
-
-
-            listViewEx1.mlist.Insert(mm + 1, p);
-            listViewEx1.Columns.Insert(mm + 1, m);
-
-            listViewEx1.reset();
-
-            
-            return;
-        }
 
 
 
@@ -2383,8 +1865,15 @@ namespace TabHeaderDemo
                 System.IO.File.Delete(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
             }
 
-            sf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
+            if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
+            {
+                sf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
+            }
+            else
+            {
+                sf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (GlobeVal.selcontroller).ToString().Trim() + "\\seg\\方法.seg");
 
+            }
 
         }
 
@@ -2425,8 +1914,16 @@ namespace TabHeaderDemo
             if (mloaded == false)
             {
                 sf.mseglist.Clear();
-                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
 
+                if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
+                {
+                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
+                }
+                else
+                {
+                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (GlobeVal.selcontroller).ToString().Trim() + "\\seg\\方法.seg");
+
+                }
                 int i = 0;
 
                 grid2.RowsCount = 1;
@@ -2557,159 +2054,12 @@ namespace TabHeaderDemo
         }
 
         
-        private UserControlStep getselect()
-        {
-            int j = 0;
-
-            for (int i = 0; i < listViewEx1.mlist.Count; i++)
-            {
-                if (listViewEx1.mlist[i].selected == true)
-                {
-                    j = i;
+       
+       
+      
 
 
-
-                }
-            }
-
-            return listViewEx1.mlist[j];
-
-        }
-        private void tbtnramp_Click(object sender, EventArgs e)
-        {
-
-
-            tabControl3.SelectedIndex = 0;
-
-            getselect().Kind = 0;
-
-            getselect().msequence.wavekind = 0;
-
-            tbtnramp.Checked = true;
-            tbtnkeep.Checked = false;
-            toolStripButton3.Checked = false;
-            toolStripButton7.Checked = false;
-            toolStripButton8.Checked = false;
-            toolStripButton9.Checked = false;
-
-            lblcontrolmode.Visible = true ;
-            cbocontrol.Visible = true;
-
-            waveshape0_sel();
-            tabControl2.TabPages.Clear();
-            tabControl2.TabPages.Add(tabPage10);
-            tabControl2.TabPages.Add(tabPage11);
-            tabControl2.TabPages.Add(tabPage12);
-
-        }
-
-        private void tbtnkeep_Click(object sender, EventArgs e)
-        {
-            tabControl3.SelectedIndex = 1;
-            getselect().Kind = 1;
-            getselect().msequence.wavekind = 1;
-            tbtnramp.Checked = false;
-            tbtnkeep.Checked = true;
-            toolStripButton3.Checked = false;
-            toolStripButton7.Checked = false;
-            toolStripButton8.Checked = false;
-            toolStripButton9.Checked = false;
-
-            lblcontrolmode.Visible = false;
-            cbocontrol.Visible = false;
-
-            waveshape1_sel();
-            tabControl2.TabPages.Clear();
-            tabControl2.TabPages.Add(tabPage10);
-            tabControl2.TabPages.Add(tabPage11);
-            tabControl2.TabPages.Add(tabPage12);
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            tabControl3.SelectedIndex = 2;
-            getselect().Kind = 2;
-            getselect().msequence.wavekind = 2;
-            tbtnramp.Checked = false;
-            tbtnkeep.Checked = false;
-            toolStripButton3.Checked = true;
-            toolStripButton7.Checked = false;
-            toolStripButton8.Checked = false;
-            toolStripButton9.Checked = false;
-
-            lblcontrolmode.Visible = true;
-            cbocontrol.Visible = true;
-            waveshape2_sel();
-
-
-            tabControl2.TabPages.Clear();
-            tabControl2.TabPages.Add(tabPage10);
-            tabControl2.TabPages.Add(tabPage11);
-            //tabControl2.TabPages.Add(tabPage12);
-            tabControl2.TabPages.Add(tabPage21);
-            tabControl2.TabPages.Add(tabPage22);
-        }
-
-        private void tlpedit_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listViewEx1_VScroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listViewEx1_HScroll(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void addBlock()
-        {
-            listViewBlock1.mlist.Clear();
-
-            listViewBlock1.Columns.Clear();
-
-            UserControlBlock p = new UserControlBlock();
-
-            p.Kind = 0;
-            p.selected = true;
-
-            p.Id = 0;
-            p.btnrightevent += listViewBlock1_btnrightevent;
-            p.btncopyevent += listViewBlock1_btncopyevent;
-            p.btncutevent += listViewBlock1_btncutevent;
-            p.btnleftevent += listViewBlock1_btnleftevent;
-            p.btnselectevent += listViewBlock1_btnselectevent;
-            p.Width = 230;
-            ColumnHeader m = new ColumnHeader();
-            m.Width = p.Width;
-
-            listViewBlock1.mlist.Add(p);
-            listViewBlock1.Columns.Add(m);
-
-            listViewBlock1.AddEmbeddedControl(p, 0, 0);
-        }
-
-        private void listViewBlock1_btnselectevent(object sender, int index)
-        {
-            if ((sender as  UserControlBlock ).selected)
-            {
-                return;
-            }
-            for (int i = 0; i < listViewBlock1.mlist.Count; i++)
-            {
-                listViewBlock1.mlist[i].selected = false;
-            }
-
-
-
-            (sender as UserControlBlock).selected = true;
-
-            return;
-        }
+        
 
         private void listViewBlock1_btnleftevent(object sender, int index)
         {
@@ -2727,708 +2077,50 @@ namespace TabHeaderDemo
             return;
         }
 
-        private void listViewBlock1_btnrightevent(object sender, int index)
-        {
-            UserControlBlock  p = new UserControlBlock();
+        
 
-            p.Kind = 0;
-            p.selected = false;
+       
+     
 
-           
-            p.btnrightevent += listViewBlock1_btnrightevent;
-            p.btncopyevent += this.listViewBlock1_btncopyevent;
-            p.btncutevent += this.listViewBlock1_btncutevent;
-            p.btnleftevent += this.listViewBlock1_btnleftevent;
-            p.btnselectevent += this.listViewBlock1_btnselectevent;
-
-            int mm = (sender as UserControlBlock ).Id;
-            ColumnHeader m = new ColumnHeader();
-            p.Width = 230;
-            m.Width = p.Width;
-
-
-            this.listViewBlock1.mlist.Insert(mm + 1, p);
-            this.listViewBlock1.Columns.Insert(mm + 1, m);
-
-            this.listViewBlock1.reset();
-
-            return;
-        }
-
-        private void addSequence(CComLibrary.Sequence seq)
-        {
-            listViewEx1.mlist.Clear();
-
-            listViewEx1.Columns.Clear();
-
-            UserControlStep p = new UserControlStep();
-
-            p.Kind = 0;
-            p.selected = true;
-            p.settail(1);
-            p.Id = 0;
-            p.btnrightevent += this.UserControlStep1_btnrightevent;
-            p.btncopyevent += this.UserControlStep1_btncopyevent;
-            p.btncutevent += this.UserControlStep1_btncutevent;
-            p.btnleftevent += this.UserControlStep1_btnleftevent;
-            p.btnselectevent += this.UserControlStep1_btnselectevent;
-            p.Width = 270;
-            ColumnHeader m = new ColumnHeader();
-            m.Width = p.Width;
-
-            listViewEx1.mlist.Add(p);
-            listViewEx1.Columns.Add(m);
-
-            listViewEx1.AddEmbeddedControl(p, 0, 0);
-        }
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            String s;
-            Frm.Form新建程序文件 f = new TabHeaderDemo.Frm.Form新建程序文件();
-            f.result = false;
-            f.ShowDialog();
-
-            if (f.result == true)
-            {
-                s = f.txtname.Text;
-
-
-                sqf.mSequencelist.Clear();
-                sqf.add();
-
-                addSequence(sqf.mSequencelist[0]);
-
-
-
-
-
-                sqf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + s + ".seq");
-
-                tscbos.Items.Clear();
-                tscbos.Text = s + ".seq";
-                DirectoryInfo info = new DirectoryInfo(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence");
-                FileInfo[] files = info.GetFiles("*.seq");
-                foreach (FileInfo file in files)
-                {
-                    tscbos.Items.Add(file.Name);
-                }
-
-                tscbos.Text = s + ".seq";
-            }
-
-        }
-
-        private void toolStripButton5_Click(object sender, EventArgs e)
-        {
-            if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + tscbos.Text) == true)
-            {
-                System.IO.File.Delete(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + tscbos.Text);
-            }
-
-            sqf.clear();
-
-            for (int i = 0; i < listViewEx1.mlist.Count; i++)
-            {
-                sqf.add(listViewEx1.mlist[i].msequence);
-            }
-
-            bool fb = false;
-
-            for (int i = 0; i < sqf.mSequencelist.Count; i++)
-            {
-                if (sqf.mSequencelist[i].loop == true)
-                {
-                    for (int j = sqf.mSequencelist[i].returnstep; j < i; j++)
-                    {
-                        if (sqf.mSequencelist[j].loop == true)
-                        {
-                            fb = true;
-                        }
-                    }
-                }
-            }
-
-            if (fb==true)
-            {
-                MessageBox.Show("错误，循环中包括子循环");
-                return;
-            }
-            sqf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + tscbos.Text);
-
-
-        }
+     
 
        
 
-        private void tscbos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (mloaded == false)
-            {
+       
+      
+       
+     
 
-                sqf.clear();
-                sqf = sqf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + tscbos.Text);
+       
+       
 
-
-
-                listViewEx1.mlist.Clear();
-
-                listViewEx1.Columns.Clear();
-
-
-
-                for (int i = 0; i < sqf.mSequencelist.Count; i++)
-                {
-                    UserControlStep p = new UserControlStep();
-
-                    p.msequence = sqf.mSequencelist[i];
-
-                    p.Kind = sqf.mSequencelist[i].wavekind;
-
-                   
-                    p.selected = false;
-
-                    if (sqf.mSequencelist[i].loop == true)
-                    {
-                        p.settail(2);
-                       
-                    }
-                    else
-                    {
-                        if (i == sqf.mSequencelist.Count-1)
-                        {
-                            p.settail(1);
-                        }
-                        else
-                        {
-                            p.settail(0);
-                        }
-                    }
-                    p.Id = i;
-
-                    
-
-                    p.btnrightevent += this.UserControlStep1_btnrightevent;
-                    p.btncopyevent += this.UserControlStep1_btncopyevent;
-                    p.btncutevent += this.UserControlStep1_btncutevent;
-                    p.btnleftevent += this.UserControlStep1_btnleftevent;
-                    p.btnselectevent += this.UserControlStep1_btnselectevent;
-                    p.Width = 270;
-                    ColumnHeader m = new ColumnHeader();
-                    m.Width = p.Width;
-
-                    listViewEx1.mlist.Add(p);
-                    listViewEx1.Columns.Add(m);
-
-
-
-
-                }
-
-                listViewEx1.reset();
-
-                CComLibrary.GlobeVal.filesave.SequenceName = tscbos.Text;
-
-
-            }
-        }
-
-        private void numspeed_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrate = numspeed.Value;
-        }
-
-        private void cbospeedunit_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.mrateunit = cbospeedunit.SelectedIndex;
-        }
-
-        private void cbocontrol_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.controlmode = cbocontrol.SelectedIndex;
+     
 
       
-
-
-            if (getselect().msequence.wavekind == 0)
-            {
-                getselect().msequence.rate = (ItemSignal)m_Global.mycls.chsignals[cbocontrol.SelectedIndex].speedSignal.Clone();
-
-                cbospeedunit.Items.Clear();
-                for (int i = 0; i < getselect().msequence.rate.cUnitCount; i++)
-                {
-                    cbospeedunit.Items.Add(getselect().msequence.rate.cUnits[i]);
-                }
-
-                cbospeedunit.SelectedIndex = getselect().msequence.mrateunit;
-            }
-
-            if (getselect().msequence.wavekind == 1)
-            {
-                cbokeeptimeunit.Items.Clear();
-                cbokeeptimeunit.Items.Add("S");
-                cbokeeptimeunit.SelectedIndex = 0;
-
-            }
-
-            if (getselect().msequence.wavekind == 2)
-            {
-                getselect().msequence.trirate = (ItemSignal)m_Global.mycls.chsignals[cbocontrol.SelectedIndex].speedSignal.Clone();
-
-                cbotrispeedunit.Items.Clear();
-
-                for (int i = 0; i < getselect().msequence.trirate.cUnitCount; i++)
-                {
-                    cbotrispeedunit.Items.Add(getselect().msequence.trirate.cUnits[i]);
-                }
-
-                cbotrispeedunit.SelectedIndex = getselect().msequence.mtrirateunit;
-
-                txttrimaxunit.Text = m_Global.mycls.chsignals[cbocontrol.SelectedIndex].cUnits[0];
-                txttriminunit.Text = m_Global.mycls.chsignals[cbocontrol.SelectedIndex].cUnits[0];
-
-            }
-            if (getselect().msequence.wavekind ==3)
-            {
-                getselect().msequence.sinrate = (ItemSignal)m_Global.mycls.chsignals[cbocontrol.SelectedIndex].speedSignal.Clone();
-                cbosinspeedunit.Items.Clear();
-                for (int i = 0; i < getselect().msequence.sinrate.cUnitCount; i++)
-                {
-                    cbosinspeedunit.Items.Add(getselect().msequence.sinrate.cUnits[i]);
-                }
-
-                cbosinspeedunit.SelectedIndex = getselect().msequence.msinrateunit;
-                txtsinmaxunit.Text = m_Global.mycls.chsignals[cbocontrol.SelectedIndex].cUnits[0];
-                txtsinminunit.Text = m_Global.mycls.chsignals[cbocontrol.SelectedIndex].cUnits[0];
-            }
-
-            if (getselect().msequence.wavekind ==4)
-            {
-                getselect().msequence.rectrate = (ItemSignal)m_Global.mycls.chsignals[cbocontrol.SelectedIndex].speedSignal.Clone();
-                cborectspeedunit.Items.Clear();
-                for (int i = 0; i < getselect().msequence.rectrate.cUnitCount; i++)
-                {
-                    cborectspeedunit.Items.Add(getselect().msequence.rectrate.cUnits[i]);
-                }
-
-                cborectspeedunit.SelectedIndex = getselect().msequence.mrectrateunit;
-                txtrectupspeedunit.Text = getselect().msequence.rectrate.cUnits[getselect().msequence.mrectrateunit];
-                txtrectdownspeedunit.Text = getselect().msequence.rectrate.cUnits[getselect().msequence.mrectrateunit];
-                txtrectudestunit.Text = m_Global.mycls.chsignals[cbocontrol.SelectedIndex].cUnits[0];
-                txtrectdowndestunit.Text = m_Global.mycls.chsignals[cbocontrol.SelectedIndex].cUnits[0];
-                txtrectupkeeptimeunit.Text = "S";
-                txtrectdownkeeptimeunit.Text = "S";
-            }
-
-            if (getselect().msequence.wavekind ==5)
-            {
-
-            }
-        }
-
-        private void cbocontrol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbodestcontrol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numdest_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mdest = numdest.Value;
-        }
-
-        private void cbodestunit_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.mdestunit = cbodestunit.SelectedIndex;
-        }
-
-        private void cbodestcontrol_SizeChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbodestcontrol_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.destcontrolmode = cbodestcontrol.SelectedIndex;
-            getselect().msequence.dest = (ItemSignal)m_Global.mycls.chsignals[cbodestcontrol.SelectedIndex].Clone();
-            numdest.Value = getselect().msequence.mdest;
-            cbodestunit.Items.Clear();
-            for (int i = 0; i < getselect().msequence.dest.cUnitCount; i++)
-            {
-                cbodestunit.Items.Add(getselect().msequence.dest.cUnits[i]);
-            }
-
-            cbodestunit.SelectedIndex = getselect().msequence.mdestunit;
-        }
-
-        private void toolStripButton7_Click(object sender, EventArgs e)
-        {
-            tabControl3.SelectedIndex = 3;
-            getselect().Kind = 3;
-            getselect().msequence.wavekind = 3;
-            tbtnramp.Checked = false;
-            tbtnkeep.Checked = false;
-            toolStripButton3.Checked = false;
-            toolStripButton7.Checked = true;
-            toolStripButton8.Checked = false;
-            toolStripButton9.Checked = false;
-
-            lblcontrolmode.Visible = true;
-            cbocontrol.Visible = true ;
-
-            waveshape3_sel();
-
-            tabControl2.TabPages.Clear();
-            tabControl2.TabPages.Add(tabPage10);
-            tabControl2.TabPages.Add(tabPage11);
-           // tabControl2.TabPages.Add(tabPage12);
-            tabControl2.TabPages.Add(tabPage21);
-            tabControl2.TabPages.Add(tabPage22); 
-        }
-
-        private void toolStripButton8_Click(object sender, EventArgs e)
-        {
-            tabControl3.SelectedIndex = 4;
-            getselect().Kind = 4;
-            getselect().msequence.wavekind = 4;
-            tbtnramp.Checked = false;
-            tbtnkeep.Checked = false;
-            toolStripButton3.Checked = false;
-            toolStripButton7.Checked = false;
-            toolStripButton8.Checked = true;
-            toolStripButton9.Checked = false;
-
-            lblcontrolmode.Visible = true;
-            cbocontrol.Visible = true ;
-            waveshape4_sel();
-        }
-
-        private void toolStripButton9_Click(object sender, EventArgs e)
-        {
-            tabControl3.SelectedIndex = 5;
-            getselect().Kind = 5;
-            getselect().msequence.wavekind = 5;
-            tbtnramp.Checked = false;
-            tbtnkeep.Checked = false;
-            toolStripButton3.Checked = false;
-            toolStripButton7.Checked = false;
-            toolStripButton8.Checked = false;
-            toolStripButton9.Checked = true;
-
-            lblcontrolmode.Visible = true ;
-            cbocontrol.Visible = true ;
-
-        }
-
-        private void txtstep_TextChanged(object sender, EventArgs e)
-        {
-            getselect().msequence.stepname = txtstep.Text;
-            getselect().setcaption();
-        }
-
-        private void numkeeptime_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.keeptime = numkeeptime.Value;
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numtrispeed_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mtrirate = numtrispeed.Value;
-        }
-
-        private void numtricount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mcount = Convert.ToInt32( numtricount.Value);
-        }
-
-        private void numtrimax_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mtrimax = numtrimax.Value;
-        }
-
-        private void numtrimin_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mtrimin = numtrimin.Value;
-        }
-
-        private void cbotriinitdir_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.mtriinitdir = cbotriinitdir.SelectedIndex;
-        }
-
-        private void cbotrispeedunit_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.mtrirateunit = cbotrispeedunit.SelectedIndex ;
-        }
-
-        private void numsinspeed_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.msinrate = numsinspeed.Value;
-        }
-
-        private void numsincount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mcount = Convert.ToInt32( numsincount.Value);
-        }
-
-        private void cbosininitdir_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.msininitdir = cbosininitdir.SelectedIndex;
-        }
-
-        private void numsinmax_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.msinmax = numsinmax.Value;
-        }
-
-        private void numsinmin_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.msinmin = numsinmin.Value;
-        }
-
-        private void cbosinspeedunit_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.msinrateunit = cbosinspeedunit.SelectedIndex;
-        }
-
-        private void numrectspeed_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectrate = numrectspeed.Value;
-        }
-
-        private void cborectspeedunit_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.mrectrateunit = cborectspeedunit.SelectedIndex;
-        }
-
-        private void numrectcount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectcount = Convert.ToInt32( numrectcount.Value);
-        }
-
-        private void cborectinitdir_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.mrectinitdir = cborectinitdir.SelectedIndex;
-
-        }
-
-        private void numrectupspeed_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectuprate = numrectupspeed.Value;
-        }
-
-        private void numrectupdest_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectupdest = numrectupdest.Value;
-        }
-
-        private void numrectupkeeptime_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectupkeeptime = numrectupkeeptime.Value;
-        }
-
-        private void numrectdownspeed_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectdownrate = numrectdownspeed.Value;
-        }
-
-        private void numrectdowndest_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectdowndest = numrectdowndest.Value;
-        }
-
-        private void numrectdownkeeptime_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mrectdownkeeptime = numrectdownkeeptime.Value;
-        }
-
-        private void cbocontrol_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numfreq_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.msinfreq = numfreq.Value; 
-        }
-
-        private void cbomethod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void cbomethod_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.samplingmode = cbomethod.SelectedIndex;
-            if (cbomethod.SelectedIndex == 0)
-            {
-                grid3.Visible  = false;
-            }
-            else if( cbomethod.SelectedIndex ==1)
-            {
-                grid3.Visible  = true;
-            }
-            else if(cbomethod.SelectedIndex ==2)
-            {
-                grid3.Visible = false;
-            }
-        }
-
-        private void grid3_SettingCell(object sender, SourceGrid2.PositionEventArgs e)
-        {
-            
-        }
-
-        private void grid3_CellLostFocus(object sender, SourceGrid2.PositionCancelEventArgs e)
-        {
-            if (e.Position.Column ==0)
-            {
-                getselect().msequence.chkchannel[e.Position.Row - 1] =  Convert.ToBoolean( e.Cell.GetValue(new SourceGrid2.Position(e.Position.Row, e.Position.Column)));
-            }
-
-            if (e.Position.Column ==2)
-            {
-                getselect().msequence.sampleinterval[e.Position.Row - 1] = Convert.ToDouble(e.Cell.GetValue(new SourceGrid2.Position(e.Position.Row, e.Position.Column)));
-            }
-        }
-
-        private void chkjump_CheckStateChanged(object sender, EventArgs e)
-        {
-            getselect().msequence.loop = chkjump.Checked;
-
-            if (chkjump.Checked == true)
-            {
-                getselect().settail(2);
-
-            }
-            else
-            {
-                if (getselect().Id == listViewEx1.mlist.Count - 1)
-                {
-                    getselect().settail(1);
-                }
-                else
-                {
-                    getselect().settail(0); 
-                }
-
-            }
-
-           // getselect().Refresh();
-        }
-
-        private void cbojump_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.returnstep = cbojump.SelectedIndex+1;
-        }
+   
+
+      
+     
+    
+      
+      
+       
+     
+
+    
+      
+
+      
+       
+
+      
 
         private void numcount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
 
         }        
 
-        private void btnpre_Click(object sender, EventArgs e)
-        {
-            int j = 0;
-
-            for (int i = 0; i < listViewEx1.mlist.Count; i++)
-            {
-                if (listViewEx1.mlist[i].selected == true)
-                {
-                    j = i;
-
-
-                    break;
-                }
-            }
-
-            if (j == 0)
-            {
-                return;
-            }
-            else
-            {
-                j = j - 1;
-            }
-
-            UserControlStep1_btnselectevent(listViewEx1.mlist[j], 0);
-        }
-
-        private void btnnext_Click(object sender, EventArgs e)
-        {
-            int j = 0;
-
-            for (int i = 0; i < listViewEx1.mlist.Count; i++)
-            {
-                if (listViewEx1.mlist[i].selected == true)
-                {
-                    j = i;
-
-
-                    break;
-                }
-            }
-
-            if (j == listViewEx1.mlist.Count-1)
-            {
-                return;
-            }
-            else
-            {
-                j = j + 1;
-            }
-         
-            UserControlStep1_btnselectevent(listViewEx1.mlist[j], 0);
-               
-        }
-
-        private void btnlast_Click(object sender, EventArgs e)
-        {
-            int j = 0;
-
-           
-
-            j = listViewEx1.mlist.Count - 1;
-
-            if (listViewEx1.mlist[j].selected ==true )
-            {
-                return;
-            }
-          
-
-            UserControlStep1_btnselectevent(listViewEx1.mlist[j], 0);
-        }
-
-        private void btnfirst_Click(object sender, EventArgs e)
-        {
-            int j = 0;
-
-
-
-            j = 0;
-
-            if (listViewEx1.mlist[j].selected == true)
-            {
-                return;
-            }
-
-
-            UserControlStep1_btnselectevent(listViewEx1.mlist[j], 0);
-        }
-
-        private void chkjump_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void cbopreload_speedunit_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.pretest_cmd.speedunit = cbopreload_speedunit.SelectedIndex;
@@ -3561,29 +2253,9 @@ namespace TabHeaderDemo
 
        
 
-        private void numcount_TextChanged(object sender, EventArgs e)
-        {
-            getselect().msequence.loopcount = Convert.ToInt32(numcount.Value);
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            addBlock();
-        }
-
-        private void cbodestmode_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.destmode = cbodestmode.SelectedIndex;
-        }
+      
 
        
-
-        private void cbomeasurement1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void cbomeasurement2_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.cbomeasurement[1] = cbomeasurement2.SelectedIndex;
@@ -3690,127 +2362,16 @@ namespace TabHeaderDemo
             lbltestendCriteria2.Text = ClsStaticStation.m_Global.mycls.allsignals[cbostopchannel2.SelectedIndex].cUnits[0];
         }
 
-        private void numsinfinishedcount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mfinishedcount = Convert.ToInt32( numsinfinishedcount.Value);
-        }
+      
 
-        private void numtrifinishedcount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.mfinishedcount = Convert.ToInt32(numtrifinishedcount.Value);
-        }
+       
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            for (int i=0;i<10;i++)
-            {
-                dgridsavetrack.Rows[i].Cells[0].Value = 1 * Math.Pow(10, i);
-                dgridsavetrack.Rows[i].Cells[1].Value = 1 * Math.Pow(10, i);
-                dgridsavetrack.Rows[i].Cells[2].Value = 1;
-            }
-        }
+      
 
-        private void dgridsavetrack_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            int a;
+       
 
-            if (e.RowIndex >= 0)
-            {
-                if (e.ColumnIndex == 0)
-                {
-                    Int32.TryParse(dgridsavetrack.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out a);
-                    getselect().msequence.msavetrackingrow1[e.RowIndex] = a;
-                }
-                if (e.ColumnIndex == 1)
-                {
-                    Int32.TryParse(dgridsavetrack.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out a);
-                    getselect().msequence.msavetrackingrow2[e.RowIndex] = a;
-                }
+       
 
-                if (e.ColumnIndex == 2)
-                {
-                    Int32.TryParse(dgridsavetrack.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out a);
-                    getselect().msequence.msavetrackingrow3[e.RowIndex] = a;
-                }
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                dgridsavepeaktrend.Rows[i].Cells[0].Value = 1 * Math.Pow(10, i);
-                dgridsavepeaktrend.Rows[i].Cells[1].Value = 10;
-                dgridsavepeaktrend.Rows[i].Cells[2].Value = 1;
-            }
-        }
-
-        private void dgridsavepeaktrend_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            int a;
-
-            if (e.RowIndex >= 0)
-            {
-                if (e.ColumnIndex == 0)
-                {
-                    Int32.TryParse(dgridsavepeaktrend.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out a);
-                    getselect().msequence.msavepeaktrendrow1[e.RowIndex] = a;
-                }
-                if (e.ColumnIndex == 1)
-                {
-                    Int32.TryParse(dgridsavepeaktrend.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out a);
-                    getselect().msequence.msavepeaktrendrow2[e.RowIndex] = a;
-                }
-
-                if (e.ColumnIndex == 2)
-                {
-                    Int32.TryParse(dgridsavepeaktrend.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out a);
-                    getselect().msequence.msavepeaktrendrow3[e.RowIndex] = a;
-                }
-            }
-        }
-
-        private void chksavetracking_CheckedChanged(object sender, EventArgs e)
-        {
-
-            getselect().msequence.msavetracking = chksavetracking.Checked;
-        }
-
-        private void chksavepeaktrenddata_CheckedChanged(object sender, EventArgs e)
-        {
-            getselect().msequence.msavepeaktrend = chksavepeaktrenddata.Checked;
-        }
-
-        private void numfinishedcount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
-        {
-            getselect().msequence.finishedloopcount = Convert.ToInt32( numfinishedcount.Value);
-        }
-
-        private void tsreset_Click(object sender, EventArgs e)
-        {
-            for (int i=0;i<sqf.mSequencelist.Count;i++)
-            {
-                sqf.mSequencelist[i].finishedloopcount = 0;
-                sqf.mSequencelist[i].mfinishedcount = 0;
-                sqf.mSequencelist[i].runfinished = false;
-            }
-            //listViewEx1.reset();
-            if (listViewEx1.mlist.Count > 0)
-            {
-                UserControlStep1_btnselectevent(listViewEx1.mlist[0], 0);
-            }
-            GlobeVal.myarm.mcurseg = 0;//复位后重新设置初始段位置
-
-        }
-
-        private void cboflowmode_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.msavemode_forflow = cboflowmode.SelectedIndex;
-        }
-
-        private void cbopeakmode_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getselect().msequence.msavemode_forappend= cbopeakmode.SelectedIndex;
-        }
+       
     }
 }

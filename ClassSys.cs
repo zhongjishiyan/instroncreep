@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Collections;
-using System.Collections.Generic;
+
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 namespace TabHeaderDemo
 {
-
-
-
-   
 
     [Serializable]
     public class ClassSys
@@ -22,7 +18,7 @@ namespace TabHeaderDemo
         {
             Electronic,
             Torsion,
-             Three_axis,
+            Three_axis,
             standard1
         }
         public string  softwareconfig = "AppleLab 静态试验软件";
@@ -69,7 +65,7 @@ namespace TabHeaderDemo
 
         public string[] ControllerName;
 
-        public int ControllerCount;
+        public int ControllerCount = 1;//控制器数量
 
         public int CurentUserIndex=0;
 
@@ -114,26 +110,24 @@ namespace TabHeaderDemo
         public bool chk_cyclc = false;
 
 
+     
+
+
         public ClassSys()
         {
 
             ControllerName = new string[20];
 
-            ControllerName[0] = "ARM控制器";
-            ControllerName[1] = "DOLI控制器";
-            ControllerName[2] = "DSP控制器";
-            ControllerName[3] = "直线电机";
-            ControllerCount = 4;
+            ControllerName[0] = "DOLI旧控制器";
+            ControllerName[1] = "DOLI新控制器";
+          
+            ControllerCount = 2;
 
             MachineName = new string[20];
-            MachineName[0] = "电子(液压)万能试验机";
-            MachineName[1] = "扭转试验机";
-            MachineName[2] = "岩石三轴试验机";
-            MachineName[3] = "换挡意图传感器试验机";
-            MachineName[4] = "金属恒应变控制试验机";
-            MachineName[5] = "车身刚度试验台";
+            MachineName[0] = "电子蠕变试验机";
+           
 
-            MachineCount = 6;
+            MachineCount = 1;
           
             ChannelRange = new double [20];
             ChannelControl = new bool[20];
@@ -251,11 +245,10 @@ namespace TabHeaderDemo
 
                     }
 
-                    c.ControllerName[0] = "ARM控制器";
-                    c.ControllerName[1] = "DOLI控制器";
-                    c.ControllerName[2] = "DSP控制器";
-                    c.ControllerName[3] = "直线电机";
-                    c.ControllerCount = 4;
+                    c.ControllerName[0] = "DOLI旧控制器";
+                    c.ControllerName[1] = "DOLI新控制器";
+              
+                    c.ControllerCount = 2;
 
                     if (c.MachineName == null)
                     {
@@ -263,15 +256,11 @@ namespace TabHeaderDemo
                     }
                    
 
-                    c.MachineName[0] = "电子(液压)万能试验机";
-                    c.MachineName[1] = "扭转试验机";
-                    c.MachineName[2] = "岩石三轴试验机";
-                    c.MachineName[3] = "换挡意图传感器试验机";
-                    c.MachineName[4] = "金属恒应变控制试验机";
-                    c.MachineName[5] = "车身刚度试验台";
+                    c.MachineName[0] = "电子蠕变试验机";
+                 
 
 
-                    c.MachineCount = 6;
+                    c.MachineCount = 1;
 
                     if (c.ChannelSamplemode==null)
                     {

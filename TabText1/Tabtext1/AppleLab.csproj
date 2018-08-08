@@ -170,8 +170,6 @@
     <Compile Include="CLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ClsArmCan.cs" />
-    <Compile Include="ClsArm.cs" />
     <Compile Include="ClsBaseControl.cs" />
     <Compile Include="ClsDemo.cs" />
     <Compile Include="ClsDOLI.cs" />
@@ -180,7 +178,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClsStaticClass.cs" />
-    <Compile Include="Cls电机.cs" />
     <Compile Include="ComProc.cs" />
     <Compile Include="ECAN.cs" />
     <Compile Include="ExRichTextBox.cs">
@@ -294,6 +291,7 @@
     <Compile Include="ListViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MicroLibrary.cs" />
     <Compile Include="OpenFileDialogEx.cs">
       <SubType>UserControl</SubType>
     </Compile>

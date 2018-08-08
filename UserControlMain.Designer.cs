@@ -41,11 +41,12 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnmain = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btngroupcontrol = new System.Windows.Forms.Button();
             this.btnmmanage = new System.Windows.Forms.Button();
             this.btnmmethod = new System.Windows.Forms.Button();
             this.btnmtest = new System.Windows.Forms.Button();
             this.btnmreport = new System.Windows.Forms.Button();
+            this.btnmain = new TabHeaderDemo.ButtonExNew(this.components);
             this.panelback.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -149,6 +150,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btngroupcontrol);
             this.panel1.Controls.Add(this.btnmain);
             this.panel1.Controls.Add(this.btnmmanage);
             this.panel1.Controls.Add(this.btnmmethod);
@@ -160,27 +162,29 @@
             this.panel1.Size = new System.Drawing.Size(1042, 38);
             this.panel1.TabIndex = 16;
             // 
-            // btnmain
+            // btngroupcontrol
             // 
-            this.btnmain.BackColor = System.Drawing.Color.Transparent;
-            this.btnmain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmain.BackgroundImage")));
-            this.btnmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmain.FlatAppearance.BorderSize = 0;
-            this.btnmain.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnmain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnmain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnmain.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnmain.ForeColor = System.Drawing.Color.White;
-            this.btnmain.Location = new System.Drawing.Point(3, 6);
-            this.btnmain.Name = "btnmain";
-            this.btnmain.Size = new System.Drawing.Size(133, 29);
-            this.btnmain.TabIndex = 36;
-            this.btnmain.Text = "AppleLab  ";
-            this.btnmain.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmain.UseCompatibleTextRendering = true;
-            this.btnmain.UseVisualStyleBackColor = true;
-            this.btnmain.Click += new System.EventHandler(this.btnmain_Click);
+            this.btngroupcontrol.BackColor = System.Drawing.Color.Transparent;
+            this.btngroupcontrol.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btngroupcontrol.BackgroundImage")));
+            this.btngroupcontrol.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btngroupcontrol.FlatAppearance.BorderSize = 0;
+            this.btngroupcontrol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btngroupcontrol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btngroupcontrol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btngroupcontrol.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btngroupcontrol.ForeColor = System.Drawing.Color.White;
+            this.btngroupcontrol.Image = ((System.Drawing.Image)(resources.GetObject("btngroupcontrol.Image")));
+            this.btngroupcontrol.Location = new System.Drawing.Point(801, 10);
+            this.btngroupcontrol.Name = "btngroupcontrol";
+            this.btngroupcontrol.Size = new System.Drawing.Size(138, 29);
+            this.btngroupcontrol.TabIndex = 37;
+            this.btngroupcontrol.Text = " 群 控";
+            this.btngroupcontrol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btngroupcontrol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btngroupcontrol.UseCompatibleTextRendering = true;
+            this.btngroupcontrol.UseVisualStyleBackColor = true;
+            this.btngroupcontrol.Visible = false;
+            this.btngroupcontrol.Click += new System.EventHandler(this.btngroupcontrol_Click);
             // 
             // btnmmanage
             // 
@@ -274,6 +278,28 @@
             this.btnmreport.UseVisualStyleBackColor = true;
             this.btnmreport.Click += new System.EventHandler(this.btnmreport_Click);
             // 
+            // btnmain
+            // 
+            this.btnmain.BackColor = System.Drawing.Color.Transparent;
+            this.btnmain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmain.BackgroundImage")));
+            this.btnmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmain.FlatAppearance.BorderSize = 0;
+            this.btnmain.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnmain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnmain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnmain.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnmain.ForeColor = System.Drawing.Color.White;
+            this.btnmain.Location = new System.Drawing.Point(3, 6);
+            this.btnmain.Name = "btnmain";
+            this.btnmain.Size = new System.Drawing.Size(133, 29);
+            this.btnmain.TabIndex = 36;
+            this.btnmain.Text = "AppleLab  ";
+            this.btnmain.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnmain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnmain.UseCompatibleTextRendering = true;
+            this.btnmain.UseVisualStyleBackColor = true;
+            this.btnmain.Click += new System.EventHandler(this.btnmain_Click);
+            // 
             // UserControlMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -311,5 +337,6 @@
         public System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage7;
+        public System.Windows.Forms.Button btngroupcontrol;
     }
 }

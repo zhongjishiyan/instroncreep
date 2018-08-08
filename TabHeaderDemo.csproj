@@ -216,6 +216,7 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Controls\CircularIndeterminateProgress.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +232,12 @@
     </Compile>
     <Compile Include="Frm\FormLoadTransducer.Designer.cs">
       <DependentUpon>FormLoadTransducer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FormMachine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FormMachine.Designer.cs">
+      <DependentUpon>FormMachine.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\FormPanelSet.cs">
       <SubType>Form</SubType>
@@ -320,9 +327,6 @@
     <Compile Include="ListDatabase.Designer.cs">
       <DependentUpon>ListDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListViewEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="MouseKey\FormRecFileSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -372,7 +376,7 @@
     <Compile Include="UserControlFont.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlFont.Designer.cs">
+    <Compile Include="UserControlFont.designer.cs">
       <DependentUpon>UserControlFont.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlProcess.cs">
@@ -393,29 +397,17 @@
     <Compile Include="UserControlStatus.Designer.cs">
       <DependentUpon>UserControlStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlBlock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlBlock.Designer.cs">
-      <DependentUpon>UserControlBlock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlStep.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlStep.Designer.cs">
-      <DependentUpon>UserControlStep.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl扭转.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl扭转.Designer.cs">
-      <DependentUpon>UserControl扭转.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl摄像.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl摄像.Designer.cs">
       <DependentUpon>UserControl摄像.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroupControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserGroupControl.Designer.cs">
+      <DependentUpon>UserGroupControl.cs</DependentUpon>
     </Compile>
     <Compile Include="WaitForm.cs">
       <SubType>Form</SubType>
@@ -683,29 +675,11 @@
     <Compile Include="UserControl常规.Designer.cs">
       <DependentUpon>UserControl常规.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl测试提示.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl测试提示.Designer.cs">
-      <DependentUpon>UserControl测试提示.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl试样.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl试样.Designer.cs">
       <DependentUpon>UserControl试样.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl东光.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl东光.Designer.cs">
-      <DependentUpon>UserControl东光.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl轴向恒应变.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl轴向恒应变.Designer.cs">
-      <DependentUpon>UserControl轴向恒应变.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl轴向.cs">
       <SubType>UserControl</SubType>
@@ -851,12 +825,6 @@
     <Compile Include="Controls\MethodOpenFileDialog.designer.cs">
       <DependentUpon>MethodOpenFileDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="User围压.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User围压.Designer.cs">
-      <DependentUpon>User围压.cs</DependentUpon>
-    </Compile>
     <None Include="LBIndustrialCtrls\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="LBIndustrialCtrls\obj\Debug\LBIndustrialCtrls.csproj.GenerateResource.Cache" />
     <None Include="Resources\sun.cur" />
@@ -906,6 +874,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FormLoadTransducer.resx">
       <DependentUpon>FormLoadTransducer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FormMachine.resx">
+      <DependentUpon>FormMachine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FormPanelSet.resx">
       <DependentUpon>FormPanelSet.cs</DependentUpon>
@@ -1075,12 +1046,6 @@
     <EmbeddedResource Include="UserControlStatus.resx">
       <DependentUpon>UserControlStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlBlock.resx">
-      <DependentUpon>UserControlBlock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlStep.resx">
-      <DependentUpon>UserControlStep.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControlTop.resx">
       <DependentUpon>UserControlTop.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1113,10 +1078,6 @@
       <DependentUpon>UserControl常规.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl测试提示.resx">
-      <DependentUpon>UserControl测试提示.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl摄像.resx">
       <DependentUpon>UserControl摄像.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1125,20 +1086,16 @@
       <DependentUpon>UserControl试样.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl东光.resx">
-      <DependentUpon>UserControl东光.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl轴向恒应变.resx">
-      <DependentUpon>UserControl轴向恒应变.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl轴向.resx">
       <DependentUpon>UserControl轴向.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl操作面板.resx">
       <DependentUpon>UserControl操作面板.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserGroupControl.resx">
+      <DependentUpon>UserGroupControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserReport.resx">
       <DependentUpon>UserReport.cs</DependentUpon>
@@ -1218,14 +1175,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MethodOpenFileDialog.resx">
       <DependentUpon>MethodOpenFileDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User围压.resx">
-      <DependentUpon>User围压.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl扭转.resx">
-      <DependentUpon>UserControl扭转.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

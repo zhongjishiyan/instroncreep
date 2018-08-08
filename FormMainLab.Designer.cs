@@ -55,18 +55,14 @@
             this.btnkey4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnhand = new System.Windows.Forms.Button();
-            this.btnext1 = new System.Windows.Forms.Button();
             this.btntool = new System.Windows.Forms.Button();
             this.btnpos = new System.Windows.Forms.Button();
-            this.btnload = new System.Windows.Forms.Button();
             this.btnext2 = new System.Windows.Forms.Button();
             this.tlbmeterback = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tlbmeter = new System.Windows.Forms.TableLayoutPanel();
-            this.jMeter1 = new TabHeaderDemo.JMeter();
-            this.jMeter2 = new TabHeaderDemo.JMeter();
-            this.jMeter3 = new TabHeaderDemo.JMeter();
-            this.jMeter4 = new TabHeaderDemo.JMeter();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblcontroller = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnmethod = new System.Windows.Forms.Button();
             this.btnon = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -79,8 +75,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tlpsel = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbochannel = new System.Windows.Forms.ComboBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnkeyimageList = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -91,14 +85,19 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageListState = new System.Windows.Forms.ImageList(this.components);
+            this.jMeter1 = new TabHeaderDemo.JMeter();
+            this.jMeter2 = new TabHeaderDemo.JMeter();
+            this.jMeter3 = new TabHeaderDemo.JMeter();
+            this.jMeter4 = new TabHeaderDemo.JMeter();
             this.statusStrip1.SuspendLayout();
             this.paneltop.SuspendLayout();
             this.tlprecord.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tlbmeterback.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tlbmeter.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -107,7 +106,6 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tlpsel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -459,16 +457,14 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 6;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel3.Controls.Add(this.btnhand, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnext1, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btntool, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnpos, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnload, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnext2, 3, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(1080, 0);
@@ -486,26 +482,12 @@
             this.btnhand.Image = ((System.Drawing.Image)(resources.GetObject("btnhand.Image")));
             this.btnhand.Location = new System.Drawing.Point(46, 3);
             this.btnhand.Name = "btnhand";
-            this.btnhand.Size = new System.Drawing.Size(38, 33);
+            this.btnhand.Size = new System.Drawing.Size(30, 33);
             this.btnhand.TabIndex = 46;
             this.btnhand.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnhand.UseVisualStyleBackColor = false;
+            this.btnhand.Visible = false;
             this.btnhand.Click += new System.EventHandler(this.btnhand_Click);
-            // 
-            // btnext1
-            // 
-            this.btnext1.BackColor = System.Drawing.Color.Transparent;
-            this.btnext1.FlatAppearance.BorderSize = 0;
-            this.btnext1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnext1.Image = ((System.Drawing.Image)(resources.GetObject("btnext1.Image")));
-            this.btnext1.Location = new System.Drawing.Point(142, 3);
-            this.btnext1.Name = "btnext1";
-            this.btnext1.Size = new System.Drawing.Size(37, 33);
-            this.btnext1.TabIndex = 36;
-            this.btnext1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnext1, "引伸计1设置");
-            this.btnext1.UseVisualStyleBackColor = false;
-            this.btnext1.Click += new System.EventHandler(this.btnext1_Click);
             // 
             // btntool
             // 
@@ -521,6 +503,7 @@
             this.btntool.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btntool, "数据处理");
             this.btntool.UseVisualStyleBackColor = false;
+            this.btntool.Visible = false;
             this.btntool.Click += new System.EventHandler(this.btntool_Click);
             // 
             // btnpos
@@ -538,28 +521,13 @@
             this.btnpos.UseVisualStyleBackColor = false;
             this.btnpos.Click += new System.EventHandler(this.btnpos_Click);
             // 
-            // btnload
-            // 
-            this.btnload.BackColor = System.Drawing.Color.Transparent;
-            this.btnload.FlatAppearance.BorderSize = 0;
-            this.btnload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnload.Image = ((System.Drawing.Image)(resources.GetObject("btnload.Image")));
-            this.btnload.Location = new System.Drawing.Point(186, 3);
-            this.btnload.Name = "btnload";
-            this.btnload.Size = new System.Drawing.Size(38, 33);
-            this.btnload.TabIndex = 45;
-            this.btnload.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnload, "力传感器设置");
-            this.btnload.UseVisualStyleBackColor = false;
-            this.btnload.Click += new System.EventHandler(this.btnload_Click);
-            // 
             // btnext2
             // 
             this.btnext2.BackColor = System.Drawing.Color.Transparent;
             this.btnext2.FlatAppearance.BorderSize = 0;
             this.btnext2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnext2.Image = ((System.Drawing.Image)(resources.GetObject("btnext2.Image")));
-            this.btnext2.Location = new System.Drawing.Point(185, 3);
+            this.btnext2.Location = new System.Drawing.Point(105, 3);
             this.btnext2.Name = "btnext2";
             this.btnext2.Size = new System.Drawing.Size(1, 33);
             this.btnext2.TabIndex = 44;
@@ -574,9 +542,9 @@
             this.tlbmeterback.BackColor = System.Drawing.Color.Transparent;
             this.tlbmeterback.ColumnCount = 2;
             this.tlbmeterback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlbmeterback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tlbmeterback.Controls.Add(this.pictureBox2, 0, 0);
+            this.tlbmeterback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
             this.tlbmeterback.Controls.Add(this.tlbmeter, 0, 0);
+            this.tlbmeterback.Controls.Add(this.panel4, 1, 0);
             this.tlbmeterback.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tlbmeterback.Location = new System.Drawing.Point(0, 42);
             this.tlbmeterback.Name = "tlbmeterback";
@@ -585,18 +553,6 @@
             this.tlbmeterback.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tlbmeterback.Size = new System.Drawing.Size(1350, 84);
             this.tlbmeterback.TabIndex = 41;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(1293, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(54, 78);
-            this.pictureBox2.TabIndex = 41;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // tlbmeter
             // 
@@ -615,52 +571,45 @@
             this.tlbmeter.Name = "tlbmeter";
             this.tlbmeter.RowCount = 1;
             this.tlbmeter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlbmeter.Size = new System.Drawing.Size(1284, 78);
+            this.tlbmeter.Size = new System.Drawing.Size(1197, 78);
             this.tlbmeter.TabIndex = 40;
             // 
-            // jMeter1
+            // panel4
             // 
-            this.jMeter1.BackColor = System.Drawing.Color.Transparent;
-            this.jMeter1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.jMeter1.Location = new System.Drawing.Point(4, 4);
-            this.jMeter1.Margin = new System.Windows.Forms.Padding(4);
-            this.jMeter1.MinimumSize = new System.Drawing.Size(10, 10);
-            this.jMeter1.Name = "jMeter1";
-            this.jMeter1.Size = new System.Drawing.Size(313, 70);
-            this.jMeter1.TabIndex = 0;
+            this.panel4.Controls.Add(this.lblcontroller);
+            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(1206, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(141, 78);
+            this.panel4.TabIndex = 41;
             // 
-            // jMeter2
+            // lblcontroller
             // 
-            this.jMeter2.BackColor = System.Drawing.Color.Transparent;
-            this.jMeter2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.jMeter2.Location = new System.Drawing.Point(325, 4);
-            this.jMeter2.Margin = new System.Windows.Forms.Padding(4);
-            this.jMeter2.MinimumSize = new System.Drawing.Size(10, 10);
-            this.jMeter2.Name = "jMeter2";
-            this.jMeter2.Size = new System.Drawing.Size(313, 70);
-            this.jMeter2.TabIndex = 1;
+            this.lblcontroller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblcontroller.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblcontroller.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblcontroller.Font = new System.Drawing.Font("宋体", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblcontroller.Location = new System.Drawing.Point(56, 0);
+            this.lblcontroller.Name = "lblcontroller";
+            this.lblcontroller.Size = new System.Drawing.Size(85, 78);
+            this.lblcontroller.TabIndex = 43;
+            this.lblcontroller.Text = "1";
+            this.lblcontroller.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // jMeter3
+            // pictureBox2
             // 
-            this.jMeter3.BackColor = System.Drawing.Color.Transparent;
-            this.jMeter3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.jMeter3.Location = new System.Drawing.Point(646, 4);
-            this.jMeter3.Margin = new System.Windows.Forms.Padding(4);
-            this.jMeter3.MinimumSize = new System.Drawing.Size(10, 10);
-            this.jMeter3.Name = "jMeter3";
-            this.jMeter3.Size = new System.Drawing.Size(313, 70);
-            this.jMeter3.TabIndex = 2;
-            // 
-            // jMeter4
-            // 
-            this.jMeter4.BackColor = System.Drawing.Color.Transparent;
-            this.jMeter4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.jMeter4.Location = new System.Drawing.Point(967, 4);
-            this.jMeter4.Margin = new System.Windows.Forms.Padding(4);
-            this.jMeter4.MinimumSize = new System.Drawing.Size(10, 10);
-            this.jMeter4.Name = "jMeter4";
-            this.jMeter4.Size = new System.Drawing.Size(313, 70);
-            this.jMeter4.TabIndex = 3;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(56, 78);
+            this.pictureBox2.TabIndex = 42;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // btnmethod
             // 
@@ -755,8 +704,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
+            this.splitContainer1.Panel2MinSize = 1;
             this.splitContainer1.Size = new System.Drawing.Size(1316, 560);
-            this.splitContainer1.SplitterDistance = 980;
+            this.splitContainer1.SplitterDistance = 1293;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
@@ -769,7 +719,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(332, 560);
+            this.panel1.Size = new System.Drawing.Size(19, 560);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -785,7 +735,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(332, 560);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(19, 560);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -793,7 +743,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 41);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(326, 516);
+            this.panel2.Size = new System.Drawing.Size(13, 516);
             this.panel2.TabIndex = 0;
             // 
             // panel3
@@ -802,7 +752,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(326, 32);
+            this.panel3.Size = new System.Drawing.Size(13, 32);
             this.panel3.TabIndex = 1;
             // 
             // tlpsel
@@ -810,38 +760,14 @@
             this.tlpsel.ColumnCount = 2;
             this.tlpsel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tlpsel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpsel.Controls.Add(this.label1, 0, 0);
-            this.tlpsel.Controls.Add(this.cbochannel, 1, 0);
             this.tlpsel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpsel.Location = new System.Drawing.Point(0, 0);
             this.tlpsel.Name = "tlpsel";
             this.tlpsel.RowCount = 1;
             this.tlpsel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpsel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tlpsel.Size = new System.Drawing.Size(326, 32);
+            this.tlpsel.Size = new System.Drawing.Size(13, 32);
             this.tlpsel.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "控制通道：";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cbochannel
-            // 
-            this.cbochannel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.cbochannel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbochannel.FormattingEnabled = true;
-            this.cbochannel.Location = new System.Drawing.Point(99, 3);
-            this.cbochannel.Name = "cbochannel";
-            this.cbochannel.Size = new System.Drawing.Size(140, 20);
-            this.cbochannel.TabIndex = 1;
-            this.cbochannel.SelectedIndexChanged += new System.EventHandler(this.cbochannel_SelectedIndexChanged);
             // 
             // imageList1
             // 
@@ -894,6 +820,50 @@
             this.imageListState.Images.SetKeyName(0, "1.bmp");
             this.imageListState.Images.SetKeyName(1, "3.bmp");
             // 
+            // jMeter1
+            // 
+            this.jMeter1.BackColor = System.Drawing.Color.Transparent;
+            this.jMeter1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jMeter1.Location = new System.Drawing.Point(4, 4);
+            this.jMeter1.Margin = new System.Windows.Forms.Padding(4);
+            this.jMeter1.MinimumSize = new System.Drawing.Size(10, 10);
+            this.jMeter1.Name = "jMeter1";
+            this.jMeter1.Size = new System.Drawing.Size(291, 70);
+            this.jMeter1.TabIndex = 0;
+            // 
+            // jMeter2
+            // 
+            this.jMeter2.BackColor = System.Drawing.Color.Transparent;
+            this.jMeter2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jMeter2.Location = new System.Drawing.Point(303, 4);
+            this.jMeter2.Margin = new System.Windows.Forms.Padding(4);
+            this.jMeter2.MinimumSize = new System.Drawing.Size(10, 10);
+            this.jMeter2.Name = "jMeter2";
+            this.jMeter2.Size = new System.Drawing.Size(291, 70);
+            this.jMeter2.TabIndex = 1;
+            // 
+            // jMeter3
+            // 
+            this.jMeter3.BackColor = System.Drawing.Color.Transparent;
+            this.jMeter3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jMeter3.Location = new System.Drawing.Point(602, 4);
+            this.jMeter3.Margin = new System.Windows.Forms.Padding(4);
+            this.jMeter3.MinimumSize = new System.Drawing.Size(10, 10);
+            this.jMeter3.Name = "jMeter3";
+            this.jMeter3.Size = new System.Drawing.Size(291, 70);
+            this.jMeter3.TabIndex = 2;
+            // 
+            // jMeter4
+            // 
+            this.jMeter4.BackColor = System.Drawing.Color.Transparent;
+            this.jMeter4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.jMeter4.Location = new System.Drawing.Point(901, 4);
+            this.jMeter4.Margin = new System.Windows.Forms.Padding(4);
+            this.jMeter4.MinimumSize = new System.Drawing.Size(10, 10);
+            this.jMeter4.Name = "jMeter4";
+            this.jMeter4.Size = new System.Drawing.Size(292, 70);
+            this.jMeter4.TabIndex = 3;
+            // 
             // FormMainLab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -918,8 +888,9 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tlbmeterback.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tlbmeter.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -928,8 +899,6 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.tlpsel.ResumeLayout(false);
-            this.tlpsel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -947,7 +916,6 @@
         
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tlbmeterback;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TableLayoutPanel tlbmeter;
         private JMeter jMeter1;
         private System.Windows.Forms.ImageList imageList1;
@@ -959,9 +927,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnpos;
         private System.Windows.Forms.Button btnhand;
-        private System.Windows.Forms.Button btnload;
         private System.Windows.Forms.Button btnext2;
-        private System.Windows.Forms.Button btnext1;
         private System.Windows.Forms.Button btntool;
         private System.Windows.Forms.ImageList btnkeyimageList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -981,8 +947,6 @@
         private System.Windows.Forms.Panel panel3;
         public System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TableLayoutPanel tlpsel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbochannel;
         public System.Windows.Forms.ToolStripStatusLabel tslblmachine;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.SplitContainer splitContainer1;
@@ -999,5 +963,8 @@
         public System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ImageList imageList2;
         public System.Windows.Forms.ImageList imageListState;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblcontroller;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

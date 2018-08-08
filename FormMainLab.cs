@@ -13,12 +13,14 @@ using System.Reflection;
 using System.IO;
 using AppleLabApplication;
 using Microsoft.Win32;
-
+using PipesServerTest;
 namespace TabHeaderDemo
 {
 
     public partial class FormMainLab : Form
     {
+        private UserControl操作面板 UserControl操作面板1;
+        private UserControl轴向 UserControl轴向1;
 
         public int l = 0;
         public UserControlTop UTop;
@@ -37,17 +39,16 @@ namespace TabHeaderDemo
 
         private  ClsStaticStation.ClsBaseControl myarm;
 
-        private ClsStaticStation.CArmCan marmcan;
-        private ClsStaticStation.CArm marm;
+       
         private ClsStaticStation.CDOLI mdoli;
         private ClsStaticStation.CDsp mdsp;
-        private User围压 User围压1;
-        private UserControl操作面板 UserControl操作面板1;
-        private UserControl轴向恒应变 UserControl轴向恒应变1;
 
-        private UserControl扭转 UserControl扭转1;
-        private UserControl轴向 UserControl轴向1;
-        public UserControl东光 UserControl东光1;
+        public delegate void NewMessageDelegate(string NewMessage);
+        private PipeServer _pipeServer;
+
+
+
+
         private List<JMeter> mlistmeter;
         private List<Button> mlistkey;
 
@@ -77,8 +78,10 @@ namespace TabHeaderDemo
                 {
                     //1.1 没有实例在运行
                     //try
+
+                    GlobeVal.mainlab = new FormMainLab();
                     {
-                        Application.Run(new FormMainLab());
+                        Application.Run(GlobeVal.mainlab);
                     }
 
                     // catch (Exception ex)
@@ -172,6 +175,8 @@ namespace TabHeaderDemo
         public FormMainLab()
         {
             InitializeComponent();
+           // _pipeServer = new PipeServer();
+           // _pipeServer.PipeMessage += new DelegateMessage(PipesMessageHandler);
 
             GlobeVal.mysys = new ClassSys();
 
@@ -200,42 +205,26 @@ namespace TabHeaderDemo
             {
                 m_Global.mycls.ChannelControl[i] = GlobeVal.mysys.ChannelControl[i];
                 m_Global.mycls.ChannelDimension[i] = GlobeVal.mysys.ChannelDimension[i];
-                m_Global.mycls.ChannelRange[i] = GlobeVal.mysys.ChannelRange[i]; 
+                m_Global.mycls.ChannelRange[i] = GlobeVal.mysys.ChannelRange[i];
+                m_Global.mycls.ChannelSampling[i] = GlobeVal.mysys.ChannelSamplemode[i];
             }
+
+
+            
+
             if (GlobeVal.mysys.controllerkind == 0)
-            {
-                if (GlobeVal.mysys.machinekind == 3)
-                {
-                    marmcan  = new CArmCan();
-                    myarm = marmcan;
-                }
-                else
-                {
-                    marm = new CArm();
-                    myarm = marm;
-                }
-               
-
-            }
-
-            if (GlobeVal.mysys.controllerkind == 1)
             {
                 mdoli = new CDOLI();
                 myarm = mdoli;
             }
 
-            if (GlobeVal.mysys.controllerkind == 2)
+            if (GlobeVal.mysys.controllerkind == 1)
             {
 
                 mdsp = new CDsp();
                 myarm = mdsp;
             }
-            if (GlobeVal.mysys.controllerkind == 3)
-            {
-                myarm = new C电机();
-            }
-
-
+           
 
             fdata = new MainForm();
 
@@ -580,6 +569,91 @@ namespace TabHeaderDemo
             key.Close();
         }
 
+        public void _直接进入试验界面()
+        {
+
+            ((SplitContainer)tabControl1.TabPages[1].Controls[0]).Panel2Collapsed = false;
+
+            double t = System.Environment.TickCount;
+
+
+
+
+            while (System.Environment.TickCount - t <= 500)
+            {
+                Application.DoEvents();
+            }
+
+
+
+            umain.OpenTest();
+
+            tabControl1.SelectedIndex = 1;
+
+            string fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" +
+                GlobeVal.userControlpretest1.listView1.Items[0].SubItems[1].Text + "\\"
+                  + GlobeVal.userControlpretest1.listView1.Items[0].Text + ".dat";
+            if (CComLibrary.GlobeVal.filesave == null)
+            {
+                CComLibrary.GlobeVal.filesave = new CComLibrary.FileStruct();
+            }
+            CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName);
+
+
+            if (UserControl操作面板1 == null)
+            {
+
+                UserControl操作面板1 = new UserControl操作面板();
+                UserControl轴向1 = new UserControl轴向();
+                UserControl操作面板1.Controls.Add(UserControl轴向1);
+                UserControl轴向1.Dock = DockStyle.Fill;
+                UserControl操作面板1.Dock = DockStyle.Fill;
+               
+            }
+            GlobeVal.userControltest1.panelright.Controls.Clear();
+
+            UserControl操作面板1.Visible = false;
+            GlobeVal.userControltest1.panelright.Controls.Add(UserControl操作面板1);
+
+
+            ClsStaticStation.m_Global.mycls.initchannel();
+            ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
+            ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
+
+
+            GlobeVal.userControlpretest1.gfilename = fileName;
+            CComLibrary.GlobeVal.currentfilesavename = fileName;
+
+            if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
+            {
+            }
+            else
+            {
+                MessageBox.Show("数据保存路径不存在,请点击浏览选择试验路径");
+                return;
+            }
+            if (GlobeVal.mysys.SamplePath == "")
+            {
+                MessageBox.Show("请设置数据保存路径");
+
+                return;
+            }
+
+
+
+
+            GlobeVal.spefilename = GlobeVal.mysys.SamplePath + "\\" + "未命名" + ".spe";
+
+
+
+
+            GlobeVal.userControlpretest1.SampleNextStep(true);
+
+            UserControl操作面板1.Visible = true;
+
+
+            CComLibrary.GlobeVal.filesave.currentspenumber = 0;
+        }
         private void FormMainLab_Load(object sender, EventArgs e)
         {
             GlobeVal.MainStatusStrip = this.statusStrip1;
@@ -631,28 +705,11 @@ namespace TabHeaderDemo
             GlobeVal.myarm = myarm;
 
 
-            if (GlobeVal.mysys.machinekind == 2)
-            {
-                User围压1 = new User围压();
-                User围压1.Dock = DockStyle.Fill;
-                UserControl操作面板1 = new UserControl操作面板();
-                UserControl轴向1 = new UserControl轴向();
-                UserControl操作面板1.Controls.Add(UserControl轴向1);
-                UserControl轴向1.Dock = DockStyle.Fill;
-                UserControl操作面板1.Dock = DockStyle.Fill;
-
-                panel2.Controls.Add(UserControl操作面板1);
-                tlpsel.Visible = true;
-                cbochannel.Items.Clear();
-                cbochannel.Items.Add("轴向");
-                cbochannel.Items.Add("围压");
-                cbochannel.SelectedIndex = 0;
-
-
-            }
+            
 
             if ((GlobeVal.mysys.machinekind == 0) ||(GlobeVal.mysys.machinekind == 5))
             {
+                /*
                 tlpsel.Visible = false;
                 UserControl操作面板1 = new UserControl操作面板();
                 UserControl轴向1 = new UserControl轴向();
@@ -660,43 +717,12 @@ namespace TabHeaderDemo
                 UserControl轴向1.Dock = DockStyle.Fill;
                 UserControl操作面板1.Dock = DockStyle.Fill;
                 panel2.Controls.Add(UserControl操作面板1);
+                */
             }
 
-            if (GlobeVal.mysys.machinekind == 1)
-            {
+           
 
-                tlpsel.Visible = false;
-                UserControl操作面板1 = new UserControl操作面板();
-                UserControl扭转1 = new UserControl扭转();
-                UserControl操作面板1.Controls.Add(UserControl扭转1);
-                UserControl扭转1.Dock = DockStyle.Fill;
-                UserControl操作面板1.Dock = DockStyle.Fill;
-                panel2.Controls.Add(UserControl操作面板1);
-            }
-            if (GlobeVal.mysys.machinekind == 3)
-            {
-
-                tlpsel.Visible = false;
-                UserControl操作面板1 = new UserControl操作面板();
-                UserControl东光1 = new UserControl东光();
-                UserControl操作面板1.Controls.Add(UserControl东光1);
-              
-                UserControl东光1.Dock = DockStyle.Fill;
-                UserControl操作面板1.Dock = DockStyle.Fill;
-                panel2.Controls.Add(UserControl操作面板1);
-            }
-
-            if (GlobeVal.mysys.machinekind ==4)
-            {
-                tlpsel.Visible = false;
-                UserControl操作面板1 = new UserControl操作面板();
-                UserControl轴向恒应变1 = new UserControl轴向恒应变();
-                UserControl操作面板1.Controls.Add(UserControl轴向恒应变1);
-                UserControl轴向恒应变1.Dock = DockStyle.Fill;
-                UserControl操作面板1.Dock = DockStyle.Fill;
-                panel2.Controls.Add(UserControl操作面板1);
-
-            }
+           
             if (GlobeVal.mysys.demo == true)
             {
                 GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = "演示";
@@ -827,75 +853,27 @@ namespace TabHeaderDemo
 
            if( GlobeVal.mysys.startupscreen==1)
             {
-               
-
-
-                ((SplitContainer)tabControl1.TabPages[1].Controls[0]).Panel2Collapsed = false;
-
-                double t = System.Environment.TickCount;
 
 
 
+                //直接启动试验界面
 
-                while (System.Environment.TickCount - t <= 500)
-                {
-                    Application.DoEvents();
-                }
-               
-
-                if (GlobeVal.mysys.machinekind == 3)
-                {
-                    GlobeVal.FormmainLab.UserControl东光1.Init();
-                }
-                umain.OpenTest();
-
-                tabControl1.SelectedIndex = 1;
-
-                string fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" +
-                    GlobeVal.userControlpretest1.listView1.Items[0].SubItems[1].Text + "\\"
-                      + GlobeVal.userControlpretest1.listView1.Items[0].Text + ".dat";
-                if (CComLibrary.GlobeVal.filesave == null)
-                {
-                    CComLibrary.GlobeVal.filesave = new CComLibrary.FileStruct();
-                }
-                CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName);
-
-                ClsStaticStation.m_Global.mycls.initchannel();
-                ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
-                ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
-
-
-                GlobeVal.userControlpretest1.gfilename = fileName;
-                CComLibrary.GlobeVal.currentfilesavename = fileName;
-
-                if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
-                {
-                }
-                else
-                {
-                    MessageBox.Show("数据保存路径不存在,请点击浏览选择试验路径");
-                    return;
-                }
-                if (GlobeVal.mysys.SamplePath == "")
-                {
-                    MessageBox.Show("请设置数据保存路径");
-
-                    return;
-                }
-         
-
-
-
-                GlobeVal.spefilename = GlobeVal.mysys.SamplePath + "\\" + "未命名"+ ".spe";
-
-
-              
-
-                GlobeVal.userControlpretest1.SampleNextStep(true);
-
-                CComLibrary.GlobeVal.filesave.currentspenumber = 0;
+                _直接进入试验界面();
 
             }
+
+           /*
+            try
+            {
+                _pipeServer.Listen("TestPipe");
+                btnkey1.Text = "Listening - OK";
+                            }
+            catch (Exception)
+            {
+                btnkey1.Text = "Error Listening";
+            }
+            */
+
         }
 
         void m_toolbox_Load(object sender, EventArgs e)
@@ -1127,78 +1105,9 @@ namespace TabHeaderDemo
 
         private void btntool_Click(object sender, EventArgs e)
         {
-            return;
+          
 
-            int i;
-
-           if (CComLibrary.GlobeVal.filesave==null)
-            {
-                CComLibrary.GlobeVal.filesave = new CComLibrary.FileStruct();
-            }
-
-            CComLibrary.FileStruct f = CComLibrary.GlobeVal.filesave;
-            string temp = System.Environment.GetEnvironmentVariable("TEMP");
-            DirectoryInfo info = new DirectoryInfo(temp);
-
-            if (CComLibrary.GlobeVal.filesave == null)
-            {
-
-            }
-            else
-            {
-                CComLibrary.GlobeVal.filesave.SerializeNow(info.FullName + "\\temp.tmp");
-
-            }
-            try
-            {
-
-
-                fdata.g_namelist.Clear();
-                fdata.g_signnamelist.Clear();
-
-                for (int j = 0; j < m_Global.mycls.originsignals.Count; j++)
-                {
-                    fdata.g_namelist.Add(m_Global.mycls.originsignals[j].cName);
-                    fdata.g_signnamelist.Add(m_Global.mycls.originsignals[j].SignName);
-                }
-
-
-
-
-                fdata.g_datafilepath = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ";
-
-                fdata.gmptpath = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + @"\method\";
-                fdata.gmptprocedurepath = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + @"\method\";
-                fdata.tsbeditproject.Visible = false;
-                fdata.gtestkind = CComLibrary.GlobeVal.filesave.methodkind;
-                fdata.gmethodname = CComLibrary.GlobeVal.filesave.methodname;
-
-
-                fdata.Text = "AppleLab-试验数据分析软件";
-                fdata.Show();
-
-                fdata.InitKind();
-                fdata.WindowState = FormWindowState.Normal;
-                fdata.ShowDialog();
-                fdata.reset();
-
-                CComLibrary.GlobeVal.InitUserCalcChannel();
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            temp = System.Environment.GetEnvironmentVariable("TEMP");
-            info = new DirectoryInfo(temp);
-            if (f == null)
-            { }
-            else
-            {
-                CComLibrary.GlobeVal.filesave = f.DeSerializeNow(info.FullName + "\\temp.tmp");
-            }
-
+           
         }
 
         private void btnon_Click(object sender, EventArgs e)
@@ -1304,16 +1213,7 @@ namespace TabHeaderDemo
 
         private void cbochannel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbochannel.SelectedIndex == 0)
-            {
-                panel2.Controls.Clear();
-                panel2.Controls.Add(UserControl操作面板1);
-            }
-            else
-            {
-                panel2.Controls.Clear();
-                panel2.Controls.Add(User围压1);
-            }
+          
         }
 
         private void btnmethod_Click(object sender, EventArgs e)
@@ -1499,59 +1399,67 @@ namespace TabHeaderDemo
         private void btnpos_Click(object sender, EventArgs e)
         {
 
-            if (GlobeVal.mysys.machinekind == Convert.ToInt32(ClassSys._MachineName.Torsion))
-            {
-                Frm.FormTorsionTransducer f = new Frm.FormTorsionTransducer();
-                f.ShowDialog();
-            }
-
-            if (GlobeVal.mysys.machinekind == Convert.ToInt32(ClassSys._MachineName.standard1))
-            {
-
-                Frm.FrmPosTransducer f = new Frm.FrmPosTransducer();
-                f.ShowDialog();
-            }
+           
 
 
         }
 
         private void btnload_Click(object sender, EventArgs e)
         {
-            if (GlobeVal.mysys.machinekind == Convert.ToInt32(ClassSys._MachineName.Torsion))
-            {
-                Frm.FormLoadTransducer f = new Frm.FormLoadTransducer();
-                f.ShowDialog();
-            }
-
-            if (GlobeVal.mysys.machinekind == Convert.ToInt32(ClassSys._MachineName.standard1))
-            {
-                Frm.FormLoadTransducer f = new Frm.FormLoadTransducer();
-                f.ShowDialog();
-            }
+           
         }
 
         private void btnext1_Click(object sender, EventArgs e)
         {
-            if (GlobeVal.mysys.machinekind == Convert.ToInt32(ClassSys._MachineName.standard1))
-            {
-                Frm.FrmExtTransducer f = new Frm.FrmExtTransducer();
-                f.ShowDialog();
-            }
+           
         }
 
         private void btnext2_Click(object sender, EventArgs e)
         {
 
         }
+        private void PipesMessageHandler(string message)
+        {
+            try
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new NewMessageDelegate(PipesMessageHandler), message);
+                }
+                else
+                {
 
+                    GlobeVal.myarm.getmsg(message);
+                    btnkey1.Text  = message;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message);
+            }
+
+        }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            AboutBox1 ab = new AboutBox1();
-            ab.Show();
+            if (GlobeVal.UserControlMain1.tabControl1.SelectedIndex == 6)
+            {
+
+
+                Frm.FormMachine f = new Frm.FormMachine();
+                f.ShowDialog();
+                lblcontroller.Text = GlobeVal.selcontroller.ToString().Trim();
+            }
+            else
+            {
+                MessageBox.Show("请切换到群控模式");
+            }
         }
 
         private void FormMainLab_FormClosing(object sender, FormClosingEventArgs e)
         {
+           // _pipeServer.PipeMessage -= new DelegateMessage(PipesMessageHandler);
+           // _pipeServer = null;
             if (GlobeVal.myarm.mtestrun == true)
             {
                 e.Cancel= true;

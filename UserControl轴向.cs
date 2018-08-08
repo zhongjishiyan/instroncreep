@@ -195,6 +195,8 @@ namespace TabHeaderDemo
 
         private void UserControl轴向_Paint(object sender, PaintEventArgs e)
         {
+            return;
+
             if (this.DesignMode)
             {
                 return;

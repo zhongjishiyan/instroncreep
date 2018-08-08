@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using XLNet;
+using PipesServerTest;
 
 namespace ClsStaticStation
 {
    public  class ClsBaseControl
     {
 
-
+        public TransferData MyTransferData;
 
         public int tcount = 0;
 
@@ -53,6 +54,8 @@ namespace ClsStaticStation
 
         public double dogtime = 0;
 
+
+
         public virtual void  fatigstop()
         {
 
@@ -61,7 +64,9 @@ namespace ClsStaticStation
         {
 
         }
-
+        public virtual  void  getmsg(string message)
+        {
+        }
         public virtual void SetBaseCount(int count)
         {
 

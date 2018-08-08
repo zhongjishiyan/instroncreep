@@ -33,13 +33,10 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.ledalarm = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.lblalarm = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.ledslimit = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.lblslimit = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.ledhlimit = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.lblhlimit = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
@@ -97,6 +94,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ledalarm = new LBSoft.IndustrialCtrls.Leds.LBLed();
+            this.ledslimit = new LBSoft.IndustrialCtrls.Leds.LBLed();
+            this.ledhlimit = new LBSoft.IndustrialCtrls.Leds.LBLed();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -158,7 +158,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(512, 630);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(508, 630);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // panel1
@@ -169,7 +169,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(27, 83);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(462, 106);
+            this.panel1.Size = new System.Drawing.Size(458, 106);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel5
@@ -185,24 +185,8 @@
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(462, 34);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(458, 34);
             this.tableLayoutPanel5.TabIndex = 5;
-            // 
-            // ledalarm
-            // 
-            this.ledalarm.BackColor = System.Drawing.Color.Transparent;
-            this.ledalarm.BlinkInterval = 500;
-            this.ledalarm.Label = "";
-            this.ledalarm.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
-            this.ledalarm.LedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ledalarm.LedSize = new System.Drawing.SizeF(20F, 20F);
-            this.ledalarm.Location = new System.Drawing.Point(3, 3);
-            this.ledalarm.Name = "ledalarm";
-            this.ledalarm.Renderer = null;
-            this.ledalarm.Size = new System.Drawing.Size(32, 28);
-            this.ledalarm.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.On;
-            this.ledalarm.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
-            this.ledalarm.TabIndex = 4;
             // 
             // lblalarm
             // 
@@ -211,7 +195,7 @@
             this.lblalarm.ForeColor = System.Drawing.Color.White;
             this.lblalarm.Location = new System.Drawing.Point(41, 0);
             this.lblalarm.Name = "lblalarm";
-            this.lblalarm.Size = new System.Drawing.Size(418, 34);
+            this.lblalarm.Size = new System.Drawing.Size(414, 34);
             this.lblalarm.TabIndex = 1;
             this.lblalarm.Text = "报警";
             this.lblalarm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -229,24 +213,8 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(462, 34);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(458, 34);
             this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // ledslimit
-            // 
-            this.ledslimit.BackColor = System.Drawing.Color.Transparent;
-            this.ledslimit.BlinkInterval = 500;
-            this.ledslimit.Label = "";
-            this.ledslimit.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
-            this.ledslimit.LedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ledslimit.LedSize = new System.Drawing.SizeF(20F, 20F);
-            this.ledslimit.Location = new System.Drawing.Point(3, 3);
-            this.ledslimit.Name = "ledslimit";
-            this.ledslimit.Renderer = null;
-            this.ledslimit.Size = new System.Drawing.Size(32, 28);
-            this.ledslimit.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.On;
-            this.ledslimit.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
-            this.ledslimit.TabIndex = 4;
             // 
             // lblslimit
             // 
@@ -255,7 +223,7 @@
             this.lblslimit.ForeColor = System.Drawing.Color.White;
             this.lblslimit.Location = new System.Drawing.Point(41, 0);
             this.lblslimit.Name = "lblslimit";
-            this.lblslimit.Size = new System.Drawing.Size(418, 34);
+            this.lblslimit.Size = new System.Drawing.Size(414, 34);
             this.lblslimit.TabIndex = 1;
             this.lblslimit.Text = "软限位保护";
             this.lblslimit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -273,24 +241,8 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(462, 34);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(458, 34);
             this.tableLayoutPanel2.TabIndex = 3;
-            // 
-            // ledhlimit
-            // 
-            this.ledhlimit.BackColor = System.Drawing.Color.Transparent;
-            this.ledhlimit.BlinkInterval = 500;
-            this.ledhlimit.Label = "";
-            this.ledhlimit.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
-            this.ledhlimit.LedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.ledhlimit.LedSize = new System.Drawing.SizeF(20F, 20F);
-            this.ledhlimit.Location = new System.Drawing.Point(3, 3);
-            this.ledhlimit.Name = "ledhlimit";
-            this.ledhlimit.Renderer = null;
-            this.ledhlimit.Size = new System.Drawing.Size(32, 28);
-            this.ledhlimit.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.On;
-            this.ledhlimit.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
-            this.ledhlimit.TabIndex = 3;
             // 
             // lblhlimit
             // 
@@ -299,7 +251,7 @@
             this.lblhlimit.ForeColor = System.Drawing.Color.White;
             this.lblhlimit.Location = new System.Drawing.Point(41, 0);
             this.lblhlimit.Name = "lblhlimit";
-            this.lblhlimit.Size = new System.Drawing.Size(418, 34);
+            this.lblhlimit.Size = new System.Drawing.Size(414, 34);
             this.lblhlimit.TabIndex = 1;
             this.lblhlimit.Text = "硬限位保护";
             this.lblhlimit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -313,7 +265,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(27, 195);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(462, 91);
+            this.panel2.Size = new System.Drawing.Size(458, 91);
             this.panel2.TabIndex = 3;
             // 
             // tableLayoutPanel10
@@ -329,7 +281,7 @@
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(460, 31);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(456, 31);
             this.tableLayoutPanel10.TabIndex = 6;
             // 
             // label9
@@ -356,7 +308,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(383, 25);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(379, 25);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // numericEdit2
@@ -365,7 +317,7 @@
             this.numericEdit2.InteractionMode = NationalInstruments.UI.NumericEditInteractionModes.Text;
             this.numericEdit2.Location = new System.Drawing.Point(3, 3);
             this.numericEdit2.Name = "numericEdit2";
-            this.numericEdit2.Size = new System.Drawing.Size(329, 21);
+            this.numericEdit2.Size = new System.Drawing.Size(325, 21);
             this.numericEdit2.TabIndex = 2;
             // 
             // lblmunit
@@ -373,7 +325,7 @@
             this.lblmunit.AutoSize = true;
             this.lblmunit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblmunit.ForeColor = System.Drawing.Color.White;
-            this.lblmunit.Location = new System.Drawing.Point(338, 0);
+            this.lblmunit.Location = new System.Drawing.Point(334, 0);
             this.lblmunit.Name = "lblmunit";
             this.lblmunit.Size = new System.Drawing.Size(42, 25);
             this.lblmunit.TabIndex = 3;
@@ -394,7 +346,7 @@
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(460, 27);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(456, 27);
             this.tableLayoutPanel9.TabIndex = 5;
             // 
             // label7
@@ -414,7 +366,7 @@
             this.lblunit.AutoSize = true;
             this.lblunit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblunit.ForeColor = System.Drawing.Color.White;
-            this.lblunit.Location = new System.Drawing.Point(411, 0);
+            this.lblunit.Location = new System.Drawing.Point(407, 0);
             this.lblunit.Name = "lblunit";
             this.lblunit.Size = new System.Drawing.Size(46, 27);
             this.lblunit.TabIndex = 1;
@@ -427,7 +379,7 @@
             this.numericEdit1.InteractionMode = NationalInstruments.UI.NumericEditInteractionModes.Text;
             this.numericEdit1.Location = new System.Drawing.Point(74, 3);
             this.numericEdit1.Name = "numericEdit1";
-            this.numericEdit1.Size = new System.Drawing.Size(331, 21);
+            this.numericEdit1.Size = new System.Drawing.Size(327, 21);
             this.numericEdit1.TabIndex = 2;
             // 
             // tableLayoutPanel8
@@ -443,7 +395,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(460, 30);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(456, 30);
             this.tableLayoutPanel8.TabIndex = 4;
             // 
             // label6
@@ -465,7 +417,7 @@
             this.cboctrl.FormattingEnabled = true;
             this.cboctrl.Location = new System.Drawing.Point(74, 3);
             this.cboctrl.Name = "cboctrl";
-            this.cboctrl.Size = new System.Drawing.Size(383, 20);
+            this.cboctrl.Size = new System.Drawing.Size(379, 20);
             this.cboctrl.TabIndex = 1;
             this.cboctrl.SelectedIndexChanged += new System.EventHandler(this.cboctrl_SelectedIndexChanged);
             // 
@@ -476,7 +428,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(27, 292);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(462, 81);
+            this.panel3.Size = new System.Drawing.Size(458, 81);
             this.panel3.TabIndex = 4;
             // 
             // tableLayoutPanel11
@@ -498,7 +450,7 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(460, 79);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(456, 79);
             this.tableLayoutPanel11.TabIndex = 0;
             // 
             // btnstart
@@ -510,7 +462,7 @@
             this.btnstart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnstart.Location = new System.Drawing.Point(3, 45);
             this.btnstart.Name = "btnstart";
-            this.btnstart.Size = new System.Drawing.Size(147, 31);
+            this.btnstart.Size = new System.Drawing.Size(146, 31);
             this.btnstart.TabIndex = 47;
             this.btnstart.Text = "目标开始";
             this.btnstart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -523,9 +475,9 @@
             this.btnfindzero.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnfindzero.FlatAppearance.BorderSize = 0;
             this.btnfindzero.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnfindzero.Location = new System.Drawing.Point(156, 45);
+            this.btnfindzero.Location = new System.Drawing.Point(155, 45);
             this.btnfindzero.Name = "btnfindzero";
-            this.btnfindzero.Size = new System.Drawing.Size(147, 31);
+            this.btnfindzero.Size = new System.Drawing.Size(146, 31);
             this.btnfindzero.TabIndex = 46;
             this.btnfindzero.Text = "归零";
             this.btnfindzero.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -539,9 +491,9 @@
             this.btnend.FlatAppearance.BorderSize = 0;
             this.btnend.Image = ((System.Drawing.Image)(resources.GetObject("btnend.Image")));
             this.btnend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnend.Location = new System.Drawing.Point(309, 45);
+            this.btnend.Location = new System.Drawing.Point(307, 45);
             this.btnend.Name = "btnend";
-            this.btnend.Size = new System.Drawing.Size(148, 31);
+            this.btnend.Size = new System.Drawing.Size(146, 31);
             this.btnend.TabIndex = 44;
             this.btnend.Text = "目标结束";
             this.btnend.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -557,7 +509,7 @@
             this.btnup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnup.Location = new System.Drawing.Point(3, 3);
             this.btnup.Name = "btnup";
-            this.btnup.Size = new System.Drawing.Size(147, 36);
+            this.btnup.Size = new System.Drawing.Size(146, 36);
             this.btnup.TabIndex = 41;
             this.btnup.Text = "上升";
             this.btnup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -571,9 +523,9 @@
             this.btndown.FlatAppearance.BorderSize = 0;
             this.btndown.Image = ((System.Drawing.Image)(resources.GetObject("btndown.Image")));
             this.btndown.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndown.Location = new System.Drawing.Point(309, 3);
+            this.btndown.Location = new System.Drawing.Point(307, 3);
             this.btndown.Name = "btndown";
-            this.btndown.Size = new System.Drawing.Size(148, 36);
+            this.btndown.Size = new System.Drawing.Size(146, 36);
             this.btndown.TabIndex = 39;
             this.btndown.Text = "下降";
             this.btndown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -587,9 +539,9 @@
             this.btnstop.FlatAppearance.BorderSize = 0;
             this.btnstop.Image = ((System.Drawing.Image)(resources.GetObject("btnstop.Image")));
             this.btnstop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnstop.Location = new System.Drawing.Point(156, 3);
+            this.btnstop.Location = new System.Drawing.Point(155, 3);
             this.btnstop.Name = "btnstop";
-            this.btnstop.Size = new System.Drawing.Size(147, 36);
+            this.btnstop.Size = new System.Drawing.Size(146, 36);
             this.btnstop.TabIndex = 40;
             this.btnstop.Text = "保持";
             this.btnstop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -602,7 +554,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(27, 538);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(462, 35);
+            this.panel4.Size = new System.Drawing.Size(458, 35);
             this.panel4.TabIndex = 5;
             // 
             // tplcycle
@@ -619,7 +571,7 @@
             this.tplcycle.Name = "tplcycle";
             this.tplcycle.RowCount = 1;
             this.tplcycle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tplcycle.Size = new System.Drawing.Size(462, 34);
+            this.tplcycle.Size = new System.Drawing.Size(458, 34);
             this.tplcycle.TabIndex = 1;
             // 
             // btntestend
@@ -629,7 +581,7 @@
             this.btntestend.FlatAppearance.BorderSize = 0;
             this.btntestend.Image = ((System.Drawing.Image)(resources.GetObject("btntestend.Image")));
             this.btntestend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btntestend.Location = new System.Drawing.Point(311, 3);
+            this.btntestend.Location = new System.Drawing.Point(307, 3);
             this.btntestend.Name = "btntestend";
             this.btntestend.Size = new System.Drawing.Size(148, 28);
             this.btntestend.TabIndex = 50;
@@ -643,9 +595,9 @@
             this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(157, 3);
+            this.button3.Location = new System.Drawing.Point(155, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 28);
+            this.button3.Size = new System.Drawing.Size(146, 28);
             this.button3.TabIndex = 49;
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = false;
@@ -660,7 +612,7 @@
             this.btnteststart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnteststart.Location = new System.Drawing.Point(3, 3);
             this.btnteststart.Name = "btnteststart";
-            this.btnteststart.Size = new System.Drawing.Size(148, 28);
+            this.btnteststart.Size = new System.Drawing.Size(146, 28);
             this.btnteststart.TabIndex = 48;
             this.btnteststart.Text = "波形启动";
             this.btnteststart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -674,7 +626,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(27, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(462, 74);
+            this.panel5.Size = new System.Drawing.Size(458, 74);
             this.panel5.TabIndex = 6;
             // 
             // switchLink
@@ -702,7 +654,7 @@
             this.switchDriver.CaptionPosition = NationalInstruments.UI.CaptionPosition.Left;
             this.switchDriver.CaptionVerticalOrientation = NationalInstruments.UI.VerticalCaptionOrientation.TopToBottom;
             this.switchDriver.Dock = System.Windows.Forms.DockStyle.Right;
-            this.switchDriver.Location = new System.Drawing.Point(364, 0);
+            this.switchDriver.Location = new System.Drawing.Point(360, 0);
             this.switchDriver.Name = "switchDriver";
             this.switchDriver.Size = new System.Drawing.Size(98, 74);
             this.switchDriver.SwitchStyle = NationalInstruments.UI.SwitchStyle.PushButton;
@@ -718,7 +670,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(27, 379);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(462, 153);
+            this.panel6.Size = new System.Drawing.Size(458, 153);
             this.panel6.TabIndex = 7;
             // 
             // pnlcyclc
@@ -731,7 +683,7 @@
             this.pnlcyclc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlcyclc.Location = new System.Drawing.Point(0, 0);
             this.pnlcyclc.Name = "pnlcyclc";
-            this.pnlcyclc.Size = new System.Drawing.Size(462, 153);
+            this.pnlcyclc.Size = new System.Drawing.Size(458, 153);
             this.pnlcyclc.TabIndex = 8;
             // 
             // tableLayoutPanel16
@@ -747,7 +699,7 @@
             this.tableLayoutPanel16.RowCount = 1;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(462, 31);
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(458, 31);
             this.tableLayoutPanel16.TabIndex = 9;
             // 
             // label13
@@ -774,7 +726,7 @@
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 1;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(350, 25);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(346, 25);
             this.tableLayoutPanel17.TabIndex = 1;
             // 
             // numave
@@ -786,7 +738,7 @@
             this.numave.Name = "numave";
             this.numave.OutOfRangeMode = NationalInstruments.UI.NumericOutOfRangeMode.CoerceToRange;
             this.numave.Range = new NationalInstruments.UI.Range(0D, 1D);
-            this.numave.Size = new System.Drawing.Size(272, 21);
+            this.numave.Size = new System.Drawing.Size(268, 21);
             this.numave.TabIndex = 2;
             // 
             // lblaveunit
@@ -794,7 +746,7 @@
             this.lblaveunit.AutoSize = true;
             this.lblaveunit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblaveunit.ForeColor = System.Drawing.Color.White;
-            this.lblaveunit.Location = new System.Drawing.Point(281, 0);
+            this.lblaveunit.Location = new System.Drawing.Point(277, 0);
             this.lblaveunit.Name = "lblaveunit";
             this.lblaveunit.Size = new System.Drawing.Size(66, 25);
             this.lblaveunit.TabIndex = 3;
@@ -814,7 +766,7 @@
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(462, 31);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(458, 31);
             this.tableLayoutPanel13.TabIndex = 8;
             // 
             // label11
@@ -841,7 +793,7 @@
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(350, 25);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(346, 25);
             this.tableLayoutPanel14.TabIndex = 1;
             // 
             // numcount
@@ -853,7 +805,7 @@
             this.numcount.Name = "numcount";
             this.numcount.OutOfRangeMode = NationalInstruments.UI.NumericOutOfRangeMode.CoerceToRange;
             this.numcount.Range = new NationalInstruments.UI.Range(0D, double.PositiveInfinity);
-            this.numcount.Size = new System.Drawing.Size(272, 21);
+            this.numcount.Size = new System.Drawing.Size(268, 21);
             this.numcount.TabIndex = 2;
             this.numcount.Value = 100D;
             // 
@@ -862,7 +814,7 @@
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(281, 0);
+            this.label12.Location = new System.Drawing.Point(277, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(66, 25);
             this.label12.TabIndex = 3;
@@ -882,7 +834,7 @@
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(462, 31);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(458, 31);
             this.tableLayoutPanel7.TabIndex = 7;
             // 
             // label8
@@ -909,7 +861,7 @@
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(350, 25);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(346, 25);
             this.tableLayoutPanel12.TabIndex = 1;
             // 
             // numrange
@@ -921,7 +873,7 @@
             this.numrange.Name = "numrange";
             this.numrange.OutOfRangeMode = NationalInstruments.UI.NumericOutOfRangeMode.CoerceToRange;
             this.numrange.Range = new NationalInstruments.UI.Range(0D, 10D);
-            this.numrange.Size = new System.Drawing.Size(272, 21);
+            this.numrange.Size = new System.Drawing.Size(268, 21);
             this.numrange.TabIndex = 2;
             this.numrange.Value = 0.3D;
             // 
@@ -930,7 +882,7 @@
             this.lblrangeunit.AutoSize = true;
             this.lblrangeunit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblrangeunit.ForeColor = System.Drawing.Color.White;
-            this.lblrangeunit.Location = new System.Drawing.Point(281, 0);
+            this.lblrangeunit.Location = new System.Drawing.Point(277, 0);
             this.lblrangeunit.Name = "lblrangeunit";
             this.lblrangeunit.Size = new System.Drawing.Size(66, 25);
             this.lblrangeunit.TabIndex = 3;
@@ -951,7 +903,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(462, 27);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(458, 27);
             this.tableLayoutPanel6.TabIndex = 6;
             // 
             // label4
@@ -971,7 +923,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(390, 0);
+            this.label5.Location = new System.Drawing.Point(386, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 27);
             this.label5.TabIndex = 1;
@@ -987,7 +939,7 @@
             this.numfreq1.Name = "numfreq1";
             this.numfreq1.OutOfRangeMode = NationalInstruments.UI.NumericOutOfRangeMode.CoerceToRange;
             this.numfreq1.Range = new NationalInstruments.UI.Range(0D, 0.6D);
-            this.numfreq1.Size = new System.Drawing.Size(275, 21);
+            this.numfreq1.Size = new System.Drawing.Size(271, 21);
             this.numfreq1.TabIndex = 2;
             this.numfreq1.Value = 0.2D;
             // 
@@ -1004,7 +956,7 @@
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(462, 30);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(458, 30);
             this.tableLayoutPanel15.TabIndex = 5;
             // 
             // label3
@@ -1026,7 +978,7 @@
             this.cbowave.FormattingEnabled = true;
             this.cbowave.Location = new System.Drawing.Point(109, 3);
             this.cbowave.Name = "cbowave";
-            this.cbowave.Size = new System.Drawing.Size(350, 20);
+            this.cbowave.Size = new System.Drawing.Size(346, 20);
             this.cbowave.TabIndex = 1;
             // 
             // button1
@@ -1034,7 +986,7 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Location = new System.Drawing.Point(27, 579);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(462, 29);
+            this.button1.Size = new System.Drawing.Size(458, 29);
             this.button1.TabIndex = 8;
             this.button1.Text = "选项";
             this.button1.UseVisualStyleBackColor = true;
@@ -1046,13 +998,62 @@
             this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList3.Images.SetKeyName(0, "3.ico");
             // 
+            // ledalarm
+            // 
+            this.ledalarm.BackColor = System.Drawing.Color.Transparent;
+            this.ledalarm.BlinkInterval = 500;
+            this.ledalarm.Label = "";
+            this.ledalarm.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
+            this.ledalarm.LedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ledalarm.LedSize = new System.Drawing.SizeF(20F, 20F);
+            this.ledalarm.Location = new System.Drawing.Point(3, 3);
+            this.ledalarm.Name = "ledalarm";
+            this.ledalarm.Renderer = null;
+            this.ledalarm.Size = new System.Drawing.Size(32, 28);
+            this.ledalarm.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.On;
+            this.ledalarm.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
+            this.ledalarm.TabIndex = 4;
+            // 
+            // ledslimit
+            // 
+            this.ledslimit.BackColor = System.Drawing.Color.Transparent;
+            this.ledslimit.BlinkInterval = 500;
+            this.ledslimit.Label = "";
+            this.ledslimit.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
+            this.ledslimit.LedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ledslimit.LedSize = new System.Drawing.SizeF(20F, 20F);
+            this.ledslimit.Location = new System.Drawing.Point(3, 3);
+            this.ledslimit.Name = "ledslimit";
+            this.ledslimit.Renderer = null;
+            this.ledslimit.Size = new System.Drawing.Size(32, 28);
+            this.ledslimit.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.On;
+            this.ledslimit.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
+            this.ledslimit.TabIndex = 4;
+            // 
+            // ledhlimit
+            // 
+            this.ledhlimit.BackColor = System.Drawing.Color.Transparent;
+            this.ledhlimit.BlinkInterval = 500;
+            this.ledhlimit.Label = "";
+            this.ledhlimit.LabelPosition = LBSoft.IndustrialCtrls.Leds.LBLed.LedLabelPosition.Top;
+            this.ledhlimit.LedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ledhlimit.LedSize = new System.Drawing.SizeF(20F, 20F);
+            this.ledhlimit.Location = new System.Drawing.Point(3, 3);
+            this.ledhlimit.Name = "ledhlimit";
+            this.ledhlimit.Renderer = null;
+            this.ledhlimit.Size = new System.Drawing.Size(32, 28);
+            this.ledhlimit.State = LBSoft.IndustrialCtrls.Leds.LBLed.LedState.On;
+            this.ledhlimit.Style = LBSoft.IndustrialCtrls.Leds.LBLed.LedStyle.Circular;
+            this.ledhlimit.TabIndex = 3;
+            // 
             // UserControl轴向
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "UserControl轴向";
-            this.Size = new System.Drawing.Size(512, 634);
+            this.Size = new System.Drawing.Size(508, 630);
             this.Load += new System.EventHandler(this.UserControl轴向_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.UserControl轴向_Paint);
             this.tableLayoutPanel1.ResumeLayout(false);

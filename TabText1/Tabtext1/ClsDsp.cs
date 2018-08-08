@@ -1,4 +1,4 @@
-﻿#define DSP_ONDATABLOCK
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +11,14 @@ using Microsoft.VisualBasic.Compatibility;
 using System.Windows.Forms;
 using DoPE_HANDLE = System.Int32;
 using XLNet;
-
+using PipesServerTest;
 namespace ClsStaticStation
 {
 
     public class CDsp : ClsBaseControl
     {
+        private byte[] _vchar;
+        private ulong _ctr = 0;
 
         [DllImport("kernel32.dll")]
         public static extern UIntPtr SetThreadAffinityMask(IntPtr hThread,
@@ -51,6 +53,10 @@ namespace ClsStaticStation
         public short DeviceNum = 1;
 
         private int m_runstate;
+
+        private PipeServer _pipeServer;
+        private PipeClient _pipeClient;
+      
 
 
         private XLDOPE.MDataIno ma;
@@ -107,9 +113,40 @@ namespace ClsStaticStation
             short tan = 0;
             myedc.Move.OrgMove(XLDOPE.MOVE.UP, XLDOPE.CTRL.POS, speed, ref tan);
         }
+        public byte[] StructTOBytes(object obj)
+        {
+            int size = Marshal.SizeOf(obj);
+            //创建byte数组
+            byte[] bytes = new byte[size];
+            IntPtr structPtr = Marshal.AllocHGlobal(size);
+            //将结构体拷贝到分配好的内存空间
+            Marshal.StructureToPtr(obj, structPtr, false);
+            //从内存空间拷贝到byte数组
+            Marshal.Copy(structPtr, bytes, 0, size);
+
+
+            //释放内存空间
+            Marshal.FreeHGlobal(structPtr);
+
+
+            return bytes;
+        }
+
+        public void SendTransferCmd()
+        {
+
+            _pipeClient._TransferCmd.tcount = _ctr;
+            _vchar = StructTOBytes(_pipeClient._TransferCmd);
+
+            int l = Marshal.SizeOf(_pipeClient._TransferCmd);
+
         
-           
-        
+
+            _pipeClient.Send(_vchar, "TestPipe1", l, 1000);
+
+            _ctr = _ctr + 1;
+
+        }
         public override void DriveOn()
         {
 
@@ -176,7 +213,11 @@ namespace ClsStaticStation
                 r = new Random(System.Environment.TickCount);
                 load = r.NextDouble();
                 pos = r.NextDouble();
-                ext = r.NextDouble();
+
+                if (m_Global.mycls.ChannelSampling[2] == 0)
+                {
+                    ext = r.NextDouble();
+                }
                 time = (System.Environment.TickCount - mstarttickcount) / 1000.0;
 
                 count = 0;
@@ -189,7 +230,11 @@ namespace ClsStaticStation
                 r = new Random(System.Environment.TickCount);
                 load = r.NextDouble();
                 pos = r.NextDouble();
-                ext = r.NextDouble();
+                if (m_Global.mycls.ChannelSampling[2] == 0)
+                {
+                    ext = r.NextDouble();
+                }
+
                 time = (System.Environment.TickCount - mstarttickcount) / 1000.0;
 
                 count = 0;
@@ -210,6 +255,15 @@ namespace ClsStaticStation
                     mdemotesting = false;
                 }
 
+            }
+
+
+            if (mtestrun == true)
+            {
+                if (CComLibrary.GlobeVal.filesave.Extensometer_DataFrozenFlag == true)
+                {
+                    ext = 0;
+                }
             }
 
 
@@ -621,7 +675,10 @@ namespace ClsStaticStation
             c.ID = 0;
             m_Global.mycls.structcopy_RawDataData(ref c.rdata, b);
 
-            /*
+
+
+
+
             for (j = 0; j < 4; j++)
             {
 
@@ -635,33 +692,13 @@ namespace ClsStaticStation
                 ClsStatic.arraydatacount[j] = ClsStatic.arraydatacount[j] + 1;
                 ClsStatic.arraydata[j].Write<RawDataDataGroup>(ref c, 10);
             }
-            */
 
 
 
-            for (j = 0; j < 2; j++)
-            {
 
-                if (ClsStatic.myarraydata[j].Count > 200)
-                {
-                    ClsStatic.myarraydata[j].Dequeue();
 
-                }
 
-                ClsStatic.myarraydata[j].Enqueue(c);
 
-            }
-
-            /*
-            if (ClsStatic.savedatacount >= ClsStatic.savedata.NodeCount - 1)
-            {
-                ClsStatic.savedata.Read<RawDataDataGroup>(out d, 10);
-                ClsStatic.savedatacount = ClsStatic.savedatacount - 1;
-            }
-            ClsStatic.savedatacount = ClsStatic.savedatacount + 1;
-            ClsStatic.savedata.Write<RawDataDataGroup>(ref c, 10);
-
-            */
 
             for (j = 0; j < m_Global.mycls.allsignals.Count; j++)
             {
@@ -801,11 +838,7 @@ namespace ClsStaticStation
 
                 mt.ReleaseMutex();
 
-                for (int j = 0; j < 2; j++)
-                {
 
-                    ClsStatic.myarraydata[j].Clear();
-                }
             }
         }
 
@@ -816,6 +849,8 @@ namespace ClsStaticStation
 
             oldcount = 0;
             mspenum = spenum;
+
+            CComLibrary.GlobeVal.filesave.Extensometer_DataFrozenFlag = false;
 
 
             duanliebaohu = false;
@@ -1138,9 +1173,19 @@ namespace ClsStaticStation
 
 
                 CComLibrary.SegFile sf = new CComLibrary.SegFile();
+                if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
+                {
 
-                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
-                    + CComLibrary.GlobeVal.filesave.SegName);
+                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
+                        + CComLibrary.GlobeVal.filesave.SegName);
+
+                }
+                else
+
+                {
+                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (CComLibrary.GlobeVal.filesave.currentmachineId + 1).ToString().Trim() + "\\seg\\方法.seg");
+
+                }
 
                 int i = 0;
 
@@ -1269,6 +1314,9 @@ namespace ClsStaticStation
 
 
             mrunstarttime = System.Environment.TickCount / 1000;
+
+
+
         }
         public override void DestStart(int ctrlmode, double dest, double speed)
         {
@@ -1360,7 +1408,7 @@ namespace ClsStaticStation
 
 
 
-
+            CComLibrary.GlobeVal.filesave.Extensometer_DataFrozenFlag = false;
 
 
             if (mdemo == true)
@@ -1816,143 +1864,96 @@ namespace ClsStaticStation
 
         public CDsp()
         {
+            _pipeClient = new PipeClient();
+
+            _pipeServer = new PipeServer();
+            _pipeServer.PipeMessage += new PipeServer.DelegateMessage(PipesMessageHandler);
+
+
             rr = new float[10];
             GGMsg = new XLDOPE.Data();
             mdatalist = new Queue<XLDOPE.MDataIno>();
 
-            ClsStatic.myarraydata[0] = new Queue<RawDataDataGroup>();
-            ClsStatic.myarraydata[1] = new Queue<RawDataDataGroup>();
 
             mtimer = new System.Windows.Forms.Timer();
             mtimer.Tick += new EventHandler(mtimer_Tick);
             mtimer.Interval = 40;
 
+
+
             mstarttickcount = Environment.TickCount;
+
+            mtimer.Start();
+
 
             //SetThreadAffinityMask(GetCurrentThread(), new UIntPtr(SetCpuID(0)));
 
 
 
         }
+    
 
-        private int Eh_OnPosMsgHdlr(ref XLDOPE.OnPosMsg OnPosMsg, object Parameter)
+        public TransferData ByteToTransferData<TransferData>(byte[] dataBuffer)
         {
-            // OnPosMsg.Reached
-            m_runstate = 0;
+            object structure = null;
+            int size = Marshal.SizeOf(typeof(TransferData));
+            IntPtr allocIntPtr = Marshal.AllocHGlobal(size);
+            try
+            {
+                Marshal.Copy(dataBuffer, 0, allocIntPtr, size);
+                structure = Marshal.PtrToStructure(allocIntPtr, typeof(TransferData));
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(allocIntPtr);
+            }
+            return (TransferData)structure;
 
-            return 0;
         }
-#if DSP_ONDATABLOCK
-        private int Eh_OnDataBlockHdlr(ref XLDOPE.OnDataBlock OnDataBlock, object Parameter)
+
+        //采集数据
+        private void PipesMessageHandler(byte[] message)
         {
-            if (CComLibrary.GlobeVal.filesave == null)
+            if (connected == false)
+
             {
-                return 0;
+                return;
             }
-            if (CComLibrary.GlobeVal.filesave.Samplingmode == 0)
-            {
-                for (int i = 0; i < OnDataBlock.nData; i = i + 4)
-                {
-
-                    XLDOPE.Data m1 = new XLDOPE.Data();
-                    m1 = OnDataBlock.Data[i].Data;
-
-                    ma = new XLDOPE.MDataIno();
-                    ma.Id = 0;
-                    ma.mydatainfo = m1;
-
-                    if (m1.Sensor == null)
-                    {
-                    }
-                    else
-                    {
-                        mt.WaitOne();
-                        if (mdatalist.Count > 1000)
-                        {
-                            mdatalist.Dequeue();
-                        }
-
-                        mdatalist.Enqueue(ma);
-                        mt.ReleaseMutex();
-                    }
-                    //   oncount = oncount + 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < OnDataBlock.nData; i = i + 1)
-                {
-
-                    XLDOPE.Data m1 = new XLDOPE.Data();
-                    m1 = OnDataBlock.Data[i].Data;
-
-                    ma = new XLDOPE.MDataIno();
-                    ma.Id = 0;
-                    ma.mydatainfo = m1;
-
-                    if (m1.Sensor == null)
-                    {
-                    }
-                    else
-                    {
-                        mt.WaitOne();
-                        if (mdatalist.Count > 2000)
-                        {
-                            mdatalist.Dequeue();
-                        }
-
-                        mdatalist.Enqueue(ma);
-                        mt.ReleaseMutex();
-                    }
-                    //   oncount = oncount + 1;
-                }
-            }
-            return 0;
-        }
-#else
-        private void Eh_OnDataHdlr(ref XLDOPE.OnData m)
-        {
-            XLDOPE.Data Sample = new XLDOPE.Data();
-            Sample = m.Data;
 
 
 
 
-            b.hardlimitlow = Sample.LowerLimits;
-            b.hardlimitup = Sample.UpperLimits;
-            b.softlimitlow = Sample.LowerSft;
-            b.softlimitup = Sample.UpperSft;
-            b.ctrlstate1 = Sample.CtrlState1;
-            b.ctrlstate2 = Sample.CtrlState2;
+            _pipeServer._TransferData = ByteToTransferData<TransferData>(message);
 
-            b.ctrl_state_s = (ushort)((Sample.CtrlState1) & 1);
-            b.ctrl_state_f = (ushort)((Sample.CtrlState1 >> 1) & 1);
-            b.ctrl_state_e = (ushort)((Sample.CtrlState1 >> 2) & 1);
+            MyTransferData = _pipeServer._TransferData;
+            //ext = _pipeServer._TransferData.tcount;
 
-            b.ctrl_halt = (ushort)((Sample.CtrlState1 >> 4) & 1);
-            b.ctrl_down = (ushort)((Sample.CtrlState1 >> 5) & 1);
-            b.ctrl_up = (ushort)((Sample.CtrlState1 >> 6) & 1);
 
-            b.ctrl_move = (ushort)((Sample.CtrlState1 >> 7) & 1);
-            b.ctrl_ready = (ushort)((Sample.CtrlState1 >> 8) & 1);
-            b.ctrl_soft_set = (ushort)((Sample.CtrlState1 >> 11) & 1);
 
-            b.ctrl_lower_sft_s = (ushort)((Sample.CtrlState2 >> 0) & 1);
-            b.ctrl_lower_sft_f = (ushort)((Sample.CtrlState2 >> 1) & 1);
-            b.ctrl_lower_sft_e = (ushort)((Sample.CtrlState2 >> 2) & 1);
 
-            b.ctrl_upper_sft_s = (ushort)((Sample.CtrlState2 >> 4) & 1);
-            b.ctrl_upper_sft_f = (ushort)((Sample.CtrlState2 >> 5) & 1);
-            b.ctrl_upper_sft_e = (ushort)((Sample.CtrlState2 >> 6) & 1);
+            XLDOPE.Data m1 = new XLDOPE.Data();
 
-            moritime = m.Data.Time;
-            ma = new XLDOPE.MDataIno();
+            m1.Sensor = new double[16];
+
+            m1.Sensor[0] = _pipeServer._TransferData.pos[CComLibrary.GlobeVal.filesave.currentmachineId];
+            m1.Sensor[1] = _pipeServer._TransferData.load[CComLibrary.GlobeVal.filesave.currentmachineId];
+            
+
+            m1.Sensor[2] = _pipeServer._TransferData.extA[CComLibrary.GlobeVal.filesave.currentmachineId];
+            m1.Sensor[3] = _pipeServer._TransferData.extB[CComLibrary.GlobeVal.filesave.currentmachineId];
+            m1.Sensor[4] = _pipeServer._TransferData.extAve[CComLibrary.GlobeVal.filesave.currentmachineId];
+            m1.Sensor[5] = _pipeServer._TransferData.Temperature1[CComLibrary.GlobeVal.filesave.currentmachineId];
+            m1.Sensor[6] = _pipeServer._TransferData.Temperature2[CComLibrary.GlobeVal.filesave.currentmachineId];
+            m1.Sensor[7] = _pipeServer._TransferData.Temperature3[CComLibrary.GlobeVal.filesave.currentmachineId];
+
+            m1.Time = _pipeServer._TransferData.time[CComLibrary.GlobeVal.filesave.currentmachineId];
+            XLDOPE.MDataIno ma = new XLDOPE.MDataIno();
             ma.Id = 0;
-            ma.mydatainfo = Sample;
+            ma.mydatainfo = m1;
 
 
             mt.WaitOne();
-            if (mdatalist.Count > 1000)
+            if (mdatalist.Count > 300)
             {
                 mdatalist.Dequeue();
             }
@@ -1960,18 +1961,47 @@ namespace ClsStaticStation
             mdatalist.Enqueue(ma);
             mt.ReleaseMutex();
 
-          //  mdatalist.Enqueue(ma);
+           
 
-        
-            //  oncount = oncount + 1;
 
-            return;
+
+
+
+
         }
-#endif
-        private void Eh_OnHandlerFuncHdlr(int NamelessParameter1, int NamelessParameter2, int NamelessParameter3)
+
+
+        ~CDsp()
         {
-            // oncount = oncount + 1;
-            return;
+            mtimer.Stop();
+           
+            
+
+        }
+
+
+
+       
+     
+
+       
+
+        public override void Exit()
+        {
+            base.Exit();
+            mtimer.Stop();
+
+            if (_pipeServer == null)
+            {
+            }
+            else
+            {
+                _pipeServer.PipeMessage -= new PipeServer.DelegateMessage(PipesMessageHandler);
+                _pipeServer = null;
+                _pipeClient = null;
+            }
+            mdatalist.Clear();
+
         }
         public override int getrunstate() // 1运行 0 停止
         {
@@ -2158,7 +2188,10 @@ namespace ClsStaticStation
             int i;
             int jj;
             int ii;
-
+            if (connected == true)
+            {
+                SendTransferCmd();
+            }
             if (mdemo == true)
             {
                 demo();
@@ -2173,7 +2206,7 @@ namespace ClsStaticStation
 
 
 
-                    mt.WaitOne();
+                     mt.WaitOne();
                     XLDOPE.MDataIno md = mdatalist.Dequeue();
 
 
@@ -2186,7 +2219,7 @@ namespace ClsStaticStation
                         GGMsg = md.mydatainfo;
                     }
 
-                    mt.ReleaseMutex();
+                     mt.ReleaseMutex();
 
                     b = new RawDataStruct();
                     b.data = new double[24];
@@ -2195,7 +2228,13 @@ namespace ClsStaticStation
 
                     pos = GGMsg.Sensor[0];
                     load = GGMsg.Sensor[1];
+
+
+
+
                     ext = GGMsg.Sensor[2];
+
+
 
                     //time = AccurateTimer.GetTimeTick();
 
@@ -2206,6 +2245,15 @@ namespace ClsStaticStation
                     count = 0;
 
                     base.count = 0;
+
+                    if (mtestrun == true)
+                    {
+                        if (CComLibrary.GlobeVal.filesave.Extensometer_DataFrozenFlag == true)
+                        {
+                            ext = 0;
+                        }
+                    }
+
 
                     if (CComLibrary.GlobeVal.filesave != null)
                     {
@@ -2677,7 +2725,7 @@ namespace ClsStaticStation
                     c.ID = 0;
                     m_Global.mycls.structcopy_RawDataData(ref c.rdata, b);
 
-                  
+
                     for (j = 0; j < 4; j++)
                     {
 
@@ -2693,7 +2741,7 @@ namespace ClsStaticStation
                     }
 
 
-                   
+
                     /*
                     if (ClsStatic.savedatacount >= ClsStatic.savedata.NodeCount - 1)
                     {
@@ -2901,72 +2949,22 @@ namespace ClsStaticStation
 
         int OpenConnection()
         {
-            short tan = 0;
-
-
-
-
-
-
+            connected = false;
             try
             {
-                myedc = new XLDOPE.Edc(XLDOPE.OpenBy.DeviceId, 0, 0, 0, 0, 0, 0);
-                //myedc = new XLDOPE.Edc(XLDOPE.OpenBy.DeviceId, 0);
+                _pipeServer.Listen("TestPipe");
+                connected = true;
 
-                connected = myedc.IsConnected();
-
+                mtimer.Start();
             }
-            catch (System.BadImageFormatException)
+            catch (Exception)
             {
-
-
+                connected = false;
             }
-
-#if DSP_ONDATABLOCK
-
-            myedc.Eh.SetOnDataBlockSize(190);
-#else
-                myedc.Eh.SetOnDataBlockSize(0);
-#endif
-
-            myedc.Eh.OnHandlerFuncHdlr += new XLDOPE.OnHandlerFuncHdlr(Eh_OnHandlerFuncHdlr);
-
-#if DSP_ONDATABLOCK
-            myedc.Eh.OnDataBlockHdlr += new XLDOPE.OnDataBlockHdlr(Eh_OnDataBlockHdlr);
-#else
-                myedc.Eh.OnDataHdlr += new XLDOPE.OnDataHdlr(Eh_OnDataHdlr);
-#endif
-
-
-            myedc.Eh.OnPosMsgHdlr += new XLDOPE.OnPosMsgHdlr(Eh_OnPosMsgHdlr);
-
-            // Set UserScale
-            XLDOPE.UserScale userScale = new XLDOPE.UserScale();
-            // set position and extension scale to mm
-
-            for (int i = 0; i < ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
-            {
-                if (ClsStaticStation.m_Global.mycls.chsignals[i].cUnitKind == 1)
-                {
-                    userScale[(XLDOPE.SENSOR)i] = 0.001;
-                }
-            }
-
-
-
-            // Select machine setup and initialize
-            myedc.Setup.SelSetup(XLDOPE.SETUP_NUMBER.SETUP_1, userScale, ref tan, ref tan);
-
-            DataTransmissionRate = 0.001;
-          //  myedc.Data.SetDataTransmissionRate(base.DataTransmissionRate);
-
-
-            mtimer.Start();
-
-
 
             return 0;
         }
+      
 
         public override int CloseConnection()
         {

@@ -393,6 +393,7 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btnmmethod.Visible = true;
             GlobeVal.UserControlMain1.btnmreport.Visible = true;
             GlobeVal.UserControlMain1.btnmmanage.Visible = true;
+            GlobeVal.UserControlMain1.btngroupcontrol.Visible = true;
 
 
             if (GlobeVal.userControlpretest1.gfilename.Trim() == "")

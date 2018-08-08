@@ -17,6 +17,8 @@ namespace TabHeaderDemo
     public sealed  class   GlobeVal
     {
 
+        public static FormMainLab mainlab;
+
         [DllImport("kernel32.dll")]
         public  static extern UIntPtr SetThreadAffinityMask(IntPtr hThread,
         UIntPtr dwThreadAffinityMask);
@@ -59,6 +61,11 @@ namespace TabHeaderDemo
         public static UserControlMain UserControlMain1;
         public static UserControlPretest userControlpretest1;
         public static UserControlMethod userControlmethod1;
+        public static UserGroupControl userGroupControl1;
+
+
+        public static int selcontroller = 1;//当前控制器
+
 
         public static Button mbtntest;
         public static  UserControlDynSet dynset;

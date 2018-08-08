@@ -118,7 +118,9 @@ namespace TabHeaderDemo
 
         public void btntest_Click(object sender, EventArgs e)
         {
-           
+            GlobeVal.mainlab._直接进入试验界面();
+          
+            /*
 
             TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
             ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed = false;
@@ -142,6 +144,9 @@ namespace TabHeaderDemo
             c.OpenTest();
             
             b.SelectedIndex = 1;
+            */
+
+
 
         }
 

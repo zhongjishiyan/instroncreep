@@ -14,7 +14,7 @@ namespace TabHeaderDemo
         public UserControlMethod musercontrolmethod;
 
         string[] ms;
-        public  void Init(int sel)
+        public void Init(int sel)
         {
 
             tabControl1.SelectedIndex = sel;
@@ -27,7 +27,7 @@ namespace TabHeaderDemo
             else
             {
                 groupBox1.Enabled = true;
-                groupBox2.Enabled = true;  
+                groupBox2.Enabled = true;
 
             }
             cbokind.Items.Clear();
@@ -35,7 +35,7 @@ namespace TabHeaderDemo
             for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
             {
                 cbokind.Items.Add(GlobeVal.mysys.ControllerName[i]);
-              
+
             }
 
 #if Demo 
@@ -55,22 +55,40 @@ namespace TabHeaderDemo
             cbomachine.SelectedIndex = 0;
             cbomachine.Enabled = false;
 #else
-             cbomachine.Enabled = true;
+            cbomachine.Enabled = true;
             cbomachine.SelectedIndex = GlobeVal.mysys.machinekind;
 #endif
 
+            numnumber.Value = GlobeVal.mysys.ControllerCount;
+
+
+            cbonum.Items.Clear();
+            for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
+            {
+                cbonum.Items.Add((i + 1).ToString());
+            }
+            cbonum.SelectedIndex = 0;
+
         }
-        public  UserControl系统设置()
+
+        public void InitGrid()
+        {
+
+
+
+
+
+
+
+        }
+        public UserControl系统设置()
         {
             InitializeComponent();
             tabControl1.ItemSize = new Size(1, 1);
+            ms = new string[2];
+            ms[0] = "使用";
+            ms[1] = "不使用";
 
-             ms = new string[20];
-            ms[0] = "内部";
-            for (int i = 1; i <= 16; i++)
-            {
-                ms[i] = "外部通道" + (i).ToString().Trim();
-            }
 
             grid1.RowsCount = 0;
             grid1.AutoStretchColumnsToFitWidth = true;
@@ -79,8 +97,8 @@ namespace TabHeaderDemo
 
             grid1.ColumnsCount = 7;
             grid1.Columns[0].Width = grid1.Width / 7;
-           
-            grid1.Columns[1].Width = grid1.Width/7 ;
+
+            grid1.Columns[1].Width = grid1.Width / 7;
             grid1.Columns[2].Width = grid1.Width / 7;
             grid1.Columns[3].Width = grid1.Width / 7;
             grid1.Columns[4].Width = grid1.Width / 7;
@@ -90,15 +108,18 @@ namespace TabHeaderDemo
 
             grid1.Columns[6].AutoSizeMode = SourceGrid2.AutoSizeMode.EnableStretch;
             grid1.FixedRows = 1;
+
+            grid1.RowsCount = 0;
+
             grid1.Rows.Insert(0);
 
             SourceGrid2.Cells.Real.ColumnHeader head = new SourceGrid2.Cells.Real.ColumnHeader("[硬件通道名称]");
             head.EnableSort = false;
             head.EnableEdit = false;
-           
+
             grid1[0, 0] = head;
 
-             head = new SourceGrid2.Cells.Real.ColumnHeader("[硬件通道量纲]");
+            head = new SourceGrid2.Cells.Real.ColumnHeader("[硬件通道量纲]");
             head.EnableSort = false;
             head.EnableEdit = false;
             grid1[0, 1] = head;
@@ -130,28 +151,25 @@ namespace TabHeaderDemo
             for (int i = 1; i <= ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
             {
 
-                if (GlobeVal.mysys.ChannelControl[i - 1]==true)
+                if (GlobeVal.mysys.ChannelControl[i - 1] == true)
                 {
                     mb = true;
                 }
             }
 
-            if (mb ==false )
+            if (mb == false)
             {
                 GlobeVal.mysys.ChannelControl[0] = true;
 
             }
 
 
-
-
-
-                for (int i = 1; i <= ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
+            for (int i = 1; i <= ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
             {
                 grid1.Rows.Insert(i);
                 grid1[i, 0] = new SourceGrid2.Cells.Real.Cell(
                     ClsStaticStation.m_Global.mycls.chsignals[i - 1].cName, typeof(string));
-                
+
 
                 grid1[i, 1] = new SourceGrid2.Cells.Real.ComboBox(
 
@@ -168,21 +186,26 @@ namespace TabHeaderDemo
 
 
                 grid1[i, 4] = new SourceGrid2.Cells.Real.Cell(
-                   GlobeVal.mysys.ChannelRange[i-1], typeof(double));
+                   GlobeVal.mysys.ChannelRange[i - 1], typeof(double));
 
-              
-           
+
+
 
                 grid1[i, 5] = new SourceGrid2.Cells.Real.Cell(
                  GlobeVal.mysys.ChannelControl[i - 1], typeof(bool));
 
-                grid1[i,6] = new SourceGrid2.Cells.Real.ComboBox(
 
-               ms[GlobeVal.mysys.ChannelSamplemode[i-1]], typeof(string),
+
+                grid1[i, 6] = new SourceGrid2.Cells.Real.ComboBox(
+
+               ms[GlobeVal.mysys.ChannelSamplemode[i - 1]], typeof(string),
               ms, false);
 
 
+
+
             }
+
         }
 
         private void cbokind_SelectionChangeCommitted(object sender, EventArgs e)
@@ -221,22 +244,24 @@ namespace TabHeaderDemo
 
             if (e.Position.Column == 6)
             {
-                for (int i = 0; i < 17; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     if (Convert.ToString(e.Cell.GetValue(new SourceGrid2.Position(e.Position.Row, e.Position.Column))) == ms[i])
-                     {
+                    {
                         k = i;
                     }
 
 
                     GlobeVal.mysys.ChannelSamplemode[e.Position.Row - 1] = k;
+
+
                 }
             }
         }
 
         private void grid1_CellGotFocus(object sender, SourceGrid2.PositionCancelEventArgs e)
         {
-            if (e.Position.Column ==0)
+            if (e.Position.Column == 0)
             {
                 e.Cancel = true;
             }
@@ -259,6 +284,124 @@ namespace TabHeaderDemo
         {
             GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
             Application.Exit();
+        }
+
+        private void numnumber_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            GlobeVal.mysys.ControllerCount = Convert.ToInt32(numnumber.Value);
+
+
+            cbonum.Items.Clear();
+            for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
+            {
+                cbonum.Items.Add((i + 1).ToString());
+            }
+            cbonum.SelectedIndex = 0;
+
+        }
+
+        private void cbonum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int a = cbonum.SelectedIndex + 1;
+            string f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim() + "\\sys\\setup.ini";
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device") == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device");
+            }
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim()) == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim());
+            }
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim() + "\\sys") == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim() + "\\sys");
+            }
+
+
+            if (System.IO.File.Exists(f) == true)
+            {
+
+            }
+
+            else
+            {
+                System.IO.File.Copy(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini", f);
+            }
+
+
+            GlobeVal.mysys = GlobeVal.mysys.DeSerializeNow(f);
+
+           
+            grid1.RowsCount = 1;
+
+            for (int i = 1; i <= ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
+            {
+                grid1.Rows.Insert(i);
+                grid1[i, 0] = new SourceGrid2.Cells.Real.Cell(
+                    ClsStaticStation.m_Global.mycls.chsignals[i - 1].cName, typeof(string));
+
+
+                grid1[i, 1] = new SourceGrid2.Cells.Real.ComboBox(
+
+               ClsStaticStation.m_Global.mycls.SignalsNames[ClsStaticStation.m_Global.mycls.chsignals[i - 1].cUnitKind], typeof(string),
+              ClsStaticStation.m_Global.mycls.SignalsNames, false);
+
+                grid1[i, 2] = new SourceGrid2.Cells.Real.ComboBox(
+                  ClsStaticStation.m_Global.mycls.chsignals[i - 1].cUnits[
+                  ClsStaticStation.m_Global.mycls.chsignals[i - 1].cUnitsel], typeof(string),
+                  ClsStaticStation.m_Global.mycls.chsignals[i - 1].cUnits, false);
+
+                grid1[i, 3] = new SourceGrid2.Cells.Real.Cell(
+                 ClsStaticStation.m_Global.mycls.chsignals[i - 1].SignName, typeof(string));
+
+
+                grid1[i, 4] = new SourceGrid2.Cells.Real.Cell(
+                   GlobeVal.mysys.ChannelRange[i - 1], typeof(double));
+
+
+
+
+                grid1[i, 5] = new SourceGrid2.Cells.Real.Cell(
+                 GlobeVal.mysys.ChannelControl[i - 1], typeof(bool));
+
+
+
+                grid1[i, 6] = new SourceGrid2.Cells.Real.ComboBox(
+
+               ms[GlobeVal.mysys.ChannelSamplemode[i - 1]], typeof(string),
+              ms, false);
+
+
+
+
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int a = cbonum.SelectedIndex + 1;
+            string f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim() + "\\sys\\setup.ini";
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device") == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device");
+            }
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim()) == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim());
+            }
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim() + "\\sys") == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim() + "\\sys");
+            }
+            GlobeVal.mysys.SerializeNow(f);
+
         }
     }
 }
