@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClsStaticStation
 {
-    struct demodata
+    public    struct demodata
     {
         public double pos;
         public double load;

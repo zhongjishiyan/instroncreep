@@ -579,7 +579,7 @@ namespace TabHeaderDemo
 
 
 
-            head = new SourceGrid2.Cells.Real.ColumnHeader("控制模式");
+            head = new SourceGrid2.Cells.Real.ColumnHeader("控制对象");
 
             head.EnableSort = false;
             grid2[0, 1] = head;
@@ -588,15 +588,15 @@ namespace TabHeaderDemo
             head.EnableSort = false;
             grid2[0, 2] = head;
 
-            head = new SourceGrid2.Cells.Real.ColumnHeader("跳转条件");
+            head = new SourceGrid2.Cells.Real.ColumnHeader("控制目标和保持时间");
             head.EnableSort = false;
             grid2[0, 3] = head;
 
-            head = new SourceGrid2.Cells.Real.ColumnHeader("动作");
+            head = new SourceGrid2.Cells.Real.ColumnHeader("控制模式");
             head.EnableSort = false;
             grid2[0, 4] = head;
 
-            head = new SourceGrid2.Cells.Real.ColumnHeader("循环");
+            head = new SourceGrid2.Cells.Real.ColumnHeader("周期波参数");
             head.EnableSort = false;
             grid2[0, 5] = head;
 
@@ -629,7 +629,7 @@ namespace TabHeaderDemo
 
             if (tscbo.Text == "")
             {
-                
+               // tscbo_SelectedIndexChanged(null, null);
             }
             else
             {
@@ -637,10 +637,7 @@ namespace TabHeaderDemo
 
 
             }
-            if (CComLibrary.GlobeVal.filesave.SegName=="方法.seg")
-            {
-                tscbo_SelectedIndexChanged(null, null);
-            }
+           
 
 
         }
@@ -1865,13 +1862,13 @@ namespace TabHeaderDemo
                 System.IO.File.Delete(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
             }
 
-            if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
+            if ( tscbo.Text.Trim()!="")
             {
                 sf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
             }
             else
             {
-                sf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (GlobeVal.selcontroller).ToString().Trim() + "\\seg\\方法.seg");
+               
 
             }
 
@@ -1915,15 +1912,9 @@ namespace TabHeaderDemo
             {
                 sf.mseglist.Clear();
 
-                if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
-                {
-                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
-                }
-                else
-                {
-                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (GlobeVal.selcontroller).ToString().Trim() + "\\seg\\方法.seg");
-
-                }
+                
+                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
+                
                 int i = 0;
 
                 grid2.RowsCount = 1;

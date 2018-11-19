@@ -39,7 +39,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.tlpkind1 = new System.Windows.Forms.TableLayoutPanel();
-            this.chkdynamic = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtcurveaption_kind1 = new System.Windows.Forms.TextBox();
@@ -48,11 +47,13 @@
             this.cbooffset = new System.Windows.Forms.ComboBox();
             this.chkshowinvalidspe = new System.Windows.Forms.CheckBox();
             this.chkdatapoint = new System.Windows.Forms.CheckBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.numdynamic = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.tlpkind2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkdynamic = new System.Windows.Forms.CheckBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.numdynamic = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lbltitle0 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -219,7 +220,6 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -228,8 +228,9 @@
             this.groupBox1.SuspendLayout();
             this.tlpkind1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numcount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numdynamic)).BeginInit();
             this.tlpkind2.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numdynamic)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -284,7 +285,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.legend3)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -438,17 +438,6 @@
             this.tlpkind1.Size = new System.Drawing.Size(708, 127);
             this.tlpkind1.TabIndex = 2;
             // 
-            // chkdynamic
-            // 
-            this.chkdynamic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkdynamic.Location = new System.Drawing.Point(3, 3);
-            this.chkdynamic.Name = "chkdynamic";
-            this.chkdynamic.Size = new System.Drawing.Size(187, 26);
-            this.chkdynamic.TabIndex = 8;
-            this.chkdynamic.Text = "动态绘图方式";
-            this.chkdynamic.UseVisualStyleBackColor = true;
-            this.chkdynamic.CheckedChanged += new System.EventHandler(this.chkdynamic_CheckedChanged);
-            // 
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -532,28 +521,6 @@
             this.chkdatapoint.UseVisualStyleBackColor = true;
             this.chkdatapoint.CheckedChanged += new System.EventHandler(this.chkdatapoint_CheckedChanged);
             // 
-            // label29
-            // 
-            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Location = new System.Drawing.Point(3, 32);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(187, 26);
-            this.label29.TabIndex = 9;
-            this.label29.Text = "动态绘图时曲线最大点数：";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // numdynamic
-            // 
-            this.numdynamic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numdynamic.FormatMode = NationalInstruments.UI.NumericFormatMode.CreateSimpleDoubleMode(0);
-            this.numdynamic.Location = new System.Drawing.Point(196, 35);
-            this.numdynamic.Name = "numdynamic";
-            this.numdynamic.OutOfRangeMode = NationalInstruments.UI.NumericOutOfRangeMode.CoerceToRange;
-            this.numdynamic.Range = new NationalInstruments.UI.Range(0D, 1000000000D);
-            this.numdynamic.Size = new System.Drawing.Size(515, 21);
-            this.numdynamic.TabIndex = 10;
-            this.numdynamic.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numdynamic_AfterChangeValue);
-            // 
             // tlpkind2
             // 
             this.tlpkind2.ColumnCount = 2;
@@ -566,9 +533,9 @@
             this.tlpkind2.Name = "tlpkind2";
             this.tlpkind2.RowCount = 1;
             this.tlpkind2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tlpkind2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpkind2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpkind2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpkind2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tlpkind2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tlpkind2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlpkind2.Size = new System.Drawing.Size(714, 26);
             this.tlpkind2.TabIndex = 1;
             this.tlpkind2.Visible = false;
@@ -594,12 +561,63 @@
             this.textBox2.TabIndex = 1;
             this.textBox2.Text = "试样 %n";
             // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.Controls.Add(this.chkdynamic, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.label29, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.numdynamic, 1, 1);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 279);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 3;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(714, 197);
+            this.tableLayoutPanel14.TabIndex = 2;
+            // 
+            // chkdynamic
+            // 
+            this.chkdynamic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkdynamic.Location = new System.Drawing.Point(3, 3);
+            this.chkdynamic.Name = "chkdynamic";
+            this.chkdynamic.Size = new System.Drawing.Size(187, 26);
+            this.chkdynamic.TabIndex = 8;
+            this.chkdynamic.Text = "动态绘图方式";
+            this.chkdynamic.UseVisualStyleBackColor = true;
+            this.chkdynamic.CheckedChanged += new System.EventHandler(this.chkdynamic_CheckedChanged);
+            // 
+            // label29
+            // 
+            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label29.Location = new System.Drawing.Point(3, 32);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(187, 26);
+            this.label29.TabIndex = 9;
+            this.label29.Text = "动态绘图时曲线最大点数：";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numdynamic
+            // 
+            this.numdynamic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numdynamic.FormatMode = NationalInstruments.UI.NumericFormatMode.CreateSimpleDoubleMode(0);
+            this.numdynamic.Location = new System.Drawing.Point(196, 35);
+            this.numdynamic.Name = "numdynamic";
+            this.numdynamic.OutOfRangeMode = NationalInstruments.UI.NumericOutOfRangeMode.CoerceToRange;
+            this.numdynamic.Range = new NationalInstruments.UI.Range(0D, 1000000000D);
+            this.numdynamic.Size = new System.Drawing.Size(515, 21);
+            this.numdynamic.TabIndex = 10;
+            this.numdynamic.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numdynamic_AfterChangeValue);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.Controls.Add(this.lbltitle0, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -617,7 +635,7 @@
             this.lbltitle0.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle0.Location = new System.Drawing.Point(4, 1);
             this.lbltitle0.Name = "lbltitle0";
-            this.lbltitle0.Size = new System.Drawing.Size(671, 36);
+            this.lbltitle0.Size = new System.Drawing.Size(669, 36);
             this.lbltitle0.TabIndex = 0;
             this.lbltitle0.Text = "设置曲线类型";
             this.lbltitle0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -626,7 +644,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(682, 4);
+            this.panel4.Location = new System.Drawing.Point(680, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(32, 30);
             this.panel4.TabIndex = 1;
@@ -811,7 +829,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel4.Controls.Add(this.lbltitle1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -829,7 +847,7 @@
             this.lbltitle1.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle1.Location = new System.Drawing.Point(4, 1);
             this.lbltitle1.Name = "lbltitle1";
-            this.lbltitle1.Size = new System.Drawing.Size(668, 36);
+            this.lbltitle1.Size = new System.Drawing.Size(666, 36);
             this.lbltitle1.TabIndex = 0;
             this.lbltitle1.Text = "设置曲线-X轴数据 ";
             this.lbltitle1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -838,7 +856,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(679, 4);
+            this.panel2.Location = new System.Drawing.Point(677, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(32, 30);
             this.panel2.TabIndex = 1;
@@ -1170,7 +1188,7 @@
             this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel6.Controls.Add(this.lbltitle2, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1188,7 +1206,7 @@
             this.lbltitle2.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle2.Location = new System.Drawing.Point(4, 1);
             this.lbltitle2.Name = "lbltitle2";
-            this.lbltitle2.Size = new System.Drawing.Size(673, 36);
+            this.lbltitle2.Size = new System.Drawing.Size(671, 36);
             this.lbltitle2.TabIndex = 0;
             this.lbltitle2.Text = "设置曲线-Y轴数据";
             this.lbltitle2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1197,7 +1215,7 @@
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(684, 4);
+            this.panel3.Location = new System.Drawing.Point(682, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(32, 30);
             this.panel3.TabIndex = 1;
@@ -2507,7 +2525,7 @@
             this.tableLayoutPanel9.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel9.ColumnCount = 2;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel9.Controls.Add(this.lbltitle3, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Top;
@@ -2525,7 +2543,7 @@
             this.lbltitle3.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle3.Location = new System.Drawing.Point(4, 1);
             this.lbltitle3.Name = "lbltitle3";
-            this.lbltitle3.Size = new System.Drawing.Size(674, 36);
+            this.lbltitle3.Size = new System.Drawing.Size(672, 36);
             this.lbltitle3.TabIndex = 0;
             this.lbltitle3.Text = "设置曲线-高级项目";
             this.lbltitle3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2534,7 +2552,7 @@
             // 
             this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Location = new System.Drawing.Point(685, 4);
+            this.panel6.Location = new System.Drawing.Point(683, 4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(32, 30);
             this.panel6.TabIndex = 1;
@@ -2572,24 +2590,6 @@
             this.listBox2.Size = new System.Drawing.Size(288, 4);
             this.listBox2.TabIndex = 1;
             // 
-            // tableLayoutPanel14
-            // 
-            this.tableLayoutPanel14.ColumnCount = 2;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Controls.Add(this.chkdynamic, 0, 0);
-            this.tableLayoutPanel14.Controls.Add(this.label29, 0, 1);
-            this.tableLayoutPanel14.Controls.Add(this.numdynamic, 1, 1);
-            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 279);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 3;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(714, 197);
-            this.tableLayoutPanel14.TabIndex = 2;
-            // 
             // UserControl曲线
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2607,9 +2607,10 @@
             this.tlpkind1.ResumeLayout(false);
             this.tlpkind1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numcount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numdynamic)).EndInit();
             this.tlpkind2.ResumeLayout(false);
             this.tlpkind2.PerformLayout();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numdynamic)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -2679,7 +2680,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.legend3)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

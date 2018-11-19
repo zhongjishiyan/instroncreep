@@ -2499,19 +2499,12 @@ namespace ClsStaticStation
 
                 CComLibrary.SegFile sf = new CComLibrary.SegFile();
 
-                if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
-                {
+               
 
                     sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
                         + CComLibrary.GlobeVal.filesave.SegName);
 
-                }
-                else
-
-                {
-                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (CComLibrary.GlobeVal.filesave.currentmachineId + 1).ToString().Trim() + "\\seg\\方法.seg");
-
-                }
+              
                 int i = 0;
 
 

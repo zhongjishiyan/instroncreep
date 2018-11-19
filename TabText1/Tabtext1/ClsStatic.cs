@@ -1387,6 +1387,9 @@ namespace ClsStaticStation
         public static double mwave;// 仿函数发生器 
 
         public static int  m_runstate=0;// doli控制器时运行状态
+
+        public static int currentmachineId=0;
+
         
     }
     [Serializable]

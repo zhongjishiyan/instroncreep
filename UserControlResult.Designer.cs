@@ -34,8 +34,9 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grid1 = new SourceGrid2.Grid();
-            this.grid2 = new SourceGrid2.Grid();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.grid2 = new SourceGrid2.Grid();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -105,6 +106,14 @@
             this.grid1.TabIndex = 9;
             this.grid1.HScrollPositionChanged += new SourceGrid2.ScrollPositionChangedEventHandler(this.grid1_HScrollPositionChanged);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(457, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // grid2
             // 
             this.grid2.AutoSizeMinHeight = 10;
@@ -132,13 +141,9 @@
             this.grid2.VScrollPositionChanged += new SourceGrid2.ScrollPositionChangedEventHandler(this.grid2_VScrollPositionChanged);
             this.grid2.HScrollPositionChanged += new SourceGrid2.ScrollPositionChangedEventHandler(this.grid2_HScrollPositionChanged);
             // 
-            // toolStrip1
+            // timer1
             // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(457, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // UserControlResult
             // 
@@ -165,5 +170,6 @@
         public SourceGrid2.Grid grid1;
         public SourceGrid2.Grid grid2;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

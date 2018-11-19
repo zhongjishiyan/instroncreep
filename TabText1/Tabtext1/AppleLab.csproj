@@ -173,7 +173,6 @@
     <Compile Include="ClsBaseControl.cs" />
     <Compile Include="ClsDemo.cs" />
     <Compile Include="ClsDOLI.cs" />
-    <Compile Include="ClsDsp.cs" />
     <Compile Include="ClsStatic.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -301,7 +300,6 @@
     <Compile Include="OS\Enums.cs" />
     <Compile Include="OS\structs.cs" />
     <Compile Include="OS\Win32.cs" />
-    <Compile Include="PipeServer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

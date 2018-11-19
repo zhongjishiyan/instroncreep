@@ -25,23 +25,18 @@ namespace TabHeaderDemo
         public int l = 0;
         public UserControlTop UTop;
 
-        public MacroRecord myMacroRecord = new MacroRecord();
+
         int lastTimeRecorded = 0;
 
-        MouseHook mouseHook = new MouseHook();
-        KeyboardHook keyboardHook = new KeyboardHook();
-
-        KeyboardHook keyboardReplayHook = new KeyboardHook();
 
 
 
         private Color topbackcolor = new Color();
 
-        private  ClsStaticStation.ClsBaseControl myarm;
+        private ClsStaticStation.CDsp myarm;
 
-       
-        private ClsStaticStation.CDOLI mdoli;
-        private ClsStaticStation.CDsp mdsp;
+
+
 
         public delegate void NewMessageDelegate(string NewMessage);
         private PipeServer _pipeServer;
@@ -57,7 +52,7 @@ namespace TabHeaderDemo
         private MainForm fdata;
 
 
-       // public DriverDll.CDriver cdriverdll;
+        // public DriverDll.CDriver cdriverdll;
 
         private int msel = 0;
         [STAThread]
@@ -175,8 +170,8 @@ namespace TabHeaderDemo
         public FormMainLab()
         {
             InitializeComponent();
-           // _pipeServer = new PipeServer();
-           // _pipeServer.PipeMessage += new DelegateMessage(PipesMessageHandler);
+            // _pipeServer = new PipeServer();
+            // _pipeServer.PipeMessage += new DelegateMessage(PipesMessageHandler);
 
             GlobeVal.mysys = new ClassSys();
 
@@ -201,7 +196,7 @@ namespace TabHeaderDemo
 
             m_Global.mycls.ChannelCount = GlobeVal.mysys.ChannelCount;
 
-            for (int i = 0; i < GlobeVal.mysys.ChannelCount ; i++)
+            for (int i = 0; i < GlobeVal.mysys.ChannelCount; i++)
             {
                 m_Global.mycls.ChannelControl[i] = GlobeVal.mysys.ChannelControl[i];
                 m_Global.mycls.ChannelDimension[i] = GlobeVal.mysys.ChannelDimension[i];
@@ -210,45 +205,29 @@ namespace TabHeaderDemo
             }
 
 
-            
+
 
             if (GlobeVal.mysys.controllerkind == 0)
             {
-                mdoli = new CDOLI();
-                myarm = mdoli;
+                myarm = new CDsp();
+
             }
 
             if (GlobeVal.mysys.controllerkind == 1)
             {
 
-                mdsp = new CDsp();
-                myarm = mdsp;
+                myarm = new CDsp();
+
             }
-           
+
 
             fdata = new MainForm();
 
             topbackcolor = Color.WhiteSmoke;
 
-            if (GlobeVal.mysys.demo == true)
-            {
-                tlprecord.Visible = true;
-            }
-            else
-            {
-                tlprecord.Visible = false;
-            }
 
-            mouseHook.MouseMove += new MouseEventHandler(mouseHook_MouseMove);
-            mouseHook.MouseDown += new MouseEventHandler(mouseHook_MouseDown);
-            mouseHook.MouseUp += new MouseEventHandler(mouseHook_MouseUp);
 
-            keyboardHook.KeyDown += new KeyEventHandler(keyboardHook_KeyDown);
-            keyboardHook.KeyUp += new KeyEventHandler(keyboardHook_KeyUp);
-            keyboardReplayHook.KeyDown += new KeyEventHandler(KeyboardReplayHook_KeyDown);
-            keyboardReplayHook.KeyUp += new KeyEventHandler(KeyboardReplayHook_KeyUp);
 
-            
 
         }
 
@@ -260,93 +239,19 @@ namespace TabHeaderDemo
         private void KeyboardReplayHook_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (e.KeyData == Keys.Escape)
-            {
-
-
-                this.timerRecord.Enabled = false;
-                playBackMacroButton.Enabled = true;
-                this.keyboardReplayHook.Stop();
-                this.Cursor = Cursors.Default;
-                return;
-            }
-            return;
-        }
-
-
-        void mouseHook_MouseMove(object sender, MouseEventArgs e)
-        {
-
-            myMacroRecord.events.Add(
-                new MacroEvent(
-                    MacroEventType.MouseMove,
-                    e,
-                    Environment.TickCount - lastTimeRecorded, this.Width, this.Height
-                ));
-
-
-            lastTimeRecorded = Environment.TickCount;
 
         }
 
-        void mouseHook_MouseDown(object sender, MouseEventArgs e)
-        {
-
-            myMacroRecord.events.Add(
-                new MacroEvent(
-                    MacroEventType.MouseDown,
-                    e,
-                    Environment.TickCount - lastTimeRecorded, this.Width, this.Height
-                ));
-
-            lastTimeRecorded = Environment.TickCount;
-
-        }
-
-        void mouseHook_MouseUp(object sender, MouseEventArgs e)
-        {
-
-            myMacroRecord.events.Add(
-                new MacroEvent(
-                    MacroEventType.MouseUp,
-                    e,
-                    Environment.TickCount - lastTimeRecorded, this.Width, this.Height
-                ));
-
-            lastTimeRecorded = Environment.TickCount;
-
-        }
-
-        void keyboardHook_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            myMacroRecord.events.Add(
-                new MacroEvent(
-                    MacroEventType.KeyDown,
-                    e,
-                    Environment.TickCount - lastTimeRecorded, this.Width, this.Height
-                ));
-
-            lastTimeRecorded = Environment.TickCount;
-
-        }
-
-        void keyboardHook_KeyUp(object sender, KeyEventArgs e)
-        {
 
 
 
-            myMacroRecord.events.Add(
-                new MacroEvent(
-                    MacroEventType.KeyUp,
-                    e,
 
-                    Environment.TickCount - lastTimeRecorded, this.Width, this.Height
-                ));
 
-            lastTimeRecorded = Environment.TickCount;
 
-        }
+
+
+
+
 
         public void delay(double m)
         {
@@ -359,83 +264,7 @@ namespace TabHeaderDemo
             }
         }
 
-        public void DoMacro()
-        {
-            MacroEvent macroEvent = myMacroRecord.events[l] as MacroEvent;
 
-            if (macroEvent.MacroEventType == MacroEventType.MouseMove)
-            {
-                this.timerRecord.Interval = macroEvent.TimeSinceLastEvent+1;
-            }
-            else
-
-            {
-                this.timerRecord.Interval = macroEvent.TimeSinceLastEvent + 1;
-            }
-
-            {
-
-
-                switch (macroEvent.MacroEventType)
-                {
-                    case MacroEventType.MouseMove:
-                        {
-
-                            MouseEventArgs mouseArgs = (MouseEventArgs)macroEvent.EventArgs;
-
-                            MouseSimulator.X = Convert.ToInt32(mouseArgs.X * this.Width / macroEvent.width);
-                            MouseSimulator.Y = Convert.ToInt32(mouseArgs.Y * (this.Height) / (macroEvent.height));
-
-                        }
-                        break;
-                    case MacroEventType.MouseDown:
-                        {
-
-
-                            MouseEventArgs mouseArgs = (MouseEventArgs)macroEvent.EventArgs;
-
-                            MouseSimulator.MouseDown(mouseArgs.Button);
-
-                            // shiwei 2017.10.20  演示时改变鼠标状态
-                            this.Cursor = Cursors.AppStarting;
-
-                        }
-                        break;
-                    case MacroEventType.MouseUp:
-                        {
-
-                            MouseEventArgs mouseArgs = (MouseEventArgs)macroEvent.EventArgs;
-
-                            MouseSimulator.MouseUp(mouseArgs.Button);
-                            // shiwei 2017.10.20  演示时改变鼠标状态
-                            this.Cursor = Cursors.Hand;
-
-                        }
-                        break;
-                    case MacroEventType.KeyDown:
-                        {
-
-                            KeyEventArgs keyArgs = (KeyEventArgs)macroEvent.EventArgs;
-
-                            KeyboardSimulator.KeyDown(keyArgs.KeyCode);
-
-                        }
-                        break;
-                    case MacroEventType.KeyUp:
-                        {
-
-                            KeyEventArgs keyArgs = (KeyEventArgs)macroEvent.EventArgs;
-
-                            KeyboardSimulator.KeyUp(keyArgs.KeyCode);
-
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-        }
 
         public System.Drawing.Bitmap backimage = new Bitmap(50, 50);
 
@@ -572,27 +401,35 @@ namespace TabHeaderDemo
         public void _直接进入试验界面()
         {
 
+            this.Cursor = Cursors.WaitCursor;
+
             ((SplitContainer)tabControl1.TabPages[1].Controls[0]).Panel2Collapsed = false;
 
             double t = System.Environment.TickCount;
 
 
 
-
+            /*
             while (System.Environment.TickCount - t <= 500)
             {
                 Application.DoEvents();
             }
-
+            */
 
 
             umain.OpenTest();
 
-            tabControl1.SelectedIndex = 1;
-
+            tabControl1.SelectedIndex = 0;
+            /*
             string fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" +
                 GlobeVal.userControlpretest1.listView1.Items[0].SubItems[1].Text + "\\"
                   + GlobeVal.userControlpretest1.listView1.Items[0].Text + ".dat";
+            */
+
+            string fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
+
+
+
             if (CComLibrary.GlobeVal.filesave == null)
             {
                 CComLibrary.GlobeVal.filesave = new CComLibrary.FileStruct();
@@ -608,7 +445,7 @@ namespace TabHeaderDemo
                 UserControl操作面板1.Controls.Add(UserControl轴向1);
                 UserControl轴向1.Dock = DockStyle.Fill;
                 UserControl操作面板1.Dock = DockStyle.Fill;
-               
+
             }
             GlobeVal.userControltest1.panelright.Controls.Clear();
 
@@ -651,6 +488,8 @@ namespace TabHeaderDemo
 
             UserControl操作面板1.Visible = true;
 
+            this.Cursor = Cursors.Default;
+            tabControl1.SelectedIndex = 1;
 
             CComLibrary.GlobeVal.filesave.currentspenumber = 0;
         }
@@ -694,8 +533,8 @@ namespace TabHeaderDemo
             this.Width = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Width);
             this.Height = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Height);
 
-           // this.Width = 1024;
-           // this.Height = 768;
+            // this.Width = 1024;
+            // this.Height = 768;
             tabControl1.ItemSize = new Size(1, 1);
 
 
@@ -705,9 +544,9 @@ namespace TabHeaderDemo
             GlobeVal.myarm = myarm;
 
 
-            
 
-            if ((GlobeVal.mysys.machinekind == 0) ||(GlobeVal.mysys.machinekind == 5))
+
+            if ((GlobeVal.mysys.machinekind == 0) || (GlobeVal.mysys.machinekind == 5))
             {
                 /*
                 tlpsel.Visible = false;
@@ -720,9 +559,9 @@ namespace TabHeaderDemo
                 */
             }
 
-           
 
-           
+
+
             if (GlobeVal.mysys.demo == true)
             {
                 GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = "演示";
@@ -761,7 +600,7 @@ namespace TabHeaderDemo
             software.Close();
 
     */
-           
+
 
             if (GlobeVal.mysys.showshorttitle == false)
             {
@@ -801,7 +640,7 @@ namespace TabHeaderDemo
 
             if (GlobeVal.mysys.safe == true)
             {
-                
+
                 Frm.Form登录 f = new TabHeaderDemo.Frm.Form登录();
 
 
@@ -819,7 +658,7 @@ namespace TabHeaderDemo
                 }
                 f.Close();
 
-    
+
 
             }
 
@@ -831,7 +670,7 @@ namespace TabHeaderDemo
                 else
                 {
                     //cdriverdll = new DriverDll.CDriver();
-                   // cdriverdll.Start();
+                    // cdriverdll.Start();
 
                 }
 
@@ -845,13 +684,13 @@ namespace TabHeaderDemo
             }
             else
             {
-               // splitContainer1.SplitterDistance = 980;
-               // tlbmeterback.Height = 84;
-               // paneltop.Height = 126;
+                // splitContainer1.SplitterDistance = 980;
+                // tlbmeterback.Height = 84;
+                // paneltop.Height = 126;
             }
 
 
-           if( GlobeVal.mysys.startupscreen==1)
+            if (GlobeVal.mysys.startupscreen == 1)
             {
 
 
@@ -862,17 +701,17 @@ namespace TabHeaderDemo
 
             }
 
-           /*
-            try
-            {
-                _pipeServer.Listen("TestPipe");
-                btnkey1.Text = "Listening - OK";
-                            }
-            catch (Exception)
-            {
-                btnkey1.Text = "Error Listening";
-            }
-            */
+            /*
+             try
+             {
+                 _pipeServer.Listen("TestPipe");
+                 btnkey1.Text = "Listening - OK";
+                             }
+             catch (Exception)
+             {
+                 btnkey1.Text = "Error Listening";
+             }
+             */
 
         }
 
@@ -972,7 +811,7 @@ namespace TabHeaderDemo
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-          
+
 
 
             if ((GlobeVal.myarm.getlimit(0) == true) || (GlobeVal.myarm.getlimit(0) == true))
@@ -1096,7 +935,7 @@ namespace TabHeaderDemo
 
         private void FormMainLab_FormClosed(object sender, FormClosedEventArgs e)
         {
-          
+
 
             myarm.Exit();
             myarm.CloseConnection();
@@ -1105,15 +944,15 @@ namespace TabHeaderDemo
 
         private void btntool_Click(object sender, EventArgs e)
         {
-          
 
-           
+
+
         }
 
         private void btnon_Click(object sender, EventArgs e)
         {
 
-            if (Convert.ToInt16( btnon.Tag)==0)
+            if (Convert.ToInt16(btnon.Tag) == 0)
             {
                 btnon.Image = imageList2.Images[1];
                 btnon.Tag = 1;
@@ -1132,7 +971,7 @@ namespace TabHeaderDemo
         private void btnhand_Click(object sender, EventArgs e)
         {
 
-          
+
         }
 
 
@@ -1213,7 +1052,7 @@ namespace TabHeaderDemo
 
         private void cbochannel_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void btnmethod_Click(object sender, EventArgs e)
@@ -1283,12 +1122,9 @@ namespace TabHeaderDemo
 
         private void recordStartButton_Click(object sender, EventArgs e)
         {
-            recordStartButton.Enabled = false;
-            myMacroRecord.events.Clear();
-            lastTimeRecorded = Environment.TickCount;
 
-            keyboardHook.Start();
-            mouseHook.Start();
+
+
 
 
         }
@@ -1301,47 +1137,16 @@ namespace TabHeaderDemo
         private void playBackMacroButton_Click(object sender, EventArgs e)
         {
 
-            if (myMacroRecord.events.Count > 0)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("请重新录制或读取过程");
-                return;
-            }
-            playBackMacroButton.Enabled = false;
-            l = 0;
-            this.timerRecord.Enabled = true;
-            this.keyboardReplayHook.Start();
-            this.Cursor = Cursors.Hand;
         }
 
         private void timerRecord_Tick(object sender, EventArgs e)
         {
-            DoMacro();
-            l = l + 1;
 
-            if (l > myMacroRecord.events.Count - 1)
-            {
-                this.timerRecord.Enabled = false;
-                playBackMacroButton.Enabled = true;
-                this.keyboardReplayHook.Stop();
-                this.Cursor = Cursors.Default;
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string s = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + @"\record\";
-            string s1 = this.Width.ToString() + "_" + this.Height.ToString();
 
-
-            openFileDialog1.InitialDirectory = s + s1;
-            openFileDialog1.Filter = "(*.rec" + ")|*.rec";
-            openFileDialog1.ShowDialog();
-
-            myMacroRecord = myMacroRecord.DeSerializeNow(openFileDialog1.FileName);
         }
 
         private void recordStartButton_MouseEnter(object sender, EventArgs e)
@@ -1371,47 +1176,27 @@ namespace TabHeaderDemo
 
         private void recordStopButton_MouseUp(object sender, MouseEventArgs e)
         {
-            recordStartButton.Enabled = true;
-            keyboardHook.Stop();
-            mouseHook.Stop();
-            myMacroRecord.events.RemoveAt(myMacroRecord.events.Count - 1);
-            myMacroRecord.events.RemoveAt(myMacroRecord.events.Count - 1);
-            string s = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + @"\record\";
-
-            string s1 = this.Width.ToString() + "_" + this.Height.ToString();
-
-            if (System.IO.Directory.Exists(s + s1))
-            {
-
-            }
-            else
-            {
-                System.IO.Directory.CreateDirectory(s + s1);
-            }
-            saveFileDialog1.InitialDirectory = s + s1;
-            saveFileDialog1.Filter = "(*.rec" + ")|*.rec";
-            saveFileDialog1.ShowDialog();
 
 
-            myMacroRecord.SerializeNow(saveFileDialog1.FileName);
+
         }
 
         private void btnpos_Click(object sender, EventArgs e)
         {
 
-           
+
 
 
         }
 
         private void btnload_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnext1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnext2_Click(object sender, EventArgs e)
@@ -1430,7 +1215,7 @@ namespace TabHeaderDemo
                 {
 
                     GlobeVal.myarm.getmsg(message);
-                    btnkey1.Text  = message;
+                    btnkey1.Text = message;
                 }
             }
             catch (Exception ex)
@@ -1449,6 +1234,21 @@ namespace TabHeaderDemo
                 Frm.FormMachine f = new Frm.FormMachine();
                 f.ShowDialog();
                 lblcontroller.Text = GlobeVal.selcontroller.ToString().Trim();
+
+                string f1 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\setup.ini";
+
+                GlobeVal.mysys = GlobeVal.mysys.DeSerializeNow(f1);
+
+                string f2 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
+
+
+                CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(f2);
+
+                GlobeVal.userControlmethod1.OpenTheMethodSilently(f2);
+
+                GlobeVal.userControltest1.changeUI();
+              
+
             }
             else
             {
@@ -1458,11 +1258,11 @@ namespace TabHeaderDemo
 
         private void FormMainLab_FormClosing(object sender, FormClosingEventArgs e)
         {
-           // _pipeServer.PipeMessage -= new DelegateMessage(PipesMessageHandler);
-           // _pipeServer = null;
+            // _pipeServer.PipeMessage -= new DelegateMessage(PipesMessageHandler);
+            // _pipeServer = null;
             if (GlobeVal.myarm.mtestrun == true)
             {
-                e.Cancel= true;
+                e.Cancel = true;
             }
         }
     }

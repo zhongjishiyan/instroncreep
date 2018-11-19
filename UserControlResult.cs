@@ -1222,7 +1222,7 @@ namespace TabHeaderDemo
             }
 
 
-
+            timer1.Enabled = true;
 
         }
 
@@ -1253,8 +1253,19 @@ namespace TabHeaderDemo
         private void grid1_HScrollPositionChanged(object sender, SourceGrid2.ScrollPositionChangedEventArgs e)
         {
             mgrid1moved = true;
-            grid2.HScrollBar.Value = grid1.HScrollBar.Value;
+            if ((grid2.HScrollBar != null) && (grid1.HScrollBar != null))
+            {
+                grid2.HScrollBar.Value = grid1.HScrollBar.Value;
+            }
             mgrid1moved = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if ((grid2.HScrollBar != null) && (grid1.HScrollBar != null))
+            {
+                grid2.HScrollBar.Maximum = grid1.HScrollBar.Maximum;
+            }
         }
     }
 }

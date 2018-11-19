@@ -51,7 +51,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
@@ -137,9 +137,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\AppleLabApplication.dll</HintPath>
     </Reference>
+    <Reference Include="CStaticlib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CStaticlib.dll</HintPath>
+    </Reference>
     <Reference Include="IP.Components, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\IPToolbox_src\IPToolbox\bin\Release\IP.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="LBIndustrialCtrls, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LBIndustrialCtrls.dll</HintPath>
     </Reference>
     <Reference Include="MCTBuffer, Version=1.0.1.0, Culture=neutral, PublicKeyToken=3c6f10d5f3df8ab7, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -210,17 +218,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutBox1.Designer.cs">
-      <DependentUpon>AboutBox1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Controls\CircularIndeterminateProgress.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Define.cs" />
     <Compile Include="Frm\FormLink.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,78 +266,15 @@
     <Compile Include="Frm\Form标准跳转条件.Designer.cs">
       <DependentUpon>Form标准跳转条件.cs</DependentUpon>
     </Compile>
-    <Compile Include="LBIndustrialCtrls\Base\LBIndustrialCtrlBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Base\LBIndustrialCtrlBase.Designer.cs">
-      <DependentUpon>LBIndustrialCtrlBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Base\Renderer.cs" />
-    <Compile Include="LBIndustrialCtrls\Button\ButtonRenderer.cs" />
-    <Compile Include="LBIndustrialCtrls\Button\LBButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Button\LBButton.Designer.cs">
-      <DependentUpon>LBButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Knob\KnobRenderer.cs" />
-    <Compile Include="LBIndustrialCtrls\Knob\LBKnob.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Knob\LBKnob.Designer.cs">
-      <DependentUpon>LBKnob.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Led\LB7SegmentDisplay.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Led\LB7SegmentDisplay.Designer.cs">
-      <DependentUpon>LB7SegmentDisplay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Led\LB7SegmentDisplayRenderer.cs" />
-    <Compile Include="LBIndustrialCtrls\Led\LBLed.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Led\LBLed.Designer.cs">
-      <DependentUpon>LBLed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Led\LedRenderer.cs" />
-    <Compile Include="LBIndustrialCtrls\Meters\LBAnalogMeter.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Meters\LBAnalogMeter.Designer.cs">
-      <DependentUpon>LBAnalogMeter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Meters\LBDigitalMeter.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Meters\LBDigitalMeter.Designer.cs">
-      <DependentUpon>LBDigitalMeter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LBIndustrialCtrls\Meters\LBDigitalMeterRenderer.cs" />
-    <Compile Include="LBIndustrialCtrls\Meters\LBMeterThreshold.cs" />
-    <Compile Include="LBIndustrialCtrls\Meters\MeterRenderer.cs" />
-    <Compile Include="LBIndustrialCtrls\Utils\ColorMng.cs" />
-    <Compile Include="LBIndustrialCtrls\Utils\MathFunc.cs" />
+    <Compile Include="hardcontrol\CFileStruct.cs" />
+    <Compile Include="hardcontrol\ClsDsp.cs" />
+    <Compile Include="hardcontrol\PipeServer.cs" />
     <Compile Include="ListDatabase.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ListDatabase.Designer.cs">
       <DependentUpon>ListDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="MouseKey\FormRecFileSelect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MouseKey\FormRecFileSelect.Designer.cs">
-      <DependentUpon>FormRecFileSelect.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MouseKey\GlobalHook.cs" />
-    <Compile Include="MouseKey\GlobalMacroRecorder.cs" />
-    <Compile Include="MouseKey\Keyboard.cs" />
-    <Compile Include="MouseKey\KeyboardHook.cs" />
-    <Compile Include="MouseKey\KeyboardSimulator.cs" />
-    <Compile Include="MouseKey\Mouse.cs" />
-    <Compile Include="MouseKey\MouseHook.cs" />
-    <Compile Include="MouseKey\MouseSimulator.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -357,9 +291,6 @@
     </Compile>
     <Compile Include="Report\UserControl数据库.Designer.cs">
       <DependentUpon>UserControl数据库.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SControls\ListViewProgress.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControlCamera.cs">
       <SubType>UserControl</SubType>
@@ -425,12 +356,6 @@
     </Compile>
     <Compile Include="FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form仿真.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form仿真.Designer.cs">
-      <DependentUpon>Form仿真.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMima.cs">
       <SubType>Form</SubType>
@@ -547,49 +472,17 @@
       <DependentUpon>FormPlotSet.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobeVal.cs" />
-    <Compile Include="helper.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="HelpPainter.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ImageButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="IPaint.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="JMeter.cs">
+    <Compile Include="SControls\JMeter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="JMeter.Designer.cs">
+    <Compile Include="SControls\JMeter.Designer.cs">
       <DependentUpon>JMeter.cs</DependentUpon>
     </Compile>
     <Compile Include="OS\Enums.cs" />
     <Compile Include="OS\structs.cs" />
     <Compile Include="OS\Win32.cs" />
-    <Compile Include="TabButtonExtender.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TabDragHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TabHeader.cs" />
     <Compile Include="TableLayoutPanelExT.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ToolBox.cs" />
-    <Compile Include="TreeListEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TreeListEx.Designer.cs">
-      <DependentUpon>TreeListEx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TxtOpenFileDialog.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\TxtOpenFileDialog.designer.cs">
-      <DependentUpon>TxtOpenFileDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlGraph.cs">
       <SubType>UserControl</SubType>
@@ -825,15 +718,7 @@
     <Compile Include="Controls\MethodOpenFileDialog.designer.cs">
       <DependentUpon>MethodOpenFileDialog.cs</DependentUpon>
     </Compile>
-    <None Include="LBIndustrialCtrls\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="LBIndustrialCtrls\obj\Debug\LBIndustrialCtrls.csproj.GenerateResource.Cache" />
     <None Include="Resources\sun.cur" />
-    <Content Include="LBIndustrialCtrls\bin\Debug\LBIndustrialCtrls.dll" />
-    <Content Include="LBIndustrialCtrls\bin\Debug\LBIndustrialCtrls.pdb" />
-    <Content Include="LBIndustrialCtrls\Knob\Knob.bmp" />
-    <Content Include="LBIndustrialCtrls\obj\Debug\LBIndustrialCtrls.csproj.FileListAbsolute.txt" />
-    <Content Include="LBIndustrialCtrls\obj\Debug\LBIndustrialCtrls.dll" />
-    <Content Include="LBIndustrialCtrls\obj\Debug\LBIndustrialCtrls.pdb" />
     <None Include="Resources\50.ico" />
     <None Include="Resources\50-1.ico" />
     <None Include="Resources\r2-2.ico" />
@@ -843,9 +728,6 @@
     <Content Include="Resources\管理器提示1.ico" />
     <Content Include="Resources\试验提示1.ico" />
     <Content Include="说明\说明.txt" />
-    <EmbeddedResource Include="AboutBox1.resx">
-      <DependentUpon>AboutBox1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\OpenFileDialogEx.resx">
       <DependentUpon>OpenFileDialogEx.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -861,9 +743,6 @@
     <EmbeddedResource Include="FormUser.resx">
       <DependentUpon>FormUser.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form仿真.resx">
-      <DependentUpon>Form仿真.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMima.resx">
       <DependentUpon>FrmMima.cs</DependentUpon>
@@ -922,45 +801,9 @@
     <EmbeddedResource Include="Frm\form围压跳转条件.resx">
       <DependentUpon>form围压跳转条件.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="helper.resources" />
-    <EmbeddedResource Include="helper.resx">
-      <DependentUpon>helper.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HelpPainter.resx">
-      <DependentUpon>HelpPainter.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ImageButton.resx">
-      <DependentUpon>ImageButton.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="JMeter.resx">
+    <EmbeddedResource Include="SControls\JMeter.resx">
       <DependentUpon>JMeter.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LBIndustrialCtrls\Button\LBButton.resx">
-      <DependentUpon>LBButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LBIndustrialCtrls\Knob\LBKnob.resx">
-      <DependentUpon>LBKnob.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LBIndustrialCtrls\Led\LB7SegmentDisplay.resx">
-      <DependentUpon>LB7SegmentDisplay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LBIndustrialCtrls\Led\LBLed.resx">
-      <DependentUpon>LBLed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LBIndustrialCtrls\Meters\LBDigitalMeter.resx">
-      <DependentUpon>LBDigitalMeter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LBIndustrialCtrls\obj\Debug\LBSoft.IndustrialCtrls.Buttons.LBButton.resources" />
-    <EmbeddedResource Include="LBIndustrialCtrls\obj\Debug\LBSoft.IndustrialCtrls.Knobs.LBKnob.resources" />
-    <EmbeddedResource Include="LBIndustrialCtrls\obj\Debug\LBSoft.IndustrialCtrls.Leds.LB7SegmentDisplay.resources" />
-    <EmbeddedResource Include="LBIndustrialCtrls\obj\Debug\LBSoft.IndustrialCtrls.Leds.LBLed.resources" />
-    <EmbeddedResource Include="LBIndustrialCtrls\obj\Debug\LBSoft.IndustrialCtrls.Meters.LBDigitalMeter.resources" />
-    <EmbeddedResource Include="MouseKey\FormRecFileSelect.resx">
-      <DependentUpon>FormRecFileSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -987,20 +830,8 @@
       <DependentUpon>UserControl报告常规.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="TabButtonExtender.resx">
-      <DependentUpon>TabButtonExtender.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="TableLayoutPanelExT.resx">
       <DependentUpon>TableLayoutPanelExT.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Toolbox.resx">
-      <DependentUpon>ToolBox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TxtOpenFileDialog.resx">
-      <DependentUpon>TxtOpenFileDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlCamera.resx">
@@ -1207,13 +1038,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="tab.pfx" />
     <None Include="TabHeaderDemo_TemporaryKey.pfx" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LBIndustrialCtrls\obj\Debug\TempPE\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <COMReference Include="ADODB">
       <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>

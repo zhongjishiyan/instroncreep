@@ -9,7 +9,7 @@ namespace TabHeaderDemo
 {
     public partial class ListReport :ListBox 
     {
-        public List<ReportItem> mlist;
+        public List<ReportItem> mlist=new List<ReportItem>();
         private string v;
         private ReportItem a;
 
@@ -21,7 +21,7 @@ namespace TabHeaderDemo
         public ListReport(IContainer container)
         {
             container.Add(this);
-            mlist = new List<ReportItem>();
+          
             InitializeComponent();
         }
 

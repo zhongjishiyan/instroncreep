@@ -37,7 +37,7 @@ namespace TabHeaderDemo.Frm
         private void button1_Click(object sender, EventArgs e)
         {
             GlobeVal.selcontroller = comboBox1.SelectedIndex + 1;
-            CComLibrary.GlobeVal.filesave.currentmachineId = GlobeVal.selcontroller - 1;
+            ClsStaticStation.m_Global.currentmachineId  = GlobeVal.selcontroller - 1;
 
             Close();
 

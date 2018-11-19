@@ -92,7 +92,7 @@ namespace TabHeaderDemo
 
         public static  VideoCaptureDevice cam1;     //视频的来源选择
 
-        public static ClsStaticStation.ClsBaseControl myarm;
+        public static ClsStaticStation.CDsp  myarm;
 
 
         public static UserReport muserreport;

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using XLNet;
-using PipesServerTest;
+//using PipesServerTest;
 
 namespace ClsStaticStation
 {
    public  class ClsBaseControl
     {
 
-        public TransferData MyTransferData;
+       
 
         public int tcount = 0;
 

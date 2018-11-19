@@ -2022,6 +2022,11 @@ namespace CComLibrary
 
         public double keeptime;//保持时间
 
+        public double ave;//均值
+        public double range;//幅值
+        public double freq;//频率
+        public int count;//次数
+
 
         public double mstartload;
         public double mendload;
@@ -2086,33 +2091,26 @@ namespace CComLibrary
 
             string s = "";
 
-            if (cmd == 2)
-            {
-                s = "当围压压力到达" + dest.ToString() + "MPa时";
-            }
 
-            else
+            for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
             {
-
-                for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
+                if (destcontrolmode == i)
                 {
-                    if (destcontrolmode == i)
+                    s = "当" + ClsStaticStation.m_Global.mycls.hardsignals[i].cName + "到达" +
+
+                        dest.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0] + "时";
+
+                    if (destcontrolmode == 1)
                     {
-                        s = "当" + ClsStaticStation.m_Global.mycls.hardsignals[i].cName + "到达" +
-
-                            dest.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0] + "时";
-
-                        if (destcontrolmode == 1)
-                        {
-                            s = s + "[" + CComLibrary.GlobeVal.filesave.LoadToStrain(dest).ToString("F4") + "MPa]";
-
-                        }
+                        s = s + "[" + CComLibrary.GlobeVal.filesave.LoadToStrain(dest).ToString("F4") + "MPa]";
 
                     }
 
-
-
                 }
+
+
+            }
+                
 
                 if (keeptime == 0)
                 {
@@ -2135,7 +2133,7 @@ namespace CComLibrary
                 {
                     s = s + ",跟随";
                 }
-            }
+            
             return s;
         }
 
@@ -2196,10 +2194,11 @@ namespace CComLibrary
             }
             cmdstingcount = m_Global.mycls.hardsignals.Count;
 
-            actionstring = new string[2];
+            actionstring = new string[3];
 
-            actionstring[0] = "异步控制";
-            actionstring[1] = "同步控制";
+            actionstring[0] = "斜波";
+            actionstring[1] = "正弦波";
+            actionstring[2] = "三角波";
 
 
             mseglist = new List<SegTest>();
@@ -2240,7 +2239,10 @@ namespace CComLibrary
                     BinaryFormatter b = new BinaryFormatter();
 
                     c = b.Deserialize(fileStream) as SegFile;
-
+                    c.actionstring = new string[3];
+                    c.actionstring[0] = "斜波";
+                    c.actionstring[1] = "正弦波";
+                    c.actionstring[2] = "三角波";
 
                     c.cmdstring = new string[m_Global.mycls.hardsignals.Count];
 
@@ -3114,7 +3116,7 @@ namespace CComLibrary
         public string play_avi_datafile = "";
 
 
-        public int currentmachineId = 0;//当前主机号蠕变使用
+      
 
         public double StrainToLoad(double l)
         {
@@ -3241,15 +3243,10 @@ namespace CComLibrary
 
                 CComLibrary.SegFile sf = new CComLibrary.SegFile();
 
-                if (CComLibrary.GlobeVal.filesave.SegName != "方法.seg")
-                {
-                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
+               
+                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
                        + CComLibrary.GlobeVal.filesave.SegName);
-                }
-                else
-                {
-                    sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (CComLibrary.GlobeVal.filesave.currentmachineId+1).ToString().Trim() + "\\seg\\方法.seg");
-                }
+               
 
                 int i = 0;
 
@@ -4406,6 +4403,29 @@ namespace CComLibrary
                         c.mtestlist = new List<int>();
                     }
 
+                    bool mt = true;
+                    for (int i = 0; i < c.mchsignals.Count; i++)
+                    {
+                        if (mchsignals[i].cName != ClsStaticStation.m_Global.mycls.chsignals[i].cName)
+                        {
+                            mt = false;
+                        }
+
+                    }
+
+                    if (mt == false)
+                    {
+                        c.mchsignals.Clear();
+                        for (int i = 0; i < ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
+                        {
+
+                            c.mchsignals.Add(ClsStaticStation.m_Global.mycls.chsignals[i]);
+                        }
+                    }
+
+                 
+
+
                     if (c.mautozero == null)
                     {
                         c.mautozero = new List<ItemSignal>();
@@ -4750,17 +4770,10 @@ namespace CComLibrary
                         {
                             SegFile sf = new SegFile();
 
-                            if (SegName != "方法.seg")
-                            {
-                                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
+                           
+                            sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
                                    + SegName);
-                            }
-                            else
-                            {
-                                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + (CComLibrary.GlobeVal.filesave.currentmachineId + 1).ToString().Trim() + "\\seg\\方法.seg");
-
-
-                            }
+                            
                             int i = 0;
 
 

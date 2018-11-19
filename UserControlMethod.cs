@@ -793,80 +793,7 @@ namespace TabHeaderDemo
             
             
         }
-        public void InitTree1()
-        {
-            treeView1.Nodes.Clear();
-            
-
-            treeView1.Nodes.Add("试样", "试样");
-            treeView1.Nodes["试样"].StateImageIndex = 1;
-
-            treeView1.Nodes["试样"].Nodes.Add("尺寸");
-            treeView1.Nodes["试样"].Nodes.Add("数字输入");
-            treeView1.Nodes["试样"].Nodes.Add("文本输入");
-            treeView1.Nodes["试样"].Nodes.Add("选项输入");
-            treeView1.Nodes.Add("控制", "控制");
-            treeView1.Nodes["控制"].StateImageIndex = 2;
-
-            treeView1.Nodes["控制"].Nodes.Add("试验选项");
-            treeView1.Nodes["控制"].Nodes.Add("应变");
-            //  treeView1.Nodes[2].Nodes.Add("测试前");
-            treeView1.Nodes["控制"].Nodes.Add("测试");
-            treeView1.Nodes["控制"].Nodes.Add("数据采集");
-            treeView1.Nodes["控制"].Nodes.Add("测试结束");
-            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
-            {
-                treeView1.Nodes.Add("计算", "计算");
-                treeView1.Nodes["计算"].StateImageIndex = 3;
-
-                treeView1.Nodes["计算"].Nodes.Add("设定");
-            }
-
-           
-
-            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
-            {
-                treeView1.Nodes.Add("结果1", "结果1");
-                treeView1.Nodes["结果1"].StateImageIndex = 4;
-                treeView1.Nodes["结果1"].Nodes.Add("列");
-                treeView1.Nodes["结果1"].Nodes.Add("统计");
-                treeView1.Nodes["结果1"].Nodes.Add("格式");
-            }
-            if (CComLibrary.GlobeVal.filesave._flow计算和结果 == true)
-            {
-                treeView1.Nodes.Add("结果2", "结果2");
-                treeView1.Nodes["结果2"].StateImageIndex = 5;
-                treeView1.Nodes["结果2"].Nodes.Add("列");
-                treeView1.Nodes["结果2"].Nodes.Add("统计");
-                treeView1.Nodes["结果2"].Nodes.Add("格式");
-            }
-            treeView1.Nodes.Add("曲线图1", "曲线图1");
-            treeView1.Nodes["曲线图1"].StateImageIndex = 6;
-
-            treeView1.Nodes["曲线图1"].Nodes.Add("类型");
-            treeView1.Nodes["曲线图1"].Nodes.Add("X轴数据");
-            treeView1.Nodes["曲线图1"].Nodes.Add("Y轴数据");
-            treeView1.Nodes["曲线图1"].Nodes.Add("高级");
-            treeView1.Nodes.Add("曲线图2", "曲线图2");
-
-            treeView1.Nodes["曲线图2"].StateImageIndex = 7;
-            treeView1.Nodes["曲线图2"].Nodes.Add("类型");
-            treeView1.Nodes["曲线图2"].Nodes.Add("X轴数据");
-            treeView1.Nodes["曲线图2"].Nodes.Add("Y轴数据");
-            treeView1.Nodes["曲线图2"].Nodes.Add("高级");
-            treeView1.Nodes.Add("其它显示", "其它显示");
-
-            treeView1.Nodes["其它显示"].StateImageIndex = 14;
-            treeView1.Nodes["其它显示"].Nodes.Add("电表设置");
-            treeView1.Nodes["其它显示"].Nodes.Add("操作输入");
-            treeView1.Nodes["其它显示"].Nodes.Add("摄像");
-            treeView1.Nodes.Add("报告", "报告");
-            treeView1.Nodes["报告"].StateImageIndex = 9;
-            treeView1.Nodes["报告"].Nodes.Add("文档设置");
-            treeView1.Nodes["报告"].Nodes.Add("原始数据输出");
-            treeView1.Nodes["报告"].Nodes.Add("数据库设置");
-            treeView1.Nodes["报告"].Nodes.Add("峰值趋势数据输出");
-        }
+      
         public void  InitTree()
         {
             treeView1.Nodes.Clear();
@@ -1063,9 +990,10 @@ namespace TabHeaderDemo
                 }
                 else
                 {
-                    OpenTheMethod(fileName);
+                  
 
-                    
+
+                    this.OpenTheMethodSilently (fileName);
                 }
 
                 ClsStaticStation.m_Global.mycls.initchannel();
@@ -1090,26 +1018,24 @@ namespace TabHeaderDemo
                 }
                 GlobeVal.mmethodfilename = f;
 
+              
 
-                CComLibrary.GlobeVal.filesave.SegName = "方法.seg";
+               
+              
 
                 CComLibrary.GlobeVal.filesave.SerializeNow(GlobeVal.mmethodfilename);
 
-                f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\seg\\方法.seg";
-                if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\seg") == false)
-                {
-                    System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\seg");
-                }
-
-                CComLibrary.SegFile sf=new CComLibrary.SegFile();
 
 
 
-                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + CComLibrary.GlobeVal.filesave.SegName);
 
-                sf.SerializeNow(f);
-                CComLibrary.GlobeVal.filesave.SegName = "方法.seg";
+               
+                
 
+
+                
+
+                GlobeVal.userControltest1.changeUI();
 
                 // btnexopen.Visible = false;
 

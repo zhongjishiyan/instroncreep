@@ -1353,6 +1353,78 @@ namespace TabHeaderDemo
 
         }
 
+        public void changeUI()
+        {
+            Visible = false;
+
+
+           
+
+           tableLayoutPanelback.RowStyles[1].Height = 0;
+
+           tableLayoutPanelTop.Visible = false;
+
+
+
+
+            splitContainer1.SplitterDistance = 100;
+
+             paneltestright.Visible = false;
+
+
+
+           lstspe.Visible = true;
+
+
+            if (GlobeVal.dynset == null)
+            {
+
+                GlobeVal.dynset = new UserControlDynSet();
+
+            }
+
+
+            GlobeVal.dynset.Dock = DockStyle.Fill;
+           
+            GlobeVal.dynset.tlbetest.Controls.Clear();
+            GlobeVal.dynset.tlbetest.RowCount = 0;
+            GlobeVal.dynset.tlbetest.ColumnCount = 0;
+            GlobeVal.dynset.Dock = DockStyle.None;
+
+            if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\layout\\" + CComLibrary.GlobeVal.filesave.layfilename + ".lay"))
+            {
+                OpenDefaultlayout(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\layout\\" + CComLibrary.GlobeVal.filesave.layfilename + ".lay");
+
+            }
+            else
+            {
+                OpenDefaultlayout(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\layout\\模板1.lay");
+            }
+
+            GlobeVal.dynset.Dock = DockStyle.Fill;
+            paneltestright.Controls.Clear();
+
+            paneltestright.Controls.Add(GlobeVal.dynset);
+
+            GlobeVal.dynset.tlbetest.Dock = DockStyle.Fill;
+
+
+            GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
+
+            paneltestright.Visible = true;
+
+
+            FreeFormRefresh(false, false);
+
+
+
+            Visible = true;
+            Visible = false;
+            GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
+           
+            Visible = true;
+        }
+
         public void btnend_Click(object sender, EventArgs e)
         {
 
