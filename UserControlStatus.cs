@@ -64,38 +64,7 @@ namespace TabHeaderDemo
                           
                             lblstep.Text = "步骤" + (GlobeVal.myarm.mcurseg).ToString();
                         }
-                        else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3)
-                        {
-                          
-                            lblstep.Text =CComLibrary.GlobeVal.filesave.mseglist[GlobeVal.myarm.mcurseg].mseq.stepname;
-
-                            if ((CComLibrary.GlobeVal.filesave.mseglist[GlobeVal.myarm.mcurseg].mseq.wavekind ==2) ||(CComLibrary.GlobeVal.filesave.mseglist[GlobeVal.myarm.mcurseg].mseq.wavekind == 3))
-                            {
-                                label8.Visible = true;
-                                label4.Visible = true;
-                                lblcurlargecount.Visible = true;
-                                lbllargecount.Visible = true;
-                               
-                                label7.Visible = true;
-
-                                lblcurlargecount.Text = CComLibrary.GlobeVal.filesave.mseglist[GlobeVal.myarm.mcurseg].mseq.mcurrentcount.ToString();
-                                lbllargecount.Text = CComLibrary.GlobeVal.filesave.mseglist[GlobeVal.myarm.mcurseg].mseq.mcount.ToString();
-                             
-                            }
-                           
-                            else
-                            {
-                                label8.Visible = false ;
-                                label4.Visible = false ;
-                                lblcurlargecount.Visible = false ;
-                                lbllargecount.Visible = false ;
-                             
-                                label7.Visible = false;
-                            
-                            } 
-
-
-                        }
+                       
 
                        
                     }

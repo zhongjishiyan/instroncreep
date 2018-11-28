@@ -58,20 +58,20 @@ namespace AppleLabApplication
             int i;
 
 
-            filesave._flow测试前 = CheckState.Unchecked;
+            filesave._flow测试前 = checklist.GetItemCheckState(0);
 
-            filesave._flow测试结束=checklist.GetItemCheckState(0);
+            filesave._flow测试结束=checklist.GetItemCheckState(1);
 
-            filesave._flow数据采集=checklist.GetItemCheckState(1);
+            filesave._flow数据采集=checklist.GetItemCheckState(2);
 
-            filesave._flow应变= checklist.GetItemCheckState(2);
-
-
-            filesave._flow试验选项= checklist.GetItemCheckState(3);
+            filesave._flow应变= checklist.GetItemCheckState(3);
 
 
+            filesave._flow试验选项= checklist.GetItemCheckState(4);
 
-            filesave._flow测试= checklist.GetItemCheckState(4);
+
+
+            filesave._flow测试= checklist.GetItemCheckState(5);
 
 
             filesave.fileextname = ".txt";

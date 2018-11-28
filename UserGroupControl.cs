@@ -321,26 +321,36 @@ namespace TabHeaderDemo
                
                 for (int i=0;i<listView1.Items.Count;i++)
                 {
-                    listView1.Items[i].SubItems[1].Text = GlobeVal.myarm.MyTransferData.Id[i].ToString();
-                    listView1.Items[i].SubItems[2].Text = GlobeVal.myarm.MyTransferData.State[i].ToString();
+                    listView1.Items[i].SubItems[1].Text = GlobeVal.myarm.MyTransferData.FuncID[i].ToString();
+                    listView1.Items[i].SubItems[2].Text = GlobeVal.myarm.MyTransferData.EDC_STATE[i].ToString();
                     listView1.Items[i].SubItems[3].Text = GlobeVal.myarm.MyTransferData.ControlValue[i].ToString();
-                    listView1.Items[i].SubItems[4].Text = GlobeVal.myarm.MyTransferData.load[i].ToString();
-                    listView1.Items[i].SubItems[5].Text = GlobeVal.myarm.MyTransferData.pos[i].ToString();
-                    listView1.Items[i].SubItems[6].Text = GlobeVal.myarm.MyTransferData.extA[i].ToString();
-                    listView1.Items[i].SubItems[7].Text = GlobeVal.myarm.MyTransferData.extB[i].ToString();
-                    listView1.Items[i].SubItems[8].Text = GlobeVal.myarm.MyTransferData.extAve[i].ToString();
-                    listView1.Items[i].SubItems[9].Text = GlobeVal.myarm.MyTransferData.unbalancedness[i].ToString();
-                    listView1.Items[i].SubItems[10].Text = GlobeVal.myarm.MyTransferData.Temperaturecontrol[i].ToString();
-                    listView1.Items[i].SubItems[11].Text = GlobeVal.myarm.MyTransferData.Temperature1[i].ToString();
-                    listView1.Items[i].SubItems[12].Text = GlobeVal.myarm.MyTransferData.Temperature2[i].ToString();
-                    listView1.Items[i].SubItems[13].Text = GlobeVal.myarm.MyTransferData.Temperature3[i].ToString();
-                    listView1.Items[i].SubItems[14].Text = GlobeVal.myarm.MyTransferData.temperaturegradient[i].ToString();
-                    listView1.Items[i].SubItems[15].Text = GlobeVal.myarm.MyTransferData.testtime[i].ToString();
-                    listView1.Items[i].SubItems[16].Text = GlobeVal.myarm.MyTransferData.wavecount[i].ToString();
-                    listView1.Items[i].SubItems[17].Text = GlobeVal.myarm.MyTransferData.cycliccount[i].ToString();
+                    listView1.Items[i].SubItems[4].Text = GlobeVal.myarm.MyTransferData.CHANNEL_F[i].ToString();
+                    listView1.Items[i].SubItems[5].Text = GlobeVal.myarm.MyTransferData.CHANNEL_S[i].ToString();
+                    listView1.Items[i].SubItems[6].Text = GlobeVal.myarm.MyTransferData.CHANNEL_4[i].ToString();
+                    listView1.Items[i].SubItems[7].Text = GlobeVal.myarm.MyTransferData.CHANNEL_5[i].ToString();
+                    listView1.Items[i].SubItems[8].Text = GlobeVal.myarm.MyTransferData.CHANNEL_E[i].ToString();
+                    listView1.Items[i].SubItems[9].Text = GlobeVal.myarm.MyTransferData.Unbalancedness[i].ToString();
+                    listView1.Items[i].SubItems[10].Text = GlobeVal.myarm.MyTransferData.TemperatureControl[i].ToString();//试验温度设定值
+                    listView1.Items[i].SubItems[11].Text = GlobeVal.myarm.MyTransferData.CHANNEL_7[i].ToString();//温度上
+                    listView1.Items[i].SubItems[12].Text = GlobeVal.myarm.MyTransferData.CHANNEL_8[i].ToString();//温度中
+                    listView1.Items[i].SubItems[13].Text = GlobeVal.myarm.MyTransferData.CHANNEL_9[i].ToString();//温度下
+                    listView1.Items[i].SubItems[14].Text = GlobeVal.myarm.MyTransferData.TemperatureGradient[i].ToString();//温度梯度
+                    listView1.Items[i].SubItems[15].Text = GlobeVal.myarm.MyTransferData.TEST_TIME[i].ToString();
+                    listView1.Items[i].SubItems[16].Text = GlobeVal.myarm.MyTransferData.LOOP_COUNT[i].ToString();//循环个数
+                    listView1.Items[i].SubItems[17].Text = GlobeVal.myarm.MyTransferData.CYCLE_COUNT[i].ToString();//波形次数
 
                 }
             }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

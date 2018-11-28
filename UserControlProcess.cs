@@ -46,10 +46,7 @@ namespace TabHeaderDemo
                 {
                     v.SubItems.Add("步骤" + (i + 1).ToString());
                 }
-                else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3)
-                {
-                    v.SubItems.Add(CComLibrary.GlobeVal.filesave.mseglist[i].mseq.stepname);
-                }
+                
             }
             v = new ListViewItem();
             listViewPro1.Items.Add(v);
@@ -68,13 +65,7 @@ namespace TabHeaderDemo
                         v.SubItems[i + 1].Text = CComLibrary.GlobeVal.filesave.mseglist[i].currentcount.ToString() + "|"+ CComLibrary.GlobeVal.filesave.mseglist[i].returncount.ToString();
                     }
                 }
-                else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3)
-                {
-                    if (CComLibrary.GlobeVal.filesave.mseglist[i].mseq.loop == true)
-                    {
-                        v.SubItems[i+1].Text = CComLibrary.GlobeVal.filesave.mseglist[i].mseq.finishedloopcount.ToString()+  "|" + CComLibrary.GlobeVal.filesave.mseglist[i].mseq.loopcount.ToString();
-                    }
-                }
+                
             }
 
             int w = 0;

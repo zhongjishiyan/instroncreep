@@ -412,22 +412,12 @@ namespace TabHeaderDemo
            if (mc.Name == "控制过程")
            {
                string s="";
-               if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 0)
-               {
-                   s=s+"控制过程:" + "一般测控"+"\r\n";
-               }
-               else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1)
+               
+                if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1)
                {
                    s=s+"控制过程:" + "中级测控"+"\r\n";
                }
-               else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 2)
-               {
-                   s=s+"控制过程:" + "简单控制"+"\r\n";
-               }
-               else if (CComLibrary.GlobeVal.filesave.mcontrolprocess ==3)
-                {
-                    s = s + "控制过程:" + "高级测控" + "\r\n";
-                }
+              
               
 
                CComLibrary.GlobeVal.filesave.InitExplainList();

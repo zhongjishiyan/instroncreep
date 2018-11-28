@@ -3116,8 +3116,36 @@ namespace CComLibrary
         public string play_avi_datafile = "";
 
 
-      
+        public   SegTest[] msegtest; //12个试验段
 
+        public int msegtestcount;//实际试验段的数量
+
+        public bool mTemperatureBool = false; //保温温度
+
+        public double MTemperatureTest;//试验温度
+
+        public double mTemperatureTime;//保温时间
+
+        public double mTemperatureShift;//温度波动
+
+        public double mTemperatureEnd;//结束温度
+
+     
+
+        public bool malarm;//报警激活
+
+        public double  malarmvalue1;//负荷超差
+
+        public double malarmvalue2;//温度超差
+        public double malarmvalue3;//超温度梯度
+        public double malarmvalue4;//超不平衡度
+        
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
         public double StrainToLoad(double l)
         {
             double t = 0;
@@ -3183,58 +3211,9 @@ namespace CComLibrary
         public void InitExplainList()
         {
 
-            if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 2) //简单试验
-            {
+           
 
-
-
-
-                mexplainlist = new List<CmdSeg>();
-                mexplainlist.Clear();
-
-
-                mexplainlist.Add(CComLibrary.GlobeVal.filesave.simple_cmd);
-
-
-
-
-
-
-            }
-
-            if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 0) //一般试验
-            {
-
-
-
-
-                mexplainlist = new List<CmdSeg>();
-                mexplainlist.Clear();
-
-                if (CComLibrary.GlobeVal.filesave.pretest_cmd.check == true)
-                {
-                    mexplainlist.Add(CComLibrary.GlobeVal.filesave.pretest_cmd);
-
-
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    if (CComLibrary.GlobeVal.filesave.testcmdstep[i].check == true)
-                    {
-                        mexplainlist.Add(CComLibrary.GlobeVal.filesave.testcmdstep[i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-                }
-
-
-
-            }
-            else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1)//中级试验
+           if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1)//中级试验
             {
 
 
@@ -3307,42 +3286,7 @@ namespace CComLibrary
 
             }
 
-            else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3)//高级试验
-            {
-                CComLibrary.GlobeVal.filesave.mseglist = new List<CComLibrary.CmdSeg>();
-
-                CComLibrary.SequenceFile sqf = new CComLibrary.SequenceFile();
-                sqf = sqf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + CComLibrary.GlobeVal.filesave.SequenceName);
-
-
-                for (int i = 0; i < sqf.mSequencelist.Count; i++)
-                {
-
-                    CComLibrary.CmdSeg n = new CComLibrary.CmdSeg();
-                    n.check = true;
-                    n.explainkind = 1;
-                    n.mseq = sqf.mSequencelist[i];
-
-
-                 
-
-                    CComLibrary.GlobeVal.filesave.mseglist.Add(n);
-                }
-
-
-                mexplainlist = new List<CComLibrary.CmdSeg>();
-                mexplainlist.Clear();
-
-
-
-                for (int i = 0; i < CComLibrary.GlobeVal.filesave.mseglist.Count; i++)
-                {
-
-                    mexplainlist.Add(CComLibrary.GlobeVal.filesave.mseglist[i]);
-
-
-                }
-            }
+           
 
         }
 
@@ -4035,11 +3979,19 @@ namespace CComLibrary
             init_mtable2statistics(this);
             mrawdata = new List<ItemSignal>();
 
-            chkcriteria = new bool[3];
-            cbomeasurement = new int[3];
-            numinterval = new double[3];
-            numintervallast = new double[3];
-            numintervallast1 = new double[3];
+            chkcriteria = new bool[4];
+            cbomeasurement = new int[4];
+            numinterval = new double[4];
+            numintervallast = new double[4];
+            numintervallast1 = new double[4];
+
+            msegtest = new CComLibrary.SegTest[12];
+            for (int i=0;i<12;i++)
+            {
+                msegtest[i] = new CComLibrary.SegTest();
+            }
+
+            msegtestcount = 1;
 
             teststep = new List<CTestStep>();
             for (int i = 0; i < 9; i++)
@@ -4600,45 +4552,45 @@ namespace CComLibrary
                         c.mrawdata = new List<ItemSignal>();
                     }
 
-                    if (c.numinterval == null)
+                    if ((c.numinterval == null)||(c.numinterval.Length ==3))
                     {
-                        c.numinterval = new double[3];
-                        for (int i = 0; i < 3; i++)
+                        c.numinterval = new double[4];
+                        for (int i = 0; i < 4; i++)
                         {
                             c.numinterval[i] = 0;
                         }
                     }
 
-                    if(c.numintervallast ==null)
+                    if((c.numintervallast ==null)||(c.numintervallast.Length ==3))
                     {
-                        c.numintervallast = new double[3];
-                        for (int i=0;i<3;i++)
+                        c.numintervallast = new double[4];
+                        for (int i=0;i<4;i++)
                         {
                             c.numintervallast[i] = 0;
                         } 
                     }
 
-                    if (c.numintervallast1 ==null)
+                    if ((c.numintervallast1 ==null) ||(c.numintervallast1.Length ==3))
                     {
-                        c.numintervallast1 = new double[3];
-                        for (int i=0;i<3;i++)
+                        c.numintervallast1 = new double[4];
+                        for (int i=0;i<4;i++)
                         {
                             c.numintervallast1[i] = 0;
                         }
                     }
 
-                    if (c.cbomeasurement == null)
+                    if ((c.cbomeasurement == null) ||(c.cbomeasurement.Length ==3))
                     {
-                        c.cbomeasurement = new int[3];
-                        for (int i = 0; i < 3; i++)
+                        c.cbomeasurement = new int[4];
+                        for (int i = 0; i < 4; i++)
                         {
                             c.cbomeasurement[i] = 0;
                         }
                     }
-                    if (c.chkcriteria == null)
+                    if ((c.chkcriteria == null) ||(c.chkcriteria.Length ==3))
                     {
-                        c.chkcriteria = new bool[3];
-                        for (int i = 0; i < 3; i++)
+                        c.chkcriteria = new bool[4];
+                        for (int i = 0; i < 4; i++)
                         {
                             c.chkcriteria[i] = false;
                         }
@@ -4727,7 +4679,18 @@ namespace CComLibrary
 
                     }
 
+                    if(c.msegtest ==null)
+                    {
+                        c.msegtest = new SegTest[12];
+                       
+                        for (int i = 0; i < 12; i++)
+                        {
+                            c.msegtest[i] = new CComLibrary.SegTest();
+                        }
 
+                        c.msegtestcount = 1;
+
+                    }
                     if (c.mchsignals == null)
                     {
                         c.mchsignals = new List<ItemSignal>();

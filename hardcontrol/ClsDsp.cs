@@ -57,7 +57,7 @@ namespace ClsStaticStation
 
         private PipeServer _pipeServer;
         private PipeClient _pipeClient;
-      
+
 
 
         private XLDOPE.MDataIno ma;
@@ -141,7 +141,7 @@ namespace ClsStaticStation
 
             int l = Marshal.SizeOf(_pipeClient._TransferCmd);
 
-        
+
 
             _pipeClient.Send(_vchar, "TestPipe1", l, 1000);
 
@@ -151,11 +151,11 @@ namespace ClsStaticStation
         public override void DriveOn()
         {
 
-          
+
         }
         public override void DriveOff()
         {
-            
+
         }
 
         public override void CrossDown(int ctrlmode, double speed)
@@ -165,7 +165,7 @@ namespace ClsStaticStation
             double m = speed;
 
 
-           
+
 
         }
 
@@ -175,7 +175,7 @@ namespace ClsStaticStation
             {
 
 
-               //清零
+                //清零
 
             }
 
@@ -190,12 +190,12 @@ namespace ClsStaticStation
 
 
 
-               //复原
+                //复原
 
             }
         }
 
-   
+
 
         public override void cleartime()
         {
@@ -251,313 +251,7 @@ namespace ClsStaticStation
 
             mtestrun = true;
 
-            if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 2)//简单试验
-            {
-                mrunlist = new List<CComLibrary.CmdSeg>();
-                mrunlist.Clear();
-
-                startcontrol();
-            }
-            else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 0) //一般试验
-            {
-
-
-
-
-                mrunlist = new List<CComLibrary.CmdSeg>();
-                mrunlist.Clear();
-
-                if (CComLibrary.GlobeVal.filesave.pretest_cmd.check == true)
-                {
-                    mrunlist.Add(CComLibrary.GlobeVal.filesave.pretest_cmd);
-
-
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    if (CComLibrary.GlobeVal.filesave.testcmdstep[i].check == true)
-                    {
-                        mrunlist.Add(CComLibrary.GlobeVal.filesave.testcmdstep[i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-                }
-
-                if (mrunlist.Count > 0)
-                {
-                }
-                else
-                {
-
-                    MessageBox.Show("错误，您没有设置一般测试过程");
-                    mtestrun = false;
-                    return;
-                }
-
-                mcurseg = 0;
-
-                if (mrunlist[mcurseg].controlmode ==
-                    mrunlist[mcurseg].destcontrolmode)
-                {
-                    k = 1;
-                }
-                else
-                {
-                    k = 0;
-                }
-
-
-                segstep(mrunlist[mcurseg].cmd, mrunlist[mcurseg].destorigin(),
-                    Convert.ToInt16(mrunlist[mcurseg].controlmode),
-                     Convert.ToInt16(mrunlist[mcurseg].destcontrolmode),
-                    k, Convert.ToSingle(mrunlist[mcurseg].speedorigin()), 0, 0, 0, 0, mrunlist[mcurseg].destmode);
-
-
-
-
-
-
-            }
-            else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3) //高级试验
-            {
-
-                CComLibrary.SequenceFile sqf = new CComLibrary.SequenceFile();
-                sqf = sqf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + CComLibrary.GlobeVal.filesave.SequenceName);
-
-
-                CComLibrary.GlobeVal.filesave.mseglist = new List<CComLibrary.CmdSeg>();
-
-
-                for (int i = 0; i < sqf.mSequencelist.Count; i++)
-                {
-                    CComLibrary.CmdSeg n = new CComLibrary.CmdSeg();
-                    n.check = true;
-                    if (sqf.mSequencelist[i].wavekind == 0) //斜波
-                    {
-                        n.controlmode = sqf.mSequencelist[i].controlmode;
-
-                        n.cmd = 0;
-
-                        n.speed = Convert.ToDouble(ClsStaticStation.m_Global.mycls.hardsignals[n.controlmode].speedSignal.GetOriValue(sqf.mSequencelist[i].mrate, sqf.mSequencelist[i].mrateunit));
-                        n.destcontrolmode = sqf.mSequencelist[i].destcontrolmode;
-                        n.dest = Convert.ToDouble(ClsStaticStation.m_Global.mycls.hardsignals[n.controlmode].GetOriValue(sqf.mSequencelist[i].mdest, sqf.mSequencelist[i].mdestunit));
-                        n.keeptime = 0;
-
-                        n.mseq = sqf.mSequencelist[i];
-                        n.mseq.wavekind = sqf.mSequencelist[i].wavekind;
-                        n.mseq.stepname = sqf.mSequencelist[i].stepname;
-
-                        n.destmode = sqf.mSequencelist[i].destmode;
-
-                        n.action = 0; //始终保持异步控制
-                        if (sqf.mSequencelist[i].loop == true)
-                        {
-
-                            n.returncount = sqf.mSequencelist[i].loopcount;
-                            n.returnstep = sqf.mSequencelist[i].returnstep;
-                        }
-                        else
-                        {
-                            n.returncount = 0;
-                            n.returnstep = 0;
-                        }
-
-                    }
-
-                    if (sqf.mSequencelist[i].wavekind == 1) //保持波
-                    {
-                        n.keeptime = sqf.mSequencelist[i].keeptime;
-                        n.mseq = sqf.mSequencelist[i];
-                        n.mseq.wavekind = sqf.mSequencelist[i].wavekind;
-                        n.mseq.stepname = sqf.mSequencelist[i].stepname;
-
-                        n.cmd = 0;
-
-                        n.action = 0; //始终保持异步控制
-                        if (sqf.mSequencelist[i].loop == true)
-                        {
-
-
-                            n.returncount = sqf.mSequencelist[i].loopcount;
-                            n.returnstep = sqf.mSequencelist[i].returnstep;
-                        }
-                        else
-                        {
-                            n.returncount = 0;
-                            n.returnstep = 0;
-                        }
-
-                    }
-
-                    if (sqf.mSequencelist[i].wavekind == 2) //循环波
-                    {
-                        n.keeptime = sqf.mSequencelist[i].keeptime;
-
-                        n.mseq = sqf.mSequencelist[i];
-                        n.mseq.stepname = sqf.mSequencelist[i].stepname;
-                        n.mseq.wavekind = sqf.mSequencelist[i].wavekind;
-                        n.cmd = 0;
-
-                        n.action = 0; //始终保持异步控制
-                        if (sqf.mSequencelist[i].loop == true)
-                        {
-                            n.returncount = sqf.mSequencelist[i].loopcount;
-                            n.returnstep = sqf.mSequencelist[i].returnstep;
-                        }
-                        else
-                        {
-                            n.returncount = 0;
-                            n.returnstep = 0;
-                        }
-
-                    }
-
-                    if (sqf.mSequencelist[i].wavekind == 3) //正弦波
-                    {
-                        n.keeptime = sqf.mSequencelist[i].keeptime;
-
-                        n.mseq = sqf.mSequencelist[i];
-                        n.mseq.stepname = sqf.mSequencelist[i].stepname;
-                        n.mseq.wavekind = sqf.mSequencelist[i].wavekind;
-                        n.cmd = 0;
-
-                        n.action = 0; //始终保持异步控制
-                        if (sqf.mSequencelist[i].loop == true)
-                        {
-                            n.returncount = sqf.mSequencelist[i].loopcount;
-                            n.returnstep = sqf.mSequencelist[i].returnstep;
-                        }
-                        else
-                        {
-                            n.returncount = 0;
-                            n.returnstep = 0;
-                        }
-
-                    }
-
-
-
-                    CComLibrary.GlobeVal.filesave.mseglist.Add(n);
-                }
-
-
-
-                mrunlist = new List<CComLibrary.CmdSeg>();
-                mrunlist.Clear();
-
-                if (CComLibrary.GlobeVal.filesave.pretest_cmd.check == true)
-                {
-                    mrunlist.Add(CComLibrary.GlobeVal.filesave.pretest_cmd);
-                    mrunlist[0].keeptime = 0;
-                    mrunlist[0].mseq.wavekind = -1;
-                    mrunlist[0].action = 0;
-
-                }
-
-                for (int i = 0; i < CComLibrary.GlobeVal.filesave.mseglist.Count; i++)
-                {
-                    if (CComLibrary.GlobeVal.filesave.mseglist[i].check == true)
-                    {
-                        mrunlist.Add(CComLibrary.GlobeVal.filesave.mseglist[i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-                }
-
-
-                if (mrunlist.Count > 0)
-                {
-                }
-                else
-                {
-
-                    MessageBox.Show("错误，您没有设置高级测试过程");
-                    mtestrun = false;
-                    return;
-                }
-
-
-                bool mfindcurseg = false;
-
-                for (int ii = 0; ii < CComLibrary.GlobeVal.filesave.mseglist.Count; ii++)
-                {
-                    if (CComLibrary.GlobeVal.filesave.mseglist[ii].mseq.runfinished == false)
-                    {
-                        mcurseg = ii;
-                        mfindcurseg = true;
-                        break;
-                    }
-                }
-
-                if (mfindcurseg == false)
-                {
-                    MessageBox.Show("错误，试验过程已经执行完成，请再次重新初始化试验过程");
-                    mtestrun = false;
-                    return;
-
-                }
-
-
-
-
-                for (int ii = mcurseg; ii < mrunlist.Count; ii++)
-                {
-                    if (mrunlist[ii].controlmode ==
-                   mrunlist[ii].destcontrolmode)
-                    {
-                        k = 1;
-                    }
-                    else
-                    {
-                        k = 0;
-                    }
-
-
-                    if (ii == mcurseg)
-                    {
-                        segstep(mrunlist[ii].cmd, mrunlist[ii].destorigin(),
-                   Convert.ToInt16(mrunlist[ii].controlmode),
-                    Convert.ToInt16(mrunlist[ii].destcontrolmode),
-                   k, Convert.ToSingle(mrunlist[ii].speedorigin()),
-                   mrunlist[ii].keeptime, mrunlist[ii].returnstep, mrunlist[ii].returncount, mrunlist[ii].action, mrunlist[ii].destmode);
-
-                        mcurseg = ii;
-                    }
-                    break;
-
-
-
-
-                }
-
-
-                total_returncount = 0;
-
-
-                for (int ii = mcurseg; ii < mrunlist.Count; ii++)
-                {
-                    if (mrunlist[ii].mseq.loopcount > 0)
-                    {
-                        current_returncount = mrunlist[ii].mseq.finishedloopcount;
-                        break;
-                    }
-                }
-
-
-
-
-
-
-
-            }
-            else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1) //中级试验
+            if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1) //中级试验
             {
 
 
@@ -565,12 +259,12 @@ namespace ClsStaticStation
 
 
                 CComLibrary.SegFile sf = new CComLibrary.SegFile();
-             
+
 
                 sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
                         + CComLibrary.GlobeVal.filesave.SegName);
 
-               
+
 
                 int i = 0;
 
@@ -705,13 +399,13 @@ namespace ClsStaticStation
         }
         public override void DestStart(int ctrlmode, double dest, double speed)
         {
-           
+
             short tan = 0;
             double destination;
             double mspeed;
 
 
-        
+
 
 
         }
@@ -721,7 +415,7 @@ namespace ClsStaticStation
             short tan = 0;
 
 
-           
+
 
 
         }
@@ -732,7 +426,7 @@ namespace ClsStaticStation
             double m = speed;
 
 
-           
+
 
 
         }
@@ -742,7 +436,7 @@ namespace ClsStaticStation
         {
             short tan = 0;
 
-          
+
         }
         public override void endtest()
         {
@@ -773,11 +467,11 @@ namespace ClsStaticStation
 
             CComLibrary.GlobeVal.InitUserCalcChannel();//初始化用户自定义通道
         }
-     
+
 
         public override void demotest(bool testing)
         {
-          
+
 
 
         }
@@ -845,45 +539,45 @@ namespace ClsStaticStation
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Disp")
                     if (i == 0)
                     {
-                       
+
                     }
                     if (i == 1)
                     // if (m_Global.mycls.hardsignals[i].SignName == "Ch Load")
                     {
-                      
+
                     }
 
                     if (i == 2)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Ext")
                     {
-                     
+
                     }
                     if (i == 3)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor3")
                     {
-                      
+
                     }
                     if (i == 4)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor4")
                     {
-                       
+
                     }
 
                     if (i == 5)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor5")
                     {
-                       
+
                     }
                     if (i == 6)
                     // if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor6")
                     {
-                     
+
                     }
                     if (i == 7)
 
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor7")
                     {
-                     
+
                     }
 
 
@@ -904,51 +598,51 @@ namespace ClsStaticStation
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Disp")
                     {
 
-                       
+
                     }
                     if (i == 1)
 
                     // if (m_Global.mycls.hardsignals[i].SignName == "Ch Load")
                     {
 
-                       
+
                     }
                     if (i == 2)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Ext")
                     {
 
-                     
+
                     }
                     if (i == 3)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor3")
                     {
 
-                      
+
                     }
                     if (i == 4)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor4")
                     {
 
-                       
+
                     }
                     if (i == 5)
 
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor5")
                     {
 
-                       
+
                     }
                     if (i == 6)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor6")
                     {
 
-                     
+
                     }
                     if (i == 7)
                     //if (m_Global.mycls.hardsignals[i].SignName == "Ch Sensor7")
                     {
 
-                   
+
                     }
 
 
@@ -989,105 +683,28 @@ namespace ClsStaticStation
             else
             {
 
-                if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3)
+
+
+                if (cmd == 2)
                 {
-                    if (mrunlist[mcurseg].mseq.wavekind <= 0)
-                    {
-                        m_runstate = 1;
 
-                        myedc.Move.PosExt((XLDOPE.CTRL)ConvertCtrlMode(firstctl), Convert.ToSingle(speed), XLDOPE.LIMITMODE.NOT_ACTIVE, 5, (XLDOPE.CTRL)ConvertCtrlMode(destctl)
-                            , Convert.ToSingle(dest), (XLDOPE.DESTMODE)destmode, ref tan);
-
-                    }
-
-                    if (mrunlist[mcurseg].mseq.wavekind == 1)
-                    {
-                        m_runstate = 0;
-
-                    }
-
-                    if (mrunlist[mcurseg].mseq.wavekind == 2)
-
-                    {
-                        if ((mrunlist[mcurseg].mseq.mcount - mrunlist[mcurseg].mseq.mfinishedcount) <= 0)
-                        {
-                            m_runstate = 0;
-                        }
-                        else
-                        {
-                            m_runstate = 1;
-                            double m_speed = Convert.ToDouble(m_Global.mycls.hardsignals[mrunlist[mcurseg].controlmode].speedSignal.GetOriValue(mrunlist[mcurseg].mseq.mtrirate, mrunlist[mcurseg].mseq.mtrirateunit));
-                            double m_dest1 = mrunlist[mcurseg].mseq.mtrimax;
-                            double m_dest2 = mrunlist[mcurseg].mseq.mtrimin;
-
-
-                            myedc.Move.Cycle((XLDOPE.CTRL)mrunlist[mcurseg].mseq.controlmode, m_speed, m_dest1, 0, m_speed, m_dest2, 0, (DoPE_HANDLE)(mrunlist[mcurseg].mseq.mcount - mrunlist[mcurseg].mseq.mfinishedcount), m_speed, m_dest2, ref tan);
-                        }
-
-                    }
-
-
-                    if (mrunlist[mcurseg].mseq.wavekind == 3)
-
-                    {
-                        if (mrunlist[mcurseg].mseq.mcount - mrunlist[mcurseg].mseq.mfinishedcount <= 0)
-                        {
-                            m_runstate = 0;
-                        }
-                        else
-                        {
-                            m_runstate = 1;
-                            double m_speed = Convert.ToDouble(m_Global.mycls.hardsignals[mrunlist[mcurseg].controlmode].speedSignal.GetOriValue(mrunlist[mcurseg].mseq.msinrate, mrunlist[mcurseg].mseq.msinrateunit));
-                            double m_dest1 = mrunlist[mcurseg].mseq.msinmax;
-                            double m_dest2 = mrunlist[mcurseg].mseq.msinmin;
-
-                            double m_offset = 0;
-                            double m_amp = 0;
-
-                            if (m_dest1 < m_dest2)
-                            {
-                                m_offset = m_dest1 + (m_dest2 - m_dest1) / 2;
-                                m_amp = (m_dest2 - m_dest1) / 2;
-                            }
-                            else
-                            {
-                                m_offset = m_dest2 + (m_dest1 - m_dest2) / 2;
-                                m_amp = (m_dest1 - m_dest2) / 2;
-                            }
-
-
-                            myedc.Move.DynCyclesSimple(XLDOPE.DYN_WAVEFORM.COSINE, (XLDOPE.DYN_PEAKCTRL)0, (XLDOPE.CTRL)mrunlist[mcurseg].mseq.controlmode, false, m_speed, m_offset, m_amp,
-                                mrunlist[mcurseg].mseq.msinfreq, (DoPE_HANDLE)(mrunlist[mcurseg].mseq.mcount - mrunlist[mcurseg].mseq.mfinishedcount), m_speed, m_offset, ref tan);
-                        }
-                    }
-
-
-                    mrun = true;
 
                 }
                 else
                 {
 
-                    if (cmd == 2)
-                    {
-
-
-                    }
-                    else
-                    {
 
 
 
+                    m_runstate = 1;
+                    myedc.Move.PosExt((XLDOPE.CTRL)ConvertCtrlMode(firstctl), Convert.ToSingle(speed), XLDOPE.LIMITMODE.NOT_ACTIVE, 5, (XLDOPE.CTRL)ConvertCtrlMode(destctl)
+                        , Convert.ToSingle(dest), (XLDOPE.DESTMODE)destmode, ref tan);
 
-                        m_runstate = 1;
-                        myedc.Move.PosExt((XLDOPE.CTRL)ConvertCtrlMode(firstctl), Convert.ToSingle(speed), XLDOPE.LIMITMODE.NOT_ACTIVE, 5, (XLDOPE.CTRL)ConvertCtrlMode(destctl)
-                            , Convert.ToSingle(dest), (XLDOPE.DESTMODE)destmode, ref tan);
-
-                        mrun = true;
+                    mrun = true;
 
 
-                    }
                 }
+
 
             }
 
@@ -1106,6 +723,7 @@ namespace ClsStaticStation
             _pipeServer = new PipeServer();
             _pipeServer.PipeMessage += new PipeServer.DelegateMessage(PipesMessageHandler);
 
+            MyTransferData.init();
 
             rr = new float[10];
             GGMsg = new XLDOPE.Data();
@@ -1128,7 +746,7 @@ namespace ClsStaticStation
 
 
         }
-    
+
 
         public TransferData ByteToTransferData<TransferData>(byte[] dataBuffer)
         {
@@ -1160,24 +778,24 @@ namespace ClsStaticStation
             _pipeServer._TransferData = ByteToTransferData<TransferData>(message);
 
             MyTransferData = _pipeServer._TransferData;
-          
+
 
             XLDOPE.Data m1 = new XLDOPE.Data();
 
             m1.Sensor = new double[16];
 
-            m1.Sensor[0] = _pipeServer._TransferData.pos[m_Global.currentmachineId];
-            m1.Sensor[1] = _pipeServer._TransferData.load[m_Global.currentmachineId];
-            
+            m1.Sensor[0] = _pipeServer._TransferData.CHANNEL_S[m_Global.currentmachineId];
+            m1.Sensor[1] = _pipeServer._TransferData.CHANNEL_F[m_Global.currentmachineId];
 
-            m1.Sensor[2] = _pipeServer._TransferData.extA[m_Global.currentmachineId];
-            m1.Sensor[3] = _pipeServer._TransferData.extB[m_Global.currentmachineId];
-            m1.Sensor[4] = _pipeServer._TransferData.extAve[m_Global.currentmachineId];
-            m1.Sensor[5] = _pipeServer._TransferData.Temperature1[m_Global.currentmachineId];
-            m1.Sensor[6] = _pipeServer._TransferData.Temperature2[m_Global.currentmachineId];
-            m1.Sensor[7] = _pipeServer._TransferData.Temperature3[m_Global.currentmachineId];
 
-            m1.Time = _pipeServer._TransferData.time[m_Global.currentmachineId];
+            m1.Sensor[2] = _pipeServer._TransferData.CHANNEL_E[m_Global.currentmachineId];
+            m1.Sensor[3] = _pipeServer._TransferData.CHANNEL_4[m_Global.currentmachineId];
+            m1.Sensor[4] = _pipeServer._TransferData.CHANNEL_5[m_Global.currentmachineId];
+            m1.Sensor[5] = _pipeServer._TransferData.CHANNEL_7[m_Global.currentmachineId];
+            m1.Sensor[6] = _pipeServer._TransferData.CHANNEL_8[m_Global.currentmachineId];
+            m1.Sensor[7] = _pipeServer._TransferData.CHANNEL_9[m_Global.currentmachineId];
+
+            m1.Time = _pipeServer._TransferData.TEST_TIME[m_Global.currentmachineId];
             XLDOPE.MDataIno ma = new XLDOPE.MDataIno();
             ma.Id = 0;
             ma.mydatainfo = m1;
@@ -1192,14 +810,14 @@ namespace ClsStaticStation
             mdatalist.Enqueue(ma);
             mt.ReleaseMutex();
 
-          
+
         }
 
 
         ~CDsp()
         {
             mtimer.Stop();
-           
+
         }
 
         public override void Exit()
@@ -1408,7 +1026,7 @@ namespace ClsStaticStation
             {
                 SendTransferCmd();
             }
-         
+
             {
 
                 ii = mdatalist.Count;
@@ -1418,7 +1036,7 @@ namespace ClsStaticStation
 
 
 
-                     mt.WaitOne();
+                    mt.WaitOne();
                     XLDOPE.MDataIno md = mdatalist.Dequeue();
 
 
@@ -1431,7 +1049,7 @@ namespace ClsStaticStation
                         GGMsg = md.mydatainfo;
                     }
 
-                     mt.ReleaseMutex();
+                    mt.ReleaseMutex();
 
                     b = new RawDataStruct();
                     b.data = new double[24];
@@ -2176,7 +1794,7 @@ namespace ClsStaticStation
 
             return 0;
         }
-      
+
 
         public override int CloseConnection()
         {

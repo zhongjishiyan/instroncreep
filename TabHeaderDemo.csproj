@@ -304,6 +304,12 @@
     <Compile Include="UserControlCamera1.Designer.cs">
       <DependentUpon>UserControlCamera1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCheckStep.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlCheckStep.Designer.cs">
+      <DependentUpon>UserControlCheckStep.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlFont.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -839,6 +845,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlCamera1.resx">
       <DependentUpon>UserControlCamera1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlCheckStep.resx">
+      <DependentUpon>UserControlCheckStep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlFont.resx">
       <DependentUpon>UserControlFont.cs</DependentUpon>

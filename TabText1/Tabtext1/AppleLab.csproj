@@ -345,6 +345,12 @@
       <DependentUpon>TxtOpenFileDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UltraHighAccurateTimer.cs" />
+    <Compile Include="UserControlStepInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlStepInput.Designer.cs">
+      <DependentUpon>UserControlStepInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserGraph.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -479,6 +485,9 @@
     <EmbeddedResource Include="FormMultiAxisNoGrid.resx">
       <DependentUpon>FormMultiAxisNoGrid.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlStepInput.resx">
+      <DependentUpon>UserControlStepInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserGraph.resx">
       <DependentUpon>UserGraph.cs</DependentUpon>

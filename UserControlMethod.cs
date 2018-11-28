@@ -196,8 +196,7 @@ namespace TabHeaderDemo
 
             if (GlobeVal.UserControlMain1.btnmtest.Visible==true)
             {
-                if (CComLibrary.GlobeVal.filesave.mcontrolprocess != 2)
-                {
+              
                     panelbutton.Visible = true;
 
                     btnexopen.Visible = true;
@@ -213,31 +212,7 @@ namespace TabHeaderDemo
                     btnexprint.Visible = false;
 
 
-                    // InitTree();
-                    // treeView1.Visible = false;
-
-                   // treeView1.SelectedNode = treeView1.Nodes["控制"].Nodes["测试"];
-
-                }
-                else
-                {
-                    //InitTree();
-                    panelbutton.Visible = true;
-                   // treeView1.Visible = true;
-
-                    btnexopen.Visible = false;
-
-                    btnexsave1.Visible = false;
-
-                    btnexsaveclose.Visible = true;
-
-                    btnexsave.Visible = true;
-
-                    btnsaveas.Visible = true;
-
-                    btnexprint.Visible = true;
-
-                }
+                 
             }
             else
             {
@@ -370,28 +345,14 @@ namespace TabHeaderDemo
             if (t == "测试")
             {
                 UserControl控制1.Visible = false;
-				if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 0)
-				{
-					UserControl控制1.Init(3);
-				}
-				else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1)
+				
+				 if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1)
 				{
 					
-                    UserControl控制1.Init(6);
+                    UserControl控制1.Init(8);
 				}
 
-				else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 2)
-				{
-					UserControl控制1.Init(7);
-				}
-                else if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3)
-                {
-                    UserControl控制1.Init(8);
-                }
-                else if(CComLibrary.GlobeVal.filesave.mcontrolprocess ==4 )
-                {
-                    UserControl控制1.Init(9);
-                }
+				
 
                 panelback.Visible = false;
                 panelback.Controls.Clear();

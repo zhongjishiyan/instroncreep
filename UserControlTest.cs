@@ -1135,22 +1135,7 @@ namespace TabHeaderDemo
                 return;
             }
 
-            if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3)
-            {
-                for (int j = 0; j < CComLibrary.GlobeVal.filesave.mseglist.Count; j++)
-                {
-                    for (int i = 0; i < 20; i++)
-                    {
-                        CComLibrary.GlobeVal.filesave.mseglist[j].mseq.sampleintervaltemp[i] = 0;
-                    }
-
-
-
-                }
-
-
-            }
-
+           
 
 
             if (CComLibrary.GlobeVal.filesave.dt.Rows[CComLibrary.GlobeVal.filesave.currentspenumber]["试样状态"] is DBNull)
@@ -1593,20 +1578,7 @@ namespace TabHeaderDemo
 
             }
 
-            if ((CComLibrary.GlobeVal.filesave.mcontrolprocess == 3) && (CComLibrary.GlobeVal.filesave.Samplingmode == 1))  //高级试验保存分段条件状态
-            {
-                CComLibrary.SequenceFile sqf = new CComLibrary.SequenceFile();
-                if ((GlobeVal.myarm.mcurseg >= 0) && (GlobeVal.myarm.mcurseg < CComLibrary.GlobeVal.filesave.mseglist.Count))
-                {
-                    CComLibrary.GlobeVal.filesave.mseglist[GlobeVal.myarm.mcurseg].mseq.mfinishedcount = GlobeVal.myarm.count;
-                }
-                for (int i = 0; i < CComLibrary.GlobeVal.filesave.mseglist.Count; i++)
-                {
-                    sqf.add(CComLibrary.GlobeVal.filesave.mseglist[i].mseq);
-                }
-                sqf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sequence\\" + CComLibrary.GlobeVal.filesave.SequenceName);
-
-            }
+           
 
             GlobeVal.MainStatusStrip.Items["toolstatustest"].Visible = false;
 
@@ -1648,14 +1620,7 @@ namespace TabHeaderDemo
 
 
 
-            if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 0)
-            {
-                GlobeVal.MainStatusStrip.Items["toolstatustest"].Text = "一般测试";
-
-
-            }
-
-            else if ((CComLibrary.GlobeVal.filesave.mcontrolprocess == 1) || (CComLibrary.GlobeVal.filesave.mcontrolprocess == 3))
+           if ((CComLibrary.GlobeVal.filesave.mcontrolprocess == 1) )
             {
                 if ((GlobeVal.myarm.mcurseg + 1) > CComLibrary.GlobeVal.filesave.mseglist.Count)
                 {

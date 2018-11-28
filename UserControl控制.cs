@@ -37,7 +37,7 @@ namespace TabHeaderDemo
             }
 
 
-            cbostopchannel1.SelectedIndex = CComLibrary.GlobeVal.filesave.endoftest1usechannel ;
+            cbostopchannel1.SelectedIndex = CComLibrary.GlobeVal.filesave.endoftest1usechannel;
 
             cbostopchannel1_SelectionChangeCommitted(null, null);
 
@@ -52,7 +52,7 @@ namespace TabHeaderDemo
             cbotestendCriteria1.SelectedIndex = CComLibrary.GlobeVal.filesave.endoftest1criteria;
 
 
-         
+
 
 
             numtestendvalue1.Value = CComLibrary.GlobeVal.filesave.endoftest1value;
@@ -74,7 +74,7 @@ namespace TabHeaderDemo
                 lbltestend1.Text = "超过峰值：";
             }
 
-
+            chktestend1_CheckedChanged (null, null);
 
             cbostopchannel2.Items.Clear();
 
@@ -97,7 +97,7 @@ namespace TabHeaderDemo
 
             cbotestendCriteria2.SelectedIndex = CComLibrary.GlobeVal.filesave.endoftest2criteria;
 
-           
+
 
             if (cbotestendCriteria2.SelectedIndex == 0)
             {
@@ -121,8 +121,12 @@ namespace TabHeaderDemo
             cbotestaction.Items.Add("停止");
             cbotestaction.Items.Add("返回");
             cbotestaction.Items.Add("停止，然后返回");
+            cbotestaction.Items.Add("");
+
 
             cbotestaction.SelectedIndex = CComLibrary.GlobeVal.filesave.testaction;
+
+            chktestend2_CheckedChanged(null, null);
 
         }
 
@@ -142,7 +146,7 @@ namespace TabHeaderDemo
                  , typeof(string),
                 sf.cmdstring, false);
 
-    
+
 
 
             SourceGrid2.BehaviorModels.CustomEvents cmdclick = new SourceGrid2.BehaviorModels.CustomEvents();
@@ -430,7 +434,7 @@ namespace TabHeaderDemo
                     f.cbomode.Items.Add("切换");
                     f.cbomode.Items.Add("不切换");
                     f.cbomode.Items.Add("跟随");
-                    f.cbomode.SelectedIndex = sf.mseglist[e.Position.Row - 1].destmod; 
+                    f.cbomode.SelectedIndex = sf.mseglist[e.Position.Row - 1].destmod;
 
 
                     f.lblunit.Text = ClsStaticStation.m_Global.mycls.hardsignals[sf.mseglist[e.Position.Row - 1].destcontrolmode].cUnits[0];
@@ -519,7 +523,7 @@ namespace TabHeaderDemo
 
             sf.mseglist[e.Position.Row - 1].controlmode = c;
 
-           
+
 
 
             SourceGrid2.PositionEventArgs m;
@@ -541,10 +545,91 @@ namespace TabHeaderDemo
 
         }
 
-  
 
-       
-   
+
+        public void Init_中级1()
+        {
+            UserControlCheckStep m1;
+
+            tlpstep.Controls.Clear();
+
+            tlpstep.RowStyles.Clear();
+
+            for (int i = 0; i < CComLibrary.GlobeVal.filesave.msegtestcount; i++)
+            {
+                m1 = new UserControlCheckStep();
+                m1.Dock = DockStyle.Fill;
+               
+                m1.chkline.Text = "段" + (i + 1).ToString().Trim();
+                m1.chkline.Checked = true;
+                m1.CheckChanged += M1_CheckChanged;
+              
+                m1.Id = i;
+                tlpstep.Controls.Add(m1);
+                m1.Height = m1.UnCheckHeight;
+
+
+
+            }
+
+            if (CComLibrary.GlobeVal.filesave.msegtestcount <= 11)
+            {
+                m1 = new UserControlCheckStep();
+                m1.Dock = DockStyle.Fill;
+                
+                m1.chkline.Text = "段" + (CComLibrary.GlobeVal.filesave.msegtestcount + 1).ToString().Trim();
+                m1.Id = CComLibrary.GlobeVal.filesave.msegtestcount;
+                m1.CheckChanged += M1_CheckChanged;
+                m1.chkline.Checked = false;
+                tlpstep.Controls.Add(m1);
+                m1.Height = m1.UnCheckHeight;
+            }
+        }
+
+        private void M1_CheckChanged(object sender, EventArgs e)
+        {
+            UserControlCheckStep m1;
+            if ((sender as UserControlCheckStep).Id == 0)
+            {
+                (sender as UserControlCheckStep).chkline.Checked = true;
+            }
+            else
+            {
+                if ((sender as UserControlCheckStep).Id < CComLibrary.GlobeVal.filesave.msegtestcount - 1)
+                {
+                    (sender as UserControlCheckStep).chkline.Checked = true;
+                }
+
+                else if ((sender as UserControlCheckStep).Id == CComLibrary.GlobeVal.filesave.msegtestcount - 1)
+                {
+                    if ((sender as UserControlCheckStep).chkline.Checked == false)
+                    {
+                        tlpstep.Controls.RemoveAt(CComLibrary.GlobeVal.filesave.msegtestcount);
+                        CComLibrary.GlobeVal.filesave.msegtestcount = CComLibrary.GlobeVal.filesave.msegtestcount - 1;
+                    }
+                }
+                else if((sender as UserControlCheckStep).Id == CComLibrary.GlobeVal.filesave.msegtestcount)
+                {
+                    if ((sender as UserControlCheckStep).chkline.Checked == true)
+                    {
+                        CComLibrary.GlobeVal.filesave.msegtestcount = CComLibrary.GlobeVal.filesave.msegtestcount + 1;
+                        m1 = new UserControlCheckStep();
+                        m1.Dock = DockStyle.Fill;
+                        
+                        m1.chkline.Text = "段" + (CComLibrary.GlobeVal.filesave.msegtestcount + 1).ToString().Trim();
+                        m1.Id = CComLibrary.GlobeVal.filesave.msegtestcount;
+                        m1.CheckChanged += M1_CheckChanged;
+                        
+                        tlpstep.Controls.Add(m1);
+                        m1.Height = m1.UnCheckHeight;
+                       
+                    }
+                }
+
+            }
+            return;
+        }
+
         public void Init_中级()
         {
 
@@ -629,27 +714,40 @@ namespace TabHeaderDemo
 
             if (tscbo.Text == "")
             {
-               // tscbo_SelectedIndexChanged(null, null);
+                // tscbo_SelectedIndexChanged(null, null);
             }
             else
             {
-               tscbo_SelectedIndexChanged(null, null);
+                tscbo_SelectedIndexChanged(null, null);
 
 
             }
-           
+
 
 
         }
         public void Init_数据()
         {
-         
+            cbosamplemode.Items.Clear();
+            cbosamplemode.Items.Add("静态采集方式");
+            cbosamplemode.Items.Add("动态采集方式");
+            //cbosamplemode.Items.Add("高级控制采集方式");
+
+            cbosamplemode.SelectedIndex = CComLibrary.GlobeVal.filesave.Samplingmode;
+
+
+
+
+
+            cbosamplemode_SelectionChangeCommitted(null, null);
 
             chkcriteria1.Checked = CComLibrary.GlobeVal.filesave.chkcriteria[0];
 
             chkcriteria2.Checked = CComLibrary.GlobeVal.filesave.chkcriteria[1];
 
             chkcriteria3.Checked = CComLibrary.GlobeVal.filesave.chkcriteria[2];
+
+            chkcriteria4.Checked = CComLibrary.GlobeVal.filesave.chkcriteria[3];
 
 
             cbomeasurement1.Items.Clear();
@@ -661,7 +759,7 @@ namespace TabHeaderDemo
             }
             cbomeasurement1.SelectedIndex = CComLibrary.GlobeVal.filesave.cbomeasurement[0];
 
-            
+
 
             cbomeasurement2.Items.Clear();
 
@@ -672,7 +770,7 @@ namespace TabHeaderDemo
             }
             cbomeasurement2.SelectedIndex = CComLibrary.GlobeVal.filesave.cbomeasurement[1];
 
-      
+
 
             cbomeasurement3.Items.Clear();
 
@@ -683,15 +781,47 @@ namespace TabHeaderDemo
             }
             cbomeasurement3.SelectedIndex = CComLibrary.GlobeVal.filesave.cbomeasurement[2];
 
+            cbomeasurement4.Items.Clear();
+
+
+            for (int i = 0; i < ClsStaticStation.m_Global.mycls.allsignals.Count; i++)
+            {
+                cbomeasurement4.Items.Add(ClsStaticStation.m_Global.mycls.allsignals[i].cName);
+            }
+            cbomeasurement4.SelectedIndex = CComLibrary.GlobeVal.filesave.cbomeasurement[3];
+
+
             lblinterval1.Text = ClsStaticStation.m_Global.mycls.allsignals[cbomeasurement1.SelectedIndex].cUnits[0];
             lblinterval2.Text = ClsStaticStation.m_Global.mycls.allsignals[cbomeasurement2.SelectedIndex].cUnits[0];
             lblinterval3.Text = ClsStaticStation.m_Global.mycls.allsignals[cbomeasurement3.SelectedIndex].cUnits[0];
+            lblinterval4.Text = ClsStaticStation.m_Global.mycls.allsignals[cbomeasurement4.SelectedIndex].cUnits[0];
 
 
 
             numinterval1.Value = CComLibrary.GlobeVal.filesave.numinterval[0];
             numinterval2.Value = CComLibrary.GlobeVal.filesave.numinterval[1];
             numinterval3.Value = CComLibrary.GlobeVal.filesave.numinterval[2];
+            numinterval4.Value = CComLibrary.GlobeVal.filesave.numinterval[3];
+
+            chkcriteria1_CheckedChanged(null, null);
+            chkcriteria2_CheckedChanged(null, null);
+            chkcriteria3_CheckedChanged(null, null);
+            chkcriteria4_CheckedChanged(null, null);
+
+            cboSaveCriteria.Items.Clear();
+            cboSaveCriteria.Items.Add("按照控制器采集间隔保存");
+            cboSaveCriteria.Items.Add("按照波形间隔");
+            cboSaveCriteria.Items.Add("按照循环间隔");
+            cboSaveCriteria.Items.Add("按照时间存盘");
+
+
+         
+
+            for (int i=0;i<6;i++)
+            {
+                dgridsave.Columns[i].Width = dgridsave.Width / 6;
+            }
+
 
 
         }
@@ -718,7 +848,7 @@ namespace TabHeaderDemo
                 cboextchannel.SelectedIndex = 0;
             }
 
-            
+
 
             numext.Value = CComLibrary.GlobeVal.filesave.Extensometer_DataValue;
             cboextunit.Items.Clear();
@@ -728,131 +858,36 @@ namespace TabHeaderDemo
 
             }
 
-        
-            if ((CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit>=0) && (CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit< 
+
+            if ((CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit >= 0) && (CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit <
             m_Global.mycls.hardsignals[CComLibrary.GlobeVal.filesave.Extensometer_DataChannel].cUnitCount))
             {
-            
-            cboextunit.SelectedIndex = CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit; 
+
+                cboextunit.SelectedIndex = CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit;
             }
 
             else
             {
-               CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit=0;
-                cboextunit.SelectedIndex =0;
+                CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit = 0;
+                cboextunit.SelectedIndex = 0;
             }
             cboextact.SelectedIndex = CComLibrary.GlobeVal.filesave.Extensometer_Action;
             chkfrozen.Checked = CComLibrary.GlobeVal.filesave.Extensometer_DataFrozen;
             numgauge.Value = CComLibrary.GlobeVal.filesave.Extensometer_gauge;
-            numgauge1.Value = CComLibrary.GlobeVal.filesave.Extensometer1_gauge; 
+            numgauge1.Value = CComLibrary.GlobeVal.filesave.Extensometer1_gauge;
 
         }
         public void Init_设置控制()
         {
 
-            cbocontrolprocess.Items.Clear();
-            cbocontrolprocess.Items.Add("一般测试");
-            cbocontrolprocess.Items.Add("中级测试");
-            cbocontrolprocess.Items.Add("简单测试");
-
-        
-
-            if ((CComLibrary.GlobeVal.filesave.mcontrolprocess>=0) && (CComLibrary.GlobeVal.filesave.mcontrolprocess<=2))
-            {
-
-            }
-            else
-            {
-                CComLibrary.GlobeVal.filesave.mcontrolprocess = 1;
-            }
-            cbocontrolprocess.SelectedIndex = CComLibrary.GlobeVal.filesave.mcontrolprocess;
-
+            CComLibrary.GlobeVal.filesave.mcontrolprocess = 1;
             
-         
-
-            grid1.RowsCount = 0;
-            grid1.AutoStretchColumnsToFitWidth = true;
-
-            grid1.BorderStyle = BorderStyle.FixedSingle;
-
-            grid1.ColumnsCount = 6;
-            for (int i = 0; i < grid1.ColumnsCount; i++)
-            {
-                grid1.Columns[i].Width = grid1.Width / grid1.ColumnsCount;
-            }
-
-            grid1.Columns[grid1.ColumnsCount - 1].Width = grid1.Columns[0].Width - 1;
-
-            grid1.Columns[grid1.ColumnsCount - 1].AutoSizeMode = SourceGrid2.AutoSizeMode.EnableStretch;
-            grid1.FixedRows = 1;
-            grid1.Rows.Insert(0);
-            grid1.Rows[0].Height = 25;
-
-            SourceGrid2.Cells.Real.ColumnHeader head = new SourceGrid2.Cells.Real.ColumnHeader("名称");
-            head.EnableSort = false;
-            grid1[0, 0] = head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("单位");
-            head.EnableSort = false;
-           grid1[0, 1] =head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("上限");
-            head.EnableSort = false;
-            grid1[0, 2] = head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("下限");
-            head.EnableSort = false;
-            grid1[0, 3] = head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("量程");
-            head.EnableSort = false;
-            grid1[0, 4] = head;
-
-            head = new SourceGrid2.Cells.Real.ColumnHeader("激活");
-            head.EnableSort = false;
-            grid1[0, 5] = head;
-
-            for (int i = 1; i <= CComLibrary.GlobeVal.filesave.mchsignals.Count; i++)
-            {
-                grid1.Rows.Insert(i);
-                grid1[i, 0] = new SourceGrid2.Cells.Real.Cell(
-                    CComLibrary.GlobeVal.filesave.mchsignals[i - 1].cName, typeof(string));
-
-                grid1[i, 1] = new SourceGrid2.Cells.Real.Cell(
-                    CComLibrary.GlobeVal.filesave.mchsignals[i - 1].cUnits[
-                    0], typeof(string)
-                   );
-
-                grid1[i, 2] = new SourceGrid2.Cells.Real.Cell(
-                   CComLibrary.GlobeVal.filesave.mchsignals[i - 1].uplimit, typeof(double));
-
-                grid1[i, 3] = new SourceGrid2.Cells.Real.Cell(
-                  CComLibrary.GlobeVal.filesave.mchsignals[i - 1].donwlimit, typeof(double));
-
-                grid1[i, 4] = new SourceGrid2.Cells.Real.Cell(
-                   m_Global.mycls.chsignals[i - 1].fullmaxbase
-                   , typeof(double)
-                  );
-                grid1[i, 5] = new SourceGrid2.Cells.Real.CheckBox(CComLibrary.GlobeVal.filesave.mchsignals[i-1].limitselect);
-
-
-            }
-
-           
-
-            cbosamplemode.Items.Clear();
-            cbosamplemode.Items.Add("静态采集方式");
-            cbosamplemode.Items.Add("动态采集方式");
-            //cbosamplemode.Items.Add("高级控制采集方式");
-
-            cbosamplemode.SelectedIndex = CComLibrary.GlobeVal.filesave.Samplingmode;
-           
-            
-
-
-
-            cbosamplemode_SelectionChangeCommitted(null, null);
-
+            chkAlarm.Checked = CComLibrary.GlobeVal.filesave.malarm;
+            chkAlarm_CheckStateChanged(null, null);
+            numAlarm1.Value = CComLibrary.GlobeVal.filesave.malarmvalue1;
+            numAlarm2.Value = CComLibrary.GlobeVal.filesave.malarmvalue2;
+            numAlarm3.Value = CComLibrary.GlobeVal.filesave.malarmvalue3;
+            numAlarm4.Value = CComLibrary.GlobeVal.filesave.malarmvalue4;
 
         }
         private void list_autozerosetvalue()
@@ -975,7 +1010,7 @@ namespace TabHeaderDemo
                 CComLibrary.GlobeVal.filesave.testcmdstep[1].speedunit = 0;
                 cbospeedunit2.SelectedIndex = 0;
             }
-        
+
             cbospeedunit3.Items.Clear();
             for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals[cbocontrol3.SelectedIndex].speedSignal.cUnitCount; i++)
             {
@@ -994,7 +1029,7 @@ namespace TabHeaderDemo
                 cbospeedunit3.SelectedIndex = 0;
             }
 
-          
+
 
 
             cbospeedunit4.Items.Clear();
@@ -1014,7 +1049,7 @@ namespace TabHeaderDemo
                 cbospeedunit4.SelectedIndex = 0;
             }
 
-          
+
 
             cbodestcontrol1.Items.Clear();
             cbodestcontrol2.Items.Clear();
@@ -1107,7 +1142,7 @@ namespace TabHeaderDemo
                 CComLibrary.GlobeVal.filesave.testcmdstep[1].destunit = 0;
                 cbovalueunit2.SelectedIndex = 0;
             }
-          
+
 
 
             cbovalueunit3.Items.Clear();
@@ -1176,6 +1211,8 @@ namespace TabHeaderDemo
         public void Init_测试前()
         {
             chkpreload.Checked = CComLibrary.GlobeVal.filesave.pretest_cmd.check;
+
+            chkpreload_CheckStateChanged(null, null);
             cbopreload_controlmode.Items.Clear();
             for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
             {
@@ -1206,7 +1243,7 @@ namespace TabHeaderDemo
             else
             {
                 CComLibrary.GlobeVal.filesave.pretest_cmd.speedunit = 0;
-                cbopreload_speedunit.SelectedIndex = 0; 
+                cbopreload_speedunit.SelectedIndex = 0;
             }
 
 
@@ -1286,6 +1323,30 @@ namespace TabHeaderDemo
 
             }
 
+            chkTemperature.Checked = CComLibrary.GlobeVal.filesave.mTemperatureBool;
+            NumTestTemperature.Value = CComLibrary.GlobeVal.filesave.MTemperatureTest;
+            NumTemperatureTime.Value = CComLibrary.GlobeVal.filesave.mTemperatureTime;
+            numTemperatureShift.Value = CComLibrary.GlobeVal.filesave.mTemperatureShift;
+            numTemperatureEnd.Value = CComLibrary.GlobeVal.filesave.mTemperatureEnd;
+
+            CboTestTemperature.Items.Clear();
+            CboTestTemperature.Items.Add("℃");
+            CboTestTemperature.SelectedIndex = 0;
+
+            cboTemperatureTime.Items.Clear();
+            cboTemperatureTime.Items.Add("Min");
+            cboTemperatureTime.SelectedIndex = 0;
+
+            cboTemperatureShift.Items.Clear();
+            cboTemperatureShift.Items.Add("℃");
+            cboTemperatureShift.SelectedIndex = 0;
+
+            cboTemperatureEnd.Items.Clear();
+            cboTemperatureEnd.Items.Add("℃");
+            cboTemperatureEnd.SelectedIndex = 0;
+            chkTemperature_CheckStateChanged(null, null);
+
+
         }
         public void Init(int sel)
         {
@@ -1315,7 +1376,7 @@ namespace TabHeaderDemo
             {
                 Init_设置控制();
             }
-            if (sel ==1)
+            if (sel == 1)
             {
                 Init_应变();
             }
@@ -1337,7 +1398,7 @@ namespace TabHeaderDemo
             {
                 Init_数据();
             }
-
+            /*
             if (sel == 6)
             {
                 Init_中级();
@@ -1364,19 +1425,27 @@ namespace TabHeaderDemo
                 }
             }
 
+           */
+
+            if (sel == 8)
+            {
+                Init_中级1();
+            }
+
+
             if (sel == 7)
             {
                 Init_简单();
             }
-           
-           
 
-         }
+
+
+        }
         public UserControl控制()
         {
             InitializeComponent();
             tabControl1.ItemSize = new Size(1, 1);
-           
+
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
@@ -1393,7 +1462,7 @@ namespace TabHeaderDemo
             this.tableLayoutPanel5.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel5, true, null);
 
             this.tableLayoutPanel6.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel6, true, null);
-            this.tableLayoutPanel7.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel7, true, null);
+            this.tlppreload.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tlppreload, true, null);
             this.tableLayoutPanel8.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel8, true, null);
 
             this.tableLayoutPanel9.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel9, true, null);
@@ -1425,22 +1494,21 @@ namespace TabHeaderDemo
             this.tableLayoutPanel36.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel36, true, null);
             this.tableLayoutPanel38.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel38, true, null);
 
+            this.tlpcriteria1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tlpcriteria1, true, null);
+            this.tlpcriteria2.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tlpcriteria2, true, null);
+            this.tlpcriteria3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tlpcriteria3, true, null);
+            this.tlpcriteria4.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tlpcriteria4, true, null);
+
+            this.tlpdata.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tlpdata, true, null);
+
+
+         
 
         }
 
-       
-    
-      
-
-       
-
-        
-
-
-
         private void cbocontrolprocess_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            CComLibrary.GlobeVal.filesave.mcontrolprocess = cbocontrolprocess.SelectedIndex;
+            
 
         }
 
@@ -1526,7 +1594,7 @@ namespace TabHeaderDemo
 
         private void num1_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
-            
+
         }
 
         private void grid1_CellLostFocus(object sender, SourceGrid2.PositionCancelEventArgs e)
@@ -1538,7 +1606,7 @@ namespace TabHeaderDemo
                 {
                     if (i == e.Position.Row)
                     {
-                       
+
                         CComLibrary.GlobeVal.filesave.mchsignals[i - 1].uplimit = Convert.ToDouble(e.Cell.GetDisplayText(new SourceGrid2.Position(e.Position.Row, e.Position.Column)));
                     }
                 }
@@ -1560,7 +1628,7 @@ namespace TabHeaderDemo
                 {
                     if (i == e.Position.Row)
                     {
-                        CComLibrary.GlobeVal.filesave.mchsignals[i - 1].limitselect  = Convert.ToBoolean (e.Cell.GetDisplayText(new SourceGrid2.Position(e.Position.Row, e.Position.Column)));
+                        CComLibrary.GlobeVal.filesave.mchsignals[i - 1].limitselect = Convert.ToBoolean(e.Cell.GetDisplayText(new SourceGrid2.Position(e.Position.Row, e.Position.Column)));
                     }
                 }
             }
@@ -1585,6 +1653,15 @@ namespace TabHeaderDemo
         private void chkpreload_CheckStateChanged(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.pretest_cmd.check = chkpreload.Checked;
+
+            if (chkpreload.Checked ==true)
+            {
+                tlppreload.Height = 132;
+            }
+            else
+            {
+                tlppreload.Height = Convert.ToInt16( tlppreload.RowStyles[0].Height); 
+            }
         }
 
         private void editpreload_speed_ValueChanged(object sender, EventArgs e)
@@ -1842,16 +1919,16 @@ namespace TabHeaderDemo
                 {
                     for (int j = sf.mseglist[i].returnstep; j < i; j++)
                     {
-                        if (sf.mseglist[j].cyclicrun ==true)
+                        if (sf.mseglist[j].cyclicrun == true)
                         {
                             fb = true;
                         }
                     }
-                   
+
                 }
             }
 
-            if (fb==true)
+            if (fb == true)
             {
                 MessageBox.Show("错误，循环中包括子循环");
                 return;
@@ -1862,13 +1939,13 @@ namespace TabHeaderDemo
                 System.IO.File.Delete(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
             }
 
-            if ( tscbo.Text.Trim()!="")
+            if (tscbo.Text.Trim() != "")
             {
                 sf.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
             }
             else
             {
-               
+
 
             }
 
@@ -1912,9 +1989,9 @@ namespace TabHeaderDemo
             {
                 sf.mseglist.Clear();
 
-                
+
                 sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\" + tscbo.Text);
-                
+
                 int i = 0;
 
                 grid2.RowsCount = 1;
@@ -2026,12 +2103,12 @@ namespace TabHeaderDemo
 
         private void numericEdit1_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
-           
+
         }
 
         private void chkcrack_CheckedChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void chkstep1_CheckedChanged(object sender, EventArgs e)
@@ -2044,13 +2121,13 @@ namespace TabHeaderDemo
 
         }
 
-        
-       
-       
-      
 
 
-        
+
+
+
+
+
 
         private void listViewBlock1_btnleftevent(object sender, int index)
         {
@@ -2068,50 +2145,13 @@ namespace TabHeaderDemo
             return;
         }
 
-        
-
-       
-     
-
-     
-
-       
-
-       
-      
-       
-     
-
-       
-       
-
-     
-
-      
-   
-
-      
-     
-    
-      
-      
-       
-     
-
-    
-      
-
-      
-       
-
-      
 
         private void numcount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
 
-        }        
+        }
 
-        
+
         private void cbopreload_speedunit_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.pretest_cmd.speedunit = cbopreload_speedunit.SelectedIndex;
@@ -2119,12 +2159,12 @@ namespace TabHeaderDemo
 
         private void cboprelaod_valueunit_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            CComLibrary.GlobeVal.filesave.pretest_cmd.destunit = cboprelaod_valueunit.SelectedIndex; 
+            CComLibrary.GlobeVal.filesave.pretest_cmd.destunit = cboprelaod_valueunit.SelectedIndex;
         }
 
         private void cbospeedunit1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            CComLibrary.GlobeVal.filesave.testcmdstep[0].speedunit =cbospeedunit1.SelectedIndex ;
+            CComLibrary.GlobeVal.filesave.testcmdstep[0].speedunit = cbospeedunit1.SelectedIndex;
         }
 
         private void cbospeedunit2_SelectionChangeCommitted(object sender, EventArgs e)
@@ -2184,12 +2224,12 @@ namespace TabHeaderDemo
 
         private void numext_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
-            CComLibrary.GlobeVal.filesave.Extensometer_DataValue  = numext.Value; 
+            CComLibrary.GlobeVal.filesave.Extensometer_DataValue = numext.Value;
         }
 
         private void cboextunit_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit = cboextunit.SelectedIndex; 
+            CComLibrary.GlobeVal.filesave.Extensometer_DataValueUnit = cboextunit.SelectedIndex;
         }
 
         private void cboextchannel_SelectionChangeCommitted(object sender, EventArgs e)
@@ -2205,12 +2245,12 @@ namespace TabHeaderDemo
 
             cboextunit.SelectedIndex = 0;
 
-            
+
         }
 
         private void cboextruler_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            CComLibrary.GlobeVal.filesave.Extensometer_removal = cboextruler.SelectedIndex; 
+            CComLibrary.GlobeVal.filesave.Extensometer_removal = cboextruler.SelectedIndex;
         }
 
         private void chkremoveext_CheckedChanged(object sender, EventArgs e)
@@ -2218,35 +2258,20 @@ namespace TabHeaderDemo
             CComLibrary.GlobeVal.filesave.chkextremove = chkremoveext.Checked;
         }
 
-       
+
 
         private void cbosamplemode_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.Samplingmode = cbosamplemode.SelectedIndex;
 
-            if (CComLibrary.GlobeVal.filesave.Samplingmode  ==0)
-            {
-              
-                grpcriteria1.Visible = true;
-                grpcriteria2.Visible = true;
-                grpcriteria3.Visible = true;
-
-            }
-            else
-            {
-                
-                grpcriteria1.Visible = false ;
-                grpcriteria2.Visible = false ;
-                grpcriteria3.Visible = false ;
-
-            }
+           
         }
 
-       
 
-      
 
-       
+
+
+
         private void cbomeasurement2_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.cbomeasurement[1] = cbomeasurement2.SelectedIndex;
@@ -2259,6 +2284,8 @@ namespace TabHeaderDemo
             CComLibrary.GlobeVal.filesave.cbomeasurement[0] = cbomeasurement1.SelectedIndex;
 
             lblinterval1.Text = ClsStaticStation.m_Global.mycls.allsignals[cbomeasurement1.SelectedIndex].cUnits[0];
+
+
         }
 
         private void cbomeasurement3_SelectionChangeCommitted(object sender, EventArgs e)
@@ -2270,23 +2297,58 @@ namespace TabHeaderDemo
 
         private void chkcriteria1_CheckedChanged(object sender, EventArgs e)
         {
-             CComLibrary.GlobeVal.filesave.chkcriteria[0]= chkcriteria1.Checked;
+            CComLibrary.GlobeVal.filesave.chkcriteria[0] = chkcriteria1.Checked;
+
+            if (chkcriteria1.Checked == false)
+            {
+                tlpcriteria1.Height = 24;
+            }
+            else
+            {
+
+                tlpcriteria1.Height = 74;
+
+               
+            }
 
         }
 
         private void chkcriteria2_CheckedChanged(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.chkcriteria[1] = chkcriteria2.Checked;
+
+            if (chkcriteria2.Checked == false)
+            {
+                tlpcriteria2.Height = 24;
+            }
+            else
+            {
+
+                tlpcriteria2.Height = 74;
+
+
+            }
         }
 
         private void chkcriteria3_CheckedChanged(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.chkcriteria[2] = chkcriteria3.Checked;
+            if (chkcriteria3.Checked == false)
+            {
+                tlpcriteria3.Height = 24;
+            }
+            else
+            {
+
+                tlpcriteria3.Height = 74;
+
+
+            }
         }
 
         private void numinterval1_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
-           CComLibrary.GlobeVal.filesave.numinterval[0] = numinterval1.Value ;
+            CComLibrary.GlobeVal.filesave.numinterval[0] = numinterval1.Value;
         }
 
         private void numinterval2_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
@@ -2314,22 +2376,40 @@ namespace TabHeaderDemo
                 e.Cancel = true;
             }
 
-           
+
         }
 
         private void chktestend1_CheckedChanged(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.endoftest1 = chktestend1.Checked;
+
+            if(chktestend1.Checked ==true)
+            {
+                grptestend1.Height = 118;
+            }
+            else
+            {
+                grptestend1.Height = 40;
+            }
         }
 
         private void chktestend2_CheckedChanged(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.endoftest2 = chktestend2.Checked;
+
+            if (chktestend2.Checked == true)
+            {
+                grptestend2.Height = 118;
+            }
+            else
+            {
+                grptestend2.Height = 40;
+            }
         }
 
         private void numtestendvalue1_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
-          CComLibrary.GlobeVal.filesave.endoftest1value = numtestendvalue1.Value;
+            CComLibrary.GlobeVal.filesave.endoftest1value = numtestendvalue1.Value;
         }
 
         private void numtestendvalue2_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
@@ -2339,7 +2419,7 @@ namespace TabHeaderDemo
 
         }
 
-      
+
         private void cbostopchannel1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CComLibrary.GlobeVal.filesave.endoftest1usechannel = cbostopchannel1.SelectedIndex;
@@ -2353,16 +2433,195 @@ namespace TabHeaderDemo
             lbltestendCriteria2.Text = ClsStaticStation.m_Global.mycls.allsignals[cbostopchannel2.SelectedIndex].cUnits[0];
         }
 
+        private void userControlCheckStep1_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tlpstep_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void chkTemperature_CheckStateChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mTemperatureBool = chkTemperature.Checked;
+
+            if(chkTemperature.Checked ==true)
+            {
+                tlpTemperature.Height = 132;
+            }
+            else
+            {
+                tlpTemperature.Height = Convert.ToInt16( tlpTemperature.RowStyles[0].Height);
+            }
+        }
+
+        private void chkTemperature_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NumTestTemperature_ValueChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.MTemperatureTest = NumTestTemperature.Value;
+
+        }
+
+        private void NumTemperatureTime_ValueChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mTemperatureTime = NumTemperatureTime.Value;
+        }
+
+        private void numTemperatureShift_ValueChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mTemperatureShift = numTemperatureShift.Value;
+        }
+
+        private void numTemperatureEnd_ValueChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mTemperatureEnd = numTemperatureEnd.Value;
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkcriteria4_CheckedChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.chkcriteria[3] = chkcriteria4.Checked;
+
+            if (chkcriteria4.Checked == false)
+            {
+                tlpcriteria4.Height = 24;
+            }
+            else
+            {
+
+                tlpcriteria4.Height = 81;
+
+
+            }
+        }
+
+        private void cbomeasurement4_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.cbomeasurement[3] = cbomeasurement4.SelectedIndex;
+
+            lblinterval4.Text = ClsStaticStation.m_Global.mycls.allsignals[cbomeasurement4.SelectedIndex].cUnits[0];
+        }
+
+        private void numinterval4_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.numinterval[3] = numinterval4.Value;
+        }
+
+        private void tlpdata_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cboSaveCriteria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cboSaveCriteria.SelectedIndex ==0)
+            {
+                tlpSaveCriteria.RowStyles[1].Height = 0;
+                tlpSaveCriteria.RowStyles[2].Height = 0;
+               
+                tlpSaveCriteria.RowStyles[3].Height = 0;
+                dgridsave.Height = 0;
+            }
+            if (cboSaveCriteria.SelectedIndex == 1)
+            {
+                tlpSaveCriteria.RowStyles[1].Height = 0;
+                tlpSaveCriteria.RowStyles[2].Height = tlpSaveCriteria.RowStyles[0].Height ;
+                tlpSaveCriteria.RowStyles[3].Height = 0;
+               
+                dgridsave.Height = 0;
+            }
+            if (cboSaveCriteria.SelectedIndex == 2)
+            {
+                tlpSaveCriteria.RowStyles[1].Height = 0;
+                tlpSaveCriteria.RowStyles[2].Height = 0;
+                tlpSaveCriteria.RowStyles[3].Height = tlpSaveCriteria.RowStyles[0].Height;
+                dgridsave.Height = 0;
+            }
+            if(cboSaveCriteria.SelectedIndex ==3)
+            {
+                tlpSaveCriteria.RowStyles[1].Height = tlpSaveCriteria.RowStyles[0].Height;
+                tlpSaveCriteria.RowStyles[2].Height = 0;
+                tlpSaveCriteria.RowStyles[3].Height = 0;
+                numSaveCount_AfterChangeValue(null, null);
+                
+            }
+
+        }
+
+        private void numSaveCount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            dgridsave.Rows.Clear();
+
+            dgridsave.Height = dgridsave.ColumnHeadersHeight; 
+
+            for (int i = 0; i < Convert.ToInt16(numSaveCount.Value); i++)
+            {
+                dgridsave.Rows.Add();
+                dgridsave.Height = dgridsave.Height + Convert.ToInt16( dgridsave.Rows[i].Height);
+            }
+            if (dgridsave.Rows.Count > 0)
+            {
+                dgridsave.Height = dgridsave.Height + 5;
+            }
+        }
+
+        private void dgridsave_Resize(object sender, EventArgs e)
+        {
+            dgridsave.Parent.Height = dgridsave.Height;
+           
+        }
+
+       
       
 
-       
+        private void chkAlarm_CheckStateChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.malarm = chkAlarm.Checked;
+            if(chkAlarm.Checked ==false)
+            {
+                grpAlarm.Height = 45;
 
-      
+            }
+            else
+            {
+                grpAlarm.Height = 150;
+            }
+        }
 
-       
+        private void chkAlarm_CheckedChanged(object sender, EventArgs e)
+        {
 
-       
+        }
 
-       
+        private void numAlarm1_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.malarmvalue1 = numAlarm1.Value;
+
+        }
+
+        private void numAlarm2_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.malarmvalue2 = numAlarm2.Value;
+        }
+
+        private void numAlarm3_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.malarmvalue3 = numAlarm3.Value;
+        }
+
+        private void numAlarm4_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.malarmvalue4 = numAlarm4.Value;
+        }
     }
 }

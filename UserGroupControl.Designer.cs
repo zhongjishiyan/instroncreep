@@ -39,39 +39,33 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lstspe = new IP.Components.Toolbox(false);
             this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonEx3 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.buttonEx2 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.buttonEx1 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.button1 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.button7 = new TabHeaderDemo.ButtonExNew(this.components);
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.meter2 = new NationalInstruments.UI.WindowsForms.Meter();
-            this.meter1 = new NationalInstruments.UI.WindowsForms.Meter();
-            this.thermometer3 = new NationalInstruments.UI.WindowsForms.Thermometer();
-            this.thermometer2 = new NationalInstruments.UI.WindowsForms.Thermometer();
-            this.thermometer1 = new NationalInstruments.UI.WindowsForms.Thermometer();
             this.listView1 = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.imageList4 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.buttonEx3 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.buttonEx2 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.buttonEx1 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.button1 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.button7 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.meter2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.meter1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thermometer3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thermometer2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thermometer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -166,6 +160,114 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(92, 573);
             this.panel3.TabIndex = 2;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(199, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(953, 573);
+            this.tableLayoutPanel4.TabIndex = 5;
+            this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.splitContainer1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(927, 557);
+            this.panel1.TabIndex = 0;
+            // 
+            // listView1
+            // 
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(923, 283);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "h1.ico");
+            this.imageList1.Images.SetKeyName(1, "h2.ico");
+            this.imageList1.Images.SetKeyName(2, "h3.ico");
+            this.imageList1.Images.SetKeyName(3, "mt3.ico");
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Black;
+            this.imageList2.Images.SetKeyName(0, "mt11.ico");
+            this.imageList2.Images.SetKeyName(1, "mt12.ico");
+            // 
+            // imageList3
+            // 
+            this.imageList3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList3.ImageStream")));
+            this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList3.Images.SetKeyName(0, "群控3.ico");
+            // 
+            // imageList4
+            // 
+            this.imageList4.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList4.ImageStream")));
+            this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList4.Images.SetKeyName(0, "Selector_Status_Testing.ico");
+            this.imageList4.Images.SetKeyName(1, "Selector_Status_Tested_Rejected.ico");
+            this.imageList4.Images.SetKeyName(2, "Selector_Status_Tested.ico");
+            this.imageList4.Images.SetKeyName(3, "Selector_Status_PreTest.ico");
+            this.imageList4.Images.SetKeyName(4, "Selector_Status_Ready_For_Test.ico");
+            this.imageList4.Images.SetKeyName(5, "Selector_Status_PostTest.ico");
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 50;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.listView1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(923, 553);
+            this.splitContainer1.SplitterDistance = 283;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.tableLayoutPanel5);
+            this.splitContainer2.Size = new System.Drawing.Size(923, 266);
+            this.splitContainer2.SplitterDistance = 680;
+            this.splitContainer2.TabIndex = 0;
             // 
             // buttonEx3
             // 
@@ -277,153 +379,19 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Visible = false;
             // 
-            // tableLayoutPanel4
+            // tableLayoutPanel5
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(199, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(953, 573);
-            this.tableLayoutPanel4.TabIndex = 5;
-            this.tableLayoutPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.listView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 8);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(927, 557);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 365);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(923, 188);
-            this.panel2.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.meter2);
-            this.groupBox1.Controls.Add(this.meter1);
-            this.groupBox1.Controls.Add(this.thermometer3);
-            this.groupBox1.Controls.Add(this.thermometer2);
-            this.groupBox1.Controls.Add(this.thermometer1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(923, 188);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "虚拟面板";
-            // 
-            // meter2
-            // 
-            this.meter2.Caption = "位移";
-            this.meter2.DialColor = System.Drawing.Color.Silver;
-            this.meter2.Location = new System.Drawing.Point(634, 8);
-            this.meter2.Name = "meter2";
-            this.meter2.ScaleArc = new NationalInstruments.UI.Arc(290F, 315F);
-            this.meter2.Size = new System.Drawing.Size(150, 179);
-            this.meter2.SpindleColor = System.Drawing.Color.Red;
-            this.meter2.TabIndex = 4;
-            // 
-            // meter1
-            // 
-            this.meter1.Caption = "负荷";
-            this.meter1.DialColor = System.Drawing.Color.Silver;
-            this.meter1.Location = new System.Drawing.Point(451, 9);
-            this.meter1.Name = "meter1";
-            this.meter1.ScaleArc = new NationalInstruments.UI.Arc(290F, 315F);
-            this.meter1.Size = new System.Drawing.Size(150, 179);
-            this.meter1.SpindleColor = System.Drawing.Color.Red;
-            this.meter1.TabIndex = 3;
-            // 
-            // thermometer3
-            // 
-            this.thermometer3.Caption = "下段温度";
-            this.thermometer3.Location = new System.Drawing.Point(304, 9);
-            this.thermometer3.Name = "thermometer3";
-            this.thermometer3.Size = new System.Drawing.Size(121, 173);
-            this.thermometer3.TabIndex = 2;
-            // 
-            // thermometer2
-            // 
-            this.thermometer2.Caption = "中段温度";
-            this.thermometer2.Location = new System.Drawing.Point(152, 11);
-            this.thermometer2.Name = "thermometer2";
-            this.thermometer2.Size = new System.Drawing.Size(121, 174);
-            this.thermometer2.TabIndex = 1;
-            // 
-            // thermometer1
-            // 
-            this.thermometer1.Caption = "上段温度";
-            this.thermometer1.FillStyle = NationalInstruments.UI.FillStyle.Divot;
-            this.thermometer1.Location = new System.Drawing.Point(6, 11);
-            this.thermometer1.Name = "thermometer1";
-            this.thermometer1.Size = new System.Drawing.Size(121, 173);
-            this.thermometer1.TabIndex = 0;
-            // 
-            // listView1
-            // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(923, 553);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "h1.ico");
-            this.imageList1.Images.SetKeyName(1, "h2.ico");
-            this.imageList1.Images.SetKeyName(2, "h3.ico");
-            this.imageList1.Images.SetKeyName(3, "mt3.ico");
-            // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Black;
-            this.imageList2.Images.SetKeyName(0, "mt11.ico");
-            this.imageList2.Images.SetKeyName(1, "mt12.ico");
-            // 
-            // imageList3
-            // 
-            this.imageList3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList3.ImageStream")));
-            this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList3.Images.SetKeyName(0, "群控3.ico");
-            // 
-            // imageList4
-            // 
-            this.imageList4.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList4.ImageStream")));
-            this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList4.Images.SetKeyName(0, "Selector_Status_Testing.ico");
-            this.imageList4.Images.SetKeyName(1, "Selector_Status_Tested_Rejected.ico");
-            this.imageList4.Images.SetKeyName(2, "Selector_Status_Tested.ico");
-            this.imageList4.Images.SetKeyName(3, "Selector_Status_PreTest.ico");
-            this.imageList4.Images.SetKeyName(4, "Selector_Status_Ready_For_Test.ico");
-            this.imageList4.Images.SetKeyName(5, "Selector_Status_PostTest.ico");
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 50;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(680, 266);
+            this.tableLayoutPanel5.TabIndex = 0;
             // 
             // UserGroupControl
             // 
@@ -440,13 +408,11 @@
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.meter2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.meter1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thermometer3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thermometer2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thermometer1)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -469,14 +435,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ImageList imageList4;
         private System.Windows.Forms.Timer timer1;
-        private NationalInstruments.UI.WindowsForms.Thermometer thermometer1;
-        private NationalInstruments.UI.WindowsForms.Thermometer thermometer3;
-        private NationalInstruments.UI.WindowsForms.Thermometer thermometer2;
-        private NationalInstruments.UI.WindowsForms.Meter meter1;
-        private NationalInstruments.UI.WindowsForms.Meter meter2;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
     }
 }

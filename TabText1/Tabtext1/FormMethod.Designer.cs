@@ -678,6 +678,7 @@
             // 
             this.checklist.FormattingEnabled = true;
             this.checklist.Items.AddRange(new object[] {
+            "控制-测试前",
             "控制-测试结束",
             "控制-数据采集",
             "控制-应变",
@@ -685,7 +686,7 @@
             "控制-设定"});
             this.checklist.Location = new System.Drawing.Point(111, 104);
             this.checklist.Name = "checklist";
-            this.checklist.Size = new System.Drawing.Size(463, 100);
+            this.checklist.Size = new System.Drawing.Size(463, 116);
             this.checklist.TabIndex = 0;
             this.checklist.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checklist_ItemCheck);
             this.checklist.SelectedValueChanged += new System.EventHandler(this.checklist_SelectedValueChanged);
