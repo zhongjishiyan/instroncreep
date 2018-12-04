@@ -253,7 +253,7 @@
             this.numtestendvalue1 = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.lbltestendCriteria1 = new System.Windows.Forms.Label();
             this.chktestend1 = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpBidirectionalProtected = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel61 = new System.Windows.Forms.TableLayoutPanel();
             this.numBidirectionalProtectedDown = new NationalInstruments.UI.WindowsForms.NumericEdit();
@@ -266,9 +266,9 @@
             this.cboBidirectionalProtected = new System.Windows.Forms.ComboBox();
             this.label64 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpUnidirectionalProtection = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel62 = new System.Windows.Forms.TableLayoutPanel();
-            this.cboUnidirectionalProtection1 = new System.Windows.Forms.ComboBox();
+            this.cboUnidirectionalProtectionMode = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel63 = new System.Windows.Forms.TableLayoutPanel();
             this.numUnidirectionalProtection = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.label68 = new System.Windows.Forms.Label();
@@ -277,7 +277,7 @@
             this.cboUnidirectionalProtection = new System.Windows.Forms.ComboBox();
             this.label71 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grpTemperatureProtection = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel64 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel66 = new System.Windows.Forms.TableLayoutPanel();
             this.numTemperatureProtectionDown = new NationalInstruments.UI.WindowsForms.NumericEdit();
@@ -288,7 +288,7 @@
             this.chkTemperatureProtection = new System.Windows.Forms.CheckBox();
             this.label69 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grpFatigueProtection = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel67 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel68 = new System.Windows.Forms.TableLayoutPanel();
             this.numFatigueProtectionstop = new NationalInstruments.UI.WindowsForms.NumericEdit();
@@ -500,23 +500,23 @@
             this.tableLayoutPanel50.SuspendLayout();
             this.tableLayoutPanel51.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numtestendvalue1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.grpBidirectionalProtected.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel61.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numBidirectionalProtectedDown)).BeginInit();
             this.tableLayoutPanel60.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numBidirectionalProtectedUp)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.grpUnidirectionalProtection.SuspendLayout();
             this.tableLayoutPanel62.SuspendLayout();
             this.tableLayoutPanel63.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUnidirectionalProtection)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.grpTemperatureProtection.SuspendLayout();
             this.tableLayoutPanel64.SuspendLayout();
             this.tableLayoutPanel66.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTemperatureProtectionDown)).BeginInit();
             this.tableLayoutPanel65.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTemperatureProtectionUp)).BeginInit();
-            this.groupBox4.SuspendLayout();
+            this.grpFatigueProtection.SuspendLayout();
             this.tableLayoutPanel67.SuspendLayout();
             this.tableLayoutPanel68.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFatigueProtectionstop)).BeginInit();
@@ -864,7 +864,7 @@
             this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 241F));
             this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -882,7 +882,7 @@
             this.label6.ForeColor = System.Drawing.Color.Teal;
             this.label6.Location = new System.Drawing.Point(4, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(423, 36);
+            this.label6.Size = new System.Drawing.Size(410, 36);
             this.label6.TabIndex = 0;
             this.label6.Text = "设置控制-开始试验";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -891,7 +891,7 @@
             // 
             this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Location = new System.Drawing.Point(434, 4);
+            this.panel6.Location = new System.Drawing.Point(421, 4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(40, 30);
             this.panel6.TabIndex = 1;
@@ -1235,7 +1235,7 @@
             this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
             this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1253,7 +1253,7 @@
             this.label5.ForeColor = System.Drawing.Color.Teal;
             this.label5.Location = new System.Drawing.Point(4, 1);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(422, 36);
+            this.label5.Size = new System.Drawing.Size(409, 36);
             this.label5.TabIndex = 0;
             this.label5.Text = "设置控制-应变";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1262,7 +1262,7 @@
             // 
             this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Location = new System.Drawing.Point(433, 4);
+            this.panel5.Location = new System.Drawing.Point(420, 4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(40, 30);
             this.panel5.TabIndex = 1;
@@ -1951,7 +1951,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1969,7 +1969,7 @@
             this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(415, 36);
+            this.label1.Size = new System.Drawing.Size(402, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "设置控制-测试前";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1978,7 +1978,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(426, 4);
+            this.panel4.Location = new System.Drawing.Point(413, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(40, 30);
             this.panel4.TabIndex = 1;
@@ -3053,7 +3053,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -3071,7 +3071,7 @@
             this.label2.ForeColor = System.Drawing.Color.Teal;
             this.label2.Location = new System.Drawing.Point(4, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(416, 36);
+            this.label2.Size = new System.Drawing.Size(403, 36);
             this.label2.TabIndex = 0;
             this.label2.Text = "设置控制-测试";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3080,7 +3080,7 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(427, 4);
+            this.panel1.Location = new System.Drawing.Point(414, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(40, 30);
             this.panel1.TabIndex = 1;
@@ -3103,10 +3103,10 @@
             this.tableLayoutPanel49.Controls.Add(this.grptestend2, 0, 1);
             this.tableLayoutPanel49.Controls.Add(this.groupBox7, 0, 6);
             this.tableLayoutPanel49.Controls.Add(this.grptestend1, 0, 0);
-            this.tableLayoutPanel49.Controls.Add(this.groupBox1, 0, 2);
-            this.tableLayoutPanel49.Controls.Add(this.groupBox2, 0, 3);
-            this.tableLayoutPanel49.Controls.Add(this.groupBox3, 0, 4);
-            this.tableLayoutPanel49.Controls.Add(this.groupBox4, 0, 5);
+            this.tableLayoutPanel49.Controls.Add(this.grpBidirectionalProtected, 0, 2);
+            this.tableLayoutPanel49.Controls.Add(this.grpUnidirectionalProtection, 0, 3);
+            this.tableLayoutPanel49.Controls.Add(this.grpTemperatureProtection, 0, 4);
+            this.tableLayoutPanel49.Controls.Add(this.grpFatigueProtection, 0, 5);
             this.tableLayoutPanel49.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel49.Location = new System.Drawing.Point(0, 38);
             this.tableLayoutPanel49.Name = "tableLayoutPanel49";
@@ -3115,8 +3115,8 @@
             this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel49.Size = new System.Drawing.Size(660, 805);
@@ -3301,6 +3301,7 @@
             this.cbotestaction.Name = "cbotestaction";
             this.cbotestaction.Size = new System.Drawing.Size(431, 20);
             this.cbotestaction.TabIndex = 1;
+            this.cbotestaction.SelectedValueChanged += new System.EventHandler(this.cbotestaction_SelectedValueChanged);
             // 
             // grptestend1
             // 
@@ -3437,15 +3438,15 @@
             this.chktestend1.UseVisualStyleBackColor = true;
             this.chktestend1.CheckedChanged += new System.EventHandler(this.chktestend1_CheckedChanged);
             // 
-            // groupBox1
+            // grpBidirectionalProtected
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel7);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 250);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(654, 120);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
+            this.grpBidirectionalProtected.Controls.Add(this.tableLayoutPanel7);
+            this.grpBidirectionalProtected.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpBidirectionalProtected.Location = new System.Drawing.Point(3, 250);
+            this.grpBidirectionalProtected.Name = "grpBidirectionalProtected";
+            this.grpBidirectionalProtected.Size = new System.Drawing.Size(654, 120);
+            this.grpBidirectionalProtected.TabIndex = 5;
+            this.grpBidirectionalProtected.TabStop = false;
             // 
             // tableLayoutPanel7
             // 
@@ -3495,6 +3496,7 @@
             this.numBidirectionalProtectedDown.Name = "numBidirectionalProtectedDown";
             this.numBidirectionalProtectedDown.Size = new System.Drawing.Size(299, 21);
             this.numBidirectionalProtectedDown.TabIndex = 0;
+            this.numBidirectionalProtectedDown.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numBidirectionalProtectedDown_AfterChangeValue);
             // 
             // label67
             // 
@@ -3530,6 +3532,7 @@
             this.numBidirectionalProtectedUp.Name = "numBidirectionalProtectedUp";
             this.numBidirectionalProtectedUp.Size = new System.Drawing.Size(299, 21);
             this.numBidirectionalProtectedUp.TabIndex = 0;
+            this.numBidirectionalProtectedUp.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numBidirectionalProtectedUp_AfterChangeValue);
             // 
             // label65
             // 
@@ -3551,6 +3554,7 @@
             this.chkBidirectionalProtected.TabIndex = 0;
             this.chkBidirectionalProtected.Text = "双向保护";
             this.chkBidirectionalProtected.UseVisualStyleBackColor = true;
+            this.chkBidirectionalProtected.CheckedChanged += new System.EventHandler(this.chkBidirectionalProtected_CheckedChanged);
             // 
             // label63
             // 
@@ -3572,6 +3576,8 @@
             this.cboBidirectionalProtected.Name = "cboBidirectionalProtected";
             this.cboBidirectionalProtected.Size = new System.Drawing.Size(436, 20);
             this.cboBidirectionalProtected.TabIndex = 2;
+            this.cboBidirectionalProtected.SelectedIndexChanged += new System.EventHandler(this.cboBidirectionalProtected_SelectedIndexChanged);
+            this.cboBidirectionalProtected.SelectedValueChanged += new System.EventHandler(this.cboBidirectionalProtected_SelectedValueChanged);
             // 
             // label64
             // 
@@ -3595,22 +3601,22 @@
             this.label66.Text = "通道下限：";
             this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // groupBox2
+            // grpUnidirectionalProtection
             // 
-            this.groupBox2.Controls.Add(this.tableLayoutPanel62);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 376);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(654, 120);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
+            this.grpUnidirectionalProtection.Controls.Add(this.tableLayoutPanel62);
+            this.grpUnidirectionalProtection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpUnidirectionalProtection.Location = new System.Drawing.Point(3, 376);
+            this.grpUnidirectionalProtection.Name = "grpUnidirectionalProtection";
+            this.grpUnidirectionalProtection.Size = new System.Drawing.Size(654, 120);
+            this.grpUnidirectionalProtection.TabIndex = 6;
+            this.grpUnidirectionalProtection.TabStop = false;
             // 
             // tableLayoutPanel62
             // 
             this.tableLayoutPanel62.ColumnCount = 2;
             this.tableLayoutPanel62.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.94444F));
             this.tableLayoutPanel62.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.05556F));
-            this.tableLayoutPanel62.Controls.Add(this.cboUnidirectionalProtection1, 1, 2);
+            this.tableLayoutPanel62.Controls.Add(this.cboUnidirectionalProtectionMode, 1, 2);
             this.tableLayoutPanel62.Controls.Add(this.tableLayoutPanel63, 1, 3);
             this.tableLayoutPanel62.Controls.Add(this.chkUnidirectionalProtection, 0, 0);
             this.tableLayoutPanel62.Controls.Add(this.label70, 0, 1);
@@ -3629,15 +3635,16 @@
             this.tableLayoutPanel62.Size = new System.Drawing.Size(648, 100);
             this.tableLayoutPanel62.TabIndex = 7;
             // 
-            // cboUnidirectionalProtection1
+            // cboUnidirectionalProtectionMode
             // 
-            this.cboUnidirectionalProtection1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboUnidirectionalProtection1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboUnidirectionalProtection1.FormattingEnabled = true;
-            this.cboUnidirectionalProtection1.Location = new System.Drawing.Point(209, 53);
-            this.cboUnidirectionalProtection1.Name = "cboUnidirectionalProtection1";
-            this.cboUnidirectionalProtection1.Size = new System.Drawing.Size(436, 20);
-            this.cboUnidirectionalProtection1.TabIndex = 8;
+            this.cboUnidirectionalProtectionMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboUnidirectionalProtectionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUnidirectionalProtectionMode.FormattingEnabled = true;
+            this.cboUnidirectionalProtectionMode.Location = new System.Drawing.Point(209, 53);
+            this.cboUnidirectionalProtectionMode.Name = "cboUnidirectionalProtectionMode";
+            this.cboUnidirectionalProtectionMode.Size = new System.Drawing.Size(436, 20);
+            this.cboUnidirectionalProtectionMode.TabIndex = 8;
+            this.cboUnidirectionalProtectionMode.SelectedValueChanged += new System.EventHandler(this.cboUnidirectionalProtectionMode_SelectedValueChanged);
             // 
             // tableLayoutPanel63
             // 
@@ -3663,6 +3670,7 @@
             this.numUnidirectionalProtection.Name = "numUnidirectionalProtection";
             this.numUnidirectionalProtection.Size = new System.Drawing.Size(299, 21);
             this.numUnidirectionalProtection.TabIndex = 0;
+            this.numUnidirectionalProtection.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numUnidirectionalProtection_AfterChangeValue);
             // 
             // label68
             // 
@@ -3684,6 +3692,7 @@
             this.chkUnidirectionalProtection.TabIndex = 0;
             this.chkUnidirectionalProtection.Text = "单向保护";
             this.chkUnidirectionalProtection.UseVisualStyleBackColor = true;
+            this.chkUnidirectionalProtection.CheckedChanged += new System.EventHandler(this.chkUnidirectionalProtection_CheckedChanged);
             // 
             // label70
             // 
@@ -3705,6 +3714,7 @@
             this.cboUnidirectionalProtection.Name = "cboUnidirectionalProtection";
             this.cboUnidirectionalProtection.Size = new System.Drawing.Size(436, 20);
             this.cboUnidirectionalProtection.TabIndex = 2;
+            this.cboUnidirectionalProtection.SelectedValueChanged += new System.EventHandler(this.cboUnidirectionalProtection_SelectedValueChanged);
             // 
             // label71
             // 
@@ -3728,15 +3738,15 @@
             this.label72.Text = "控制量：";
             this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // groupBox3
+            // grpTemperatureProtection
             // 
-            this.groupBox3.Controls.Add(this.tableLayoutPanel64);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 502);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(654, 94);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
+            this.grpTemperatureProtection.Controls.Add(this.tableLayoutPanel64);
+            this.grpTemperatureProtection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpTemperatureProtection.Location = new System.Drawing.Point(3, 502);
+            this.grpTemperatureProtection.Name = "grpTemperatureProtection";
+            this.grpTemperatureProtection.Size = new System.Drawing.Size(654, 94);
+            this.grpTemperatureProtection.TabIndex = 7;
+            this.grpTemperatureProtection.TabStop = false;
             // 
             // tableLayoutPanel64
             // 
@@ -3782,6 +3792,7 @@
             this.numTemperatureProtectionDown.Name = "numTemperatureProtectionDown";
             this.numTemperatureProtectionDown.Size = new System.Drawing.Size(301, 21);
             this.numTemperatureProtectionDown.TabIndex = 0;
+            this.numTemperatureProtectionDown.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numTemperatureProtectionDown_AfterChangeValue);
             // 
             // label75
             // 
@@ -3817,6 +3828,7 @@
             this.numTemperatureProtectionUp.Name = "numTemperatureProtectionUp";
             this.numTemperatureProtectionUp.Size = new System.Drawing.Size(301, 21);
             this.numTemperatureProtectionUp.TabIndex = 0;
+            this.numTemperatureProtectionUp.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numTemperatureProtectionUp_AfterChangeValue);
             // 
             // label73
             // 
@@ -3838,6 +3850,7 @@
             this.chkTemperatureProtection.TabIndex = 1;
             this.chkTemperatureProtection.Text = "温度保护：";
             this.chkTemperatureProtection.UseVisualStyleBackColor = true;
+            this.chkTemperatureProtection.CheckedChanged += new System.EventHandler(this.chkTemperatureProtection_CheckedChanged);
             // 
             // label69
             // 
@@ -3861,15 +3874,15 @@
             this.label74.Text = "温度保护下限：";
             this.label74.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // groupBox4
+            // grpFatigueProtection
             // 
-            this.groupBox4.Controls.Add(this.tableLayoutPanel67);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 602);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(654, 94);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
+            this.grpFatigueProtection.Controls.Add(this.tableLayoutPanel67);
+            this.grpFatigueProtection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpFatigueProtection.Location = new System.Drawing.Point(3, 602);
+            this.grpFatigueProtection.Name = "grpFatigueProtection";
+            this.grpFatigueProtection.Size = new System.Drawing.Size(654, 94);
+            this.grpFatigueProtection.TabIndex = 8;
+            this.grpFatigueProtection.TabStop = false;
             // 
             // tableLayoutPanel67
             // 
@@ -3915,6 +3928,7 @@
             this.numFatigueProtectionstop.Name = "numFatigueProtectionstop";
             this.numFatigueProtectionstop.Size = new System.Drawing.Size(301, 21);
             this.numFatigueProtectionstop.TabIndex = 0;
+            this.numFatigueProtectionstop.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numFatigueProtectionstop_AfterChangeValue);
             // 
             // label76
             // 
@@ -3950,6 +3964,7 @@
             this.numFatigueProtection.Name = "numFatigueProtection";
             this.numFatigueProtection.Size = new System.Drawing.Size(301, 21);
             this.numFatigueProtection.TabIndex = 0;
+            this.numFatigueProtection.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numFatigueProtection_AfterChangeValue);
             // 
             // label77
             // 
@@ -3971,6 +3986,7 @@
             this.chkFatigueProtection.TabIndex = 1;
             this.chkFatigueProtection.Text = "疲劳保护：";
             this.chkFatigueProtection.UseVisualStyleBackColor = true;
+            this.chkFatigueProtection.CheckedChanged += new System.EventHandler(this.chkFatigueProtection_CheckedChanged);
             // 
             // label78
             // 
@@ -3999,7 +4015,7 @@
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -4017,7 +4033,7 @@
             this.label3.ForeColor = System.Drawing.Color.Teal;
             this.label3.Location = new System.Drawing.Point(4, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(420, 36);
+            this.label3.Size = new System.Drawing.Size(407, 36);
             this.label3.TabIndex = 0;
             this.label3.Text = "设置控制-测试结束";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4026,7 +4042,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(431, 4);
+            this.panel2.Location = new System.Drawing.Point(418, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(40, 30);
             this.panel2.TabIndex = 1;
@@ -4784,7 +4800,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -4802,7 +4818,7 @@
             this.label4.ForeColor = System.Drawing.Color.Teal;
             this.label4.Location = new System.Drawing.Point(4, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(422, 36);
+            this.label4.Size = new System.Drawing.Size(409, 36);
             this.label4.TabIndex = 0;
             this.label4.Text = "设置控制-数据";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4811,7 +4827,7 @@
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(433, 4);
+            this.panel3.Location = new System.Drawing.Point(420, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(40, 30);
             this.panel3.TabIndex = 1;
@@ -4983,7 +4999,7 @@
             this.tableLayoutPanel29.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel29.ColumnCount = 2;
             this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
             this.tableLayoutPanel29.Controls.Add(this.label30, 0, 0);
             this.tableLayoutPanel29.Controls.Add(this.panel11, 1, 0);
             this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Top;
@@ -5001,7 +5017,7 @@
             this.label30.ForeColor = System.Drawing.Color.Teal;
             this.label30.Location = new System.Drawing.Point(4, 1);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(421, 36);
+            this.label30.Size = new System.Drawing.Size(408, 36);
             this.label30.TabIndex = 0;
             this.label30.Text = "设置控制-中级测试";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5010,7 +5026,7 @@
             // 
             this.panel11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel11.BackgroundImage")));
             this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel11.Location = new System.Drawing.Point(432, 4);
+            this.panel11.Location = new System.Drawing.Point(419, 4);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(40, 30);
             this.panel11.TabIndex = 1;
@@ -5040,7 +5056,7 @@
             this.tableLayoutPanel17.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel17.ColumnCount = 2;
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 241F));
             this.tableLayoutPanel17.Controls.Add(this.label52, 0, 0);
             this.tableLayoutPanel17.Controls.Add(this.panel12, 1, 0);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Top;
@@ -5058,7 +5074,7 @@
             this.label52.ForeColor = System.Drawing.Color.Teal;
             this.label52.Location = new System.Drawing.Point(4, 1);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(423, 36);
+            this.label52.Size = new System.Drawing.Size(410, 36);
             this.label52.TabIndex = 0;
             this.label52.Text = "设置控制-简单控制";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5067,7 +5083,7 @@
             // 
             this.panel12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel12.BackgroundImage")));
             this.panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel12.Location = new System.Drawing.Point(434, 4);
+            this.panel12.Location = new System.Drawing.Point(421, 4);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(40, 30);
             this.panel12.TabIndex = 1;
@@ -5111,7 +5127,7 @@
             this.tableLayoutPanel20.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel20.ColumnCount = 2;
             this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
             this.tableLayoutPanel20.Controls.Add(this.label37, 0, 0);
             this.tableLayoutPanel20.Controls.Add(this.panel13, 1, 0);
             this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Top;
@@ -5129,7 +5145,7 @@
             this.label37.ForeColor = System.Drawing.Color.Teal;
             this.label37.Location = new System.Drawing.Point(4, 1);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(421, 36);
+            this.label37.Size = new System.Drawing.Size(408, 36);
             this.label37.TabIndex = 0;
             this.label37.Text = "设置控制的测试参数";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5138,7 +5154,7 @@
             // 
             this.panel13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel13.BackgroundImage")));
             this.panel13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel13.Location = new System.Drawing.Point(432, 4);
+            this.panel13.Location = new System.Drawing.Point(419, 4);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(40, 30);
             this.panel13.TabIndex = 1;
@@ -5339,26 +5355,26 @@
             this.tableLayoutPanel50.PerformLayout();
             this.tableLayoutPanel51.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numtestendvalue1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.grpBidirectionalProtected.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel61.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numBidirectionalProtectedDown)).EndInit();
             this.tableLayoutPanel60.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numBidirectionalProtectedUp)).EndInit();
-            this.groupBox2.ResumeLayout(false);
+            this.grpUnidirectionalProtection.ResumeLayout(false);
             this.tableLayoutPanel62.ResumeLayout(false);
             this.tableLayoutPanel62.PerformLayout();
             this.tableLayoutPanel63.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numUnidirectionalProtection)).EndInit();
-            this.groupBox3.ResumeLayout(false);
+            this.grpTemperatureProtection.ResumeLayout(false);
             this.tableLayoutPanel64.ResumeLayout(false);
             this.tableLayoutPanel64.PerformLayout();
             this.tableLayoutPanel66.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numTemperatureProtectionDown)).EndInit();
             this.tableLayoutPanel65.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numTemperatureProtectionUp)).EndInit();
-            this.groupBox4.ResumeLayout(false);
+            this.grpFatigueProtection.ResumeLayout(false);
             this.tableLayoutPanel67.ResumeLayout(false);
             this.tableLayoutPanel67.PerformLayout();
             this.tableLayoutPanel68.ResumeLayout(false);
@@ -5701,7 +5717,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel35;
         private NationalInstruments.UI.WindowsForms.NumericEdit numinterval4;
         private System.Windows.Forms.Label lblinterval4;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBidirectionalProtected;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.CheckBox chkBidirectionalProtected;
         private System.Windows.Forms.Label label63;
@@ -5714,9 +5730,9 @@
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpUnidirectionalProtection;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel62;
-        private System.Windows.Forms.ComboBox cboUnidirectionalProtection1;
+        private System.Windows.Forms.ComboBox cboUnidirectionalProtectionMode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel63;
         private NationalInstruments.UI.WindowsForms.NumericEdit numUnidirectionalProtection;
         private System.Windows.Forms.Label label68;
@@ -5725,7 +5741,7 @@
         private System.Windows.Forms.ComboBox cboUnidirectionalProtection;
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpTemperatureProtection;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel64;
         private System.Windows.Forms.CheckBox chkTemperatureProtection;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel66;
@@ -5736,7 +5752,7 @@
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grpFatigueProtection;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel67;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel68;
         private NationalInstruments.UI.WindowsForms.NumericEdit numFatigueProtectionstop;

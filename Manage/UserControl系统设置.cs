@@ -14,6 +14,8 @@ namespace TabHeaderDemo
         public UserControlMethod musercontrolmethod;
 
         string[] ms;
+
+      
         public void Init(int sel)
         {
 
@@ -88,7 +90,7 @@ namespace TabHeaderDemo
             ms = new string[2];
             ms[0] = "使用";
             ms[1] = "不使用";
-
+           
 
             grid1.RowsCount = 0;
             grid1.AutoStretchColumnsToFitWidth = true;
@@ -103,8 +105,8 @@ namespace TabHeaderDemo
             grid1.Columns[3].Width = grid1.Width / 7;
             grid1.Columns[4].Width = grid1.Width / 7;
             grid1.Columns[5].Width = grid1.Width / 7;
-
-            grid1.Columns[6].Width = grid1.Width - grid1.Columns[0].Width - 1;
+        
+            grid1.Columns[6].Width = grid1.Width / 7;
 
             grid1.Columns[6].AutoSizeMode = SourceGrid2.AutoSizeMode.EnableStretch;
             grid1.FixedRows = 1;
@@ -146,6 +148,10 @@ namespace TabHeaderDemo
             head = new SourceGrid2.Cells.Real.ColumnHeader("硬件通道采集方式");
             head.EnableSort = false;
             grid1[0, 6] = head;
+
+           
+
+
             //判断如果没有控制通道，则设置一个控制通道，防止系统出错
             bool mb = false;
             for (int i = 1; i <= ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
@@ -201,10 +207,12 @@ namespace TabHeaderDemo
                ms[GlobeVal.mysys.ChannelSamplemode[i - 1]], typeof(string),
               ms, false);
 
-
+               
 
 
             }
+
+
 
         }
 
@@ -334,7 +342,7 @@ namespace TabHeaderDemo
 
             GlobeVal.mysys = GlobeVal.mysys.DeSerializeNow(f);
 
-           
+
             grid1.RowsCount = 1;
 
             for (int i = 1; i <= ClsStaticStation.m_Global.mycls.chsignals.Count; i++)
@@ -374,11 +382,15 @@ namespace TabHeaderDemo
                ms[GlobeVal.mysys.ChannelSamplemode[i - 1]], typeof(string),
               ms, false);
 
-
+             
 
 
             }
 
+            cboEdc.Items.Clear();
+            cboEdc.Items.Add("Edc");
+            cboEdc.Items.Add("IEdc");
+            cboEdc.SelectedIndex = GlobeVal.mysys.ChannelControllerType;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -402,6 +414,11 @@ namespace TabHeaderDemo
             }
             GlobeVal.mysys.SerializeNow(f);
 
+        }
+
+        private void cboEdc_SelectedValueChanged(object sender, EventArgs e)
+        {
+            GlobeVal.mysys.ChannelControllerType = cboEdc.SelectedIndex;
         }
     }
 }

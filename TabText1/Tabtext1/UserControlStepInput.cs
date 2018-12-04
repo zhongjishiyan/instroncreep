@@ -11,6 +11,11 @@ namespace TabHeaderDemo
 {
     public partial class UserControlStepInput : UserControl
     {
+        public delegate void ValueChangedHandle(object sender);
+
+        public event ValueChangedHandle ValueChanged;
+
+
         public UserControlStepInput()
         {
             InitializeComponent();
@@ -26,7 +31,10 @@ namespace TabHeaderDemo
 
         private void numspeed1_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
-
+            if(ValueChanged!=null)
+            {
+                this.ValueChanged(this);
+            }
         }
     }
 }

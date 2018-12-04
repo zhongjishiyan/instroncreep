@@ -39,8 +39,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboEdc = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.grid1 = new SourceGrid2.Grid();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.cbonum = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbomachine = new System.Windows.Forms.ComboBox();
@@ -56,13 +60,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numnumber)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -173,11 +178,42 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.groupBox3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 485);
+            this.panel5.Location = new System.Drawing.Point(0, 350);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(897, 39);
+            this.panel5.Size = new System.Drawing.Size(897, 174);
             this.panel5.TabIndex = 4;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cboEdc);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(897, 62);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            // 
+            // cboEdc
+            // 
+            this.cboEdc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEdc.FormattingEnabled = true;
+            this.cboEdc.Location = new System.Drawing.Point(160, 23);
+            this.cboEdc.Name = "cboEdc";
+            this.cboEdc.Size = new System.Drawing.Size(213, 20);
+            this.cboEdc.TabIndex = 1;
+            this.cboEdc.SelectedValueChanged += new System.EventHandler(this.cboEdc_SelectedValueChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(40, 26);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 12);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Edc型号：";
             // 
             // grid1
             // 
@@ -188,12 +224,12 @@
             this.grid1.BackColor = System.Drawing.Color.LightGray;
             this.grid1.ContextMenuStyle = SourceGrid2.ContextMenuStyle.None;
             this.grid1.CustomSort = false;
-            this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid1.Dock = System.Windows.Forms.DockStyle.Top;
             this.grid1.FocusStyle = SourceGrid2.FocusStyle.None;
             this.grid1.GridToolTipActive = true;
             this.grid1.Location = new System.Drawing.Point(0, 0);
             this.grid1.Name = "grid1";
-            this.grid1.Size = new System.Drawing.Size(897, 524);
+            this.grid1.Size = new System.Drawing.Size(897, 358);
             this.grid1.SpecialKeys = ((SourceGrid2.GridSpecialKeys)(((((((((SourceGrid2.GridSpecialKeys.Ctrl_C | SourceGrid2.GridSpecialKeys.Ctrl_V) 
             | SourceGrid2.GridSpecialKeys.Ctrl_X) 
             | SourceGrid2.GridSpecialKeys.Delete) 
@@ -219,6 +255,16 @@
             this.groupBox2.Size = new System.Drawing.Size(897, 58);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(788, 24);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(74, 20);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "保存";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cbonum
             // 
@@ -264,7 +310,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -279,7 +325,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(827, 4);
+            this.panel4.Location = new System.Drawing.Point(824, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(39, 42);
             this.panel4.TabIndex = 1;
@@ -293,7 +339,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(816, 84);
+            this.panel3.Size = new System.Drawing.Size(813, 84);
             this.panel3.TabIndex = 2;
             // 
             // label6
@@ -381,16 +427,6 @@
             this.panel1.Size = new System.Drawing.Size(39, 42);
             this.panel1.TabIndex = 1;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(788, 24);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(74, 20);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "保存";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // UserControl系统设置
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -405,6 +441,9 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numnumber)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -446,5 +485,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbonum;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox cboEdc;
+        private System.Windows.Forms.Label label9;
     }
 }

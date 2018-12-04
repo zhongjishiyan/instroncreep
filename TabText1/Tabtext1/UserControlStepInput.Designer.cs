@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tlpback = new System.Windows.Forms.TableLayoutPanel();
-            this.numspeed1 = new NationalInstruments.UI.WindowsForms.NumericEdit();
-            this.cbospeedunit1 = new System.Windows.Forms.ComboBox();
+            this.numvalue = new NationalInstruments.UI.WindowsForms.NumericEdit();
+            this.cbounit = new System.Windows.Forms.ComboBox();
             this.tlpback.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numspeed1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numvalue)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpback
@@ -41,8 +41,8 @@
             this.tlpback.ColumnCount = 2;
             this.tlpback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpback.Controls.Add(this.numspeed1, 0, 0);
-            this.tlpback.Controls.Add(this.cbospeedunit1, 1, 0);
+            this.tlpback.Controls.Add(this.numvalue, 0, 0);
+            this.tlpback.Controls.Add(this.cbounit, 1, 0);
             this.tlpback.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpback.Location = new System.Drawing.Point(0, 0);
             this.tlpback.Margin = new System.Windows.Forms.Padding(0);
@@ -53,25 +53,26 @@
             this.tlpback.Size = new System.Drawing.Size(577, 26);
             this.tlpback.TabIndex = 4;
             // 
-            // numspeed1
+            // numvalue
             // 
-            this.numspeed1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numspeed1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numspeed1.Location = new System.Drawing.Point(3, 3);
-            this.numspeed1.Name = "numspeed1";
-            this.numspeed1.Size = new System.Drawing.Size(282, 21);
-            this.numspeed1.TabIndex = 0;
-            this.numspeed1.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numspeed1_AfterChangeValue);
+            this.numvalue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numvalue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numvalue.FormatMode = NationalInstruments.UI.NumericFormatMode.CreateSimpleDoubleMode(3);
+            this.numvalue.Location = new System.Drawing.Point(3, 3);
+            this.numvalue.Name = "numvalue";
+            this.numvalue.Size = new System.Drawing.Size(282, 21);
+            this.numvalue.TabIndex = 0;
+            this.numvalue.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numspeed1_AfterChangeValue);
             // 
-            // cbospeedunit1
+            // cbounit
             // 
-            this.cbospeedunit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbospeedunit1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbospeedunit1.FormattingEnabled = true;
-            this.cbospeedunit1.Location = new System.Drawing.Point(291, 3);
-            this.cbospeedunit1.Name = "cbospeedunit1";
-            this.cbospeedunit1.Size = new System.Drawing.Size(283, 20);
-            this.cbospeedunit1.TabIndex = 1;
+            this.cbounit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbounit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbounit.FormattingEnabled = true;
+            this.cbounit.Location = new System.Drawing.Point(291, 3);
+            this.cbounit.Name = "cbounit";
+            this.cbounit.Size = new System.Drawing.Size(283, 20);
+            this.cbounit.TabIndex = 1;
             // 
             // UserControlStepInput
             // 
@@ -82,7 +83,7 @@
             this.Name = "UserControlStepInput";
             this.Size = new System.Drawing.Size(577, 26);
             this.tlpback.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numspeed1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numvalue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -90,7 +91,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlpback;
-        private NationalInstruments.UI.WindowsForms.NumericEdit numspeed1;
-        private System.Windows.Forms.ComboBox cbospeedunit1;
+        public NationalInstruments.UI.WindowsForms.NumericEdit numvalue;
+        public System.Windows.Forms.ComboBox cbounit;
     }
 }

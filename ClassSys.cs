@@ -14,15 +14,15 @@ namespace TabHeaderDemo
     public class ClassSys
     {
 
-        public enum _MachineName:int
+        public enum _MachineName : int
         {
             Electronic,
             Torsion,
             Three_axis,
             standard1
         }
-        public string  softwareconfig = "AppleLab 静态试验软件";
-        public string  softwareinstalldate;
+        public string softwareconfig = "AppleLab 静态试验软件";
+        public string softwareinstalldate;
         public double softwareversion = 1.0;
         public string SystemID;
         public string KeyCode;
@@ -35,7 +35,7 @@ namespace TabHeaderDemo
 
 
         public bool securityon = false;
-        public int  UserCount=0;
+        public int UserCount = 0;
         public string[] UserName;
         public string[] UserPassword;
         public int[] UserLevels;
@@ -53,9 +53,9 @@ namespace TabHeaderDemo
 
         public string[] RecentFilenameKind;
 
-        public string SamplePath="";//样品文件保存路径
+        public string SamplePath = "";//样品文件保存路径
 
-        public string SampleFile="TestSample";//样品文件名
+        public string SampleFile = "TestSample";//样品文件名
 
         public string[] RecentSampleFilename;
         public string[] RecentSampleFilenameKind;
@@ -67,9 +67,9 @@ namespace TabHeaderDemo
 
         public int ControllerCount = 1;//控制器数量
 
-        public int CurentUserIndex=0;
+        public int CurentUserIndex = 0;
 
-        public int  machinekind = 0;//主机类型
+        public int machinekind = 0;//主机类型
         public string[] MachineName;
 
         public int MachineCount;
@@ -94,7 +94,7 @@ namespace TabHeaderDemo
         public bool[] ChannelControl;//通道控制
         public bool[] ChannelStrainControl;//通道变形控制
         public int[] ChannelSamplemode;//通道硬件采集方式
-
+        public int ChannelControllerType;//控制器型号
         public int ChannelCount = 8;//通道数量
 
         public string lbl_up = "上升";
@@ -110,29 +110,28 @@ namespace TabHeaderDemo
         public bool chk_cyclc = false;
 
 
-     
-
-
         public ClassSys()
         {
 
             ControllerName = new string[20];
 
-            ControllerName[0] = "DOLI旧控制器";
-            ControllerName[1] = "DOLI新控制器";
-          
+            ControllerName[0] = "国产控制器";
+            ControllerName[1] = "DOLI控制器";
+
             ControllerCount = 2;
 
             MachineName = new string[20];
             MachineName[0] = "电子蠕变试验机";
-           
+
 
             MachineCount = 1;
-          
-            ChannelRange = new double [20];
+
+            ChannelRange = new double[20];
             ChannelControl = new bool[20];
             ChannelDimension = new int[20];
             ChannelSamplemode = new int[20];
+            
+
 
             UserName = new string[100];
             UserPassword = new string[100];
@@ -163,9 +162,10 @@ namespace TabHeaderDemo
                 RecentSampleFilePath[i] = "";
 
                 ChannelRange[i] = 10;
-                ChannelControl[i] = false ;
-                ChannelDimension[i] =0;
+                ChannelControl[i] = false;
+                ChannelDimension[i] = 0;
                 ChannelSamplemode[i] = 0;
+              
 
             }
 
@@ -181,7 +181,7 @@ namespace TabHeaderDemo
             new FileStream(filename, FileMode.Create);
             BinaryFormatter b = new BinaryFormatter();
             b.Serialize(fileStream, this);
-            
+
             fileStream.Close();
         }
 
@@ -219,7 +219,7 @@ namespace TabHeaderDemo
                         c.SamplePath = "";
                     }
 
-                    if (c.demotxt ==null)
+                    if (c.demotxt == null)
                     {
                         c.demotxt = "";
                     }
@@ -235,34 +235,34 @@ namespace TabHeaderDemo
                     if (c.RecentSampleFilePath == null)
                     {
                         c.RecentSampleFilePath = new string[20];
-                        
+
                     }
 
                     if (c.ControllerName == null)
                     {
                         c.ControllerName = new string[20];
-                       
+
 
                     }
 
-                    c.ControllerName[0] = "DOLI旧控制器";
-                    c.ControllerName[1] = "DOLI新控制器";
-              
+                    c.ControllerName[0] = "国产控制器";
+                    c.ControllerName[1] = "DOLI控制器";
+
                     c.ControllerCount = 2;
 
                     if (c.MachineName == null)
                     {
                         c.MachineName = new string[20];
                     }
-                   
+
 
                     c.MachineName[0] = "电子蠕变试验机";
-                 
+
 
 
                     c.MachineCount = 1;
 
-                    if (c.ChannelSamplemode==null)
+                    if (c.ChannelSamplemode == null)
                     {
                         c.ChannelSamplemode = new int[20];
                     }
@@ -272,7 +272,7 @@ namespace TabHeaderDemo
                         c.ChannelRange = new double[20];
                         c.ChannelControl = new bool[20];
                         c.ChannelDimension = new int[20];
-                        
+
                         c.ChannelCount = 8;
                         for (int i = 0; i < c.ChannelCount; i++)
                         {
@@ -284,9 +284,11 @@ namespace TabHeaderDemo
 
                         }
                     }
-                
 
-        fileStream.Close();
+                    
+
+
+                    fileStream.Close();
 
 
 

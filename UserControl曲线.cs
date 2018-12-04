@@ -260,7 +260,7 @@ namespace TabHeaderDemo
                 {
                     rdby1handzoom.Checked = true;
                 }
-
+                
             }
 
             cboychannel.Items.Clear();

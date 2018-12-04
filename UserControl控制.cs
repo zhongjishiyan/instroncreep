@@ -76,6 +76,8 @@ namespace TabHeaderDemo
 
             chktestend1_CheckedChanged (null, null);
 
+            //----------------------------------------------
+
             cbostopchannel2.Items.Clear();
 
 
@@ -117,16 +119,71 @@ namespace TabHeaderDemo
 
             numtestendvalue2.Value = CComLibrary.GlobeVal.filesave.endoftest2value;
 
-            cbotestaction.Items.Clear();
-            cbotestaction.Items.Add("停止");
-            cbotestaction.Items.Add("返回");
-            cbotestaction.Items.Add("停止，然后返回");
-            cbotestaction.Items.Add("");
+            chktestend2_CheckedChanged(null, null);
 
+            //-----------------------------------
+
+            chkBidirectionalProtected.Checked = CComLibrary.GlobeVal.filesave.mBidirectionalProtected;
+
+            cboBidirectionalProtected.Items.Clear();
+            for (int i=0;i<ClsStaticStation.m_Global.mycls.chsignals.Count;i++)
+            {
+                cboBidirectionalProtected.Items.Add(ClsStaticStation.m_Global.mycls.chsignals[i].cName);
+            }
+
+            cboBidirectionalProtected.SelectedIndex = CComLibrary.GlobeVal.filesave.mBidirectionalProtectedSensor;
+
+            numBidirectionalProtectedUp.Value = CComLibrary.GlobeVal.filesave.mBidirectionalProtectedUpLimit;
+            numBidirectionalProtectedDown.Value = CComLibrary.GlobeVal.filesave.mBidirectionalProtectedLowLimit;
+            chkBidirectionalProtected_CheckedChanged(null, null);
+
+
+            //------------------------------
+
+            chkUnidirectionalProtection.Checked = CComLibrary.GlobeVal.filesave.mUnidirectionalProtection;
+            cboUnidirectionalProtection.Items.Clear();
+            for (int i=0;i<ClsStaticStation.m_Global.mycls.chsignals.Count;i++)
+            {
+                cboUnidirectionalProtection.Items.Add(ClsStaticStation.m_Global.mycls.chsignals[i].cName);
+            }
+            cboUnidirectionalProtection.SelectedIndex = CComLibrary.GlobeVal.filesave.mUnidirectionalProtectionSensor;
+
+
+            cboUnidirectionalProtectionMode.Items.Clear();
+            cboUnidirectionalProtectionMode.Items.Add("高于");
+            cboUnidirectionalProtectionMode.Items.Add("低于");
+            cboUnidirectionalProtectionMode.SelectedIndex = CComLibrary.GlobeVal.filesave.mUnidirectionalProtectionMode;
+
+            numUnidirectionalProtection.Value = CComLibrary.GlobeVal.filesave.mUnidirectionalProtectionValue;
+            chkUnidirectionalProtection_CheckedChanged(null, null);
+
+            //---------------------
+            chkTemperatureProtection.Checked = CComLibrary.GlobeVal.filesave.mTemperatureProtection;
+            numTemperatureProtectionUp.Value = CComLibrary.GlobeVal.filesave.mTemperatureProtectionUpLimit;
+            numTemperatureProtectionDown.Value = CComLibrary.GlobeVal.filesave.mTemperatureProtectionLowLimit;
+
+            chkTemperatureProtection_CheckedChanged(null, null);
+
+            //----------------------
+            chkFatigueProtection.Checked = CComLibrary.GlobeVal.filesave.mFatigueProtection;
+
+            numFatigueProtection.Value = CComLibrary.GlobeVal.filesave.mFatigueProtectionCount;
+            numFatigueProtectionstop.Value = CComLibrary.GlobeVal.filesave.mFatigueProtectionStopValue;
+            chkFatigueProtection_CheckedChanged(null, null);
+
+            //----------------------------
+
+            cbotestaction.Items.Clear();
+            cbotestaction.Items.Add("停于位置");
+            cbotestaction.Items.Add("初始状态");
+            cbotestaction.Items.Add("预负荷");
+            cbotestaction.Items.Add("停于负荷");
+            cbotestaction.Items.Add("停于变形");
+            cbotestaction.Items.Add("关断驱动");
 
             cbotestaction.SelectedIndex = CComLibrary.GlobeVal.filesave.testaction;
 
-            chktestend2_CheckedChanged(null, null);
+         
 
         }
 
@@ -561,12 +618,15 @@ namespace TabHeaderDemo
                 m1.Dock = DockStyle.Fill;
                
                 m1.chkline.Text = "段" + (i + 1).ToString().Trim();
-                m1.chkline.Checked = true;
+                
                 m1.CheckChanged += M1_CheckChanged;
               
                 m1.Id = i;
                 tlpstep.Controls.Add(m1);
-                m1.Height = m1.UnCheckHeight;
+                m1.chkline.Checked = true;
+
+              
+
 
 
 
@@ -623,6 +683,7 @@ namespace TabHeaderDemo
                         tlpstep.Controls.Add(m1);
                         m1.Height = m1.UnCheckHeight;
                        
+
                     }
                 }
 
@@ -2622,6 +2683,124 @@ namespace TabHeaderDemo
         private void numAlarm4_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
             CComLibrary.GlobeVal.filesave.malarmvalue4 = numAlarm4.Value;
+        }
+
+        private void chkBidirectionalProtected_CheckedChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mBidirectionalProtected = this.chkBidirectionalProtected.Checked;
+
+            if (this.chkBidirectionalProtected.Checked == true)
+            {
+                grpBidirectionalProtected.Height = 118;
+            }
+            else
+            {
+                grpBidirectionalProtected.Height = 40;
+            }
+
+
+        }
+
+        private void cboBidirectionalProtected_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkUnidirectionalProtection_CheckedChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mUnidirectionalProtection = chkUnidirectionalProtection.Checked;
+
+            if(this.chkUnidirectionalProtection.Checked ==true )
+            {
+                grpUnidirectionalProtection.Height = 118;
+            }
+            else
+            {
+                grpUnidirectionalProtection.Height = 40;
+            }
+        }
+
+        private void chkTemperatureProtection_CheckedChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mTemperatureProtection = chkTemperatureProtection.Checked;
+
+            if(this.chkTemperatureProtection.Checked ==true)
+            {
+                grpTemperatureProtection.Height = 94;
+            }
+            else
+            {
+                grpTemperatureProtection.Height = 40;
+            }
+        }
+
+        private void chkFatigueProtection_CheckedChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mFatigueProtection = chkFatigueProtection.Checked;
+
+            if (chkFatigueProtection.Checked ==true)
+            {
+               grpFatigueProtection.Height = 94;
+            }
+            else
+            {
+               grpFatigueProtection.Height = 40;
+            }
+        }
+
+        private void cbotestaction_SelectedValueChanged(object sender, EventArgs e)
+        {
+             CComLibrary.GlobeVal.filesave.testaction= cbotestaction.SelectedIndex;
+        }
+
+        private void cboBidirectionalProtected_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mBidirectionalProtectedSensor = cboBidirectionalProtected.SelectedIndex;
+        }
+
+        private void numBidirectionalProtectedUp_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mBidirectionalProtectedUpLimit = numBidirectionalProtectedUp.Value; 
+        }
+
+        private void numBidirectionalProtectedDown_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mBidirectionalProtectedLowLimit = numBidirectionalProtectedDown.Value;
+        }
+
+        private void cboUnidirectionalProtection_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mUnidirectionalProtectionSensor = cboUnidirectionalProtection.SelectedIndex; 
+        }
+
+        private void cboUnidirectionalProtectionMode_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mUnidirectionalProtectionMode = cboUnidirectionalProtectionMode.SelectedIndex;
+        }
+
+        private void numUnidirectionalProtection_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mUnidirectionalProtectionValue = numUnidirectionalProtection.Value;
+        }
+
+        private void numTemperatureProtectionUp_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mTemperatureProtectionUpLimit = numTemperatureProtectionUp.Value; 
+        }
+
+        private void numTemperatureProtectionDown_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mTemperatureProtectionLowLimit = numTemperatureProtectionDown.Value;
+        }
+
+        private void numFatigueProtection_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mFatigueProtectionCount = Convert.ToInt64( numFatigueProtection.Value);
+        }
+
+        private void numFatigueProtectionstop_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mFatigueProtectionStopValue = numFatigueProtectionstop.Value;
         }
     }
 }

@@ -3139,7 +3139,29 @@ namespace CComLibrary
         public double malarmvalue2;//温度超差
         public double malarmvalue3;//超温度梯度
         public double malarmvalue4;//超不平衡度
-        
+
+
+
+        public bool mBidirectionalProtected;//双向保护开关
+        public bool mUnidirectionalProtection;//单向保护开关
+        public bool mTemperatureProtection;//温度保护开关
+        public bool mFatigueProtection;//疲劳保护开关
+
+        public int mBidirectionalProtectedSensor;//双向保护传感器选择
+        public double mBidirectionalProtectedUpLimit;//双向保护传感器上限
+        public double mBidirectionalProtectedLowLimit;//双向保护传感器下限
+
+        public int mUnidirectionalProtectionSensor;//单向保护传感器选择
+        public int mUnidirectionalProtectionMode;//单向保护传感器模式
+        public double  mUnidirectionalProtectionValue;//单向保护传感器值
+
+
+        public double mTemperatureProtectionUpLimit;//温度保护上限值
+        public double mTemperatureProtectionLowLimit;//温度保护下限值
+
+        public long mFatigueProtectionCount;//疲劳保护周期数
+
+        public double mFatigueProtectionStopValue;//疲劳保护停止值
 
         /// <summary>
         ///

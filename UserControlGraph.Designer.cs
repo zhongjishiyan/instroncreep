@@ -51,6 +51,7 @@
             this.legend = new NationalInstruments.UI.WindowsForms.Legend();
             this.legendItem1 = new NationalInstruments.UI.LegendItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.userGraph1 = new AppleLabApplication.UserGraph();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStripLeft = new System.Windows.Forms.ToolStrip();
             this.tsbdefault = new System.Windows.Forms.ToolStripButton();
@@ -69,7 +70,6 @@
             this.yAxis3 = new NationalInstruments.UI.YAxis();
             this.scatterPlot1 = new NationalInstruments.UI.ScatterPlot();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.userGraph1 = new AppleLabApplication.UserGraph();
             this.panelback.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -161,6 +161,7 @@
             this.tableLayoutPanelCurve.Controls.Add(this.tableLayoutPanel15, 1, 0);
             this.tableLayoutPanelCurve.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelCurve.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelCurve.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelCurve.Name = "tableLayoutPanelCurve";
             this.tableLayoutPanelCurve.RowCount = 1;
             this.tableLayoutPanelCurve.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -310,6 +311,14 @@
             this.tabPage2.Size = new System.Drawing.Size(443, 280);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // userGraph1
+            // 
+            this.userGraph1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userGraph1.Location = new System.Drawing.Point(3, 3);
+            this.userGraph1.Name = "userGraph1";
+            this.userGraph1.Size = new System.Drawing.Size(437, 274);
+            this.userGraph1.TabIndex = 0;
             // 
             // timer1
             // 
@@ -519,14 +528,6 @@
             // timer2
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // userGraph1
-            // 
-            this.userGraph1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userGraph1.Location = new System.Drawing.Point(3, 3);
-            this.userGraph1.Name = "userGraph1";
-            this.userGraph1.Size = new System.Drawing.Size(437, 274);
-            this.userGraph1.TabIndex = 0;
             // 
             // UserControlGraph
             // 

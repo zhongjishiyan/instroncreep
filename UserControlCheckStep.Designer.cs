@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbocontrol = new System.Windows.Forms.ComboBox();
             this.tlp = new System.Windows.Forms.TableLayoutPanel();
             this.tlpback.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -124,6 +124,7 @@
             this.cbowave.Size = new System.Drawing.Size(485, 20);
             this.cbowave.TabIndex = 4;
             this.cbowave.SelectedIndexChanged += new System.EventHandler(this.cbowave_SelectedIndexChanged);
+            this.cbowave.SelectedValueChanged += new System.EventHandler(this.cbowave_SelectedValueChanged);
             // 
             // label2
             // 
@@ -143,7 +144,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.31F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.69F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.cbocontrol, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(14, 0);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -164,15 +165,17 @@
             this.label1.Text = "控制方式：";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // cbocontrol
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(377, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(485, 20);
-            this.comboBox1.TabIndex = 1;
+            this.cbocontrol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbocontrol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbocontrol.FormattingEnabled = true;
+            this.cbocontrol.Location = new System.Drawing.Point(377, 3);
+            this.cbocontrol.Name = "cbocontrol";
+            this.cbocontrol.Size = new System.Drawing.Size(485, 20);
+            this.cbocontrol.TabIndex = 1;
+            this.cbocontrol.SelectionChangeCommitted += new System.EventHandler(this.cbocontrol_SelectionChangeCommitted);
+            this.cbocontrol.SelectedValueChanged += new System.EventHandler(this.cbocontrol_SelectedValueChanged);
             // 
             // tlp
             // 
@@ -220,11 +223,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         public System.Windows.Forms.CheckBox chkline;
-        private System.Windows.Forms.ComboBox cbowave;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tlp;
+        public System.Windows.Forms.ComboBox cbocontrol;
+        public System.Windows.Forms.ComboBox cbowave;
     }
 }

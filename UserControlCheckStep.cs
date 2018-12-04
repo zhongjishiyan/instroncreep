@@ -34,7 +34,9 @@ namespace TabHeaderDemo
 
         private int mUnCheckHeight=24;
 
-     
+
+      
+
         public int UnCheckHeight
 
         {
@@ -78,6 +80,10 @@ namespace TabHeaderDemo
             if (chkline.Checked ==true)
             {
                 this.Height = tlpback.Height ;
+                Init();
+                cbocontrol.SelectedIndex = CComLibrary.GlobeVal.filesave.msegtest[Id].controlmode;
+                cbowave.SelectedIndex = CComLibrary.GlobeVal.filesave.msegtest[Id].cmd;
+
                 setwave();
 
             }
@@ -89,11 +95,13 @@ namespace TabHeaderDemo
            
         }
 
-        private void setwave()
+        public void setwave()
         {
-           
-            Label mlabel;
+
+          
             UserControlStepInput mUserControlStepInput;
+            Label mlabel;
+           
             tlp.Visible = false;
             if ((cbowave.SelectedIndex == 0) && (chkline.Checked == true))
             {
@@ -108,6 +116,15 @@ namespace TabHeaderDemo
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
 
+               
+
+                mUserControlStepInput.numvalue.Value = CComLibrary.GlobeVal.filesave.msegtest[Id].speed;
+                mUserControlStepInput.cbounit.Items.Clear();
+                mUserControlStepInput.cbounit.Items.Add(ClsStaticStation.m_Global.mycls.hardsignals[CComLibrary.GlobeVal.filesave.msegtest[Id].controlmode].speedSignal.cUnits[0]);
+                mUserControlStepInput.cbounit.SelectedIndex = 0;
+                mUserControlStepInput.Tag = "速度";
+                mUserControlStepInput.ValueChanged += MUserControlStepInput_ValueChanged;
+
                 mlabel = new Label();
                 mlabel.Text = "目标值：";
                 mlabel.Dock = DockStyle.Fill;
@@ -117,6 +134,16 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
+
+                mUserControlStepInput.numvalue.Value = CComLibrary.GlobeVal.filesave.msegtest[Id].dest;
+                mUserControlStepInput.Tag = "目标值";
+                mUserControlStepInput.cbounit.Items.Clear();
+                mUserControlStepInput.cbounit.Items.Add(ClsStaticStation.m_Global.mycls.hardsignals[CComLibrary.GlobeVal.filesave.msegtest[Id].controlmode].cUnits[0]);
+                mUserControlStepInput.cbounit.SelectedIndex = 0;
+                mUserControlStepInput.ValueChanged += MUserControlStepInput_ValueChanged;
+
+
+
 
             }
             if ((cbowave.SelectedIndex == 1) && (chkline.Checked == true))
@@ -131,6 +158,7 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
+             
 
             }
 
@@ -146,6 +174,7 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
+              
 
                 mlabel = new Label();
                 mlabel.Text = "幅值：";
@@ -156,7 +185,7 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
-
+               
                 mlabel = new Label();
                 mlabel.Text = "均值：";
                 mlabel.Dock = DockStyle.Fill;
@@ -166,6 +195,7 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
+               
 
                 mlabel = new Label();
                 mlabel.Text = "次数：";
@@ -176,21 +206,48 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
+               
             }
             tlp.Visible = true;
         }
-        private void UserControlCheckStep_Load(object sender, EventArgs e)
+
+        private void MUserControlStepInput_ValueChanged(object sender)
         {
-            
-            chkline_CheckedChanged(null, null);
+            if (  Convert.ToString( (sender as UserControlStepInput).Tag) =="速度")
+            {
+                CComLibrary.GlobeVal.filesave.msegtest[Id].speed= (sender as UserControlStepInput).numvalue.Value ;
+            }
+            if (Convert.ToString((sender as UserControlStepInput).Tag) == "目标值")
+            {
+                CComLibrary.GlobeVal.filesave.msegtest[Id].dest = (sender as UserControlStepInput).numvalue.Value;
+            }
+
+            return;
+        }
+
+        public void Init()
+        {
+            cbocontrol.Items.Clear();
+            for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
+            {
+                cbocontrol.Items.Add(ClsStaticStation.m_Global.mycls.hardsignals[i].cName);
+
+
+            }
+         
             cbowave.Items.Clear();
             cbowave.Items.Add("斜波");
             cbowave.Items.Add("保持");
             cbowave.Items.Add("正弦");
             cbowave.Items.Add("三角");
             cbowave.Items.Add("方波");
-            cbowave.SelectedIndex = 0;
+           
+        }
+        private void UserControlCheckStep_Load(object sender, EventArgs e)
+        {
 
+            chkline_CheckedChanged(null, null);
+           
            
 
 
@@ -201,8 +258,25 @@ namespace TabHeaderDemo
             this.Height = tlpback.Height;
         }
 
-        private void cbowave_SelectedIndexChanged(object sender, EventArgs e)
+        public void cbowave_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+        }
+
+        private void cbocontrol_SelectedValueChanged(object sender, EventArgs e)
+        {
+           
+           
+        }
+
+        private void cbowave_SelectedValueChanged(object sender, EventArgs e)
+        {
+            setwave();
+        }
+
+        private void cbocontrol_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.msegtest[Id].controlmode = cbocontrol.SelectedIndex;
             setwave();
         }
     }

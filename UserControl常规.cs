@@ -62,21 +62,7 @@ namespace TabHeaderDemo
 
 
             }
-            /*
-            for (int i = 1 + ClsStaticStation.m_Global.mycls.hardsignals.Count;
-                i <= CComLibrary.GlobeVal.filesave.muserchannel.Count + ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
-            {
-                grid1.Rows.Insert(i);
-
-                grid1[i, 0] = new SourceGrid2.Cells.Real.Cell(
-                   CComLibrary.GlobeVal.filesave.muserchannel[i - 1 - ClsStaticStation.m_Global.mycls.hardsignals.Count].channelname, typeof(string));
-                grid1[i, 1] = new SourceGrid2.Cells.Real.ComboBox(
-                   CComLibrary.GlobeVal.filesave.muserchannel[i - 1 - ClsStaticStation.m_Global.mycls.hardsignals.Count].myitemsignal.cUnits[
-                   CComLibrary.GlobeVal.filesave.muserchannel[i - 1 - ClsStaticStation.m_Global.mycls.hardsignals.Count].myitemsignal.cUnitsel], typeof(string),
-                  CComLibrary.GlobeVal.filesave.muserchannel[i - 1 - ClsStaticStation.m_Global.mycls.hardsignals.Count].myitemsignal.cUnits, false);
-
-            }
-             * */
+            
 
             GlobeVal.putlistboxitem(listBox1);
 

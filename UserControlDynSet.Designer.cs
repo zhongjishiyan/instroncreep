@@ -107,8 +107,8 @@
             this.tlbetest.SelectRow = -1;
             this.tlbetest.Size = new System.Drawing.Size(557, 478);
             this.tlbetest.TabIndex = 1;
-            this.tlbetest.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tlbetest_MouseMove);
             this.tlbetest.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tlbetest_MouseDown);
+            this.tlbetest.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tlbetest_MouseMove);
             this.tlbetest.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tlbetest_MouseUp);
             // 
             // UserControlDynSet
