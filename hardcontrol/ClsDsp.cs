@@ -60,10 +60,10 @@ namespace ClsStaticStation
 
 
 
-        private XLDOPE.MDataIno ma;
 
-        private bool mdemotesting = false;
-        private int mdemotestingp = 0;
+
+
+
 
         private double pos;
         private double load;
@@ -106,7 +106,7 @@ namespace ClsStaticStation
 
         private int m_returnstep;//返回步骤
         private int m_returncount;//返回次数
-        private List<demodata> mdemodata = new List<demodata>();
+
 
         public override void findzero(double speed)
         {
@@ -206,20 +206,7 @@ namespace ClsStaticStation
 
 
 
-            if (mdemo == false)
-            {
-                bool b = false;
-                while (b == true)
-                {
-                    Application.DoEvents();
-                    if (time < 1)
-                    {
-                        b = false;
-                    }
-                }
-
-            }
-
+            
 
 
             if (CComLibrary.GlobeVal.filesave.Samplingmode == 0)
@@ -452,14 +439,9 @@ namespace ClsStaticStation
             CComLibrary.GlobeVal.filesave.Extensometer_DataFrozenFlag = false;
 
 
-            if (mdemo == true)
-            {
 
-            }
-            else
-            {
-                CrossStop(0);
-            }
+            CrossStop(0);
+
 
 
 
@@ -676,39 +658,11 @@ namespace ClsStaticStation
                 total_returncount = m_returncount;
             }
 
-            if (mdemo == true)
-            {
-                m_runstate = 0;
-            }
-            else
-            {
+            m_runstate = 1;
+            // myedc.Move.PosExt((XLDOPE.CTRL)ConvertCtrlMode(firstctl), Convert.ToSingle(speed), XLDOPE.LIMITMODE.NOT_ACTIVE, 5, (XLDOPE.CTRL)ConvertCtrlMode(destctl)
+            //    , Convert.ToSingle(dest), (XLDOPE.DESTMODE)destmode, ref tan);
 
-
-
-                if (cmd == 2)
-                {
-
-
-                }
-                else
-                {
-
-
-
-
-                    m_runstate = 1;
-                    myedc.Move.PosExt((XLDOPE.CTRL)ConvertCtrlMode(firstctl), Convert.ToSingle(speed), XLDOPE.LIMITMODE.NOT_ACTIVE, 5, (XLDOPE.CTRL)ConvertCtrlMode(destctl)
-                        , Convert.ToSingle(dest), (XLDOPE.DESTMODE)destmode, ref tan);
-
-                    mrun = true;
-
-
-                }
-
-
-            }
-
-
+            mrun = true;
 
 
         }
@@ -839,14 +793,7 @@ namespace ClsStaticStation
         }
         public override int getrunstate() // 1运行 0 停止
         {
-            if (mdemo == true)
-            {
-            }
-
-            else
-            {
-
-            }
+           
 
             return m_runstate;
         }

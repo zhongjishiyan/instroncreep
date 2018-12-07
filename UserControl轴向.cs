@@ -244,7 +244,7 @@ namespace TabHeaderDemo
                 
                   }
 
-               GlobeVal.myarm.mdemo = GlobeVal.mysys.demo;
+              
 
                
 

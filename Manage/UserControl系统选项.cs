@@ -32,20 +32,14 @@ namespace TabHeaderDemo
             cbostartup.Items.Add("按照指定的试验方法准备试验");
             cbostartup.SelectedIndex = GlobeVal.mysys.startupscreen;
 
-#if Demo
-            chkdemo.Enabled = false;
-            chkdemo.Checked = true;
-#else
-            chkdemo.Enabled=true;
-            chkdemo.Checked = GlobeVal.mysys.demo;
-#endif 
+
             chktitle.Checked=GlobeVal.mysys.showapptitle;
             txtAppTitle.Text = GlobeVal.mysys.apptitle;
             txtshort.Text= GlobeVal.mysys.shorttitle;
             chkshort.Checked = GlobeVal.mysys.showshorttitle;
 
             txtlogo.Text = GlobeVal.mysys.bmplogo;
-            txtdemo.Text = GlobeVal.mysys.demotxt;
+        
             chklogo.Checked = GlobeVal.mysys.showlogo;
 
         }
@@ -75,18 +69,10 @@ namespace TabHeaderDemo
 
         private void chkdemo_CheckedChanged(object sender, EventArgs e)
         {
-           GlobeVal.mysys.demo= chkdemo.Checked ;
+          
 
-           if (GlobeVal.mysys.demo == true)
-           {
-               GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = "演示";
-           }
-           else
-           {
-               GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = GlobeVal.mysys.ControllerName[GlobeVal.mysys.controllerkind];
-           }
-           
-           GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
+          
+              
         }
 
         private void txtAppTitle_TextChanged(object sender, EventArgs e)
@@ -145,30 +131,7 @@ namespace TabHeaderDemo
 
         private void btndemotxt_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileName = "";
-            openFileDialog1.Filter = "(*.txt" + ")|*.txt";
-
-            string s;
-            s = System.Windows.Forms.Application.StartupPath;
-
-            openFileDialog1.InitialDirectory = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\";
-
-
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.FileName == "")
-            {
-
-            }
-
-            else
-            {
-
-
-                txtdemo.Text = System.IO.Path.GetFileName(openFileDialog1.FileName);
-
-                GlobeVal.mysys.demotxt = txtdemo.Text;
-
-            }
+            
         }
     }
 }

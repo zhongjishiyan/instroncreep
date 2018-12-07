@@ -230,7 +230,7 @@ namespace ClsStaticStation
         public int OnData(ref DoPE.OnData Data, object Parameter)
         {
 
-            long a = 0;
+            
             long c = 0;
 
 
@@ -450,7 +450,7 @@ namespace ClsStaticStation
         public long merrorcount = 0;
 
         private long ma = 0;
-        UltraHighAccurateTimer.UltraHighAccurateTimer uhat;
+       
 
         MDataInfo GGMsg;
         private double fv;
@@ -912,15 +912,7 @@ namespace ClsStaticStation
 
         public override int getrunstate() // 1运行 0 停止
         {
-            if (mdemo == true)
-            {
-            }
-
-            else
-            {
-
-
-            }
+          
 
             return m_Global.m_runstate;
         }
@@ -1125,491 +1117,7 @@ namespace ClsStaticStation
 
         }
 
-        private void demo()
-        {
-
-            int j;
-            int i;
-            int jj;
-            int ii;
-
-            Random r;
-            r = new Random(System.Environment.TickCount);
-            b = new RawDataStruct();
-            b.data = new double[24];
-            if (mdemotesting == false)
-            {
-
-                load = r.NextDouble();
-                pos = r.NextDouble();
-                ext = r.NextDouble();
-                time = (System.Environment.TickCount - mstarttickcount) / 1000;
-                poscmd = 0;
-                loadcmd = 0;
-                extcmd = 0;
-                count = 0;
-                load1 = r.NextDouble();
-                pos1 = r.NextDouble();
-
-            }
-            else
-            {
-
-                load = r.NextDouble();
-                pos = r.NextDouble();
-                ext = r.NextDouble();
-                time = (System.Environment.TickCount - mstarttickcount) / 1000;
-                poscmd = 0;
-                loadcmd = 0;
-                extcmd = 0;
-                count = 0;
-                load1 = r.NextDouble();
-                pos1 = r.NextDouble();
-
-                if (mdemotestingp < mdemodata.Count - 1)
-                {
-                    load = mdemodata[mdemotestingp].load;
-                    pos = mdemodata[mdemotestingp].pos;
-                    ext = mdemodata[mdemotestingp].ext;
-                    time = mdemodata[mdemotestingp].time;
-                    mdemotestingp = mdemotestingp + 1;
-                }
-                else
-                {
-                    mdemotesting = false;
-                }
-
-            }
-
-
-            //自定义通道赋值
-            ClsStaticStation.m_Global.mload = load;
-
-            ClsStaticStation.m_Global.mpos = pos;
-
-            ClsStaticStation.m_Global.mload1 = load1;
-            ClsStaticStation.m_Global.mpos1 = pos1;
-
-            ClsStaticStation.m_Global.msensor4 = r.NextDouble() + 1;
-
-            ClsStaticStation.m_Global.msensor5 = r.NextDouble() + 2;
-
-            ClsStaticStation.m_Global.msensor6 = r.NextDouble() + 3;
-
-
-            ClsStaticStation.m_Global.msensor7 = r.NextDouble() + 4;
-
-            ClsStaticStation.m_Global.msensor8 = r.NextDouble() + 5;
-            if (time - mspeed_time0 >= 0.1)
-            {
-                mspeed_load1 = (load - mspeed_load0) / (time - mspeed_time0);
-                mspeed_pos1 = (pos - mspeed_pos0) / (time - mspeed_time0);
-                mspeed_time0 = time;
-                mspeed_load0 = load;
-                mspeed_pos0 = pos;
-
-
-            }
-
-
-            double[] rr;
-
-            rr = new double[100];
-
-            for (j = 0; j < 100; j++)
-            {
-                rr[j] = 0;
-            }
-
-            if (CComLibrary.GlobeVal.filesave == null)
-            {
-            }
-            else
-            {
-
-                for (j = 0; j < CComLibrary.GlobeVal.filesave.muserchannel.Count; j++)
-                {
-                    rr[j] = 0;
-                }
-
-                for (j = 0; j < CComLibrary.GlobeVal.filesave.muserchannel.Count; j++)
-
-                {
-
-
-
-                    rr[j + 1] = CComLibrary.GlobeVal.gcalc.getresult通道(j + 1);
-
-                }
-            }
-
-
-
-            for (j = 0; j < m_Global.mycls.datalist.Count; j++)
-            {
-
-                for (int m = 0; m < 100; m++)
-                {
-                    if (m_Global.mycls.datalist[j].SignName == "Ch User" + m.ToString().Trim())
-                    {
-                        b.data[m_Global.mycls.datalist[j].EdcId] = rr[m + 1];
-
-                    }
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Time")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = time;
-
-
-                    if (time > m_Global.mycls.datalist[j].bvaluemax)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemax = time;
-                    }
-                    if (time < m_Global.mycls.datalist[j].bvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemin = time;
-                    }
-
-
-                    m_Global.mycls.datalist[j].rvaluemax = time;
-
-
-                    m_Global.mycls.datalist[j].rvaluemin = 0;
-
-
-
-                }
-                if (m_Global.mycls.datalist[j].SignName == "ambient pressure Ch Disp")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = pos1;
-
-
-                    if (pos > m_Global.mycls.datalist[j].bvaluemax)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemax = pos1;
-                    }
-                    if (pos < m_Global.mycls.datalist[j].bvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemin = pos1;
-                    }
-                    if (pos > m_Global.mycls.datalist[j].rvaluemax)
-                    {
-                        m_Global.mycls.datalist[j].rvaluemax = pos1;
-                    }
-                    if (pos < m_Global.mycls.datalist[j].rvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].rvaluemin = pos1;
-                    }
-
-
-                }
-                if (m_Global.mycls.datalist[j].SignName == "Ch Disp")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = pos;
-
-
-                    if (pos > m_Global.mycls.datalist[j].bvaluemax)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemax = pos;
-                    }
-                    if (pos < m_Global.mycls.datalist[j].bvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemin = pos;
-                    }
-                    if (pos > m_Global.mycls.datalist[j].rvaluemax)
-                    {
-                        m_Global.mycls.datalist[j].rvaluemax = pos;
-                    }
-                    if (pos < m_Global.mycls.datalist[j].rvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].rvaluemin = pos;
-                    }
-
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "ambient pressure Ch Load")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = load1;
-
-
-                    if (load > m_Global.mycls.datalist[j].bvaluemax)
-                    {
-
-                        m_Global.mycls.datalist[j].bvaluemax = load1;
-                    }
-                    if (load < m_Global.mycls.datalist[j].bvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemin = load1;
-                    }
-
-                    if (load > m_Global.mycls.datalist[j].rvaluemax)
-                    {
-
-                        m_Global.mycls.datalist[j].rvaluemax = load1;
-                    }
-                    if (load < m_Global.mycls.datalist[j].rvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].rvaluemin = load1;
-                    }
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Load")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = load;
-
-
-                    if (load > m_Global.mycls.datalist[j].bvaluemax)
-                    {
-
-                        m_Global.mycls.datalist[j].bvaluemax = load;
-                    }
-                    if (load < m_Global.mycls.datalist[j].bvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemin = load;
-                    }
-
-                    if (load > m_Global.mycls.datalist[j].rvaluemax)
-                    {
-
-                        m_Global.mycls.datalist[j].rvaluemax = load;
-                    }
-                    if (load < m_Global.mycls.datalist[j].rvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].rvaluemin = load;
-                    }
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Ext")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = ext;
-
-
-                    if (ext > m_Global.mycls.datalist[j].bvaluemax)
-                    {
-
-                        m_Global.mycls.datalist[j].bvaluemax = ext;
-                    }
-                    if (ext < m_Global.mycls.datalist[j].bvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].bvaluemin = ext;
-                    }
-
-                    if (ext > m_Global.mycls.datalist[j].rvaluemax)
-                    {
-
-                        m_Global.mycls.datalist[j].rvaluemax = ext;
-                    }
-                    if (ext < m_Global.mycls.datalist[j].rvaluemin)
-                    {
-                        m_Global.mycls.datalist[j].rvaluemin = ext;
-                    }
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Command")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = poscmd;
-
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Disp Command")
-                {
-
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = poscmd;
-
-
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Load Command")
-                {
-
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = loadcmd;
-
-
-
-
-                }
-
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Count")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = count;
-
-
-                }
-
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Feed")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = 0;
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Out")
-                {
-
-                    b.data[m_Global.mycls.datalist[j].EdcId] = 0;
-                }
-
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Dynamic Stiffness")
-                {
-
-
-                }
-
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Load Speed")
-                {
-                    b.data[m_Global.mycls.datalist[j].EdcId] = mspeed_load1;
-
-                }
-
-                if (m_Global.mycls.datalist[j].SignName == "Ch Disp Speed")
-                {
-                    b.data[m_Global.mycls.datalist[j].EdcId] = mspeed_pos1;
-
-                }
-
-
-            }
-
-            RawDataDataGroup d;
-            RawDataDataGroup c = new RawDataDataGroup();
-            c.ID = 0;
-            m_Global.mycls.structcopy_RawDataData(ref c.rdata, b);
-            for (j = 0; j < 4; j++)
-            {
-
-                if (ClsStatic.arraydatacount[j] >= ClsStatic.arraydata[j].NodeCount - 1)
-                {
-
-                    ClsStatic.arraydata[j].Read<RawDataDataGroup>(out d, 10);
-                    ClsStatic.arraydatacount[j] = ClsStatic.arraydatacount[j] - 1;
-                }
-
-                ClsStatic.arraydatacount[j] = ClsStatic.arraydatacount[j] + 1;
-                ClsStatic.arraydata[j].Write<RawDataDataGroup>(ref c, 10);
-            }
-
-            if (ClsStatic.savedatacount >= ClsStatic.savedata.NodeCount - 1)
-            {
-                ClsStatic.savedata.Read<RawDataDataGroup>(out d, 10);
-                ClsStatic.savedatacount = ClsStatic.savedatacount - 1;
-            }
-            ClsStatic.savedatacount = ClsStatic.savedatacount + 1;
-            ClsStatic.savedata.Write<RawDataDataGroup>(ref c, 10);
-
-            for (j = 0; j < m_Global.mycls.allsignals.Count; j++)
-            {
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Command")
-                {
-
-                    m_Global.mycls.allsignals[j].cvalue = poscmd;
-
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Disp Command")
-                {
-
-                    m_Global.mycls.allsignals[j].cvalue = poscmd;
-
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Load Command")
-                {
-
-                    m_Global.mycls.allsignals[j].cvalue = loadcmd;
-
-                }
-
-
-            }
-            for (j = 0; j < m_Global.mycls.allsignals.Count; j++)
-            {
-
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Disp Speed")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = mspeed_pos1;
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Load Speed")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = mspeed_load1;
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Time")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = time;
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "ambient pressure Ch Disp")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = pos1;
-
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Disp")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = pos;
-
-
-
-
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "ambient pressure Ch Load")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = load1;
-
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Load")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = load;
-
-                }
-
-                if (m_Global.mycls.allsignals[j].SignName == "Ch Ext")
-                {
-                    m_Global.mycls.allsignals[j].cvalue = ext;
-
-
-                }
-
-                for (int m = 0; m < 100; m++)
-                {
-                    if (m_Global.mycls.allsignals[j].SignName == "Ch User" + m.ToString().Trim())
-                    {
-                        m_Global.mycls.allsignals[j].cvalue = rr[m + 1];
-
-                    }
-
-                }
-
-            }
-
-
-
-        }
+   
 
         public void Timer()
         {
@@ -1619,12 +1127,7 @@ namespace ClsStaticStation
             int jj;
             int ii;
 
-            if (mdemo == true)
-            {
-                demo();
-            }
-            else
-            {
+           
 
                 ii = this.Myevent[0].mdatalist.Count;
 
@@ -2109,8 +1612,7 @@ namespace ClsStaticStation
 
                 this.Myevent[0].mdatalist.Clear();
 
-            }
-
+            
         }
 
         public override void DelayS(double t)
@@ -2131,14 +1633,10 @@ namespace ClsStaticStation
 
             endcontrol();
 
-            if (mdemo == true)
-            {
-            }
-            else
-            {
+           
                 CrossStop(0);
 
-            }
+            
             mtestrun = false;
 
             CComLibrary.GlobeVal.InitUserCalcChannel();//初始化用户自定义通道
@@ -2377,12 +1875,7 @@ namespace ClsStaticStation
 
             }
 
-            if (mdemo == true)
-            {
-                m_Global.m_runstate = 0;
-            }
-            else
-            {
+           
 
                 if (cmd == 2)
                 {
@@ -2410,7 +1903,7 @@ namespace ClsStaticStation
                 }
 
 
-            }
+            
 
         }
 

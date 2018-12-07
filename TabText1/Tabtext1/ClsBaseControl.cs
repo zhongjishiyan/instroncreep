@@ -26,7 +26,7 @@ namespace ClsStaticStation
         public Boolean mprotect = false; //保护 
 
         public long merrorcount = 0;
-        public Boolean mdemo = false;
+       
         public int mcurseg = 0;
 
         public XLDOPE.Edc myedc;

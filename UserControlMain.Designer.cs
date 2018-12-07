@@ -47,6 +47,7 @@
             this.btnmtest = new System.Windows.Forms.Button();
             this.btnmreport = new System.Windows.Forms.Button();
             this.btnmain = new TabHeaderDemo.ButtonExNew(this.components);
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panelback.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,6 +83,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -300,6 +302,14 @@
             this.btnmain.UseVisualStyleBackColor = true;
             this.btnmain.Click += new System.EventHandler(this.btnmain_Click);
             // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(1034, 525);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
             // UserControlMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -338,5 +348,6 @@
         public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage7;
         public System.Windows.Forms.Button btngroupcontrol;
+        private System.Windows.Forms.TabPage tabPage8;
     }
 }

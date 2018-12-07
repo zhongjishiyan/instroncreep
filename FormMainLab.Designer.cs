@@ -394,7 +394,7 @@
             this.btnhand.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnhand.UseVisualStyleBackColor = false;
             this.btnhand.Visible = false;
-            this.btnhand.Click += new System.EventHandler(this.btnhand_Click);
+          
             // 
             // btntool
             // 
@@ -411,7 +411,7 @@
             this.toolTip1.SetToolTip(this.btntool, "数据处理");
             this.btntool.UseVisualStyleBackColor = false;
             this.btntool.Visible = false;
-            this.btntool.Click += new System.EventHandler(this.btntool_Click);
+         
             // 
             // btnpos
             // 
@@ -426,7 +426,7 @@
             this.btnpos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnpos, "位移设置");
             this.btnpos.UseVisualStyleBackColor = false;
-            this.btnpos.Click += new System.EventHandler(this.btnpos_Click);
+           
             // 
             // btnext2
             // 
@@ -442,7 +442,7 @@
             this.toolTip1.SetToolTip(this.btnext2, "引伸计2设置");
             this.btnext2.UseVisualStyleBackColor = false;
             this.btnext2.Visible = false;
-            this.btnext2.Click += new System.EventHandler(this.btnext2_Click);
+           
             // 
             // tlbmeterback
             // 
@@ -751,7 +751,7 @@
             // 
             // timerRecord
             // 
-            this.timerRecord.Tick += new System.EventHandler(this.timerRecord_Tick);
+           
             // 
             // openFileDialog1
             // 

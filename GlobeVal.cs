@@ -62,6 +62,7 @@ namespace TabHeaderDemo
         public static UserControlPretest userControlpretest1;
         public static UserControlMethod userControlmethod1;
         public static UserGroupControl userGroupControl1;
+        
 
 
         public static int selcontroller = 1;//当前控制器

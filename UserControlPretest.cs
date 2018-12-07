@@ -422,30 +422,9 @@ namespace TabHeaderDemo
 
             GlobeVal.MainStatusStrip.Items["tslblmethod"].Text = "方法:" + CComLibrary.GlobeVal.filesave.methodname;
 
-            GlobeVal.myarm.mdemo = GlobeVal.mysys.demo;
+           
 
-            if (GlobeVal.myarm.mdemo == true)
-            {
-                if ((GlobeVal.ShowCameraForm == true) && (CComLibrary.GlobeVal.filesave.mplay == true) && (CComLibrary.GlobeVal.filesave.mplayfile == true))
-                {
-                    if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\"+CComLibrary.GlobeVal.filesave.play_avi_datafile)==true)
-                    {
-                        GlobeVal.myarm.readdemo(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\" + CComLibrary.GlobeVal.filesave.play_avi_datafile);
-                    }
-                }
-                else
-                {
-                    if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\" + GlobeVal.mysys.demotxt) == true)
-                    {
-                        GlobeVal.myarm.readdemo(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\" + GlobeVal.mysys.demotxt);
-                    }
-                    else
-                    {
-                        GlobeVal.myarm.readdemo(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\拉伸2演示.txt");
-                    }
-                }
-
-            }
+            
 
         }
 

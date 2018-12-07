@@ -54,8 +54,8 @@ namespace AppleLabApplication
 
 
        
-        private Point mP7;
-        private Point mP8;
+      
+       
         private PointF mP7F;
         private PointF mP8F;
 

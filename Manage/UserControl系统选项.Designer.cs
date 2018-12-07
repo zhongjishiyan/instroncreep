@@ -44,7 +44,6 @@
             this.txtAppTitle = new System.Windows.Forms.TextBox();
             this.chktitle = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chkdemo = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbostartup = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,8 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.txtdemo = new System.Windows.Forms.TextBox();
-            this.btndemotxt = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -62,7 +59,6 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -220,26 +216,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btndemotxt);
-            this.groupBox2.Controls.Add(this.txtdemo);
-            this.groupBox2.Controls.Add(this.chkdemo);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 78);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(646, 49);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            // 
-            // chkdemo
-            // 
-            this.chkdemo.AutoSize = true;
-            this.chkdemo.Location = new System.Drawing.Point(52, 20);
-            this.chkdemo.Name = "chkdemo";
-            this.chkdemo.Size = new System.Drawing.Size(138, 16);
-            this.chkdemo.TabIndex = 0;
-            this.chkdemo.Text = "在\"演示\"模式下工作 ";
-            this.chkdemo.UseVisualStyleBackColor = true;
-            this.chkdemo.CheckedChanged += new System.EventHandler(this.chkdemo_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -326,23 +308,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // txtdemo
-            // 
-            this.txtdemo.Location = new System.Drawing.Point(196, 18);
-            this.txtdemo.Name = "txtdemo";
-            this.txtdemo.Size = new System.Drawing.Size(352, 21);
-            this.txtdemo.TabIndex = 1;
-            // 
-            // btndemotxt
-            // 
-            this.btndemotxt.Location = new System.Drawing.Point(561, 19);
-            this.btndemotxt.Name = "btndemotxt";
-            this.btndemotxt.Size = new System.Drawing.Size(71, 20);
-            this.btndemotxt.TabIndex = 3;
-            this.btndemotxt.Text = "浏览";
-            this.btndemotxt.UseVisualStyleBackColor = true;
-            this.btndemotxt.Click += new System.EventHandler(this.btndemotxt_Click);
-            // 
             // UserControl系统选项
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -360,8 +325,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -383,7 +346,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox chkdemo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtAppTitle;
         private System.Windows.Forms.CheckBox chktitle;
@@ -395,7 +357,5 @@
         private System.Windows.Forms.TextBox txtlogo;
         private System.Windows.Forms.CheckBox chklogo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button btndemotxt;
-        private System.Windows.Forms.TextBox txtdemo;
     }
 }

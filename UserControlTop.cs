@@ -29,12 +29,13 @@ namespace TabHeaderDemo
             py = new int[8];
 
             px[0] = 775;
-            px[1] = 671;
-            px[2] = 590;
-            px[3] = 534;
+            px[1] = 691;
+            px[2] = 621;
+            px[3] = 570;
             px[4] = 488;
-            px[5] = 468;
-            px[6] = 454;
+            px[5] = 458;
+            px[6] = 444;
+            px[7] = 526;
 
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
@@ -202,6 +203,7 @@ namespace TabHeaderDemo
             btnmethod.Left = Convert.ToInt16(px[1] / 1366 * pnlback.Width)+30;
             btnreport.Left = Convert.ToInt16(px[2] / 1366 * pnlback.Width)+30;
             btnmanage.Left = Convert.ToInt16(px[3] / 1366 * pnlback.Width)+30;
+            btnAnalysis.Left  = Convert.ToInt16(px[7] / 1366 * pnlback.Width) + 30;
             btnuser.Left = Convert.ToInt16(px[4] / 1366 * pnlback.Width)+30;
             btnhelp.Left = Convert.ToInt16(px[5] / 1366 * pnlback.Width)+30;
             btnexit.Left = Convert.ToInt16(px[6] / 1366 * pnlback.Width)+30;
@@ -323,10 +325,7 @@ namespace TabHeaderDemo
             paneltip.Visible = true;
         }
 
-        private void btnmethod_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-        }
+       
 
         private void btnmethod_MouseLeave(object sender, EventArgs e)
         {
@@ -385,6 +384,25 @@ namespace TabHeaderDemo
         private void UserControlTop_SizeChanged(object sender, EventArgs e)
         {
             wordArt1.Width = btnhelp.Left - 50 - wordArt1.Left;
+        }
+
+        private void btnAnalysis_MouseEnter(object sender, EventArgs e)
+        {
+            lbltip.Text = "试验数据处理分析";
+            paneltip.BackgroundImage =null ;
+            paneltip.Visible = true;
+        }
+
+        private void btnAnalysis_MouseLeave(object sender, EventArgs e)
+        {
+            paneltip.Visible = false;
+            lbltip.Text = "";
+        }
+
+        private void btnAnalysis_Click(object sender, EventArgs e)
+        {
+            GlobeVal.mainlab._直接进入分析界面();
+
         }
     }
     public class AssemblyHelper

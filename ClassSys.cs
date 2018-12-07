@@ -9,11 +9,20 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 namespace TabHeaderDemo
 {
+    public enum _Status_Testing : int
+    {
+        Selector_Status_Testing,
+        Selector_Status_Tested_Rejected,
+        Selector_Status_Tested,
+        Selector_Status_PreTest,
+        Selector_Status_Ready_For_Test,
+        Selector_Status_PostTest
 
+    }
     [Serializable]
     public class ClassSys
     {
-
+        
         public enum _MachineName : int
         {
             Electronic,
@@ -45,7 +54,7 @@ namespace TabHeaderDemo
 
         public int startupscreen = 0;//启动模式
 
-        public bool demo = false;//演示试验 
+        
 
         public int controllerkind = 0;//
 

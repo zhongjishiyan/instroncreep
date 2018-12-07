@@ -22,7 +22,7 @@ namespace TabHeaderDemo
         private UserControl报告常规 UserControl报告常规1;
 
 
-        public Document document = new Document();
+        public Document document;
 
 
         public ReportApp mReportApp = new ReportApp();
@@ -222,6 +222,7 @@ namespace TabHeaderDemo
 
         private void UserReport_Load(object sender, EventArgs e)
         {
+            document = new Spire.Doc.Document();
             GlobeVal.muserreport = this;
             UserControl报告常规1 = new UserControl报告常规();
            

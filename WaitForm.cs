@@ -88,7 +88,7 @@ namespace TabHeaderDemo
                 {
                     Application.Run(waitForm);
                 }
-                catch
+                catch(Exception e)
                 {
 
                 }

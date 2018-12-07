@@ -158,7 +158,14 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
-             
+
+                mUserControlStepInput.numvalue.Value = CComLibrary.GlobeVal.filesave.msegtest[Id].keeptime;
+                mUserControlStepInput.Tag = "保持时间";
+                mUserControlStepInput.cbounit.Items.Clear();
+                mUserControlStepInput.cbounit.Items.Add(ClsStaticStation.m_Global.mycls.timesignal.cUnits[0]);
+                mUserControlStepInput.cbounit.SelectedIndex = 0;
+                mUserControlStepInput.ValueChanged += MUserControlStepInput_ValueChanged;
+
 
             }
 
@@ -174,7 +181,15 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
-              
+
+                mUserControlStepInput.numvalue.Value = CComLibrary.GlobeVal.filesave.msegtest[Id].freq;
+                mUserControlStepInput.Tag = "频率";
+                mUserControlStepInput.cbounit.Items.Clear();
+                mUserControlStepInput.cbounit.Items.Add(ClsStaticStation.m_Global.mycls.freqsignal.cUnits[0]);
+                mUserControlStepInput.cbounit.SelectedIndex = 0;
+                mUserControlStepInput.ValueChanged += MUserControlStepInput_ValueChanged;
+
+
 
                 mlabel = new Label();
                 mlabel.Text = "幅值：";
@@ -185,7 +200,16 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
-               
+
+                mUserControlStepInput.numvalue.Value = CComLibrary.GlobeVal.filesave.msegtest[Id].range ;
+                mUserControlStepInput.Tag = "幅值";
+                mUserControlStepInput.cbounit.Items.Clear();
+                mUserControlStepInput.cbounit.Items.Add(ClsStaticStation.m_Global.mycls.hardsignals[CComLibrary.GlobeVal.filesave.msegtest[Id].controlmode].cUnits[0]);
+                mUserControlStepInput.cbounit.SelectedIndex = 0;
+                mUserControlStepInput.ValueChanged += MUserControlStepInput_ValueChanged;
+
+
+
                 mlabel = new Label();
                 mlabel.Text = "均值：";
                 mlabel.Dock = DockStyle.Fill;
@@ -195,7 +219,13 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
-               
+
+                mUserControlStepInput.numvalue.Value = CComLibrary.GlobeVal.filesave.msegtest[Id].ave;
+                mUserControlStepInput.Tag = "均值";
+                mUserControlStepInput.cbounit.Items.Clear();
+                mUserControlStepInput.cbounit.Items.Add(ClsStaticStation.m_Global.mycls.hardsignals[CComLibrary.GlobeVal.filesave.msegtest[Id].controlmode].cUnits[0]);
+                mUserControlStepInput.cbounit.SelectedIndex = 0;
+                mUserControlStepInput.ValueChanged += MUserControlStepInput_ValueChanged;
 
                 mlabel = new Label();
                 mlabel.Text = "次数：";
@@ -206,7 +236,15 @@ namespace TabHeaderDemo
                 mUserControlStepInput = new UserControlStepInput();
                 mUserControlStepInput.Dock = DockStyle.Fill;
                 tlp.Controls.Add(mUserControlStepInput);
-               
+
+                mUserControlStepInput.numvalue.Value = CComLibrary.GlobeVal.filesave.msegtest[Id].count;
+                mUserControlStepInput.Tag = "次数";
+                mUserControlStepInput.cbounit.Items.Clear();
+                mUserControlStepInput.cbounit.Items.Add(ClsStaticStation.m_Global.mycls.countsignal.cUnits[0]);
+                mUserControlStepInput.cbounit.SelectedIndex = 0;
+                mUserControlStepInput.ValueChanged += MUserControlStepInput_ValueChanged;
+
+
             }
             tlp.Visible = true;
         }
@@ -220,6 +258,28 @@ namespace TabHeaderDemo
             if (Convert.ToString((sender as UserControlStepInput).Tag) == "目标值")
             {
                 CComLibrary.GlobeVal.filesave.msegtest[Id].dest = (sender as UserControlStepInput).numvalue.Value;
+            }
+            if (Convert.ToString((sender as UserControlStepInput).Tag) == "保持时间")
+            {
+                CComLibrary.GlobeVal.filesave.msegtest[Id].keeptime = (sender as UserControlStepInput).numvalue.Value;
+            }
+            if (Convert.ToString((sender as UserControlStepInput).Tag) == "频率")
+            {
+                CComLibrary.GlobeVal.filesave.msegtest[Id].freq = (sender as UserControlStepInput).numvalue.Value;
+            }
+            if (Convert.ToString((sender as UserControlStepInput).Tag) == "幅值")
+            {
+                CComLibrary.GlobeVal.filesave.msegtest[Id].range = (sender as UserControlStepInput).numvalue.Value;
+            }
+
+            if (Convert.ToString((sender as UserControlStepInput).Tag) == "均值")
+            {
+                CComLibrary.GlobeVal.filesave.msegtest[Id].ave = (sender as UserControlStepInput).numvalue.Value;
+            }
+
+            if (Convert.ToString((sender as UserControlStepInput).Tag) == "次数")
+            {
+                CComLibrary.GlobeVal.filesave.msegtest[Id].count = Convert.ToInt32( (sender as UserControlStepInput).numvalue.Value);
             }
 
             return;
@@ -271,6 +331,7 @@ namespace TabHeaderDemo
 
         private void cbowave_SelectedValueChanged(object sender, EventArgs e)
         {
+            CComLibrary.GlobeVal.filesave.msegtest[Id].cmd = cbowave.SelectedIndex;
             setwave();
         }
 

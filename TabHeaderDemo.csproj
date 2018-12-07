@@ -334,6 +334,12 @@
     <Compile Include="UserControlStatus.Designer.cs">
       <DependentUpon>UserControlStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlAnalysis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAnalysis.Designer.cs">
+      <DependentUpon>UserControlAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl摄像.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -885,6 +891,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlStatus.resx">
       <DependentUpon>UserControlStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAnalysis.resx">
+      <DependentUpon>UserControlAnalysis.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlTop.resx">
       <DependentUpon>UserControlTop.cs</DependentUpon>

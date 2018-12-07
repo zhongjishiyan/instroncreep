@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+
+            
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserReport));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("常规");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("页眉");

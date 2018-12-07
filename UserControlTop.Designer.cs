@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTop));
             this.pnlback = new System.Windows.Forms.Panel();
+            this.btnAnalysis = new TabHeaderDemo.ButtonExNew(this.components);
             this.paneltip = new System.Windows.Forms.Panel();
             this.paneldefine = new System.Windows.Forms.Panel();
             this.wordArt1 = new TabHeaderDemo.WordArt();
@@ -51,6 +52,7 @@
             // 
             this.pnlback.BackColor = System.Drawing.Color.White;
             this.pnlback.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlback.Controls.Add(this.btnAnalysis);
             this.pnlback.Controls.Add(this.paneltip);
             this.pnlback.Controls.Add(this.paneldefine);
             this.pnlback.Controls.Add(this.wordArt1);
@@ -71,6 +73,26 @@
             this.pnlback.TabIndex = 34;
             this.pnlback.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlback_Paint);
             this.pnlback.Resize += new System.EventHandler(this.pnlback_Resize);
+            // 
+            // btnAnalysis
+            // 
+            this.btnAnalysis.BackColor = System.Drawing.Color.Transparent;
+            this.btnAnalysis.FlatAppearance.BorderSize = 0;
+            this.btnAnalysis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAnalysis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnalysis.Image = ((System.Drawing.Image)(resources.GetObject("btnAnalysis.Image")));
+            this.btnAnalysis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAnalysis.Location = new System.Drawing.Point(516, 254);
+            this.btnAnalysis.Name = "btnAnalysis";
+            this.btnAnalysis.Size = new System.Drawing.Size(130, 61);
+            this.btnAnalysis.TabIndex = 26;
+            this.btnAnalysis.Text = "分析器";
+            this.btnAnalysis.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAnalysis.UseVisualStyleBackColor = false;
+            this.btnAnalysis.Click += new System.EventHandler(this.btnAnalysis_Click);
+            this.btnAnalysis.MouseEnter += new System.EventHandler(this.btnAnalysis_MouseEnter);
+            this.btnAnalysis.MouseLeave += new System.EventHandler(this.btnAnalysis_MouseLeave);
             // 
             // paneltip
             // 
@@ -119,7 +141,7 @@
             this.btnuser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnuser.Image = ((System.Drawing.Image)(resources.GetObject("btnuser.Image")));
             this.btnuser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnuser.Location = new System.Drawing.Point(488, 326);
+            this.btnuser.Location = new System.Drawing.Point(485, 333);
             this.btnuser.Name = "btnuser";
             this.btnuser.Size = new System.Drawing.Size(122, 57);
             this.btnuser.TabIndex = 7;
@@ -159,7 +181,7 @@
             this.btnhelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnhelp.Image = ((System.Drawing.Image)(resources.GetObject("btnhelp.Image")));
             this.btnhelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnhelp.Location = new System.Drawing.Point(468, 410);
+            this.btnhelp.Location = new System.Drawing.Point(468, 421);
             this.btnhelp.Name = "btnhelp";
             this.btnhelp.Size = new System.Drawing.Size(122, 54);
             this.btnhelp.TabIndex = 5;
@@ -179,7 +201,7 @@
             this.btnmanage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmanage.Image = ((System.Drawing.Image)(resources.GetObject("btnmanage.Image")));
             this.btnmanage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnmanage.Location = new System.Drawing.Point(534, 241);
+            this.btnmanage.Location = new System.Drawing.Point(560, 187);
             this.btnmanage.Name = "btnmanage";
             this.btnmanage.Size = new System.Drawing.Size(130, 61);
             this.btnmanage.TabIndex = 4;
@@ -199,9 +221,9 @@
             this.btnreport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnreport.Image = ((System.Drawing.Image)(resources.GetObject("btnreport.Image")));
             this.btnreport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnreport.Location = new System.Drawing.Point(590, 164);
+            this.btnreport.Location = new System.Drawing.Point(611, 123);
             this.btnreport.Name = "btnreport";
-            this.btnreport.Size = new System.Drawing.Size(125, 56);
+            this.btnreport.Size = new System.Drawing.Size(125, 58);
             this.btnreport.TabIndex = 3;
             this.btnreport.Text = "报告";
             this.btnreport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -219,7 +241,7 @@
             this.btnmethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmethod.Image = ((System.Drawing.Image)(resources.GetObject("btnmethod.Image")));
             this.btnmethod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnmethod.Location = new System.Drawing.Point(671, 90);
+            this.btnmethod.Location = new System.Drawing.Point(688, 61);
             this.btnmethod.Name = "btnmethod";
             this.btnmethod.Size = new System.Drawing.Size(122, 56);
             this.btnmethod.TabIndex = 2;
@@ -229,7 +251,7 @@
             this.btnmethod.Click += new System.EventHandler(this.btnmethod_Click);
             this.btnmethod.MouseEnter += new System.EventHandler(this.btnmethod_MouseEnter);
             this.btnmethod.MouseLeave += new System.EventHandler(this.btnmethod_MouseLeave);
-            this.btnmethod.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnmethod_MouseMove);
+          
             // 
             // btntest
             // 
@@ -240,7 +262,7 @@
             this.btntest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntest.Image = ((System.Drawing.Image)(resources.GetObject("btntest.Image")));
             this.btntest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btntest.Location = new System.Drawing.Point(775, 25);
+            this.btntest.Location = new System.Drawing.Point(796, 3);
             this.btntest.Name = "btntest";
             this.btntest.Size = new System.Drawing.Size(123, 59);
             this.btntest.TabIndex = 1;
@@ -305,5 +327,6 @@
         public System.Windows.Forms.Panel paneltip;
         private System.Windows.Forms.Label lbltip;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private ButtonExNew btnAnalysis;
     }
 }

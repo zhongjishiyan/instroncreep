@@ -10,6 +10,8 @@ using System.Drawing.Drawing2D;
 
 namespace TabHeaderDemo
 {
+
+
     public partial class UserGroupControl: UserControl
     {
         
@@ -121,7 +123,7 @@ namespace TabHeaderDemo
                 m = new IP.Components.Toolbox.Item();
                 m.Text = "主机"+(i+1).ToString();
 
-                m.Image = imageList4.Images[0];
+                m.Image = imageList4.Images[_Status_Testing.Selector_Status_Ready_For_Test.GetHashCode()];
                 lstspe.Items.Add(m);
 
                 ListViewItem lvi = new ListViewItem();
@@ -166,7 +168,11 @@ namespace TabHeaderDemo
            // this.tableLayoutPanel2.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel2, true, null);
             this.tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel3, true, null);
 
-           
+            lstspe.ItemMenu = contextMenuStrip1;
+
+            lstspe.ContextMenuStrip = contextMenuStrip1;
+            lstspe.TabMenu = null;
+
         }
 
       
@@ -269,15 +275,15 @@ namespace TabHeaderDemo
 
             PointF[] roundedRectangle = new PointF[5];
             roundedRectangle[0].X = 8;
-            roundedRectangle[0].Y = 3;
+            roundedRectangle[0].Y = 0;
             roundedRectangle[1].X = this.Width - 2 - 3;
-            roundedRectangle[1].Y = 3;
-            roundedRectangle[2].X = this.Width - 2 - 3;
-            roundedRectangle[2].Y = this.Height - 2 - 3;
+            roundedRectangle[1].Y = 0;
+            roundedRectangle[2].X = this.Width - 2-3;
+            roundedRectangle[2].Y = this.Height - 2 ;
             roundedRectangle[3].X = 1;
-            roundedRectangle[3].Y = this.Height - 2 - 3;
+            roundedRectangle[3].Y = this.Height - 2;
             roundedRectangle[4].X = 1;
-            roundedRectangle[4].Y = 8;
+            roundedRectangle[4].Y = 5;
             drawFigure(e, roundedRectangle);
 
             //e.Graphics.EndContainer(containerState);
@@ -290,16 +296,16 @@ namespace TabHeaderDemo
 
 
             roundedRectangle = new PointF[5];
-            roundedRectangle[0].X = lstspe .Left - 15;
-            roundedRectangle[0].Y = lstspe.Top+10;
+            roundedRectangle[0].X = lstspe .Left - 10;
+            roundedRectangle[0].Y = lstspe.Top+4;
             roundedRectangle[1].X = lstspe.Right;
-            roundedRectangle[1].Y = lstspe.Top+10;
+            roundedRectangle[1].Y = lstspe.Top+4;
             roundedRectangle[2].X = lstspe.Right;
             roundedRectangle[2].Y = roundedRectangle[0].Y + (lstspe.Bottom - lstspe .Top);
-            roundedRectangle[3].X = lstspe.Left - 15;
+            roundedRectangle[3].X = lstspe.Left - 10;
             roundedRectangle[3].Y = roundedRectangle[0].Y + (lstspe .Bottom - lstspe.Top);
-            roundedRectangle[4].X = lstspe.Left - 15;
-            roundedRectangle[4].Y = lstspe.Top+10;
+            roundedRectangle[4].X = lstspe.Left - 10;
+            roundedRectangle[4].Y = lstspe.Top+4;
             drawFigure1(e, roundedRectangle);
 
             e.Graphics.EndContainer(containerState);

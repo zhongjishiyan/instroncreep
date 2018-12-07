@@ -869,13 +869,20 @@ namespace TabHeaderDemo
             chkcriteria3_CheckedChanged(null, null);
             chkcriteria4_CheckedChanged(null, null);
 
+            //-------------------
+            chkSaveCriteria.Checked = CComLibrary.GlobeVal.filesave.mSaveCriteria;
+
             cboSaveCriteria.Items.Clear();
             cboSaveCriteria.Items.Add("按照控制器采集间隔保存");
             cboSaveCriteria.Items.Add("按照波形间隔");
             cboSaveCriteria.Items.Add("按照循环间隔");
             cboSaveCriteria.Items.Add("按照时间存盘");
+            cboSaveCriteria.SelectedIndex = CComLibrary.GlobeVal.filesave.mSaveCriteriaMode;
+            numSaveCountSeg.Value = CComLibrary.GlobeVal.filesave.mSaveCountSeg;
+            numSaveCyclcCount.Value = CComLibrary.GlobeVal.filesave.mSaveCyclcCount;
+            numSaveWaveCount.Value = CComLibrary.GlobeVal.filesave.mSaveWaveCount;
 
-
+            chkSaveCriteria_CheckedChanged(null, null);
          
 
             for (int i=0;i<6;i++)
@@ -2585,6 +2592,9 @@ namespace TabHeaderDemo
 
         private void cboSaveCriteria_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            CComLibrary.GlobeVal.filesave.mSaveCriteriaMode = cboSaveCriteria.SelectedIndex;
+
             if(cboSaveCriteria.SelectedIndex ==0)
             {
                 tlpSaveCriteria.RowStyles[1].Height = 0;
@@ -2617,18 +2627,33 @@ namespace TabHeaderDemo
                 
             }
 
+           
+
         }
 
         private void numSaveCount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
+            if (CComLibrary.GlobeVal.filesave==null)
+            {
+                return;
+            }
+            CComLibrary.GlobeVal.filesave.mSaveCountSeg = Convert.ToInt32( numSaveCountSeg.Value);
             dgridsave.Rows.Clear();
 
             dgridsave.Height = dgridsave.ColumnHeadersHeight; 
 
-            for (int i = 0; i < Convert.ToInt16(numSaveCount.Value); i++)
+            for (int i = 0; i < Convert.ToInt16(numSaveCountSeg.Value); i++)
             {
                 dgridsave.Rows.Add();
                 dgridsave.Height = dgridsave.Height + Convert.ToInt16( dgridsave.Rows[i].Height);
+                dgridsave.Rows[i].Cells[0].Value  = (i + 1).ToString();
+                dgridsave.Rows[i].Cells[1].Value = CComLibrary.GlobeVal.filesave.mSaveCriteraiRow2[i].ToString("F3");
+                dgridsave.Rows[i].Cells[2].Value = CComLibrary.GlobeVal.filesave.mSaveCriteraiRow3[i].ToString("F3");
+                dgridsave.Rows[i].Cells[3].Value = "小时";
+                dgridsave.Rows[i].Cells[4].Value = CComLibrary.GlobeVal.filesave.mSaveCriteraiRow5[i].ToString("F3");
+                dgridsave.Rows[i].Cells[5].Value ="分钟";
+
+
             }
             if (dgridsave.Rows.Count > 0)
             {
@@ -2801,6 +2826,57 @@ namespace TabHeaderDemo
         private void numFatigueProtectionstop_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
             CComLibrary.GlobeVal.filesave.mFatigueProtectionStopValue = numFatigueProtectionstop.Value;
+        }
+
+        private void chkSaveCriteria_CheckedChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mSaveCriteria = chkSaveCriteria.Checked;
+
+            if (chkSaveCriteria.Checked ==true)
+            {
+                tlpSaveCriteriaTop.Height = 244;
+
+            }
+            else
+            {
+                tlpSaveCriteriaTop.Height = 25;
+            }
+        }
+
+        private void numSaveWaveCount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mSaveWaveCount = Convert.ToInt32(numSaveWaveCount.Value); 
+        }
+
+        private void numSaveCyclcCount_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.mSaveCyclcCount = Convert.ToInt32(numSaveCyclcCount.Value);
+        }
+
+        private void dgridsave_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgridsave_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 )
+            {
+                CComLibrary.GlobeVal.filesave.mSaveCriteraiRow2[e.RowIndex] = Convert.ToDouble( dgridsave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+
+            }
+
+            if (e.ColumnIndex == 2)
+            {
+                CComLibrary.GlobeVal.filesave.mSaveCriteraiRow3[e.RowIndex] = Convert.ToDouble(dgridsave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+
+            }
+
+            if (e.ColumnIndex == 4)
+            {
+                CComLibrary.GlobeVal.filesave.mSaveCriteraiRow5[e.RowIndex] = Convert.ToDouble(dgridsave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+
+            }
         }
     }
 }

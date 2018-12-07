@@ -115,6 +115,8 @@
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.lstavail = new TabHeaderDemo.ListExtObject(this.components);
+            this.lstinclude = new TabHeaderDemo.ListExtObject(this.components);
             this.panel10 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.btnup = new System.Windows.Forms.Button();
@@ -339,11 +341,11 @@
             this.tableLayoutPanel48 = new System.Windows.Forms.TableLayoutPanel();
             this.numinterval3 = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.lblinterval3 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel77 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpSaveCriteriaTop = new System.Windows.Forms.TableLayoutPanel();
             this.chkSaveCriteria = new System.Windows.Forms.CheckBox();
             this.tlpSaveCriteria = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel81 = new System.Windows.Forms.TableLayoutPanel();
-            this.numSaveCount = new NationalInstruments.UI.WindowsForms.NumericEdit();
+            this.numSaveCountSeg = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.label98 = new System.Windows.Forms.Label();
             this.tableLayoutPanel80 = new System.Windows.Forms.TableLayoutPanel();
             this.numSaveCyclcCount = new NationalInstruments.UI.WindowsForms.NumericEdit();
@@ -400,8 +402,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.lstavail = new TabHeaderDemo.ListExtObject(this.components);
-            this.lstinclude = new TabHeaderDemo.ListExtObject(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.grpAlarm.SuspendLayout();
@@ -538,10 +538,10 @@
             this.tlpcriteria3.SuspendLayout();
             this.tableLayoutPanel48.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numinterval3)).BeginInit();
-            this.tableLayoutPanel77.SuspendLayout();
+            this.tlpSaveCriteriaTop.SuspendLayout();
             this.tlpSaveCriteria.SuspendLayout();
             this.tableLayoutPanel81.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSaveCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSaveCountSeg)).BeginInit();
             this.tableLayoutPanel80.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSaveCyclcCount)).BeginInit();
             this.tableLayoutPanel79.SuspendLayout();
@@ -864,7 +864,7 @@
             this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 241F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 299F));
             this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -882,7 +882,7 @@
             this.label6.ForeColor = System.Drawing.Color.Teal;
             this.label6.Location = new System.Drawing.Point(4, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(410, 36);
+            this.label6.Size = new System.Drawing.Size(352, 36);
             this.label6.TabIndex = 0;
             this.label6.Text = "设置控制-开始试验";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -891,7 +891,7 @@
             // 
             this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Location = new System.Drawing.Point(421, 4);
+            this.panel6.Location = new System.Drawing.Point(363, 4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(40, 30);
             this.panel6.TabIndex = 1;
@@ -1235,7 +1235,7 @@
             this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1253,7 +1253,7 @@
             this.label5.ForeColor = System.Drawing.Color.Teal;
             this.label5.Location = new System.Drawing.Point(4, 1);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(409, 36);
+            this.label5.Size = new System.Drawing.Size(351, 36);
             this.label5.TabIndex = 0;
             this.label5.Text = "设置控制-应变";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1262,7 +1262,7 @@
             // 
             this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Location = new System.Drawing.Point(420, 4);
+            this.panel5.Location = new System.Drawing.Point(362, 4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(40, 30);
             this.panel5.TabIndex = 1;
@@ -1657,6 +1657,26 @@
             this.label14.Text = "选定通道";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lstavail
+            // 
+            this.lstavail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstavail.FormattingEnabled = true;
+            this.lstavail.ItemHeight = 12;
+            this.lstavail.Location = new System.Drawing.Point(3, 24);
+            this.lstavail.Name = "lstavail";
+            this.lstavail.Size = new System.Drawing.Size(279, 241);
+            this.lstavail.TabIndex = 2;
+            // 
+            // lstinclude
+            // 
+            this.lstinclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstinclude.FormattingEnabled = true;
+            this.lstinclude.ItemHeight = 12;
+            this.lstinclude.Location = new System.Drawing.Point(339, 24);
+            this.lstinclude.Name = "lstinclude";
+            this.lstinclude.Size = new System.Drawing.Size(280, 241);
+            this.lstinclude.TabIndex = 3;
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.button4);
@@ -1951,7 +1971,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1969,7 +1989,7 @@
             this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(402, 36);
+            this.label1.Size = new System.Drawing.Size(344, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "设置控制-测试前";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1978,7 +1998,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(413, 4);
+            this.panel4.Location = new System.Drawing.Point(355, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(40, 30);
             this.panel4.TabIndex = 1;
@@ -3053,7 +3073,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -3071,7 +3091,7 @@
             this.label2.ForeColor = System.Drawing.Color.Teal;
             this.label2.Location = new System.Drawing.Point(4, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(403, 36);
+            this.label2.Size = new System.Drawing.Size(345, 36);
             this.label2.TabIndex = 0;
             this.label2.Text = "设置控制-测试";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3080,7 +3100,7 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(414, 4);
+            this.panel1.Location = new System.Drawing.Point(356, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(40, 30);
             this.panel1.TabIndex = 1;
@@ -4015,7 +4035,7 @@
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 302F));
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -4033,7 +4053,7 @@
             this.label3.ForeColor = System.Drawing.Color.Teal;
             this.label3.Location = new System.Drawing.Point(4, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(407, 36);
+            this.label3.Size = new System.Drawing.Size(349, 36);
             this.label3.TabIndex = 0;
             this.label3.Text = "设置控制-测试结束";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4042,7 +4062,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(418, 4);
+            this.panel2.Location = new System.Drawing.Point(360, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(40, 30);
             this.panel2.TabIndex = 1;
@@ -4067,7 +4087,7 @@
             this.tlpdata.Controls.Add(this.groupBox8, 0, 0);
             this.tlpdata.Controls.Add(this.tlpcriteria2, 0, 2);
             this.tlpdata.Controls.Add(this.tlpcriteria3, 0, 3);
-            this.tlpdata.Controls.Add(this.tableLayoutPanel77, 0, 5);
+            this.tlpdata.Controls.Add(this.tlpSaveCriteriaTop, 0, 5);
             this.tlpdata.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpdata.Location = new System.Drawing.Point(0, 38);
             this.tlpdata.Name = "tlpdata";
@@ -4504,20 +4524,20 @@
             this.lblinterval3.Text = "S";
             this.lblinterval3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanel77
+            // tlpSaveCriteriaTop
             // 
-            this.tableLayoutPanel77.ColumnCount = 1;
-            this.tableLayoutPanel77.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel77.Controls.Add(this.chkSaveCriteria, 0, 0);
-            this.tableLayoutPanel77.Controls.Add(this.tlpSaveCriteria, 0, 1);
-            this.tableLayoutPanel77.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel77.Location = new System.Drawing.Point(6, 407);
-            this.tableLayoutPanel77.Name = "tableLayoutPanel77";
-            this.tableLayoutPanel77.RowCount = 2;
-            this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel77.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 199F));
-            this.tableLayoutPanel77.Size = new System.Drawing.Size(648, 244);
-            this.tableLayoutPanel77.TabIndex = 10;
+            this.tlpSaveCriteriaTop.ColumnCount = 1;
+            this.tlpSaveCriteriaTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpSaveCriteriaTop.Controls.Add(this.chkSaveCriteria, 0, 0);
+            this.tlpSaveCriteriaTop.Controls.Add(this.tlpSaveCriteria, 0, 1);
+            this.tlpSaveCriteriaTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpSaveCriteriaTop.Location = new System.Drawing.Point(6, 407);
+            this.tlpSaveCriteriaTop.Name = "tlpSaveCriteriaTop";
+            this.tlpSaveCriteriaTop.RowCount = 2;
+            this.tlpSaveCriteriaTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tlpSaveCriteriaTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 199F));
+            this.tlpSaveCriteriaTop.Size = new System.Drawing.Size(648, 244);
+            this.tlpSaveCriteriaTop.TabIndex = 10;
             // 
             // chkSaveCriteria
             // 
@@ -4528,6 +4548,7 @@
             this.chkSaveCriteria.TabIndex = 0;
             this.chkSaveCriteria.Text = "存盘准则";
             this.chkSaveCriteria.UseVisualStyleBackColor = true;
+            this.chkSaveCriteria.CheckedChanged += new System.EventHandler(this.chkSaveCriteria_CheckedChanged);
             // 
             // tlpSaveCriteria
             // 
@@ -4563,7 +4584,7 @@
             this.tableLayoutPanel81.ColumnCount = 2;
             this.tableLayoutPanel81.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel81.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
-            this.tableLayoutPanel81.Controls.Add(this.numSaveCount, 0, 0);
+            this.tableLayoutPanel81.Controls.Add(this.numSaveCountSeg, 0, 0);
             this.tableLayoutPanel81.Controls.Add(this.label98, 1, 0);
             this.tableLayoutPanel81.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel81.Location = new System.Drawing.Point(208, 28);
@@ -4574,15 +4595,17 @@
             this.tableLayoutPanel81.Size = new System.Drawing.Size(440, 25);
             this.tableLayoutPanel81.TabIndex = 9;
             // 
-            // numSaveCount
+            // numSaveCountSeg
             // 
-            this.numSaveCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numSaveCount.FormatMode = NationalInstruments.UI.NumericFormatMode.CreateSimpleDoubleMode(0);
-            this.numSaveCount.Location = new System.Drawing.Point(3, 3);
-            this.numSaveCount.Name = "numSaveCount";
-            this.numSaveCount.Size = new System.Drawing.Size(297, 21);
-            this.numSaveCount.TabIndex = 0;
-            this.numSaveCount.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numSaveCount_AfterChangeValue);
+            this.numSaveCountSeg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numSaveCountSeg.FormatMode = NationalInstruments.UI.NumericFormatMode.CreateSimpleDoubleMode(0);
+            this.numSaveCountSeg.Location = new System.Drawing.Point(3, 3);
+            this.numSaveCountSeg.Name = "numSaveCountSeg";
+            this.numSaveCountSeg.Range = new NationalInstruments.UI.Range(0D, 5D);
+            this.numSaveCountSeg.Size = new System.Drawing.Size(297, 21);
+            this.numSaveCountSeg.TabIndex = 0;
+            this.numSaveCountSeg.Value = 1D;
+            this.numSaveCountSeg.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numSaveCount_AfterChangeValue);
             // 
             // label98
             // 
@@ -4618,6 +4641,7 @@
             this.numSaveCyclcCount.Name = "numSaveCyclcCount";
             this.numSaveCyclcCount.Size = new System.Drawing.Size(297, 21);
             this.numSaveCyclcCount.TabIndex = 0;
+            this.numSaveCyclcCount.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numSaveCyclcCount_AfterChangeValue);
             // 
             // label96
             // 
@@ -4653,6 +4677,7 @@
             this.numSaveWaveCount.Name = "numSaveWaveCount";
             this.numSaveWaveCount.Size = new System.Drawing.Size(297, 21);
             this.numSaveWaveCount.TabIndex = 0;
+            this.numSaveWaveCount.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numSaveWaveCount_AfterChangeValue);
             // 
             // label92
             // 
@@ -4754,6 +4779,8 @@
             this.dgridsave.RowTemplate.Height = 23;
             this.dgridsave.Size = new System.Drawing.Size(621, 31);
             this.dgridsave.TabIndex = 3;
+            this.dgridsave.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgridsave_CellEndEdit);
+            this.dgridsave.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgridsave_CellLeave);
             this.dgridsave.Resize += new System.EventHandler(this.dgridsave_Resize);
             // 
             // Column1
@@ -4800,7 +4827,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 242F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -4818,7 +4845,7 @@
             this.label4.ForeColor = System.Drawing.Color.Teal;
             this.label4.Location = new System.Drawing.Point(4, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(409, 36);
+            this.label4.Size = new System.Drawing.Size(351, 36);
             this.label4.TabIndex = 0;
             this.label4.Text = "设置控制-数据";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4827,7 +4854,7 @@
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(420, 4);
+            this.panel3.Location = new System.Drawing.Point(362, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(40, 30);
             this.panel3.TabIndex = 1;
@@ -4999,7 +5026,7 @@
             this.tableLayoutPanel29.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel29.ColumnCount = 2;
             this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
             this.tableLayoutPanel29.Controls.Add(this.label30, 0, 0);
             this.tableLayoutPanel29.Controls.Add(this.panel11, 1, 0);
             this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Top;
@@ -5017,7 +5044,7 @@
             this.label30.ForeColor = System.Drawing.Color.Teal;
             this.label30.Location = new System.Drawing.Point(4, 1);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(408, 36);
+            this.label30.Size = new System.Drawing.Size(350, 36);
             this.label30.TabIndex = 0;
             this.label30.Text = "设置控制-中级测试";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5026,7 +5053,7 @@
             // 
             this.panel11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel11.BackgroundImage")));
             this.panel11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel11.Location = new System.Drawing.Point(419, 4);
+            this.panel11.Location = new System.Drawing.Point(361, 4);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(40, 30);
             this.panel11.TabIndex = 1;
@@ -5056,7 +5083,7 @@
             this.tableLayoutPanel17.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel17.ColumnCount = 2;
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 241F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 299F));
             this.tableLayoutPanel17.Controls.Add(this.label52, 0, 0);
             this.tableLayoutPanel17.Controls.Add(this.panel12, 1, 0);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Top;
@@ -5074,7 +5101,7 @@
             this.label52.ForeColor = System.Drawing.Color.Teal;
             this.label52.Location = new System.Drawing.Point(4, 1);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(410, 36);
+            this.label52.Size = new System.Drawing.Size(352, 36);
             this.label52.TabIndex = 0;
             this.label52.Text = "设置控制-简单控制";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5083,7 +5110,7 @@
             // 
             this.panel12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel12.BackgroundImage")));
             this.panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel12.Location = new System.Drawing.Point(421, 4);
+            this.panel12.Location = new System.Drawing.Point(363, 4);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(40, 30);
             this.panel12.TabIndex = 1;
@@ -5127,7 +5154,7 @@
             this.tableLayoutPanel20.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel20.ColumnCount = 2;
             this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
             this.tableLayoutPanel20.Controls.Add(this.label37, 0, 0);
             this.tableLayoutPanel20.Controls.Add(this.panel13, 1, 0);
             this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Top;
@@ -5145,7 +5172,7 @@
             this.label37.ForeColor = System.Drawing.Color.Teal;
             this.label37.Location = new System.Drawing.Point(4, 1);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(408, 36);
+            this.label37.Size = new System.Drawing.Size(350, 36);
             this.label37.TabIndex = 0;
             this.label37.Text = "设置控制的测试参数";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5154,7 +5181,7 @@
             // 
             this.panel13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel13.BackgroundImage")));
             this.panel13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel13.Location = new System.Drawing.Point(419, 4);
+            this.panel13.Location = new System.Drawing.Point(361, 4);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(40, 30);
             this.panel13.TabIndex = 1;
@@ -5206,26 +5233,6 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "选定的结果";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lstavail
-            // 
-            this.lstavail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstavail.FormattingEnabled = true;
-            this.lstavail.ItemHeight = 12;
-            this.lstavail.Location = new System.Drawing.Point(3, 24);
-            this.lstavail.Name = "lstavail";
-            this.lstavail.Size = new System.Drawing.Size(279, 241);
-            this.lstavail.TabIndex = 2;
-            // 
-            // lstinclude
-            // 
-            this.lstinclude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstinclude.FormattingEnabled = true;
-            this.lstinclude.ItemHeight = 12;
-            this.lstinclude.Location = new System.Drawing.Point(339, 24);
-            this.lstinclude.Name = "lstinclude";
-            this.lstinclude.Size = new System.Drawing.Size(280, 241);
-            this.lstinclude.TabIndex = 3;
             // 
             // UserControl控制
             // 
@@ -5402,12 +5409,12 @@
             this.tlpcriteria3.PerformLayout();
             this.tableLayoutPanel48.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numinterval3)).EndInit();
-            this.tableLayoutPanel77.ResumeLayout(false);
-            this.tableLayoutPanel77.PerformLayout();
+            this.tlpSaveCriteriaTop.ResumeLayout(false);
+            this.tlpSaveCriteriaTop.PerformLayout();
             this.tlpSaveCriteria.ResumeLayout(false);
             this.tlpSaveCriteria.PerformLayout();
             this.tableLayoutPanel81.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numSaveCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSaveCountSeg)).EndInit();
             this.tableLayoutPanel80.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numSaveCyclcCount)).EndInit();
             this.tableLayoutPanel79.ResumeLayout(false);
@@ -5782,7 +5789,7 @@
         private NationalInstruments.UI.WindowsForms.NumericEdit numAlarm4;
         private System.Windows.Forms.Label label88;
         private System.Windows.Forms.Label label87;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel77;
+        private System.Windows.Forms.TableLayoutPanel tlpSaveCriteriaTop;
         private System.Windows.Forms.CheckBox chkSaveCriteria;
         private System.Windows.Forms.TableLayoutPanel tlpSaveCriteria;
         private System.Windows.Forms.Label label89;
@@ -5798,7 +5805,7 @@
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel81;
-        private NationalInstruments.UI.WindowsForms.NumericEdit numSaveCount;
+        private NationalInstruments.UI.WindowsForms.NumericEdit numSaveCountSeg;
         private System.Windows.Forms.Label label98;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.DataGridView dgridsave;

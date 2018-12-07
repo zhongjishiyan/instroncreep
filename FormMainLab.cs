@@ -397,7 +397,29 @@ namespace TabHeaderDemo
             //software.SetValue("test", "0", RegistryValueKind.DWord);
             key.Close();
         }
+        public void _直接进入分析界面()
+        {
 
+            this.Cursor = Cursors.WaitCursor;
+
+            ((SplitContainer)tabControl1.TabPages[1].Controls[0]).Panel2Collapsed = false;
+
+            tabControl1.SelectedIndex = 0;
+            GlobeVal.UserControlMain1.btnmtest.Visible = true;
+            GlobeVal.UserControlMain1.btnmtest.Text = "分析";
+            GlobeVal.UserControlMain1.btnmmanage.Visible = false;
+            GlobeVal.UserControlMain1.btnmmethod.Visible = false;
+            GlobeVal.UserControlMain1.btnmreport.Visible = false;
+            GlobeVal.UserControlMain1.btngroupcontrol.Visible = false;
+
+           
+           
+            GlobeVal.UserControlMain1.tabControl1.SelectedIndex = 7;
+
+            this.Cursor = Cursors.Default;
+            tabControl1.SelectedIndex = 1;
+
+        }
         public void _直接进入试验界面()
         {
 
@@ -533,8 +555,7 @@ namespace TabHeaderDemo
             this.Width = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Width);
             this.Height = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Height);
 
-            // this.Width = 1024;
-            // this.Height = 768;
+        
             tabControl1.ItemSize = new Size(1, 1);
 
 
@@ -546,30 +567,13 @@ namespace TabHeaderDemo
 
 
 
-            if ((GlobeVal.mysys.machinekind == 0) || (GlobeVal.mysys.machinekind == 5))
-            {
-                /*
-                tlpsel.Visible = false;
-                UserControl操作面板1 = new UserControl操作面板();
-                UserControl轴向1 = new UserControl轴向();
-                UserControl操作面板1.Controls.Add(UserControl轴向1);
-                UserControl轴向1.Dock = DockStyle.Fill;
-                UserControl操作面板1.Dock = DockStyle.Fill;
-                panel2.Controls.Add(UserControl操作面板1);
-                */
-            }
+          
 
 
 
-
-            if (GlobeVal.mysys.demo == true)
-            {
-                GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = "演示";
-            }
-            else
-            {
+         
                 GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = GlobeVal.mysys.ControllerName[GlobeVal.mysys.controllerkind];
-            }
+            
 
             /*
           
@@ -684,9 +688,7 @@ namespace TabHeaderDemo
             }
             else
             {
-                // splitContainer1.SplitterDistance = 980;
-                // tlbmeterback.Height = 84;
-                // paneltop.Height = 126;
+               
             }
 
 
@@ -701,17 +703,7 @@ namespace TabHeaderDemo
 
             }
 
-            /*
-             try
-             {
-                 _pipeServer.Listen("TestPipe");
-                 btnkey1.Text = "Listening - OK";
-                             }
-             catch (Exception)
-             {
-                 btnkey1.Text = "Error Listening";
-             }
-             */
+           
 
         }
 
@@ -928,10 +920,7 @@ namespace TabHeaderDemo
             msel = 0;
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void FormMainLab_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -942,12 +931,7 @@ namespace TabHeaderDemo
             GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
         }
 
-        private void btntool_Click(object sender, EventArgs e)
-        {
-
-
-
-        }
+       
 
         private void btnon_Click(object sender, EventArgs e)
         {
@@ -968,12 +952,7 @@ namespace TabHeaderDemo
 
         }
 
-        private void btnhand_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
+     
 
 
         private void btnkey1_Click(object sender, EventArgs e)
@@ -999,10 +978,7 @@ namespace TabHeaderDemo
             GlobeVal.myarm.btnkey(sender as Button);
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void timermain_Tick(object sender, EventArgs e)
         {
@@ -1040,21 +1016,7 @@ namespace TabHeaderDemo
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbochannel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void btnmethod_Click(object sender, EventArgs e)
         {
             int i;
@@ -1120,34 +1082,8 @@ namespace TabHeaderDemo
             }
         }
 
-        private void recordStartButton_Click(object sender, EventArgs e)
-        {
-
-
-
-
-
-        }
-
-        private void recordStopButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void playBackMacroButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timerRecord_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
+    
+       
 
         private void recordStartButton_MouseEnter(object sender, EventArgs e)
         {
@@ -1168,41 +1104,9 @@ namespace TabHeaderDemo
             this.toolTip1.SetToolTip(sender as Button, (sender as Button).Tag as string);
         }
 
-        private void recordStopButton_MouseDown(object sender, MouseEventArgs e)
-        {
+       
 
-
-        }
-
-        private void recordStopButton_MouseUp(object sender, MouseEventArgs e)
-        {
-
-
-
-        }
-
-        private void btnpos_Click(object sender, EventArgs e)
-        {
-
-
-
-
-        }
-
-        private void btnload_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnext1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnext2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         private void PipesMessageHandler(string message)
         {
             try
@@ -1247,7 +1151,7 @@ namespace TabHeaderDemo
                 GlobeVal.userControlmethod1.OpenTheMethodSilently(f2);
 
                 GlobeVal.userControltest1.changeUI();
-              
+
 
             }
             else

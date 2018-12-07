@@ -23,33 +23,13 @@ namespace TabHeaderDemo
         public UserReport  userreport1;
         private UserManage usermanage1;
         private UserGroupControl usergroupcontrol1;
+        public UserControlAnalysis usercontrolanalysis1;
 
         public List<Button> mlist;
 
         private Point[] buttonxy;
  
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
-     
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-
-            
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-          
-          
-        }
         public UserControlMain()
         {
             InitializeComponent();
@@ -76,7 +56,9 @@ namespace TabHeaderDemo
             usercontrolopenmetho1 = new UserControlOpenMethod();
             usercontrolpretest1 = new UserControlPretest();
             userControlTest1 = new UserControlTest();
+            usercontrolanalysis1 = new UserControlAnalysis();
             usergroupcontrol1 = new UserGroupControl();
+
             usergroupcontrol1.Init();
 
             usermanage1.Dock = DockStyle.Fill;
@@ -86,6 +68,7 @@ namespace TabHeaderDemo
             usercontrolpretest1.Dock = DockStyle.Fill;
             userControlTest1.Dock = DockStyle.Fill;
             usergroupcontrol1.Dock = DockStyle.Fill;
+            usercontrolanalysis1.Dock = DockStyle.Fill;
 
 
             tabPage1.Controls.Add(usercontrolopenmetho1);
@@ -95,6 +78,7 @@ namespace TabHeaderDemo
             tabPage5.Controls.Add(userreport1);
             tabPage6.Controls.Add(usermanage1);
             tabPage7.Controls.Add(usergroupcontrol1);
+            tabPage8.Controls.Add(usercontrolanalysis1);
 
             
 

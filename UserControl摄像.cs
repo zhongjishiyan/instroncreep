@@ -26,20 +26,12 @@ namespace TabHeaderDemo
                 tabControl1.Enabled = true;
             }
 
-           if (GlobeVal.mysys.demo==true)
-            {
-                groupBox2.Visible = true;
-                groupBox5.Visible = true;
-                groupBox3.Visible = true;
-                groupBox4.Visible = false;
-            }
-           else
-            {
+          
                 groupBox2.Visible = false ;
                 groupBox5.Visible = false ;
                 groupBox3.Visible = false;
                 groupBox4.Visible = true;
-            }
+            
 
             chkplay.Checked = CComLibrary.GlobeVal.filesave.mplay;
             txtplay.Text = CComLibrary.GlobeVal.filesave.play_avi_file;

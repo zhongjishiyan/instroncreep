@@ -1309,16 +1309,7 @@ namespace CComLibrary
 
     }
 
-    [Serializable]
-    public class tablelaycoutstruct
-    {
-        int colcount;
-        int rowcount;
-        int[] colwidth;
-        int[] rowheight;
-
-
-    }
+    
 
     [Serializable]
     public class FileLayoutStruct
@@ -2312,7 +2303,7 @@ namespace CComLibrary
         public int returnstep;
         public int cmd;
         public int action;
-        public int explainkind = 0;// 命令解释类型
+        
         public Sequence mseq;
 
         public int speedunit=0;
@@ -2320,7 +2311,10 @@ namespace CComLibrary
         public int currentcount = 1;
         public int destmode = 0;//控制模式
 
-       
+        public double ave;//均值
+        public double range;//幅值
+        public double freq;//频率
+        public int count;//次数
 
 
 
@@ -2466,21 +2460,14 @@ namespace CComLibrary
             return s;
         }
 
-        public string seqwavekindconvert()
-        {
-            string s = "";
-            s = s + mseq.stepname + " ";
+       
 
-
-            return s;
-        }
-
-        public string seqcontrolmodeconvert()
+        public string controlmodeconvert()
         {
             string s = "";
             for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
             {
-                if (mseq.controlmode == i)
+                if (this.controlmode == i)
                 {
                     s = "控制方式：";
                     s = s + ClsStaticStation.m_Global.mycls.hardsignals[i].cName;
@@ -2490,145 +2477,100 @@ namespace CComLibrary
             return s;
         }
 
-        public string seqcmd()
+        public string cmdexplain()
         {
             string s = "";
 
-            if (mseq.wavekind == 0)
+            if (this.cmd  == 0)
             {
+                s = s + "斜波 ";
                 for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
                 {
-                    if (mseq.controlmode == i)
+                    if (controlmode == i)
                     {
-                        s = s + "速度:" + mseq.mrate.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].speedSignal.cUnits[mseq.mrateunit];
+                        s = s + "速度:" + this.speed.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].speedSignal.cUnits[0];
                     }
                 }
 
                 for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
                 {
-                    if (mseq.destcontrolmode == i)
+                    if (controlmode == i)
                     {
-                        s = s + "目标:" + mseq.mdest.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[mseq.mdestunit];
+                        s = s + "目标:" + this.dest.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0];
                     }
                 }
 
             }
 
-            if (mseq.wavekind == 1)
+            if (this.cmd == 1)
             {
-                s = s + "保持：" + mseq.keeptime.ToString() + "S";
+                s = s + "保持 ";
+                s = s + "保持：" + this.keeptime.ToString() + "S";
             }
 
-            if (mseq.wavekind == 2)
+            if (this.cmd == 2)
             {
+
+                s = s + "正弦 ";
+
+                s = s + "频率："+this.freq.ToString("F3")+"Hz ";
+
                 for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
                 {
-                    if (mseq.controlmode == i)
+                    if (this.controlmode == i)
                     {
-                        s = s + "速度:" + mseq.mtrirate.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].speedSignal.cUnits[mseq.mtrirateunit];
+                        s = s + "幅值：" +this.range.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0]+" ";
+                        s = s + "均值：" + this.ave.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0]+" ";
+
                     }
-                }
-
-                s = s + " 次数：" + mseq.mcount.ToString();
-
-                if (mseq.mtriinitdir == 0)
-                {
-                    s = s + " 初始方向：向上";
 
 
                 }
-                else
-                {
-                    s = s + " 初始方向：向下";
-                }
 
-                s = s + " 最大值：" + mseq.mtrimax.ToString("F4");
-                s = s + " 最小值：" + mseq.mtrimin.ToString("F4");
+                s = s + " 次数：" + this.count.ToString();
 
             }
 
-            if (mseq.wavekind == 3)
+            if (this.cmd  == 3)
             {
+                s = s + "三角 ";
+
+                s = s + "频率：" + this.freq.ToString("F3") + "Hz ";
+
                 for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
                 {
-                    if (mseq.controlmode == i)
+                    if (this.controlmode == i)
                     {
-                        s = s + "速度:" + mseq.msinrate.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].speedSignal.cUnits[mseq.msinrateunit];
+                        s = s + "幅值：" + this.range.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0] + " ";
+                        s = s + "均值：" + this.ave.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0] + " ";
+
                     }
-                }
-
-                s = s + " 次数：" + mseq.mcount.ToString();
-
-                if (mseq.msininitdir == 0)
-                {
-                    s = s + " 初始方向：向上";
 
 
                 }
-                else
-                {
-                    s = s + " 初始方向：向下";
-                }
-                s = s + " 频率：" + mseq.msinfreq.ToString("F4");
 
-                s = s + " 最大值：" + mseq.msinmax.ToString("F4");
-                s = s + " 最小值：" + mseq.msinmin.ToString("F4");
+                s = s + " 次数：" + this.count.ToString();
             }
 
-            if (mseq.wavekind == 4)
+            if (this.cmd == 4)
             {
-                for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
-                {
-                    if (mseq.controlmode == i)
-                    {
-                        s = s + "速度:" + mseq.mrectrate.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].speedSignal.cUnits[mseq.mrectrateunit];
-                    }
-                }
+                s = s + "方波 ";
 
-                s = s + " 次数：" + mseq.mrectcount.ToString();
-
-                if (mseq.mrectinitdir == 0)
-                {
-                    s = s + " 初始方向：向上";
-
-
-                }
-                else
-                {
-                    s = s + " 初始方向：向下";
-                }
+                s = s + "频率：" + this.freq.ToString("F3") + "Hz ";
 
                 for (int i = 0; i < ClsStaticStation.m_Global.mycls.hardsignals.Count; i++)
                 {
-                    if (mseq.controlmode == i)
+                    if (this.controlmode == i)
                     {
-                        s = s + "上升速度:" + mseq.mrectuprate.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].speedSignal.cUnits[mseq.mrectrateunit];
+                        s = s + "幅值：" + this.range.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0] + " ";
+                        s = s + "均值：" + this.ave.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].cUnits[0] + " ";
+
                     }
-
-                    if (mseq.controlmode == i)
-                    {
-                        s = s + "上升目标:" + mseq.mrectupdest.ToString("F4");
-
-                        s = s + "上升保持时间：" + mseq.mrectupkeeptime.ToString("F2") + "S";
-                    }
-
-
-
-
-                    if (mseq.controlmode == i)
-                    {
-                        s = s + "下降速度:" + mseq.mrectdownrate.ToString("F4") + ClsStaticStation.m_Global.mycls.hardsignals[i].speedSignal.cUnits[mseq.mrectrateunit];
-                    }
-
-                    if (mseq.controlmode == i)
-                    {
-                        s = s + "下降目标:" + mseq.mrectdownrate.ToString("F4");
-                        s = s + "下降保持时间：" + mseq.mrectdownkeeptime.ToString("F2") + "S";
-                    }
-
 
 
                 }
+
+                s = s + " 次数：" + this.count.ToString();
             }
 
             s = s + " ";
@@ -2642,39 +2584,14 @@ namespace CComLibrary
 
             string s = "";
 
-            if (explainkind == 0) //是分段命令按分段命令解释
-            {
-                s = s + "斜波";
-                s = s + speedconvert();
-
-                s = s + " " + destconvert();
-
-
-
+                s = s +controlmodeconvert() + cmdexplain();
                 if ((returncount > 0) && (returnstep > 0))
                 {
 
                     s = s + "返回" + returncount.ToString() + "次," + "返回到步骤" + returnstep.ToString();
                 }
 
-
-
-
-
-                if (action == 0)
-                {
-                    s = s + " 顺序执行";
-                }
-                else
-                {
-                    s = s + " 同步执行";
-                }
-            }
-            else if (explainkind == 1) //是序列命令按序列解释
-            {
-                s = s + seqwavekindconvert() + seqcontrolmodeconvert() + seqcmd();
-
-            }
+            
             return s;
 
         }
@@ -3163,6 +3080,20 @@ namespace CComLibrary
 
         public double mFatigueProtectionStopValue;//疲劳保护停止值
 
+
+        public bool mSaveCriteria;//存盘准测
+        public int mSaveCriteriaMode;//存盘模式
+        public int mSaveCountSeg;// 存盘段数
+        public int mSaveWaveCount;//存盘波形
+        public int mSaveCyclcCount;//存盘循环
+
+
+        public int[] mSaveCriteraiRow1;//
+        public double[] mSaveCriteraiRow2;//
+        public double[] mSaveCriteraiRow3;//
+        public int[] mSaveCriteraiRow4;//
+        public double[] mSaveCriteraiRow5;//
+        public int[] mSaveCriteraiRow6;//
         /// <summary>
         ///
         /// </summary>
@@ -3239,40 +3170,40 @@ namespace CComLibrary
             {
 
 
-                CComLibrary.GlobeVal.filesave.mseglist = new List<CComLibrary.CmdSeg>();
+                CComLibrary.GlobeVal.filesave.mseglist.Clear();
 
 
-                CComLibrary.SegFile sf = new CComLibrary.SegFile();
-
-               
-                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
-                       + CComLibrary.GlobeVal.filesave.SegName);
-               
+                
 
                 int i = 0;
 
 
 
-                int m = sf.mseglist.Count;
+                int m = CComLibrary.GlobeVal.filesave.msegtestcount;
 
                 for (i = 0; i < m; i++)
                 {
                     CComLibrary.CmdSeg n = new CComLibrary.CmdSeg();
                     n.check = true;
-                    n.controlmode = sf.mseglist[i].controlmode;
-                    n.speed = sf.mseglist[i].speed;
-                    n.destcontrolmode = sf.mseglist[i].destcontrolmode;
-                    n.dest = sf.mseglist[i].dest;
-                    n.keeptime = sf.mseglist[i].keeptime;
-                    n.cmd = sf.mseglist[i].cmd;
-                    n.action = sf.mseglist[i].action;
-                    n.explainkind = 0;
+                    n.controlmode = CComLibrary.GlobeVal.filesave.msegtest[i].controlmode;
+                    n.speed = CComLibrary.GlobeVal.filesave.msegtest[i].speed;
+                    n.destcontrolmode = CComLibrary.GlobeVal.filesave.msegtest[i].destcontrolmode;
+                    n.dest = CComLibrary.GlobeVal.filesave.msegtest[i].dest;
+                    n.keeptime = CComLibrary.GlobeVal.filesave.msegtest[i].keeptime;
+                    n.cmd = CComLibrary.GlobeVal.filesave.msegtest[i].cmd;
+                    n.action = CComLibrary.GlobeVal.filesave.msegtest[i].action;
 
-                    if (sf.mseglist[i].cyclicrun == true)
+                    n.ave = CComLibrary.GlobeVal.filesave.msegtest[i].ave;
+                    n.freq = CComLibrary.GlobeVal.filesave.msegtest[i].freq;
+                    n.range = CComLibrary.GlobeVal.filesave.msegtest[i].range;
+                    n.count = CComLibrary.GlobeVal.filesave.msegtest[i].count;
+                    
+
+                    if (CComLibrary.GlobeVal.filesave.msegtest[i].cyclicrun == true)
                     {
 
-                        n.returncount = sf.mseglist[i].cycliccount;
-                        n.returnstep = sf.mseglist[i].returnstep;
+                        n.returncount = CComLibrary.GlobeVal.filesave.msegtest[i].cycliccount;
+                        n.returnstep = CComLibrary.GlobeVal.filesave.msegtest[i].returnstep;
                     }
                     else
                     {
@@ -4079,7 +4010,13 @@ namespace CComLibrary
             mdatabaseitemlist = new List<DatabaseItem>();
             mdatabaseitemselect = new List<DatabaseItem>();
             Init_databaselist(false,this.currentspenumber);
-           
+            this.mSaveCriteraiRow1 = new int[5];
+            this.mSaveCriteraiRow2 = new double[5];
+            this.mSaveCriteraiRow3 = new double[5];
+            this.mSaveCriteraiRow4 = new int[5];
+            this.mSaveCriteraiRow5 = new double[5];
+            this.mSaveCriteraiRow6 = new int[5];
+
 
         }
 
@@ -4807,6 +4744,30 @@ namespace CComLibrary
                         c.mlongdata = new List<ClsStaticStation.ItemSignal>();
                     }
 
+                    if(c.mSaveCriteraiRow1 ==null)
+                    {
+                        c.mSaveCriteraiRow1 = new int[5]; 
+                    }
+                    if (c.mSaveCriteraiRow2 ==null)
+                    {
+                       c.mSaveCriteraiRow2 = new double[5];
+                    }
+                    if (c.mSaveCriteraiRow3 == null)
+                    {
+                        c.mSaveCriteraiRow3 = new double[5];
+                    }
+                    if (c.mSaveCriteraiRow4 == null)
+                    {
+                        c.mSaveCriteraiRow4 = new int[5];
+                    }
+                    if (c.mSaveCriteraiRow5 == null)
+                    {
+                        c.mSaveCriteraiRow5 = new double[5];
+                    }
+                    if (c.mSaveCriteraiRow6 == null)
+                    {
+                        c.mSaveCriteraiRow6 = new int[5];
+                    }
                     fileStream.Close();
 
 
