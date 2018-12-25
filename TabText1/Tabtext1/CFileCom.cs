@@ -1559,8 +1559,9 @@ namespace CComLibrary
                     {
 
                         mitemvalue = CComLibrary.GlobeVal.filesave.minputtext[i].value;
+                       
                         CComLibrary.GlobeVal.filesave.dt.Rows[CComLibrary.GlobeVal.filesave.currentspenumber][itemname] = mitemvalue;
-
+                       
                     }
                     itemkind = 0;
                 }
@@ -3637,7 +3638,7 @@ namespace CComLibrary
             {
                
                 s = this.minputtext[i].name;
-                dc = dt.Columns.Add(s, typeof(double));
+                dc = dt.Columns.Add(s, typeof(string));
                
             }
 

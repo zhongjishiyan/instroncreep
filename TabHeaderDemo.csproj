@@ -266,7 +266,6 @@
     <Compile Include="Frm\Form标准跳转条件.Designer.cs">
       <DependentUpon>Form标准跳转条件.cs</DependentUpon>
     </Compile>
-    <Compile Include="hardcontrol\CFileStruct.cs" />
     <Compile Include="hardcontrol\ClsDsp.cs" />
     <Compile Include="hardcontrol\PipeServer.cs" />
     <Compile Include="ListDatabase.cs">

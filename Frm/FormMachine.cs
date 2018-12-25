@@ -20,11 +20,11 @@ namespace TabHeaderDemo.Frm
         {
             comboBox1.Items.Clear();
 
-            for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
+            for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
             {
                 comboBox1.Items.Add((i+1).ToString());
             }
-            if ((GlobeVal.selcontroller >= 1) && (GlobeVal.selcontroller <= GlobeVal.mysys.ControllerCount))
+            if ((GlobeVal.selcontroller >= 1) && (GlobeVal.selcontroller <= GlobeVal.myglobefile.ControllerCount))
             {
                 comboBox1.SelectedIndex = GlobeVal.selcontroller-1;
             }

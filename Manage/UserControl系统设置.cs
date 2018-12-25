@@ -32,40 +32,25 @@ namespace TabHeaderDemo
                 groupBox2.Enabled = true;
 
             }
-            cbokind.Items.Clear();
+          
 
-            for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
-            {
-                cbokind.Items.Add(GlobeVal.mysys.ControllerName[i]);
 
-            }
-
-#if Demo 
-            cbokind.SelectedIndex = 2;
-            cbokind.Enabled = false;
-#else
-            cbokind.Enabled = true;
-            cbokind.SelectedIndex = GlobeVal.mysys.controllerkind;
-#endif
             cbomachine.Items.Clear();
             for (int i = 0; i < GlobeVal.mysys.MachineCount; i++)
             {
                 cbomachine.Items.Add(GlobeVal.mysys.MachineName[i]);
 
             }
-#if Demo
-            cbomachine.SelectedIndex = 0;
-            cbomachine.Enabled = false;
-#else
+
             cbomachine.Enabled = true;
             cbomachine.SelectedIndex = GlobeVal.mysys.machinekind;
-#endif
 
-            numnumber.Value = GlobeVal.mysys.ControllerCount;
+
+            numnumber.Value = GlobeVal.myglobefile.ControllerCount;
 
 
             cbonum.Items.Clear();
-            for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
+            for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
             {
                 cbonum.Items.Add((i + 1).ToString());
             }
@@ -218,18 +203,12 @@ namespace TabHeaderDemo
 
         private void cbokind_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            GlobeVal.mysys.controllerkind = cbokind.SelectedIndex;
-            GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = GlobeVal.mysys.ControllerName[GlobeVal.mysys.controllerkind];
-
-            GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
+            
         }
 
         private void cbomachine_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            GlobeVal.mysys.machinekind = cbomachine.SelectedIndex;
-            GlobeVal.MainStatusStrip.Items["tslblmachine"].Text = GlobeVal.mysys.ControllerName[GlobeVal.mysys.machinekind];
-
-            GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
+            
         }
 
         private void cbomachine_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,17 +269,18 @@ namespace TabHeaderDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            GlobeVal.myglobefile.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\globe.ini");
             GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
             Application.Exit();
         }
 
         private void numnumber_AfterChangeValue(object sender, NationalInstruments.UI.AfterChangeNumericValueEventArgs e)
         {
-            GlobeVal.mysys.ControllerCount = Convert.ToInt32(numnumber.Value);
+            GlobeVal.myglobefile.ControllerCount = Convert.ToInt32(numnumber.Value);
 
-
+            
             cbonum.Items.Clear();
-            for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
+            for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
             {
                 cbonum.Items.Add((i + 1).ToString());
             }
@@ -419,6 +399,11 @@ namespace TabHeaderDemo
         private void cboEdc_SelectedValueChanged(object sender, EventArgs e)
         {
             GlobeVal.mysys.ChannelControllerType = cboEdc.SelectedIndex;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

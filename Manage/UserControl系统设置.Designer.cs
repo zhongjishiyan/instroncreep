@@ -35,8 +35,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numnumber = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.cbokind = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -120,51 +118,33 @@
             // 
             this.groupBox1.Controls.Add(this.numnumber);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.cbokind);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(897, 54);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numnumber
             // 
             this.numnumber.FormatMode = NationalInstruments.UI.NumericFormatMode.CreateSimpleDoubleMode(0);
-            this.numnumber.Location = new System.Drawing.Point(542, 22);
+            this.numnumber.Location = new System.Drawing.Point(153, 20);
             this.numnumber.Name = "numnumber";
-            this.numnumber.Size = new System.Drawing.Size(195, 21);
+            this.numnumber.Range = new NationalInstruments.UI.Range(1D, double.PositiveInfinity);
+            this.numnumber.Size = new System.Drawing.Size(220, 21);
             this.numnumber.TabIndex = 3;
+            this.numnumber.Value = 1D;
             this.numnumber.AfterChangeValue += new NationalInstruments.UI.AfterChangeNumericValueEventHandler(this.numnumber_AfterChangeValue);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(436, 26);
+            this.label7.Location = new System.Drawing.Point(28, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 12);
             this.label7.TabIndex = 2;
             this.label7.Text = "控制器数量：";
-            // 
-            // cbokind
-            // 
-            this.cbokind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbokind.FormattingEnabled = true;
-            this.cbokind.Location = new System.Drawing.Point(153, 23);
-            this.cbokind.Name = "cbokind";
-            this.cbokind.Size = new System.Drawing.Size(220, 20);
-            this.cbokind.TabIndex = 1;
-            this.cbokind.SelectionChangeCommitted += new System.EventHandler(this.cbokind_SelectionChangeCommitted);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "控制器类型：";
             // 
             // panel2
             // 
@@ -310,7 +290,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -325,7 +305,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(824, 4);
+            this.panel4.Location = new System.Drawing.Point(823, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(39, 42);
             this.panel4.TabIndex = 1;
@@ -339,7 +319,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(813, 84);
+            this.panel3.Size = new System.Drawing.Size(812, 84);
             this.panel3.TabIndex = 2;
             // 
             // label6
@@ -467,8 +447,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbokind;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;

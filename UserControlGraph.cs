@@ -332,7 +332,7 @@ namespace TabHeaderDemo
                     {
 
 
-                        return false;
+                        return true;
 
                         //GlobeVal.UserControlLongRecord1.
                         object[] mt = new object[CComLibrary.GlobeVal.filesave.mlongdata.Count];
@@ -845,7 +845,7 @@ namespace TabHeaderDemo
             this.tableLayoutPanelCurve.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanelCurve, true, null);
 
             tabControl1.ItemSize = new Size(1, 1);
-
+            
         }
 
         private void panelback_SizeChanged(object sender, EventArgs e)
@@ -2023,10 +2023,30 @@ namespace TabHeaderDemo
             scatterGraph.UndoZoomPan();
             scatterGraph.InteractionModeDefault = NationalInstruments.UI.GraphDefaultInteractionMode.None;
 
-        }
 
+
+        }
+        public void SetGraphStyle(int m)
+        {
+            if (m==0)
+            {
+                lblcaption.Text = "曲线图1";
+                lblcaption.Tag = false;
+                tabControl1.SelectedIndex = 0;
+                toolStripLeft.Visible = true;
+            }
+
+            if(m==1)
+            {
+                lblcaption.Tag = true;
+                lblcaption.Text = "分析图1";
+                tabControl1.SelectedIndex = 1;
+                toolStripLeft.Visible = false;
+            }
+        }
         private void lblcaption_Click(object sender, EventArgs e)
         {
+            /*
             if (mplot1 == 1)
             {
                 if (Convert.ToBoolean(lblcaption.Tag) == false)
@@ -2044,6 +2064,7 @@ namespace TabHeaderDemo
                     toolStripLeft.Visible = true;
                 }
             }
+            */
         }
 
         private void timer2_Tick(object sender, EventArgs e)

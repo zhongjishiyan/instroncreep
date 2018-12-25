@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTest));
-            IP.Components.Toolbox.Item item1 = new IP.Components.Toolbox.Item();
-            IP.Components.Toolbox.Item item2 = new IP.Components.Toolbox.Item();
-            IP.Components.Toolbox.Item item3 = new IP.Components.Toolbox.Item();
+            IP.Components.Toolbox.Item item4 = new IP.Components.Toolbox.Item();
+            IP.Components.Toolbox.Item item5 = new IP.Components.Toolbox.Item();
+            IP.Components.Toolbox.Item item6 = new IP.Components.Toolbox.Item();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,6 +54,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,7 +67,6 @@
             this.pictureBox1 = new System.Windows.Forms.Panel();
             this.btneafter = new TabHeaderDemo.ButtonEx(this.components);
             this.btnebefore = new TabHeaderDemo.ButtonEx(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
             this.btnstep2 = new TabHeaderDemo.ButtonExNew(this.components);
             this.btnstep7 = new TabHeaderDemo.ButtonExNew(this.components);
             this.btnstep6 = new TabHeaderDemo.ButtonExNew(this.components);
@@ -98,6 +98,7 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -107,7 +108,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.pictureBox1.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -296,8 +296,8 @@
             this.tableLayoutPanelTop.Margin = new System.Windows.Forms.Padding(6);
             this.tableLayoutPanelTop.Name = "tableLayoutPanelTop";
             this.tableLayoutPanelTop.RowCount = 1;
-            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 988F));
-            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 988F));
+            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 994F));
+            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 994F));
             this.tableLayoutPanelTop.Size = new System.Drawing.Size(778, 78);
             this.tableLayoutPanelTop.TabIndex = 4;
             // 
@@ -353,6 +353,23 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(584, 64);
             this.panel2.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel4.Controls.Add(this.btnstep2);
+            this.panel4.Controls.Add(this.btnstep7);
+            this.panel4.Controls.Add(this.btnstep6);
+            this.panel4.Controls.Add(this.btnstep5);
+            this.panel4.Controls.Add(this.btnstep4);
+            this.panel4.Controls.Add(this.btnstep3);
+            this.panel4.Controls.Add(this.btnstep1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(584, 64);
+            this.panel4.TabIndex = 3;
             // 
             // panel5
             // 
@@ -449,22 +466,22 @@
             this.lstspe.AllowToolboxItems = true;
             this.lstspe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lstspe.Dock = System.Windows.Forms.DockStyle.Fill;
-            item1.Image = ((System.Drawing.Image)(resources.GetObject("item1.Image")));
-            item1.Tag = null;
-            item1.Text = "试样1";
-            item1.Tooltip = "试样1";
-            item2.Image = ((System.Drawing.Image)(resources.GetObject("item2.Image")));
-            item2.Tag = null;
-            item2.Text = "试样2";
-            item2.Tooltip = "试样2";
-            item3.Image = ((System.Drawing.Image)(resources.GetObject("item3.Image")));
-            item3.Tag = null;
-            item3.Text = "试样3";
-            item3.Tooltip = "Item";
+            item4.Image = ((System.Drawing.Image)(resources.GetObject("item4.Image")));
+            item4.Tag = null;
+            item4.Text = "试样1";
+            item4.Tooltip = "试样1";
+            item5.Image = ((System.Drawing.Image)(resources.GetObject("item5.Image")));
+            item5.Tag = null;
+            item5.Text = "试样2";
+            item5.Tooltip = "试样2";
+            item6.Image = ((System.Drawing.Image)(resources.GetObject("item6.Image")));
+            item6.Tag = null;
+            item6.Text = "试样3";
+            item6.Tooltip = "Item";
             this.lstspe.Items.AddRange(new IP.Components.Toolbox.Item[] {
-            item1,
-            item2,
-            item3});
+            item4,
+            item5,
+            item6});
             this.lstspe.Location = new System.Drawing.Point(0, 0);
             this.lstspe.Name = "lstspe";
             this.lstspe.ShowPointer = false;
@@ -549,23 +566,6 @@
             this.btnebefore.UseMnemonic = false;
             this.btnebefore.UseVisualStyleBackColor = false;
             this.btnebefore.Click += new System.EventHandler(this.btnebefore_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel4.Controls.Add(this.btnstep2);
-            this.panel4.Controls.Add(this.btnstep7);
-            this.panel4.Controls.Add(this.btnstep6);
-            this.panel4.Controls.Add(this.btnstep5);
-            this.panel4.Controls.Add(this.btnstep4);
-            this.panel4.Controls.Add(this.btnstep3);
-            this.panel4.Controls.Add(this.btnstep1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(584, 64);
-            this.panel4.TabIndex = 3;
             // 
             // btnstep2
             // 
@@ -862,11 +862,12 @@
             this.btnsaveas.Name = "btnsaveas";
             this.btnsaveas.Size = new System.Drawing.Size(68, 62);
             this.btnsaveas.TabIndex = 48;
-            this.btnsaveas.Text = "另存为";
+            this.btnsaveas.Text = "Word";
             this.btnsaveas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnsaveas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnsaveas.UseMnemonic = false;
             this.btnsaveas.UseVisualStyleBackColor = false;
+            this.btnsaveas.Click += new System.EventHandler(this.btnsaveas_Click);
             // 
             // btnprint
             // 
@@ -1043,6 +1044,7 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
@@ -1053,7 +1055,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.pictureBox1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

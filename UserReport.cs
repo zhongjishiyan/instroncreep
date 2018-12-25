@@ -22,7 +22,7 @@ namespace TabHeaderDemo
         private UserControl报告常规 UserControl报告常规1;
 
 
-        public Document document;
+        public Document document = new Spire.Doc.Document();
 
 
         public ReportApp mReportApp = new ReportApp();
@@ -222,7 +222,7 @@ namespace TabHeaderDemo
 
         private void UserReport_Load(object sender, EventArgs e)
         {
-            document = new Spire.Doc.Document();
+            
             GlobeVal.muserreport = this;
             UserControl报告常规1 = new UserControl报告常规();
            
@@ -648,7 +648,7 @@ namespace TabHeaderDemo
 
 
         }
-        private void printpage(bool printed)
+        public void printpage(bool printed)
         {
 
 
@@ -1032,11 +1032,24 @@ namespace TabHeaderDemo
 
             if (printed == false)
             {
+                if (UserControl报告常规1 == null)
+                {
+                    PrintPreviewControl m1 = new PrintPreviewControl();
+                    m1.Document = document.PrintDocument;
+                    m1.InvalidatePreview();
 
-                UserControl报告常规1.printPreviewControl1.Document = document.PrintDocument;
+                }
+                else
+                {
+                    UserControl报告常规1.printPreviewControl1.Document = document.PrintDocument;
 
 
-                UserControl报告常规1.printPreviewControl1.InvalidatePreview();
+                    UserControl报告常规1.printPreviewControl1.InvalidatePreview();
+                }
+
+                
+
+                
             }
             else
             {
@@ -1107,6 +1120,12 @@ namespace TabHeaderDemo
 
         }
 
+
+        public void ExcelReport()
+        {
+            dialog.PrinterSettings.FromPage = 1;
+            printpage(false);
+        }
         public void printreport()
         {
             dialog.PrinterSettings.FromPage = 1;

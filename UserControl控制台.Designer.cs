@@ -381,7 +381,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -399,7 +399,7 @@
             this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(506, 36);
+            this.label1.Size = new System.Drawing.Size(502, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "设置控制台-实时显示";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -408,7 +408,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(517, 4);
+            this.panel4.Location = new System.Drawing.Point(513, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(31, 30);
             this.panel4.TabIndex = 1;
@@ -573,7 +573,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -591,7 +591,7 @@
             this.label4.ForeColor = System.Drawing.Color.Teal;
             this.label4.Location = new System.Drawing.Point(4, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(518, 36);
+            this.label4.Size = new System.Drawing.Size(514, 36);
             this.label4.TabIndex = 0;
             this.label4.Text = "设置控制台-按键";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -600,7 +600,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(529, 4);
+            this.panel2.Location = new System.Drawing.Point(525, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(47, 30);
             this.panel2.TabIndex = 1;
@@ -702,7 +702,7 @@
             this.tableLayoutPanel11.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel11.ColumnCount = 2;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel11.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Top;
@@ -720,7 +720,7 @@
             this.label7.ForeColor = System.Drawing.Color.Teal;
             this.label7.Location = new System.Drawing.Point(4, 1);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(565, 59);
+            this.label7.Size = new System.Drawing.Size(564, 59);
             this.label7.TabIndex = 0;
             this.label7.Text = "设置控制台-主机";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -729,7 +729,7 @@
             // 
             this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Location = new System.Drawing.Point(576, 4);
+            this.panel5.Location = new System.Drawing.Point(575, 4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(47, 53);
             this.panel5.TabIndex = 1;

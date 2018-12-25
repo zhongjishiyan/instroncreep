@@ -76,6 +76,8 @@ namespace TabHeaderDemo
         public static bool resizing = false;
         public static ClassSys mysys;
 
+        public static ClassGlobeFile myglobefile;
+
 
         public static UserControlResult UserControlResult1;
         public static UserControlResult UserControlResult2;

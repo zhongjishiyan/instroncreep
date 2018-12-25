@@ -23,7 +23,7 @@ namespace TabHeaderDemo
 {
     public partial class UserControlAnalysis : UserControl
     {
-
+        
 
         class btnstep
         {
@@ -101,9 +101,7 @@ namespace TabHeaderDemo
 
             this.tableLayoutPanelback.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanelback, true, null);
 
-
-
-        }
+            this.userControlGraph1.SetGraphStyle(1);        }
 
 
         private void button4_MouseDown(object sender, MouseEventArgs e)
@@ -226,9 +224,9 @@ namespace TabHeaderDemo
             roundedRectangle = new PointF[5];
             roundedRectangle[0].X = 50 + splitContainer1.Left - 15;
             roundedRectangle[0].Y = 6 + splitContainer1.Top;
-            roundedRectangle[1].X = 50 + splitContainer1.Right;
+            roundedRectangle[1].X = 60 + splitContainer1.Right;
             roundedRectangle[1].Y = 6 + splitContainer1.Top;
-            roundedRectangle[2].X = 50 + splitContainer1.Right;
+            roundedRectangle[2].X = 60 + splitContainer1.Right;
             roundedRectangle[2].Y = roundedRectangle[0].Y + (panel8.Bottom - splitContainer1.Top - 6);
             roundedRectangle[3].X = splitContainer1.Left + 50 - 15;
             roundedRectangle[3].Y = roundedRectangle[0].Y + (panel8.Bottom - splitContainer1.Top - 6);
@@ -273,350 +271,9 @@ namespace TabHeaderDemo
 
 
 
-        public void FreeFormRefresh(bool calced, bool readed)
-        {
-            lstspe.Items.Clear();
+       
 
-            for (int i = 0; i < CComLibrary.GlobeVal.filesave.testedcount + 1; i++)
-            {
-                IP.Components.Toolbox.Item m = new IP.Components.Toolbox.Item();
-                m.Text = (i + 1).ToString();
-                lstspe.Items.Add(m);
-
-                if (CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] == null)
-                {
-                    CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] = CComLibrary.TestStatus.Untested;
-                }
-
-                if (CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] is System.DBNull)
-                {
-                    CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] = CComLibrary.TestStatus.Untested;
-                }
-
-                m.Image = imageList2.Images[Convert.ToInt16(CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"])];
-            }
-            if (GlobeVal.UserControlResult1 != null)
-            {
-                if (calced == false)
-                {
-                    GlobeVal.UserControlResult1.InitGrid(1, false, readed, CComLibrary.GlobeVal.filesave.mtablecol1, CComLibrary.GlobeVal.filesave.mtable1para,
-                        CComLibrary.GlobeVal.filesave.mtable1statistics);
-                }
-                else
-                {
-                    GlobeVal.UserControlResult1.InitGrid(1, true, readed, CComLibrary.GlobeVal.filesave.mtablecol1, CComLibrary.GlobeVal.filesave.mtable1para,
-                        CComLibrary.GlobeVal.filesave.mtable1statistics);
-                }
-            }
-
-            if (GlobeVal.UserControlResult2 != null)
-            {
-                if (calced == false)
-                {
-                    GlobeVal.UserControlResult2.InitGrid(2, false, readed, CComLibrary.GlobeVal.filesave.mtablecol2, CComLibrary.GlobeVal.filesave.mtable2para,
-                        CComLibrary.GlobeVal.filesave.mtable2statistics);
-                }
-                else
-                {
-                    GlobeVal.UserControlResult2.InitGrid(2, true, readed, CComLibrary.GlobeVal.filesave.mtablecol2, CComLibrary.GlobeVal.filesave.mtable2para,
-                        CComLibrary.GlobeVal.filesave.mtable2statistics);
-                }
-            }
-
-
-
-            if (GlobeVal.UserControlSpe1 != null)
-            {
-                if (calced == false)
-                {
-                    GlobeVal.UserControlSpe1.setspe(CComLibrary.GlobeVal.filesave.currentspenumber + 1, CComLibrary.TestStatus.Untested);
-                }
-                if (calced == true)
-                {
-                    GlobeVal.UserControlSpe1.setspe(CComLibrary.GlobeVal.filesave.currentspenumber + 1, CComLibrary.TestStatus.tested);
-
-                }
-
-                GlobeVal.UserControlSpe1.setinput();
-            }
-
-            if (GlobeVal.UserControlGraph1 != null)
-            {
-                if (calced == false)
-                {
-                    GlobeVal.UserControlGraph1.Init曲线(1);
-                }
-
-                if (GlobeVal.UserControlGraph1.myplotsettings == null)
-                {
-                    GlobeVal.UserControlGraph1.Init曲线(1);
-                }
-
-            }
-
-
-            if (GlobeVal.UserControlGraph2 != null)
-            {
-                if (calced == false)
-                {
-                    GlobeVal.UserControlGraph2.Init曲线(2);
-                }
-
-                if (GlobeVal.UserControlGraph2.myplotsettings == null)
-                {
-                    GlobeVal.UserControlGraph2.Init曲线(2);
-                }
-
-            }
-        }
-
-        public void OpenDefaultlayout(string filename)
-        {
-
-
-
-            CComLibrary.FileLayoutStruct f = new CComLibrary.FileLayoutStruct();
-
-            f = f.DeSerializeNow(filename);
-            GlobeVal.dynset.tlbetest.Controls.Clear();
-
-            GlobeVal.dynset.tlbetest.RowCount = f.rowcount;
-            GlobeVal.dynset.tlbetest.ColumnCount = f.colcount;
-
-
-
-
-            GlobeVal.ShowCameraForm = false;
-
-
-            for (int k = 0; k < 20; k++)
-            {
-                if (f.Show[k] == true)
-                {
-                    if (f.ItemName[k] == "曲线图1")
-                    {
-                        UserControlGraph ug = new UserControlGraph();
-                        ug.Visible = true;
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-                        GlobeVal.UserControlGraph1 = ug;
-
-
-                    }
-
-                    if (f.ItemName[k] == "曲线图2")
-                    {
-                        UserControlGraph ug = new UserControlGraph();
-                        ug.Visible = true;
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-                        GlobeVal.UserControlGraph2 = ug;
-
-                    }
-                    if (f.ItemName[k] == "结果1")
-                    {
-                        UserControlResult ug = new UserControlResult();
-
-
-                        ug.Visible = true;
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-                        GlobeVal.UserControlResult1 = ug;
-
-
-
-                    }
-
-                    if (f.ItemName[k] == "结果2")
-                    {
-                        UserControlResult ug = new UserControlResult();
-
-                        ug.Visible = true;
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-                        GlobeVal.UserControlResult2 = ug;
-
-
-                    }
-                    if (f.ItemName[k] == "原始数据")
-                    {
-                        UserControlRawdata ug = new UserControlRawdata();
-                        ug.Visible = true;
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-
-                        ug.Init();
-                        GlobeVal.UserControlRawdata1 = ug;
-
-                    }
-
-
-                    if (f.ItemName[k] == "试样输入")
-                    {
-                        UserControlSpe ug = new UserControlSpe();
-
-                        //ug.setspe(CComLibrary.GlobeVal.filesave.currentspenumber + 1, CComLibrary.TestStatus.Untested);
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-                        ug.Visible = true;
-                        GlobeVal.UserControlSpe1 = ug;
-
-
-                    }
-
-
-                    if (f.ItemName[k] == "仪表1")
-                    {
-                        UserControlMeter ug = new UserControlMeter();
-                        ug.Init();
-
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-                        ug.Visible = true;
-
-                    }
-                    if (f.ItemName[k] == "仪表2")
-                    {
-                        UserControlMeter ug = new UserControlMeter();
-                        ug.Init();
-
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-
-                        ug.Visible = true;
-
-                    }
-
-
-
-                    if (f.ItemName[k] == "摄像")
-                    {
-                        UserControlCamera1 ug = new UserControlCamera1();
-                        ug.Init();
-
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-
-                        GlobeVal.UserControlCamera = ug;
-
-                        ug.Visible = true;
-
-                        GlobeVal.ShowCameraForm = true;
-
-                    }
-
-                    if (f.ItemName[k] == "过程提示")
-                    {
-                        UserControlProcess ug = new UserControlProcess();
-                        ug.Init();
-
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-                        GlobeVal.UserControlProcess1 = ug;
-                        ug.Visible = true;
-
-                    }
-
-                    if (f.ItemName[k] == "状态提示")
-                    {
-                        UserControlStatus ug = new UserControlStatus();
-                        ug.Init();
-
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-
-                        ug.Visible = true;
-
-                    }
-
-                    if (f.ItemName[k] == "峰值趋势数据")
-                    {
-                        UserControlLongRecord ug = new UserControlLongRecord();
-                        ug.Visible = true;
-                        ug.Dock = DockStyle.Fill;
-                        GlobeVal.dynset.tlbetest.SetCellPosition(ug, new TableLayoutPanelCellPosition(f.ItemCol[k], f.ItemRow[k]));
-
-                        GlobeVal.dynset.tlbetest.SetColumnSpan(ug, f.ItemColSpan[k]);
-                        GlobeVal.dynset.tlbetest.SetRowSpan(ug, f.ItemRowSpan[k]);
-
-                        GlobeVal.dynset.tlbetest.Controls.Add(ug);
-
-                        ug.Init();
-                        GlobeVal.UserControlLongRecord1 = ug;
-
-                    }
-
-
-                }
-            }
-
-
-
-        }
+      
 
         public void lstspeRefresh()
 
@@ -660,77 +317,7 @@ namespace TabHeaderDemo
 
 
 
-        public void changeUI()
-        {
-            Visible = false;
-
-
-
-
-            tableLayoutPanelback.RowStyles[1].Height = 0;
-
-
-
-
-
-
-            splitContainer1.SplitterDistance = 100;
-
-            paneltestright.Visible = false;
-
-
-
-            lstspe.Visible = true;
-
-
-            if (GlobeVal.dynset == null)
-            {
-
-                GlobeVal.dynset = new UserControlDynSet();
-
-            }
-
-
-            GlobeVal.dynset.Dock = DockStyle.Fill;
-
-            GlobeVal.dynset.tlbetest.Controls.Clear();
-            GlobeVal.dynset.tlbetest.RowCount = 0;
-            GlobeVal.dynset.tlbetest.ColumnCount = 0;
-            GlobeVal.dynset.Dock = DockStyle.None;
-
-            if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\layout\\" + CComLibrary.GlobeVal.filesave.layfilename + ".lay"))
-            {
-                OpenDefaultlayout(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\layout\\" + CComLibrary.GlobeVal.filesave.layfilename + ".lay");
-
-            }
-            else
-            {
-                OpenDefaultlayout(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\layout\\模板1.lay");
-            }
-
-            GlobeVal.dynset.Dock = DockStyle.Fill;
-            paneltestright.Controls.Clear();
-
-            paneltestright.Controls.Add(GlobeVal.dynset);
-
-            GlobeVal.dynset.tlbetest.Dock = DockStyle.Fill;
-
-
-            GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
-
-            paneltestright.Visible = true;
-
-
-            FreeFormRefresh(false, false);
-
-
-
-            Visible = true;
-            Visible = false;
-            GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
-
-            Visible = true;
-        }
+    
 
 
 
@@ -804,19 +391,7 @@ namespace TabHeaderDemo
                 MessageBox.Show("方法中没设置报告打印");
                 return;
             }
-            if (CComLibrary.GlobeVal.filesave.ReportSave == true)
-            {
-                if (CComLibrary.GlobeVal.filesave.ReportFormat == 0)
-                {
-                    GlobeVal.UserControlMain1.userreport1.document.SaveToFile(
-                        GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".docx", FileFormat.Docx);
-                }
-                else
-                {
-                    Image image = GlobeVal.UserControlMain1.userreport1.document.SaveToImages(0, ImageType.Metafile);
-                    image.Save(GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".tif", ImageFormat.Tiff);
-                }
-            }
+            
         }
 
         private void tableLayoutPanelback_Resize(object sender, EventArgs e)
@@ -1080,6 +655,43 @@ namespace TabHeaderDemo
 
         }
 
+        public void Init()
+        {
+            lstspe.Items.Clear();
+
+            for (int i = 0; i < CComLibrary.GlobeVal.filesave.testedcount + 1; i++)
+            {
+                IP.Components.Toolbox.Item m = new IP.Components.Toolbox.Item();
+                m.Text = (i + 1).ToString();
+                lstspe.Items.Add(m);
+
+                if (CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] == null)
+                {
+                    CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] = CComLibrary.TestStatus.Untested;
+                }
+
+                if (CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] is System.DBNull)
+                {
+                    CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"] = CComLibrary.TestStatus.Untested;
+                }
+
+                m.Image = imageList2.Images[Convert.ToInt16(CComLibrary.GlobeVal.filesave.dt.Rows[i]["试样状态"])];
+            }
+          
+         
+                    this.userControlResult1.InitGrid(1, true, true, CComLibrary.GlobeVal.filesave.mtablecol1, CComLibrary.GlobeVal.filesave.mtable1para,
+                        CComLibrary.GlobeVal.filesave.mtable1statistics);
+                
+           
+                  
+                
+
+               
+            
+
+
+            
+        }
         private void btnStart_Click(object sender, EventArgs e)
         {
             CustomControls.MethodOpenFileDialog controlex = new CustomControls.MethodOpenFileDialog();
@@ -1107,8 +719,112 @@ namespace TabHeaderDemo
 
                 }
 
-                MessageBox.Show(fileName);
+               
+
+                CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName);
+
+
+                Init();
+                
+                userControlRawdata1.Init();
+                userControlRawdata1.dataGridView1.Rows.Clear();
+
+                fileName = Path.GetFileNameWithoutExtension(fileName) + "-1.txt";
+
+                userControlGraph1.userGraph1.scatterGraph1.YAxes[0].Mode = NationalInstruments.UI.AxisMode.AutoScaleLoose;
+                userControlGraph1.userGraph1.scatterGraph1.XAxes[0].Mode = NationalInstruments.UI.AxisMode.AutoScaleLoose;
+                bool firstread = false;
+                string firstline = "";
+                string secondline = "";
+                int i = 0;
+                bool r = true;
+                char[] sp;
+                char[] sp1;
+                string[] ww;
+                string[] ww1;
+                int xchsel = 0;
+                int ychsel = 0;
+
+                double x = 0;
+                double y = 0;
+
+                sp = new char[2];
+                sp1 = new char[2];
+
+                sp[0] = Convert.ToChar(" ");
+
+
+                xchsel = 0 ;
+                ychsel = 0 ;
+
+
+
+                userControlGraph1.userGraph1.scatterGraph1.Plots[0].ClearData();
+                StreamReader m_streamReader = new StreamReader(fileName, System.Text.Encoding.Default);
+                try
+                {
+                    //使用StreamReader类来读取文件
+                    m_streamReader.BaseStream.Seek(0, SeekOrigin.Begin);
+                    // 从数据流中读取每一行，直到文件的最后一行，并在richTextBox1中显示出内容
+
+                    string strLine = m_streamReader.ReadLine();
+                    firstline = strLine;
+                    strLine = m_streamReader.ReadLine();
+                    secondline = strLine;
+                    strLine = m_streamReader.ReadLine();
+
+
+                    ww = firstline.Split(sp);
+                    ww1 = secondline.Split(sp);
+                    userControlGraph1.userGraph1.scatterGraph1.XAxes[0].Caption = ww[xchsel] + "[" + ww1[xchsel] + "]";
+                    userControlGraph1.userGraph1.scatterGraph1.YAxes[0].Caption = ww[ychsel] + "[" + ww1[ychsel] + "]";
+
+
+                    while (r == true)
+                    {
+
+
+                        ww = strLine.Split(sp);
+
+                        
+                        userControlRawdata1.dataGridView1.Rows.Add(ww);
+
+
+                        x = Convert.ToDouble(ww[xchsel]);
+                        y = Convert.ToDouble(ww[ychsel]);
+
+                        userControlGraph1.userGraph1.scatterGraph1.Plots[0].PlotXYAppend(x, y);
+
+                        strLine = m_streamReader.ReadLine();
+
+                        if (strLine == null)
+                        {
+                            r = false;
+
+                        }
+
+                        i = i + 1;
+
+                    }
+                    //关闭此StreamReader对象
+                    m_streamReader.Close();
+
+                    
+                    // legend.Items[curvescount - 1].Text = fileName;
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                firstread = true;
             }
+        }
+
+        private void btnsaveas_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

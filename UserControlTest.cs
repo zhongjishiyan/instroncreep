@@ -1135,6 +1135,8 @@ namespace TabHeaderDemo
                 return;
             }
 
+
+            GlobeVal.myarm.DeviceNum = Convert.ToInt16( GlobeVal.selcontroller);//对控制器号进行赋值
            
 
 
@@ -1206,31 +1208,7 @@ namespace TabHeaderDemo
 
             }
 
-            if (GlobeVal.myarm.mdemo == true)
-            {
-
-                GlobeVal.myarm.demotest(true);
-                if ((GlobeVal.ShowCameraForm == true) && (CComLibrary.GlobeVal.filesave.mplay == true) && (CComLibrary.GlobeVal.filesave.mplayfile == true))
-                {
-
-
-
-                    if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\" + CComLibrary.GlobeVal.filesave.play_avi_datafile) == true)
-                    {
-
-                        if (GlobeVal.UserControlCamera != null)
-                        {
-                            GlobeVal.UserControlCamera.play();
-                        }
-
-                    }
-                }
-
-            }
-            else
-            {
-
-            }
+            
 
             if (GlobeVal.UserControlSpe1 != null)
             {
@@ -1251,12 +1229,7 @@ namespace TabHeaderDemo
 
             GlobeVal.myarm.cleartime();
 
-            double t1 = Environment.TickCount;
-            while (Environment.TickCount - t1 < 500)
-
-            {
-                Application.DoEvents();
-            }
+           
 
             if (GlobeVal.UserControlGraph1 != null)
             {
@@ -1291,6 +1264,9 @@ namespace TabHeaderDemo
 
 
             GlobeVal.myarm.starttest(CComLibrary.GlobeVal.filesave.currentspenumber + 1);
+
+
+            GlobeVal.UserControlGraph1.scatterGraph.ClearData(); 
 
             if (GlobeVal.myarm.mtestrun == false)
             {
@@ -1333,8 +1309,7 @@ namespace TabHeaderDemo
             lstspe.Items[CComLibrary.GlobeVal.filesave.currentspenumber].Image = imageList2.Images[4];
             lstspe.Refresh();
 
-            TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
-            ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed = true;
+           
 
         }
 
@@ -1440,29 +1415,7 @@ namespace TabHeaderDemo
 
 
 
-            if (GlobeVal.myarm.mdemo == true)
-            {
-
-                GlobeVal.myarm.demotest(false);
-
-                if ((GlobeVal.ShowCameraForm == true) && (CComLibrary.GlobeVal.filesave.mplay == true) && (CComLibrary.GlobeVal.filesave.mplayfile == true))
-                {
-
-
-
-                    if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\demo\\" + CComLibrary.GlobeVal.filesave.play_avi_datafile) == true)
-                    {
-                        if (GlobeVal.UserControlCamera != null)
-                        {
-                            GlobeVal.UserControlCamera.stop();
-                        }
-                    }
-                }
-            }
-            else
-            {
-
-            }
+           
 
             GlobeVal.myarm.endtest();
 
@@ -1589,9 +1542,7 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btngroupcontrol.Visible = true;
 
             GlobeVal.dopanel.Visible = false;
-            TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
-            ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed = false;
-
+            
 
             double t1 = Environment.TickCount;
             while (Environment.TickCount - t1 < 5)
@@ -1721,19 +1672,7 @@ namespace TabHeaderDemo
                 MessageBox.Show("方法中没设置报告打印");
                 return;
             }
-            if (CComLibrary.GlobeVal.filesave.ReportSave == true)
-            {
-                if (CComLibrary.GlobeVal.filesave.ReportFormat == 0)
-                {
-                    GlobeVal.UserControlMain1.userreport1.document.SaveToFile(
-                        GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".docx", FileFormat.Docx);
-                }
-                else
-                {
-                    Image image = GlobeVal.UserControlMain1.userreport1.document.SaveToImages(0, ImageType.Metafile);
-                    image.Save(GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".tif", ImageFormat.Tiff);
-                }
-            }
+           
         }
 
         private void tableLayoutPanelback_Resize(object sender, EventArgs e)
@@ -1995,6 +1934,25 @@ namespace TabHeaderDemo
             MessageBox.Show("数据已经导出到" + xls.FileName);
 
 
+        }
+
+        private void btnsaveas_Click(object sender, EventArgs e)
+        {
+            if (CComLibrary.GlobeVal.filesave.ReportSave == true)
+            {
+                GlobeVal.UserControlMain1.userreport1.ExcelReport();
+
+                if (CComLibrary.GlobeVal.filesave.ReportFormat == 0)
+                {
+                    GlobeVal.UserControlMain1.userreport1.document.SaveToFile(
+                        GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".docx", FileFormat.Docx);
+                }
+                else
+                {
+                    Image image = GlobeVal.UserControlMain1.userreport1.document.SaveToImages(0, ImageType.Metafile);
+                    image.Save(GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".tif", ImageFormat.Tiff);
+                }
+            }
         }
     }
 }

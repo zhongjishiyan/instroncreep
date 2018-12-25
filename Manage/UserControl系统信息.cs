@@ -44,15 +44,11 @@ namespace TabHeaderDemo
                     "软件设置", typeof(string));
 
   
-#if Demo
-            grid1[i, 1] = new SourceGrid2.Cells.Real.Cell(
-                    "演示版", typeof(string));
-            labelVersion1.Text = "版本 演示版";
-#else
+
             grid1[i, 1] = new SourceGrid2.Cells.Real.Cell(
                    "完整版", typeof(string));
-             labelVersion1.Text = "版本 完整版";
-#endif
+            labelVersion1.Text = "版本 完整版";
+
             i = 2;
             grid1.Rows.Insert(i);
             grid1[i, 0] = new SourceGrid2.Cells.Real.Cell(

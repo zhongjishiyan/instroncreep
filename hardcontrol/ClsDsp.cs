@@ -73,8 +73,7 @@ namespace ClsStaticStation
 
         private double time;
         private double count;
-        private double pos1;//围压位移
-        private double load1;//围压负荷
+       
 
         public List<CComLibrary.CmdSeg> mrunlist;
 
@@ -135,7 +134,7 @@ namespace ClsStaticStation
 
         public void SendTransferCmd()
         {
-
+            _pipeClient._TransferCmd.FuncID = this.DeviceNum;
             _pipeClient._TransferCmd.tcount = _ctr;
             _vchar = StructTOBytes(_pipeClient._TransferCmd);
 
@@ -143,7 +142,7 @@ namespace ClsStaticStation
 
 
 
-            _pipeClient.Send(_vchar, "TestPipe1", l, 1000);
+            _pipeClient.Send(_vchar, "TestPipe1", l, 10000);
 
             _ctr = _ctr + 1;
 
@@ -200,8 +199,7 @@ namespace ClsStaticStation
         public override void cleartime()
         {
             base.cleartime();
-            myedc.Data.SetTime(XLDOPE.SETTIME_MODE.IMMEDIATE, 0);
-
+          
 
 
 
@@ -238,6 +236,13 @@ namespace ClsStaticStation
 
             mtestrun = true;
 
+
+            _pipeClient._TransferCmd.cmdName = 121;
+
+         
+
+            SendTransferCmd();
+
             if (CComLibrary.GlobeVal.filesave.mcontrolprocess == 1) //中级试验
             {
 
@@ -245,11 +250,7 @@ namespace ClsStaticStation
                 CComLibrary.GlobeVal.filesave.mseglist = new List<CComLibrary.CmdSeg>();
 
 
-                CComLibrary.SegFile sf = new CComLibrary.SegFile();
-
-
-                sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
-                        + CComLibrary.GlobeVal.filesave.SegName);
+               
 
 
 
@@ -257,24 +258,24 @@ namespace ClsStaticStation
 
 
 
-                int m = sf.mseglist.Count;
+                int m = CComLibrary.GlobeVal.filesave.msegtestcount;
 
                 for (i = 0; i < m; i++)
                 {
                     CComLibrary.CmdSeg n = new CComLibrary.CmdSeg();
                     n.check = true;
-                    n.controlmode = sf.mseglist[i].controlmode;
-                    n.speed = sf.mseglist[i].speed;
-                    n.destcontrolmode = sf.mseglist[i].destcontrolmode;
-                    n.dest = sf.mseglist[i].dest;
-                    n.keeptime = sf.mseglist[i].keeptime;
-                    n.cmd = sf.mseglist[i].cmd;
-                    n.action = sf.mseglist[i].action;
+                    n.controlmode = CComLibrary.GlobeVal.filesave.msegtest[i].controlmode;
+                    n.speed = CComLibrary.GlobeVal.filesave.msegtest[i].speed;
+                    n.destcontrolmode = CComLibrary.GlobeVal.filesave.msegtest[i].destcontrolmode;
+                    n.dest = CComLibrary.GlobeVal.filesave.msegtest[i].dest;
+                    n.keeptime = CComLibrary.GlobeVal.filesave.msegtest[i].keeptime;
+                    n.cmd = CComLibrary.GlobeVal.filesave.msegtest[i].cmd;
+                    n.action = CComLibrary.GlobeVal.filesave.msegtest[i].action;
 
-                    if (sf.mseglist[i].cyclicrun == true)
+                    if (CComLibrary.GlobeVal.filesave.msegtest[i].cyclicrun == true)
                     {
-                        n.returncount = sf.mseglist[i].cycliccount;
-                        n.returnstep = sf.mseglist[i].returnstep;
+                        n.returncount = CComLibrary.GlobeVal.filesave.msegtest[i].cycliccount;
+                        n.returnstep = CComLibrary.GlobeVal.filesave.msegtest[i].returnstep;
                     }
                     else
                     {
@@ -427,6 +428,13 @@ namespace ClsStaticStation
         }
         public override void endtest()
         {
+
+            _pipeClient._TransferCmd.cmdName = 120;
+          
+
+            SendTransferCmd();
+
+
             mstarttime = 0;
 
             endcontrol();
@@ -742,12 +750,13 @@ namespace ClsStaticStation
             m1.Sensor[1] = _pipeServer._TransferData.CHANNEL_F[m_Global.currentmachineId];
 
 
-            m1.Sensor[2] = _pipeServer._TransferData.CHANNEL_E[m_Global.currentmachineId];
-            m1.Sensor[3] = _pipeServer._TransferData.CHANNEL_4[m_Global.currentmachineId];
-            m1.Sensor[4] = _pipeServer._TransferData.CHANNEL_5[m_Global.currentmachineId];
+            m1.Sensor[2] = _pipeServer._TransferData.CHANNEL_4[m_Global.currentmachineId];
+            m1.Sensor[3] = _pipeServer._TransferData.CHANNEL_5[m_Global.currentmachineId];
+            m1.Sensor[4] = _pipeServer._TransferData.CHANNEL_E[m_Global.currentmachineId];
             m1.Sensor[5] = _pipeServer._TransferData.CHANNEL_7[m_Global.currentmachineId];
             m1.Sensor[6] = _pipeServer._TransferData.CHANNEL_8[m_Global.currentmachineId];
             m1.Sensor[7] = _pipeServer._TransferData.CHANNEL_9[m_Global.currentmachineId];
+            m1.Cycles =Convert.ToInt32( _pipeServer._TransferData.CYCLE_COUNT[m_Global.currentmachineId]);
 
             m1.Time = _pipeServer._TransferData.TEST_TIME[m_Global.currentmachineId];
             XLDOPE.MDataIno ma = new XLDOPE.MDataIno();
@@ -971,7 +980,7 @@ namespace ClsStaticStation
             int ii;
             if (connected == true)
             {
-                SendTransferCmd();
+               // SendTransferCmd();
             }
 
             {
@@ -1013,15 +1022,15 @@ namespace ClsStaticStation
 
 
 
-                    //time = AccurateTimer.GetTimeTick();
+                    
 
                     cmd = GGMsg.Test1;
 
                     time = GGMsg.Time;
 
-                    count = 0;
+                    count = GGMsg.Cycles;
 
-                    base.count = 0;
+                   
 
                     if (mtestrun == true)
                     {
@@ -1692,7 +1701,27 @@ namespace ClsStaticStation
                             }
                         }
 
+                        if (m_Global.mycls.allsignals[j].SignName == "Ch Load Max")
+                        {
+                            for (int m = 0; m < m_Global.mycls.chsignals.Count; m++)
+                            {
+                                if (m_Global.mycls.chsignals[m].SignName == "Ch Load")
+                                {
+                                    m_Global.mycls.allsignals[j].cvalue = m_Global.mycls.chsignals[m].cvaluemax;
+                                }
+                            }
+                        }
 
+                        if (m_Global.mycls.allsignals[j].SignName == "Ch Load Min")
+                        {
+                            for (int m = 0; m < m_Global.mycls.chsignals.Count; m++)
+                            {
+                                if (m_Global.mycls.chsignals[m].SignName == "Ch Load")
+                                {
+                                    m_Global.mycls.allsignals[j].cvalue = m_Global.mycls.chsignals[m].cvaluemin;
+                                }
+                            }
+                        }
 
                         /*
                         for (int m = 0; m < 100; m++)

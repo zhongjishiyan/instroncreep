@@ -75,10 +75,10 @@ namespace TabHeaderDemo
             listView1.Columns.Add("位移[mm]");
             listView1.Columns[5].Width = 60;
 
-            listView1.Columns.Add("变形A[mm]");
+            listView1.Columns.Add("变形1[mm]");
             listView1.Columns[6].Width = 70;
 
-            listView1.Columns.Add("变形B[mm]");
+            listView1.Columns.Add("变形2[mm]");
             listView1.Columns[7].Width = 70;
 
 
@@ -118,7 +118,7 @@ namespace TabHeaderDemo
             lstspe.Items.Clear();
 
             IP.Components.Toolbox.Item m;
-            for (int i = 0; i < GlobeVal.mysys.ControllerCount; i++)
+            for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
             {
                 m = new IP.Components.Toolbox.Item();
                 m.Text = "主机"+(i+1).ToString();

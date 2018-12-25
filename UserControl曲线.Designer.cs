@@ -617,7 +617,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel3.Controls.Add(this.lbltitle0, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -635,7 +635,7 @@
             this.lbltitle0.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle0.Location = new System.Drawing.Point(4, 1);
             this.lbltitle0.Name = "lbltitle0";
-            this.lbltitle0.Size = new System.Drawing.Size(669, 36);
+            this.lbltitle0.Size = new System.Drawing.Size(668, 36);
             this.lbltitle0.TabIndex = 0;
             this.lbltitle0.Text = "设置曲线类型";
             this.lbltitle0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -644,7 +644,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(680, 4);
+            this.panel4.Location = new System.Drawing.Point(679, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(32, 30);
             this.panel4.TabIndex = 1;
@@ -829,7 +829,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel4.Controls.Add(this.lbltitle1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -847,7 +847,7 @@
             this.lbltitle1.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle1.Location = new System.Drawing.Point(4, 1);
             this.lbltitle1.Name = "lbltitle1";
-            this.lbltitle1.Size = new System.Drawing.Size(666, 36);
+            this.lbltitle1.Size = new System.Drawing.Size(665, 36);
             this.lbltitle1.TabIndex = 0;
             this.lbltitle1.Text = "设置曲线-X轴数据 ";
             this.lbltitle1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -856,7 +856,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(677, 4);
+            this.panel2.Location = new System.Drawing.Point(676, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(32, 30);
             this.panel2.TabIndex = 1;
@@ -1188,7 +1188,7 @@
             this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel6.Controls.Add(this.lbltitle2, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1206,7 +1206,7 @@
             this.lbltitle2.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle2.Location = new System.Drawing.Point(4, 1);
             this.lbltitle2.Name = "lbltitle2";
-            this.lbltitle2.Size = new System.Drawing.Size(671, 36);
+            this.lbltitle2.Size = new System.Drawing.Size(670, 36);
             this.lbltitle2.TabIndex = 0;
             this.lbltitle2.Text = "设置曲线-Y轴数据";
             this.lbltitle2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1215,7 +1215,7 @@
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(682, 4);
+            this.panel3.Location = new System.Drawing.Point(681, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(32, 30);
             this.panel3.TabIndex = 1;
@@ -2525,7 +2525,7 @@
             this.tableLayoutPanel9.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel9.ColumnCount = 2;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel9.Controls.Add(this.lbltitle3, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.panel6, 1, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Top;
@@ -2543,7 +2543,7 @@
             this.lbltitle3.ForeColor = System.Drawing.Color.Teal;
             this.lbltitle3.Location = new System.Drawing.Point(4, 1);
             this.lbltitle3.Name = "lbltitle3";
-            this.lbltitle3.Size = new System.Drawing.Size(672, 36);
+            this.lbltitle3.Size = new System.Drawing.Size(671, 36);
             this.lbltitle3.TabIndex = 0;
             this.lbltitle3.Text = "设置曲线-高级项目";
             this.lbltitle3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2552,7 +2552,7 @@
             // 
             this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Location = new System.Drawing.Point(683, 4);
+            this.panel6.Location = new System.Drawing.Point(682, 4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(32, 30);
             this.panel6.TabIndex = 1;

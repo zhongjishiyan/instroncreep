@@ -70,6 +70,7 @@ namespace TabHeaderDemo
 
         public void CreateForm()
         {
+            return;
             if (waitThread != null)
             {
                 try

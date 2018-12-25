@@ -173,7 +173,9 @@ namespace TabHeaderDemo
             // _pipeServer = new PipeServer();
             // _pipeServer.PipeMessage += new DelegateMessage(PipesMessageHandler);
 
+            GlobeVal.myglobefile = new ClassGlobeFile();
             GlobeVal.mysys = new ClassSys();
+
 
             //MessageBox.Show(System.Windows.Forms.Application.StartupPath.ToString());
 
@@ -182,6 +184,14 @@ namespace TabHeaderDemo
             {
                 Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ");
             }
+
+            if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\globe.ini") == true)
+            {
+
+                GlobeVal.myglobefile = GlobeVal.myglobefile.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\globe.ini");
+
+            }
+
             if (File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini") == true)
             {
 
@@ -412,8 +422,8 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btnmreport.Visible = false;
             GlobeVal.UserControlMain1.btngroupcontrol.Visible = false;
 
-           
-           
+
+
             GlobeVal.UserControlMain1.tabControl1.SelectedIndex = 7;
 
             this.Cursor = Cursors.Default;
@@ -422,6 +432,7 @@ namespace TabHeaderDemo
         }
         public void _直接进入试验界面()
         {
+            GlobeVal.UserControlMain1.btnmtest.Text = "测试";
 
             this.Cursor = Cursors.WaitCursor;
 
@@ -555,7 +566,7 @@ namespace TabHeaderDemo
             this.Width = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Width);
             this.Height = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Height);
 
-        
+
             tabControl1.ItemSize = new Size(1, 1);
 
 
@@ -567,13 +578,13 @@ namespace TabHeaderDemo
 
 
 
-          
 
 
 
-         
-                GlobeVal.MainStatusStrip.Items["tslbldevice"].Text = GlobeVal.mysys.ControllerName[GlobeVal.mysys.controllerkind];
-            
+
+
+           
+
 
             /*
           
@@ -688,7 +699,7 @@ namespace TabHeaderDemo
             }
             else
             {
-               
+
             }
 
 
@@ -703,7 +714,7 @@ namespace TabHeaderDemo
 
             }
 
-           
+
 
         }
 
@@ -920,7 +931,7 @@ namespace TabHeaderDemo
             msel = 0;
         }
 
-       
+
 
         private void FormMainLab_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -931,7 +942,7 @@ namespace TabHeaderDemo
             GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
         }
 
-       
+
 
         private void btnon_Click(object sender, EventArgs e)
         {
@@ -952,7 +963,7 @@ namespace TabHeaderDemo
 
         }
 
-     
+
 
 
         private void btnkey1_Click(object sender, EventArgs e)
@@ -978,7 +989,7 @@ namespace TabHeaderDemo
             GlobeVal.myarm.btnkey(sender as Button);
         }
 
-     
+
 
         private void timermain_Tick(object sender, EventArgs e)
         {
@@ -1016,7 +1027,7 @@ namespace TabHeaderDemo
 
         }
 
-       
+
         private void btnmethod_Click(object sender, EventArgs e)
         {
             int i;
@@ -1082,8 +1093,8 @@ namespace TabHeaderDemo
             }
         }
 
-    
-       
+
+
 
         private void recordStartButton_MouseEnter(object sender, EventArgs e)
         {
@@ -1104,9 +1115,9 @@ namespace TabHeaderDemo
             this.toolTip1.SetToolTip(sender as Button, (sender as Button).Tag as string);
         }
 
-       
 
-        
+
+
         private void PipesMessageHandler(string message)
         {
             try
@@ -1139,19 +1150,53 @@ namespace TabHeaderDemo
                 f.ShowDialog();
                 lblcontroller.Text = GlobeVal.selcontroller.ToString().Trim();
 
+                if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\") == false)
+                {
+                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\");
+                }
+
+                if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\") == false)
+                {
+                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\");
+                }
+                if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\") == false)
+                {
+                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\");
+                }
+
+
+
                 string f1 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\setup.ini";
+
+                if(File.Exists(f1)==false )
+                {
+                    GlobeVal.mysys.SerializeNow(f1);
+                    
+                }
 
                 GlobeVal.mysys = GlobeVal.mysys.DeSerializeNow(f1);
 
+
+
                 string f2 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
 
+
+               
+
+
+
+                if (File.Exists(f2)==false)
+                {
+                    CComLibrary.GlobeVal.filesave.SerializeNow(f2);
+                }
 
                 CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(f2);
 
                 GlobeVal.userControlmethod1.OpenTheMethodSilently(f2);
 
                 GlobeVal.userControltest1.changeUI();
-
+                ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
+                ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
 
             }
             else

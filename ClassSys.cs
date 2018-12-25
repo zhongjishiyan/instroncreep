@@ -20,6 +20,65 @@ namespace TabHeaderDemo
 
     }
     [Serializable]
+
+    public class ClassGlobeFile
+    {
+        public int ControllerCount;
+
+        public ClassGlobeFile()
+        {
+            ControllerCount = 1;
+        }
+
+        public void SerializeNow(string filename)
+        {
+
+            FileStream fileStream =
+            new FileStream(filename, FileMode.Create);
+            BinaryFormatter b = new BinaryFormatter();
+            b.Serialize(fileStream, this);
+
+            fileStream.Close();
+        }
+
+        public ClassGlobeFile DeSerializeNow(string filename)
+        {
+            ClassGlobeFile c = new ClassGlobeFile();
+            try
+            {
+
+
+                using (FileStream fileStream =
+                 new FileStream(filename,
+                 FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    BinaryFormatter b = new BinaryFormatter();
+
+                    c = b.Deserialize(fileStream) as ClassGlobeFile;
+
+                    
+
+                    fileStream.Close();
+
+
+
+                }
+            }
+            catch (Exception e1)
+            {
+                c = new ClassGlobeFile();
+
+                MessageBox.Show(e1.Message, "读取文件");
+            }
+            finally
+            {
+
+            }
+            return (c);
+        }
+    }
+
+    [Serializable]
     public class ClassSys
     {
         
@@ -72,9 +131,9 @@ namespace TabHeaderDemo
 
         public int AppUserLevel = 0;
 
-        public string[] ControllerName;
+       
 
-        public int ControllerCount = 1;//控制器数量
+       
 
         public int CurentUserIndex = 0;
 
@@ -122,12 +181,9 @@ namespace TabHeaderDemo
         public ClassSys()
         {
 
-            ControllerName = new string[20];
+            
 
-            ControllerName[0] = "国产控制器";
-            ControllerName[1] = "DOLI控制器";
-
-            ControllerCount = 2;
+            
 
             MachineName = new string[20];
             MachineName[0] = "电子蠕变试验机";
@@ -247,17 +303,8 @@ namespace TabHeaderDemo
 
                     }
 
-                    if (c.ControllerName == null)
-                    {
-                        c.ControllerName = new string[20];
-
-
-                    }
-
-                    c.ControllerName[0] = "国产控制器";
-                    c.ControllerName[1] = "DOLI控制器";
-
-                    c.ControllerCount = 2;
+                   
+                   
 
                     if (c.MachineName == null)
                     {

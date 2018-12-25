@@ -493,15 +493,21 @@ namespace TabHeaderDemo
                             {
                                 CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname] = 0;
                             }
-                            t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
 
 
-                            s = t.ToString("F" + tabcol[j].myitemsignal.precise.ToString().Trim());
-
-                            if (tabcol[j].myitemsignal.cUnitKind == 19)
+                            if (CComLibrary.GlobeVal.filesave.dt.Columns[tabcol[j].formulaname].DataType == Type.GetType("System.String"))
                             {
-                                s = "";
+                                s= Convert.ToString(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
                             }
+                            else
+                            {
+                                t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
+
+
+                                s = t.ToString("F" + tabcol[j].myitemsignal.precise.ToString().Trim());
+                            }
+
+                           
 
                         }
                     }
@@ -1079,15 +1085,20 @@ namespace TabHeaderDemo
                             {
                                 CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname] = 0;
                             }
-                            t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
 
-
-                            s = t.ToString("F" + tabcol[j].myitemsignal.precise.ToString().Trim());
-
-                            if (tabcol[j].myitemsignal.cUnitKind == 19)
+                            if (CComLibrary.GlobeVal.filesave.dt.Columns[tabcol[j].formulaname].DataType.Name == "String")
                             {
-                                s = "";
+                                s = Convert.ToString(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
                             }
+                            else
+                            {
+                                t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
+
+
+                                s = t.ToString("F" + tabcol[j].myitemsignal.precise.ToString().Trim());
+                            }
+
+                           
 
                         }
                     }
@@ -1099,15 +1110,18 @@ namespace TabHeaderDemo
                             CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname] = 0;
                         }
 
-                        t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
-
-
-                        s = t.ToString("F" + tabcol[j].myitemsignal.precise.ToString().Trim());
-
-                        if (tabcol[j].myitemsignal.cUnitKind == 19)
+                        if (CComLibrary.GlobeVal.filesave.dt.Columns[tabcol[j].formulaname].DataType.Name == "String")
                         {
-                            s = "";
+                            s = Convert.ToString(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
                         }
+                        else
+                        {
+                            t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][tabcol[j].formulaname]);
+
+
+                            s = t.ToString("F" + tabcol[j].myitemsignal.precise.ToString().Trim());
+                        }
+                        
 
                     }
                     grid1[i, 1 + j] = new SourceGrid2.Cells.Real.Cell(

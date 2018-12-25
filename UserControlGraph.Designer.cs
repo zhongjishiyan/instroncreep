@@ -574,7 +574,6 @@
         private System.Windows.Forms.ToolStripButton tsbrect;
         private System.Windows.Forms.ToolStripButton tsbpoint;
         private System.Windows.Forms.ToolStripButton tsbcontrol;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanelCurve;
         public NationalInstruments.UI.WindowsForms.ScatterGraph scatterGraph;
@@ -597,5 +596,6 @@
         private NationalInstruments.UI.YAxis yAxis3;
         public AppleLabApplication.UserGraph userGraph1;
         private System.Windows.Forms.Timer timer2;
+        public System.Windows.Forms.TabControl tabControl1;
     }
 }
