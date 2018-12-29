@@ -315,6 +315,12 @@
     <Compile Include="UserControlFont.designer.cs">
       <DependentUpon>UserControlFont.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlPath.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlPath.Designer.cs">
+      <DependentUpon>UserControlPath.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlProcess.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -871,6 +877,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlMeter.resx">
       <DependentUpon>UserControlMeter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlPath.resx">
+      <DependentUpon>UserControlPath.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlProcess.resx">

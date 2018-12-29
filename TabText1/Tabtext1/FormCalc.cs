@@ -424,12 +424,19 @@ namespace AppleLabApplication
             CComLibrary.GlobeVal.mfunc.Add(a);
 
             a = new CComLibrary.Rule();
-            a.OperaWordsName = "_断后标距";
+            a.OperaWordsName = "_断后长度";
             a.replaceName = a.OperaWordsName;
             a.count = 0;
-            a.explain = "输入断后标距";
+            a.explain = "用于计算断后伸长率";
             CComLibrary.GlobeVal.mfunc.Add(a);
 
+
+            a = new CComLibrary.Rule();
+            a.OperaWordsName = "_原始长度";
+            a.replaceName = a.OperaWordsName;
+            a.count = 0;
+            a.explain = "试样长度，用于计算断后伸长率";
+            CComLibrary.GlobeVal.mfunc.Add(a);
 
             a = new CComLibrary.Rule();
             a.OperaWordsName = "_面积";

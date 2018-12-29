@@ -494,20 +494,24 @@ namespace TabHeaderDemo
             GlobeVal.userControlpretest1.gfilename = fileName;
             CComLibrary.GlobeVal.currentfilesavename = fileName;
 
-            if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
-            {
-            }
-            else
-            {
-                MessageBox.Show("数据保存路径不存在,请点击浏览选择试验路径");
-                return;
-            }
             if (GlobeVal.mysys.SamplePath == "")
             {
                 MessageBox.Show("请设置数据保存路径");
 
                 return;
             }
+
+            if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
+            {
+            }
+            else
+            {
+                MessageBox.Show("数据保存路径不存在,请点击浏览选择试验路径,将重新设置为c:\\data");
+                GlobeVal.mysys.SamplePath = "c:\\data";
+
+                //return;
+            }
+        
 
 
 

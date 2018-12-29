@@ -25,6 +25,8 @@ namespace TabHeaderDemo
         private UserGroupControl usergroupcontrol1;
         public UserControlAnalysis usercontrolanalysis1;
 
+        public UserControlPath usercontrolpath1;
+
         public List<Button> mlist;
 
         private Point[] buttonxy;
@@ -58,6 +60,7 @@ namespace TabHeaderDemo
             userControlTest1 = new UserControlTest();
             usercontrolanalysis1 = new UserControlAnalysis();
             usergroupcontrol1 = new UserGroupControl();
+            usercontrolpath1 = new UserControlPath();
 
             usergroupcontrol1.Init();
 
@@ -69,7 +72,7 @@ namespace TabHeaderDemo
             userControlTest1.Dock = DockStyle.Fill;
             usergroupcontrol1.Dock = DockStyle.Fill;
             usercontrolanalysis1.Dock = DockStyle.Fill;
-
+            usercontrolpath1.Dock = DockStyle.Fill;
 
             tabPage1.Controls.Add(usercontrolopenmetho1);
             tabPage2.Controls.Add(usercontrolmethod1);
@@ -79,7 +82,7 @@ namespace TabHeaderDemo
             tabPage6.Controls.Add(usermanage1);
             tabPage7.Controls.Add(usergroupcontrol1);
             tabPage8.Controls.Add(usercontrolanalysis1);
-
+            tabPage9.Controls.Add(usercontrolpath1);
             
 
 

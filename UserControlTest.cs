@@ -1954,5 +1954,16 @@ namespace TabHeaderDemo
                 }
             }
         }
+
+        private void btnepath_Click(object sender, EventArgs e)
+        {
+            GlobeVal.UserControlMain1.tabControl1.SelectedIndex = 8;
+            
+        }
+
+        private void buttonEx14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

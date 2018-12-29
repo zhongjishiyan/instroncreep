@@ -431,15 +431,21 @@ namespace TabHeaderDemo
                     {
                         CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][CComLibrary.GlobeVal.filesave.mtablecol1[j].formulaname] = 0;
                     }
-                    t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][CComLibrary.GlobeVal.filesave.mtablecol1[j].formulaname]);
 
 
-                    s = t.ToString("F" + CComLibrary.GlobeVal.filesave.mtablecol1[j].myitemsignal.precise.ToString().Trim());
-
-                    if (CComLibrary.GlobeVal.filesave.mtablecol1[j].myitemsignal.cUnitKind == 19)
+                    if (CComLibrary.GlobeVal.filesave.dt.Columns[CComLibrary.GlobeVal.filesave.mtablecol1[j].formulaname].DataType == Type.GetType("System.String"))
                     {
-                        s = "";
+
+                        s = Convert.ToString(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][CComLibrary.GlobeVal.filesave.mtablecol1[j].formulaname]);
                     }
+                    else
+                    {
+                        t = Convert.ToSingle(CComLibrary.GlobeVal.filesave.dt.Rows[i - 1][CComLibrary.GlobeVal.filesave.mtablecol1[j].formulaname]);
+
+
+                        s = t.ToString("F" + CComLibrary.GlobeVal.filesave.mtablecol1[j].myitemsignal.precise.ToString().Trim());
+                    }
+                    
 
                     data[i - 1][j + 1] = s;
 

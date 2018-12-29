@@ -40,14 +40,15 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btngroupcontrol = new System.Windows.Forms.Button();
+            this.btnmain = new TabHeaderDemo.ButtonExNew(this.components);
             this.btnmmanage = new System.Windows.Forms.Button();
             this.btnmmethod = new System.Windows.Forms.Button();
             this.btnmtest = new System.Windows.Forms.Button();
             this.btnmreport = new System.Windows.Forms.Button();
-            this.btnmain = new TabHeaderDemo.ButtonExNew(this.components);
-            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
             this.panelback.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -84,6 +85,7 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -150,6 +152,14 @@
             this.tabPage7.TabIndex = 6;
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(1034, 525);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btngroupcontrol);
@@ -187,6 +197,28 @@
             this.btngroupcontrol.UseVisualStyleBackColor = true;
             this.btngroupcontrol.Visible = false;
             this.btngroupcontrol.Click += new System.EventHandler(this.btngroupcontrol_Click);
+            // 
+            // btnmain
+            // 
+            this.btnmain.BackColor = System.Drawing.Color.Transparent;
+            this.btnmain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmain.BackgroundImage")));
+            this.btnmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnmain.FlatAppearance.BorderSize = 0;
+            this.btnmain.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnmain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnmain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnmain.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnmain.ForeColor = System.Drawing.Color.White;
+            this.btnmain.Location = new System.Drawing.Point(3, 6);
+            this.btnmain.Name = "btnmain";
+            this.btnmain.Size = new System.Drawing.Size(133, 29);
+            this.btnmain.TabIndex = 36;
+            this.btnmain.Text = "AppleLab  ";
+            this.btnmain.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnmain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnmain.UseCompatibleTextRendering = true;
+            this.btnmain.UseVisualStyleBackColor = true;
+            this.btnmain.Click += new System.EventHandler(this.btnmain_Click);
             // 
             // btnmmanage
             // 
@@ -280,35 +312,13 @@
             this.btnmreport.UseVisualStyleBackColor = true;
             this.btnmreport.Click += new System.EventHandler(this.btnmreport_Click);
             // 
-            // btnmain
+            // tabPage9
             // 
-            this.btnmain.BackColor = System.Drawing.Color.Transparent;
-            this.btnmain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnmain.BackgroundImage")));
-            this.btnmain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnmain.FlatAppearance.BorderSize = 0;
-            this.btnmain.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnmain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnmain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnmain.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnmain.ForeColor = System.Drawing.Color.White;
-            this.btnmain.Location = new System.Drawing.Point(3, 6);
-            this.btnmain.Name = "btnmain";
-            this.btnmain.Size = new System.Drawing.Size(133, 29);
-            this.btnmain.TabIndex = 36;
-            this.btnmain.Text = "AppleLab  ";
-            this.btnmain.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnmain.UseCompatibleTextRendering = true;
-            this.btnmain.UseVisualStyleBackColor = true;
-            this.btnmain.Click += new System.EventHandler(this.btnmain_Click);
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1034, 525);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.UseVisualStyleBackColor = true;
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(1034, 525);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // UserControlMain
             // 
@@ -349,5 +359,6 @@
         private System.Windows.Forms.TabPage tabPage7;
         public System.Windows.Forms.Button btngroupcontrol;
         private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TabPage tabPage9;
     }
 }

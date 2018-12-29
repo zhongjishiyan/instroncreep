@@ -23,7 +23,7 @@ namespace TabHeaderDemo
 {
     public partial class UserControlAnalysis : UserControl
     {
-        
+        public UserControlSpe UserControlSpe1 = new UserControlSpe();
 
         class btnstep
         {
@@ -363,8 +363,8 @@ namespace TabHeaderDemo
             imageList4.Images.Add(TabHeaderDemo.Properties.Resources.r2);
 
 
-
-
+            UserControlSpe1.Dock = DockStyle.Fill;
+            splitContainer3.Panel2.Controls.Add(UserControlSpe1);
 
             timermain.Enabled = true;
 
@@ -454,15 +454,17 @@ namespace TabHeaderDemo
             mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
           (num).ToString().Trim() + ".txt";
 
-            CComLibrary.GlobeVal.mscattergraph = GlobeVal.UserControlGraph1.userGraph1.scatterGraph1;
 
 
+            CComLibrary.GlobeVal.mscattergraph =userControlGraph1.userGraph1.scatterGraph1;
 
-
-
+            //清除曲线上的箭头文本
 
             CComLibrary.GlobeVal.m_listline.Clear();
-            CComLibrary.GlobeVal.mscattergraph.Annotations.Clear();
+
+            userControlGraph1.userGraph1.scatterGraph1.Annotations.Clear();
+            
+            
 
             CComLibrary.GlobeVal.filesave.calc(mspefiledat);//计算数据
             if (CComLibrary.GlobeVal.filesave.UseDatabase == true)
@@ -484,29 +486,17 @@ namespace TabHeaderDemo
             }
 
 
-            if (GlobeVal.UserControlResult1 != null)
+            if (userControlResult1 != null)
             {
-                GlobeVal.UserControlResult1.ReCalcGrid(1, true, false, CComLibrary.GlobeVal.filesave.mtablecol1, CComLibrary.GlobeVal.filesave.mtable1para,
+                userControlResult1.ReCalcGrid(1, true, false, CComLibrary.GlobeVal.filesave.mtablecol1, CComLibrary.GlobeVal.filesave.mtable1para,
                 CComLibrary.GlobeVal.filesave.mtable1statistics, num - 1);
             }
 
-            if (GlobeVal.UserControlResult2 != null)
-            {
-                GlobeVal.UserControlResult2.ReCalcGrid(2, true, false, CComLibrary.GlobeVal.filesave.mtablecol2, CComLibrary.GlobeVal.filesave.mtable2para,
-                CComLibrary.GlobeVal.filesave.mtable2statistics, num - 1);
-            }
+         
 
 
-            if (GlobeVal.UserControlGraph1 != null)
-            {
-                GlobeVal.UserControlGraph1.userGraph1.Init();
-            }
-
-            if (GlobeVal.UserControlGraph2 != null)
-            {
-                GlobeVal.UserControlGraph2.userGraph1.Init();
-            }
-
+         
+          
 
             // FreeFormRefresh(true, false);
 
@@ -516,21 +506,21 @@ namespace TabHeaderDemo
 
             if (CComLibrary.GlobeVal.m_test == false)
             {
-                GlobeVal.UserControlGraph1.scatterGraph.Annotations.Clear();
+                userControlGraph1.userGraph1.scatterGraph1.Annotations.Clear();
                 for (int i = 0; i < CComLibrary.GlobeVal.m_listline.Count; i++)
                 {
                     if (CComLibrary.GlobeVal.m_listline[i].kind == 0)
                     {
 
-                        GlobeVal.UserControlGraph1.userGraph1.drawsign(CComLibrary.GlobeVal.m_listline[i].xstart, CComLibrary.GlobeVal.m_listline[i].ystart, CComLibrary.GlobeVal.m_listline[i]);
+                       // userControlGraph1.userGraph1.scatterGraph1.drawsign(CComLibrary.GlobeVal.m_listline[i].xstart, CComLibrary.GlobeVal.m_listline[i].ystart, CComLibrary.GlobeVal.m_listline[i]);
 
 
 
                     }
                     else if (CComLibrary.GlobeVal.m_listline[i].kind == 1)
                     {
-                        GlobeVal.UserControlGraph1.userGraph1.drawline(CComLibrary.GlobeVal.m_listline[i].xstart, CComLibrary.GlobeVal.m_listline[i].ystart,
-                             CComLibrary.GlobeVal.m_listline[i].xend, CComLibrary.GlobeVal.m_listline[i].yend, CComLibrary.GlobeVal.m_listline[i]);
+                       // GlobeVal.UserControlGraph1.userGraph1.drawline(CComLibrary.GlobeVal.m_listline[i].xstart, CComLibrary.GlobeVal.m_listline[i].ystart,
+                         //    CComLibrary.GlobeVal.m_listline[i].xend, CComLibrary.GlobeVal.m_listline[i].yend, CComLibrary.GlobeVal.m_listline[i]);
 
 
                     }
@@ -819,6 +809,9 @@ namespace TabHeaderDemo
                     MessageBox.Show(ex.Message);
                 }
                 firstread = true;
+
+                UserControlSpe1.setspe(1, CComLibrary.TestStatus.tested);
+                UserControlSpe1.setinput();
             }
         }
 

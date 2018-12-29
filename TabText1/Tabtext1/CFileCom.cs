@@ -5144,7 +5144,9 @@ namespace CComLibrary
 
             list.Items.Add("public double _曲线拟合(double[] x,double[] y) \r\n {double mslope; \r\n CComLibrary.GlobeVal._fit(x,y,out mslope); return mslope;\r\n}\r\n");
             list.Items.Add("public double _断后面积()\r\n{ double value;\r\n CComLibrary.GlobeVal._BreakArea(out value); return value;\r\n}\r\n");
-            list.Items.Add("public double _断后标距()\r\n{ double value;\r\n CComLibrary.GlobeVal._Breakgauge(out value); return value;\r\n}\r\n");
+            list.Items.Add("public double _断后长度()\r\n{ double value;\r\n CComLibrary.GlobeVal._BreakLength(out value); return value;\r\n}\r\n");
+            list.Items.Add("public double _原始长度()\r\n{ double value;\r\n CComLibrary.GlobeVal._BeginLength(out value); return value;\r\n}\r\n");
+
 
             list.Items.Add("public int _材料屈服点索引(double[] x,double[] y,bool mdraw) \r\n {int v;\r\n CComLibrary.GlobeVal._normalyield(x,y,mdraw,out v);return v;\r\n}\r\n");
             list.Items.Add("public int _材料上屈服点索引(double[] x,double[] y,bool mdraw) \r\n {int v;\r\n CComLibrary.GlobeVal._upperyield(x,y,mdraw,out v);return v;\r\n}\r\n");
@@ -7160,7 +7162,7 @@ namespace CComLibrary
         }
 
         //断后标距
-        public static bool _Breakgauge(out double value)
+        public static bool _Breakgauge1(out double value)
         {
             FormSpeInput f = new FormSpeInput();
             f.lblcaption.Text ="断后标距";
@@ -7171,9 +7173,38 @@ namespace CComLibrary
 
             return false;
         }
+        public static bool _BreakLength(out double value)
+        {
+            double m1 = 0;
+           
+            m1 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[5].cvalue;
+
+            
+
+
+
+            value = m1;
+           
+            return false;
+        }
+
+        public static bool _BeginLength(out double value)
+        {
+            double m1 = 0;
+
+            m1 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[2].cvalue;
+
+
+
+
+
+            value = m1;
+
+            return false;
+        }
 
         //断后面积
-        public static bool _BreakArea(out double value)
+        public static bool _BreakArea1(out double value)
         {
 
 
@@ -7250,6 +7281,70 @@ namespace CComLibrary
                 f.ShowDialog();
                 m1 = f.txtvalue.Value;
                 f.Dispose();
+                t = m1;
+
+
+            }
+
+
+            value = t;
+
+            return false;
+        }
+
+
+        //断后面积
+        public static bool _BreakArea(out double value)
+        {
+
+
+            double t = 0;
+
+            double m1;
+            double m2;
+
+
+            if (CComLibrary.GlobeVal.filesave.mshapelist.Count > 0)
+            {
+
+            }
+            else
+            {
+                value = 0;
+                return false;
+            }
+            if (CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].shapename == "矩形")
+            {
+                m1 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[3].cvalue;
+                m2 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[4].cvalue;
+                t = m1 * m2;
+
+            }
+
+            if (CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].shapename == "圆形")
+            {
+                m1 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[3].cvalue;
+                t = m1
+                 * m1 / 4 * 3.1415926;
+            }
+
+            if (CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].shapename == "管状")
+            {
+                m1 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[3].cvalue;
+
+                m2 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[4].cvalue;
+
+
+
+                t = 3.1415926 * (Math.Pow(m1 / 2, 2)
+                    - Math.Pow((m1 - m2 * 2) / 2, 2));
+
+            }
+
+            if (CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].shapename == "不规则面积")
+            {
+                m1 = CComLibrary.GlobeVal.filesave.mshapelist[CComLibrary.GlobeVal.filesave.shapeselect].sizeitem[3].cvalue;
+
                 t = m1;
 
 

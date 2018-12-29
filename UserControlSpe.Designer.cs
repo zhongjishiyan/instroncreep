@@ -147,6 +147,7 @@
             this.statusStrip1.Size = new System.Drawing.Size(292, 29);
             this.statusStrip1.TabIndex = 34;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
             // 
             // toolStripStatusLabel1
             // 

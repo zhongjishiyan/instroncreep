@@ -61,8 +61,8 @@ namespace ClsStaticStation
        
         public  shapeitem()
         {
-            sizeitem =new ItemSignal[3];
-            for (int i = 0; i < 3; i++)
+            sizeitem =new ItemSignal[6];
+            for (int i = 0; i < 6; i++)
             {
                 sizeitem[i] = new ItemSignal(); 
 
@@ -642,383 +642,591 @@ namespace ClsStaticStation
 
         }
 
-  
 
-        
 
-       
+
+
 
 
         public void InitShape()
-         {
-             shapeitem c = new shapeitem();
-             c.shapename = "矩形";
+        {
 
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "宽度";
-             c.sizeitem[0].LName[0] = "宽度";
-             c.sizeitem[0].LName[1] = "Width";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
 
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "厚度";
-             c.sizeitem[1].LName[0] = "厚度";
-             c.sizeitem[1].LName[1] = "Thickness";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
+            shapeitem c = new shapeitem();
+           
+                c.shapename = "矩形";
+          
 
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "长度";
-             c.sizeitem[2].LName[0] = "长度";
-             c.sizeitem[2].LName[1] = "Length";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "宽度";
+            c.sizeitem[0].LName[0] = "宽度";
+            c.sizeitem[0].LName[1] = "Width";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
 
+            c.sizeitem[0].originprecise = 3;
+
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "厚度";
+            c.sizeitem[1].LName[0] = "厚度";
+            c.sizeitem[1].LName[1] = "Thickness";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
+
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "长度";
+            c.sizeitem[2].LName[0] = "长度";
+            c.sizeitem[2].LName[1] = "Length";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
+
+
+            c.sizeitem[3].cUnitKind = 0;
+            c.sizeitem[3].cName = "断后宽度";
+            c.sizeitem[3].LName[0] = "断后宽度";
+            c.sizeitem[3].LName[1] = "Break Width";
+            c.sizeitem[3].cUnitsel = 0;
+            c.sizeitem[3].InitUnit();
+            c.sizeitem[3].fullmaxbase = 10000;
+            c.sizeitem[3].fullminbase = 0;
+
+            c.sizeitem[3].originprecise = 3;
+
+            c.sizeitem[4].cUnitKind = 0;
+            c.sizeitem[4].cName = "断后厚度";
+            c.sizeitem[4].LName[0] = "断后厚度";
+            c.sizeitem[4].LName[1] = "Break Thickness";
+            c.sizeitem[4].cUnitsel = 0;
+            c.sizeitem[4].InitUnit();
+            c.sizeitem[4].fullmaxbase = 10000;
+            c.sizeitem[4].fullminbase = 0;
+            c.sizeitem[4].originprecise = 3;
+
+            c.sizeitem[5].cUnitKind = 0;
+            c.sizeitem[5].cName = "断后长度";
+            c.sizeitem[5].LName[0] = "断后长度";
+            c.sizeitem[5].LName[1] = "Break Length";
+            c.sizeitem[5].cUnitsel = 0;
+            c.sizeitem[5].InitUnit();
+            c.sizeitem[5].fullmaxbase = 10000;
+            c.sizeitem[5].fullminbase = 0;
+            c.sizeitem[5].originprecise = 3;
+
+            shapelist.Add(c);
+
+            c = new shapeitem();
+
+           
+                c.shapename = "圆形";
+
+           
+
+
+
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "直径";
+            c.sizeitem[0].LName[0] = "直径";
+            c.sizeitem[0].LName[1] = "Diameter";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
+
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "无";
+            c.sizeitem[1].LName[0] = "无";
+            c.sizeitem[1].LName[1] = "None";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
+
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "长度";
+            c.sizeitem[2].LName[0] = "长度";
+            c.sizeitem[2].LName[1] = "Length";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
+
+
+            c.sizeitem[3].cUnitKind = 0;
+            c.sizeitem[3].cName = "断后直径";
+            c.sizeitem[3].LName[0] = "断后直径";
+            c.sizeitem[3].LName[1] = "Break Diameter";
+            c.sizeitem[3].cUnitsel = 0;
+            c.sizeitem[3].InitUnit();
+            c.sizeitem[3].fullmaxbase = 10000;
+            c.sizeitem[3].fullminbase = 0;
+            c.sizeitem[3].originprecise = 3;
+
+            c.sizeitem[4].cUnitKind = 0;
+            c.sizeitem[4].cName = "无";
+            c.sizeitem[4].LName[0] = "无";
+            c.sizeitem[4].LName[1] = "None";
+            c.sizeitem[4].cUnitsel = 0;
+            c.sizeitem[4].InitUnit();
+            c.sizeitem[4].fullmaxbase = 10000;
+            c.sizeitem[4].fullminbase = 0;
+            c.sizeitem[4].originprecise = 3;
+
+            c.sizeitem[5].cUnitKind = 0;
+            c.sizeitem[5].cName = "断后长度";
+            c.sizeitem[5].LName[0] = "断后长度";
+            c.sizeitem[5].LName[1] = "Break Length";
+            c.sizeitem[5].cUnitsel = 0;
+            c.sizeitem[5].InitUnit();
+            c.sizeitem[5].fullmaxbase = 10000;
+            c.sizeitem[5].fullminbase = 0;
+            c.sizeitem[5].originprecise = 3;
+
+            shapelist.Add(c);
+
+
+
+
+            c = new shapeitem();
+
+          
+                c.shapename = "双剪切环";
+          
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "直径";
+            c.sizeitem[0].LName[0] = "直径";
+            c.sizeitem[0].LName[1] = "Diameter";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
+
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "无";
+            c.sizeitem[1].LName[0] = "无";
+            c.sizeitem[1].LName[1] = "None";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
+
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "长度";
+            c.sizeitem[2].LName[0] = "长度";
+            c.sizeitem[2].LName[1] = "Length";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
+
+            c.sizeitem[3].cUnitKind = 0;
+            c.sizeitem[3].cName = "断后直径";
+            c.sizeitem[3].LName[0] = "断后直径";
+            c.sizeitem[3].LName[1] = "Break Diameter";
+            c.sizeitem[3].cUnitsel = 0;
+            c.sizeitem[3].InitUnit();
+            c.sizeitem[3].fullmaxbase = 10000;
+            c.sizeitem[3].fullminbase = 0;
+            c.sizeitem[3].originprecise = 3;
+
+            c.sizeitem[4].cUnitKind = 0;
+            c.sizeitem[4].cName = "无";
+            c.sizeitem[4].LName[0] = "无";
+            c.sizeitem[4].LName[1] = "None";
+            c.sizeitem[4].cUnitsel = 0;
+            c.sizeitem[4].InitUnit();
+            c.sizeitem[4].fullmaxbase = 10000;
+            c.sizeitem[4].fullminbase = 0;
+            c.sizeitem[4].originprecise = 3;
+
+            c.sizeitem[5].cUnitKind = 0;
+            c.sizeitem[5].cName = "断后长度";
+            c.sizeitem[5].LName[0] = "断后长度";
+            c.sizeitem[5].LName[1] = "Break Length";
+            c.sizeitem[5].cUnitsel = 0;
+            c.sizeitem[5].InitUnit();
+            c.sizeitem[5].fullmaxbase = 10000;
+            c.sizeitem[5].fullminbase = 0;
+            c.sizeitem[5].originprecise = 3;
+
+
+            shapelist.Add(c);
+
+            c = new shapeitem();
+
+            
+            c.shapename = "管状";
+           
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "外径";
+            c.sizeitem[0].LName[0] = "外径";
+            c.sizeitem[0].LName[1] = "Outer Diameter";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
+
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "壁厚";
+            c.sizeitem[1].LName[0] = "壁厚";
+            c.sizeitem[1].LName[1] = "Wall Thickness";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
+
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "长度";
+            c.sizeitem[2].LName[0] = "长度";
+            c.sizeitem[2].LName[1] = "Length";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
+
+            c.sizeitem[3].cUnitKind = 0;
+            c.sizeitem[3].cName = "断后外径";
+            c.sizeitem[3].LName[0] = "断后外径";
+            c.sizeitem[3].LName[1] = "Break Outer Diameter";
+            c.sizeitem[3].cUnitsel = 0;
+            c.sizeitem[3].InitUnit();
+            c.sizeitem[3].fullmaxbase = 10000;
+            c.sizeitem[3].fullminbase = 0;
+            c.sizeitem[3].originprecise = 3;
+
+            c.sizeitem[4].cUnitKind = 0;
+            c.sizeitem[4].cName = "断后壁厚";
+            c.sizeitem[4].LName[0] = "断后壁厚";
+            c.sizeitem[4].LName[1] = "Break Wall Thickness";
+            c.sizeitem[4].cUnitsel = 0;
+            c.sizeitem[4].InitUnit();
+            c.sizeitem[4].fullmaxbase = 10000;
+            c.sizeitem[4].fullminbase = 0;
+            c.sizeitem[4].originprecise = 3;
+
+            c.sizeitem[5].cUnitKind = 0;
+            c.sizeitem[5].cName = "断后长度";
+            c.sizeitem[5].LName[0] = "断后长度";
+            c.sizeitem[5].LName[1] = "Break Length";
+            c.sizeitem[5].cUnitsel = 0;
+            c.sizeitem[5].InitUnit();
+            c.sizeitem[5].fullmaxbase = 10000;
+            c.sizeitem[5].fullminbase = 0;
+            c.sizeitem[5].originprecise = 3;
+
+            shapelist.Add(c);
+
+            c = new shapeitem();
+            
+            c.shapename = "不规则形状";
+          
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "横截面积";
+            c.sizeitem[0].LName[0] = "横截面积";
+            c.sizeitem[0].LName[1] = "Cross sectiional area";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
+
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "无";
+            c.sizeitem[1].LName[0] = "无";
+            c.sizeitem[1].LName[1] = "None";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
+
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "长度";
+            c.sizeitem[2].LName[0] = "长度";
+            c.sizeitem[2].LName[1] = "Length";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
+
+            c.sizeitem[3].cUnitKind = 0;
+            c.sizeitem[3].cName = "断后横截面积";
+            c.sizeitem[3].LName[0] = "断后横截面积";
+            c.sizeitem[3].LName[1] = "Break Cross sectiional area";
+            c.sizeitem[3].cUnitsel = 0;
+            c.sizeitem[3].InitUnit();
+            c.sizeitem[3].fullmaxbase = 10000;
+            c.sizeitem[3].fullminbase = 0;
+            c.sizeitem[3].originprecise = 3;
+
+            c.sizeitem[4].cUnitKind = 0;
+            c.sizeitem[4].cName = "无";
+            c.sizeitem[4].LName[0] = "无";
+            c.sizeitem[4].LName[1] = "None";
+            c.sizeitem[4].cUnitsel = 0;
+            c.sizeitem[4].InitUnit();
+            c.sizeitem[4].fullmaxbase = 10000;
+            c.sizeitem[4].fullminbase = 0;
+            c.sizeitem[4].originprecise = 3;
+
+            c.sizeitem[5].cUnitKind = 0;
+            c.sizeitem[5].cName = "断后长度";
+            c.sizeitem[5].LName[0] = "断后长度";
+            c.sizeitem[5].LName[1] = "Break Length";
+            c.sizeitem[5].cUnitsel = 0;
+            c.sizeitem[5].InitUnit();
+            c.sizeitem[5].fullmaxbase = 10000;
+            c.sizeitem[5].fullminbase = 0;
+            c.sizeitem[5].originprecise = 3;
 
 
 
             shapelist.Add(c);
 
-             c = new shapeitem();
-             c.shapename = "圆形";
 
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "直径";
-             c.sizeitem[0].LName[0] = "直径";
-             c.sizeitem[0].LName[1] = "Diameter";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
+            c = new shapeitem();
 
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "无";
-             c.sizeitem[1].LName[0] = "无";
-             c.sizeitem[1].LName[1] = "None";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
+          
+                c.shapename = "纤维";
+          
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "线密度";
+            c.sizeitem[0].LName[0] = "线密度";
+            c.sizeitem[0].LName[1] = "Linear density";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
 
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "长度";
-             c.sizeitem[2].LName[0] = "长度";
-             c.sizeitem[2].LName[1] = "Length";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "无";
+            c.sizeitem[1].LName[0] = "无";
+            c.sizeitem[1].LName[1] = "None";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
 
-             shapelist.Add(c);
-
-
-
-
-             c = new shapeitem();
-
-             c.shapename = "双剪切环";
-
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "直径";
-             c.sizeitem[0].LName[0] = "直径";
-             c.sizeitem[0].LName[1] = "Diameter";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
-
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "无";
-             c.sizeitem[1].LName[0] = "无";
-             c.sizeitem[1].LName[1] = "None";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
-
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "长度";
-             c.sizeitem[2].LName[0] = "长度";
-             c.sizeitem[2].LName[1] = "Length";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
-
-             shapelist.Add(c);
-
-             c = new shapeitem();
-
-             c.shapename = "管状";
-
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "外径";
-             c.sizeitem[0].LName[0] = "外径";
-             c.sizeitem[0].LName[1] = "Outer Diameter";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
-
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "壁厚";
-             c.sizeitem[1].LName[0] = "壁厚";
-             c.sizeitem[1].LName[1] = "Wall Thickness";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
-
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "长度";
-             c.sizeitem[2].LName[0] = "长度";
-             c.sizeitem[2].LName[1] = "Length";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
-
-             shapelist.Add(c);
-
-             c = new shapeitem();
-
-             c.shapename = "不规则形状";
-
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "横截面积";
-             c.sizeitem[0].LName[0] = "横截面积";
-             c.sizeitem[0].LName[1] = "Cross-sectiional area";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
-
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "无";
-             c.sizeitem[1].LName[0] = "无";
-             c.sizeitem[1].LName[1] = "None";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
-
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "长度";
-             c.sizeitem[2].LName[0] = "长度";
-             c.sizeitem[2].LName[1] = "Length";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
-
-             shapelist.Add(c);
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "长度";
+            c.sizeitem[2].LName[0] = "长度";
+            c.sizeitem[2].LName[1] = "Length";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
 
 
-             c = new shapeitem();
 
-             c.shapename = "纤维";
+            c.sizeitem[3].cUnitKind = 0;
+            c.sizeitem[3].cName = "断后线密度";
+            c.sizeitem[3].LName[0] = "断后线密度";
+            c.sizeitem[3].LName[1] = "Break Linear density";
+            c.sizeitem[3].cUnitsel = 0;
+            c.sizeitem[3].InitUnit();
+            c.sizeitem[3].fullmaxbase = 10000;
+            c.sizeitem[3].fullminbase = 0;
+            c.sizeitem[3].originprecise = 3;
 
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "线密度";
-             c.sizeitem[0].LName[0] = "线密度";
-             c.sizeitem[0].LName[1] = "Linear density";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
+            c.sizeitem[4].cUnitKind = 0;
+            c.sizeitem[4].cName = "无";
+            c.sizeitem[4].LName[0] = "无";
+            c.sizeitem[4].LName[1] = "None";
+            c.sizeitem[4].cUnitsel = 0;
+            c.sizeitem[4].InitUnit();
+            c.sizeitem[4].fullmaxbase = 10000;
+            c.sizeitem[4].fullminbase = 0;
+            c.sizeitem[4].originprecise = 3;
 
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "无";
-             c.sizeitem[1].LName[0] = "无";
-             c.sizeitem[1].LName[1] = "None";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
+            c.sizeitem[5].cUnitKind = 0;
+            c.sizeitem[5].cName = "断后长度";
+            c.sizeitem[5].LName[0] = "断后长度";
+            c.sizeitem[5].LName[1] = "Break Length";
+            c.sizeitem[5].cUnitsel = 0;
+            c.sizeitem[5].InitUnit();
+            c.sizeitem[5].fullmaxbase = 10000;
+            c.sizeitem[5].fullminbase = 0;
+            c.sizeitem[5].originprecise = 3;
 
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "长度";
-             c.sizeitem[2].LName[0] = "长度";
-             c.sizeitem[2].LName[1] = "Length";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
-
-             shapelist.Add(c);
+            shapelist.Add(c);
 
 
-             c = new shapeitem();
+            c = new shapeitem();
+          
+            c.shapename = "剥离90度";
+           
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "宽度";
+            c.sizeitem[0].LName[0] = "宽度";
+            c.sizeitem[0].LName[1] = "Width";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
 
-             c.shapename = "剥离90度";
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "无";
+            c.sizeitem[1].LName[0] = "无";
+            c.sizeitem[1].LName[1] = "None";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
 
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "宽度";
-             c.sizeitem[0].LName[0] = "宽度";
-             c.sizeitem[0].LName[1] = "Width";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "无";
+            c.sizeitem[2].LName[0] = "无";
+            c.sizeitem[2].LName[1] = "None";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
 
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "无";
-             c.sizeitem[1].LName[0] = "无";
-             c.sizeitem[1].LName[1] = "None";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
+            shapelist.Add(c);
 
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "无";
-             c.sizeitem[2].LName[0] = "无";
-             c.sizeitem[2].LName[1] = "None";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
+            c = new shapeitem();
+           
+            c.shapename = "剥离180度";
+           
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "宽度";
+            c.sizeitem[0].LName[0] = "宽度";
+            c.sizeitem[0].LName[1] = "Width";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
 
-             shapelist.Add(c);
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "无";
+            c.sizeitem[1].LName[0] = "无";
+            c.sizeitem[1].LName[1] = "None";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
 
-             c = new shapeitem();
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "无";
+            c.sizeitem[2].LName[0] = "无";
+            c.sizeitem[2].LName[1] = "None";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
 
-             c.shapename = "剥离180度";
+            shapelist.Add(c);
 
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "宽度";
-             c.sizeitem[0].LName[0] = "宽度";
-             c.sizeitem[0].LName[1] = "Width";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
+            c = new shapeitem();
+           
 
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "无";
-             c.sizeitem[1].LName[0] = "无";
-             c.sizeitem[1].LName[1] = "None";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
+            c.shapename = "T剥离";
+            
 
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "无";
-             c.sizeitem[2].LName[0] = "无";
-             c.sizeitem[2].LName[1] = "None";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "宽度";
+            c.sizeitem[0].LName[0] = "宽度";
+            c.sizeitem[0].LName[1] = "Width";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
 
-             shapelist.Add(c);
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "无";
+            c.sizeitem[1].LName[0] = "无";
+            c.sizeitem[1].LName[1] = "None";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
 
-             c = new shapeitem();
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "无";
+            c.sizeitem[2].LName[0] = "无";
+            c.sizeitem[2].LName[1] = "None";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
 
-             c.shapename = "T剥离";
+            shapelist.Add(c);
 
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "宽度";
-             c.sizeitem[0].LName[0] = "宽度";
-             c.sizeitem[0].LName[1] = "Width";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
+            c = new shapeitem();
+           
+            c.shapename = "撕裂";
+           
+            c.sizeitem[0].cUnitKind = 0;
+            c.sizeitem[0].cName = "宽度";
+            c.sizeitem[0].LName[0] = "宽度";
+            c.sizeitem[0].LName[1] = "Width";
+            c.sizeitem[0].cUnitsel = 0;
+            c.sizeitem[0].InitUnit();
+            c.sizeitem[0].fullmaxbase = 10000;
+            c.sizeitem[0].fullminbase = 0;
+            c.sizeitem[0].originprecise = 3;
 
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "无";
-             c.sizeitem[1].LName[0] = "无";
-             c.sizeitem[1].LName[1] = "None";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
+            c.sizeitem[1].cUnitKind = 0;
+            c.sizeitem[1].cName = "厚度";
+            c.sizeitem[1].LName[0] = "厚度";
+            c.sizeitem[1].LName[1] = "Thickness";
+            c.sizeitem[1].cUnitsel = 0;
+            c.sizeitem[1].InitUnit();
+            c.sizeitem[1].fullmaxbase = 10000;
+            c.sizeitem[1].fullminbase = 0;
+            c.sizeitem[1].originprecise = 3;
 
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "无";
-             c.sizeitem[2].LName[0] = "无";
-             c.sizeitem[2].LName[1] = "None";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
+            c.sizeitem[2].cUnitKind = 0;
+            c.sizeitem[2].cName = "无";
+            c.sizeitem[2].LName[0] = "无";
+            c.sizeitem[2].LName[1] = "None";
+            c.sizeitem[2].cUnitsel = 0;
+            c.sizeitem[2].InitUnit();
+            c.sizeitem[2].fullmaxbase = 10000;
+            c.sizeitem[2].fullminbase = 0;
+            c.sizeitem[2].originprecise = 3;
 
-             shapelist.Add(c);
-
-             c = new shapeitem();
-
-             c.shapename = "撕裂";
-
-             c.sizeitem[0].cUnitKind = 0;
-             c.sizeitem[0].cName = "宽度";
-             c.sizeitem[0].LName[0] = "宽度";
-             c.sizeitem[0].LName[1] = "Width";
-             c.sizeitem[0].cUnitsel = 0;
-             c.sizeitem[0].InitUnit();
-             c.sizeitem[0].fullmaxbase = 10000;
-             c.sizeitem[0].fullminbase = 0;
-             c.sizeitem[0].originprecise = 3;
-
-             c.sizeitem[1].cUnitKind = 0;
-             c.sizeitem[1].cName = "厚度";
-             c.sizeitem[1].LName[0] = "厚度";
-             c.sizeitem[1].LName[1] = "Thickness";
-             c.sizeitem[1].cUnitsel = 0;
-             c.sizeitem[1].InitUnit();
-             c.sizeitem[1].fullmaxbase = 10000;
-             c.sizeitem[1].fullminbase = 0;
-             c.sizeitem[1].originprecise = 3;
-
-             c.sizeitem[2].cUnitKind = 0;
-             c.sizeitem[2].cName = "无";
-             c.sizeitem[2].LName[0] = "无";
-             c.sizeitem[2].LName[1] = "None";
-             c.sizeitem[2].cUnitsel = 0;
-             c.sizeitem[2].InitUnit();
-             c.sizeitem[2].fullmaxbase = 10000;
-             c.sizeitem[2].fullminbase = 0;
-             c.sizeitem[2].originprecise = 3;
-
-             shapelist.Add(c);
-
-
-         }
+            shapelist.Add(c);
+           
+                for (int j = 0; j < shapelist.Count; j++)
+                {
+                    for (int k = 0; k < shapelist[j].sizeitem.Length; k++)
+                    {
+                        shapelist[j].sizeitem[k].cName = shapelist[j].sizeitem[k].LName[0];
+                    }
+                }
+          
+        }
+       
 
          public void structcopy_RawDataData(ref RawDataData a, RawDataStruct b)
          {

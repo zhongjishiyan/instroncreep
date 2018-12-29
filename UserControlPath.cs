@@ -13,18 +13,12 @@ using System.IO;
 
 namespace TabHeaderDemo
 {
-    public partial class UserControlPretest : UserControl
+    public partial class UserControlPath : UserControl
     {
         public string gfilename = ""; //方法单元读取的文件名
 
 
-        public void ClearMethod()
-        {
-            txtmethod.Text = "";
-            txtpath.Text = "";
-            this.listBox1.Items.Clear();
-            CComLibrary.GlobeVal.filesave = null;
-        }
+
         private void drawFigure(PaintEventArgs e, PointF[] points)
         {
             GraphicsPath path = new GraphicsPath();
@@ -88,7 +82,7 @@ namespace TabHeaderDemo
             brush.Dispose();
             pen.Dispose();
         }
-        public UserControlPretest()
+        public UserControlPath()
         {
             InitializeComponent();
             treeView1.mimagelist = imageList2;
@@ -102,11 +96,6 @@ namespace TabHeaderDemo
 
             this.tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel1, true, null);
             this.tableLayoutPanel2.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel2, true, null);
-            this.tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel3, true, null);
-            this.tableLayoutPanel4.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel4, true, null);
-            this.tableLayoutPanel5.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel5, true, null);
-            this.tableLayoutPanel6.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel6, true, null);
-            this.tableLayoutPanel7.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel7, true, null);
             this.tableLayoutPanel8.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel8, true, null);
 
             this.tableLayoutPanel9.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel9, true, null);
@@ -184,12 +173,14 @@ namespace TabHeaderDemo
 
         public void methodon(String t, String parent)
         {
-            if (t == "选择方法")
+            if (t == "选择路径")
             {
                 btnenext.Visible = true;
                 btneopen.Visible = true;
                 btneback.Visible = false;
-                tabControl1.SelectedIndex = 0;
+                lblpath.Text = GlobeVal.mysys.SamplePath;
+                txtsamplename.Text = GlobeVal.mysys.SampleFile;
+                tabControl1.SelectedIndex = 1;
 
             }
 
@@ -227,7 +218,7 @@ namespace TabHeaderDemo
             string s;
 
 
-            if (newfile ==true)
+            if (newfile == true)
             {
                 CComLibrary.GlobeVal.continuetest = false;
             }
@@ -262,7 +253,7 @@ namespace TabHeaderDemo
                 }
             }
 
-          
+
 
             if (CComLibrary.GlobeVal.filesave.mwizard == true)
             {
@@ -314,8 +305,8 @@ namespace TabHeaderDemo
 
                 GlobeVal.userControltest1.tableLayoutPanelTop.Visible = false;
 
-                
-              
+
+
 
                 GlobeVal.userControltest1.splitContainer1.SplitterDistance = 100;
 
@@ -382,7 +373,7 @@ namespace TabHeaderDemo
                 }
 
 
-                GlobeVal.userControltest1.Visible = true ;
+                GlobeVal.userControltest1.Visible = true;
                 GlobeVal.userControltest1.Visible = false;
                 GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
                 /*
@@ -408,14 +399,14 @@ namespace TabHeaderDemo
             else
             {
                 GlobeVal.userControlmethod1.OpenTheMethodSilently(GlobeVal.userControlpretest1.gfilename);
-             
+
             }
 
             if (newfile == true)
             {
                 if (CComLibrary.GlobeVal.filesave.mwizard == true)
                 {
-                  
+
                 }
                 CComLibrary.GlobeVal.filesave.InitTable();
             }
@@ -427,9 +418,9 @@ namespace TabHeaderDemo
 
             GlobeVal.MainStatusStrip.Items["tslblmethod"].Text = "方法:" + CComLibrary.GlobeVal.filesave.methodname;
 
-           
 
-            
+
+
 
         }
 
@@ -453,32 +444,28 @@ namespace TabHeaderDemo
                     MessageBox.Show("数据保存路径不存在,请点击浏览选择试验路径");
                     return;
                 }
-               
+
                 if (txtsample.Text.Trim() == "")
                 {
                     MessageBox.Show("请先读取样品文件");
                     return;
                 }
-              
 
-               
+
+
                 GlobeVal.spefilename = txtsamplepath.Text + "\\" + txtsample.Text + ".spe";
-            
+
 
                 SampleNextStep(false);
 
-              
+
 
 
 
             }
             else if (tabControl1.SelectedIndex == 0)
             {
-                if (txtmethod.Text.Trim() == "")
-                {
-                    MessageBox.Show("请先读取试验方法");
-                    return;
-                }
+
                 tabControl1.SelectedIndex = 1;
                 btneback.Visible = true;
                 btneopen.Visible = false;
@@ -499,12 +486,8 @@ namespace TabHeaderDemo
                 {
                     MessageBox.Show("请设置数据保存路径");
 
-                    GlobeVal.mysys.SamplePath = "c:\\data";
-
-
                     return;
                 }
-
                 if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
                 {
                 }
@@ -513,16 +496,17 @@ namespace TabHeaderDemo
                     MessageBox.Show("数据保存路径不存在,请点击浏览选择试验路径");
                     return;
                 }
-              
-               
+
+
+
 
                 GlobeVal.spefilename = lblpath.Text + "\\" + txtsamplename.Text + ".spe";
 
 
-                if (File.Exists(GlobeVal.spefilename)==true)
+                if (File.Exists(GlobeVal.spefilename) == true)
                 {
                     DialogResult r = MessageBox.Show("相同文件名数据已经存在，是否覆盖？", "提示", MessageBoxButtons.YesNo);
-                    
+
                     if (r == DialogResult.Yes)
                     {
 
@@ -545,208 +529,7 @@ namespace TabHeaderDemo
 
         }
 
-        private void btneopen_Click(object sender, EventArgs e)
-        {
 
-            if (tabControl1.SelectedIndex == 0)
-            {
-                if (listView1.SelectedIndices.Count > 0)
-                {
-
-                    string fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" + listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text + "\\"
-                        + listView1.Items[listView1.SelectedIndices[0]].Text + ".dat";
-                    gfilename = fileName;
-
-                    if (System.IO.File.Exists(fileName) == true)
-                    {
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("方法不存在");
-                        return;
-                    }
-
-                    if (fileName == "")
-                    {
-                        return;
-                    }
-                    else
-                    {
-
-
-                        this.txtmethod.Text = Path.GetFileNameWithoutExtension(fileName);
-                        this.txtpath.Text = Path.GetDirectoryName(fileName);
-
-                        if (CComLibrary.GlobeVal.filesave == null)
-                        {
-                            CComLibrary.GlobeVal.filesave = new CComLibrary.FileStruct();
-                        }
-                        CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName);
-
-                        CComLibrary.GlobeVal.currentfilesavename = fileName;
-
-                        GlobeVal.putlistboxitem(listBox1);
-
-                      
-
-
-
-                        ListViewItem lv = new ListViewItem();
-                        lv.Text = this.txtmethod.Text;
-
-
-                        lv.SubItems.Add(ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind]);
-                        lv.SubItems.Add(System.IO.File.GetLastWriteTime(fileName).ToLongDateString() + " " + System.IO.File.GetLastWriteTime(fileName).ToLongTimeString());
-
-
-
-
-
-                        if (this.txtmethod.Text == listView1.Items[0].Text)
-                        {
-                            listView1.Items.RemoveAt(0);
-                        }
-
-                        if (listView1.Items.Count >= 20)
-                        {
-                            listView1.Items.RemoveAt(19);
-                        }
-                        listView1.Items.Insert(0, lv);
-
-                        for (int i = 0; i < listView1.Items.Count; i++)
-                        {
-
-                            GlobeVal.mysys.RecentFilename[i] = listView1.Items[i].Text;
-                            GlobeVal.mysys.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
-                        }
-
-                        for (int i = listView1.Items.Count; i < 20; i++)
-                        {
-                            GlobeVal.mysys.RecentFilename[i] = "";
-                            GlobeVal.mysys.RecentFilenameKind[i] = "";
-                        }
-
-                        ClsStaticStation.m_Global.mycls.initchannel();
-                        ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
-                        ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
-
-                        lblmethodkind.Text = ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind];
-                        lblmethod.Text = this.txtmethod.Text;
-
-
-
-                    }
-
-
-
-
-                }
-
-                else
-                {
-                    MessageBox.Show("请选择最近使用的试验方法");
-                }
-
-            }
-
-            if (tabControl1.SelectedIndex == 2)
-            {
-                if (listView2.SelectedIndices.Count > 0)
-                {
-
-                    string fileName = listView2.Items[listView2.SelectedIndices[0]].SubItems[3].Text + "\\"
-                    + listView2.Items[listView2.SelectedIndices[0]].Text + ".spe";
-                    gfilename = fileName;
-
-                    if (System.IO.File.Exists(fileName) == true)
-                    {
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("样品文件不存在");
-                        return;
-                    }
-
-                    if (fileName == "")
-                    {
-                        return;
-                    }
-                    else
-                    {
-
-                        this.txtsample.Text = Path.GetFileNameWithoutExtension(fileName);
-                        this.txtsamplepath.Text = Path.GetDirectoryName(fileName);
-
-                        if (CComLibrary.GlobeVal.filesave == null)
-                        {
-                            CComLibrary.GlobeVal.filesave = new CComLibrary.FileStruct();
-                        }
-                        CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName);
-
-                        CComLibrary.GlobeVal.currentfilesavename = fileName;
-
-                        GlobeVal.putlistboxitem(listBox2);
-
-                        
-                        ListViewItem lv = new ListViewItem();
-                        lv.Text = this.txtsample.Text;
-
-
-                        lv.SubItems.Add(ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind]);
-                        lv.SubItems.Add(System.IO.File.GetLastWriteTime(fileName).ToLongDateString() + " " + System.IO.File.GetLastWriteTime(fileName).ToLongTimeString());
-                        lv.SubItems.Add(Path.GetDirectoryName(fileName));
-
-                        if (this.txtsample.Text == listView2.Items[0].Text)
-                        {
-                            listView2.Items.RemoveAt(0);
-                        }
-
-
-                        if (listView2.Items.Count >= 20)
-                        {
-                            listView2.Items.RemoveAt(19);
-                        }
-                        listView2.Items.Insert(0, lv);
-
-
-
-                        for (int i = 0; i < listView2.Items.Count; i++)
-                        {
-
-                            GlobeVal.mysys.RecentSampleFilename[i] = listView2.Items[i].Text;
-                            GlobeVal.mysys.RecentSampleFilenameKind[i] = listView2.Items[i].SubItems[1].Text;
-                            GlobeVal.mysys.RecentSampleFilePath[i] = listView2.Items[i].SubItems[3].Text;
-
-                        }
-
-                        for (int i = listView2.Items.Count; i < 20; i++)
-                        {
-                            GlobeVal.mysys.RecentSampleFilename[i] = "";
-                            GlobeVal.mysys.RecentSampleFilenameKind[i] = "";
-                            GlobeVal.mysys.RecentSampleFilePath[i] = "";
-                        }
-
-                        ClsStaticStation.m_Global.mycls.initchannel();
-                        ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
-                        ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
-
-                        //lblmethodkind.Text = ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind];
-                        //lblmethod.Text = this.txtmethod.Text;
-
-                    }
-
-
-                }
-                else
-                {
-                    MessageBox.Show("请选择最近使用的样本");
-                }
-
-            }
-
-        }
 
         private void btnelook_Click(object sender, EventArgs e)
         {
@@ -790,7 +573,7 @@ namespace TabHeaderDemo
 
                         GlobeVal.putlistboxitem(listBox2);
 
-                        
+
                         ListViewItem lv = new ListViewItem();
                         lv.Text = this.txtsample.Text;
 
@@ -857,29 +640,29 @@ namespace TabHeaderDemo
 
 
             }
-            if (tabControl1.SelectedIndex == 0)
+
+        }
+
+        private void btneopen_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 2)
             {
-                CustomControls.MethodOpenFileDialog controlex = new CustomControls.MethodOpenFileDialog();
-                controlex.StartLocation = AddonWindowLocation.Right;
-                controlex.DefaultViewMode = FolderViewMode.Details;
-                controlex.OpenDialog.InitialDirectory = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method";
-                controlex.OpenDialog.AddExtension = true;
-                controlex.OpenDialog.Filter = "试验方法文件(*.dat)|*.dat";
-                controlex.ShowDialog(this);
-
-
-
-
-
-                if (controlex.OpenDialog.FileName == null)
+                if (listView2.SelectedIndices.Count > 0)
                 {
 
-                    return;
-                }
-                else
-                {
-                    string fileName = controlex.OpenDialog.FileName;
+                    string fileName = listView2.Items[listView2.SelectedIndices[0]].SubItems[3].Text + "\\"
+                    + listView2.Items[listView2.SelectedIndices[0]].Text + ".spe";
                     gfilename = fileName;
+
+                    if (System.IO.File.Exists(fileName) == true)
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("样品文件不存在");
+                        return;
+                    }
 
                     if (fileName == "")
                     {
@@ -888,8 +671,8 @@ namespace TabHeaderDemo
                     else
                     {
 
-                        this.txtmethod.Text = Path.GetFileNameWithoutExtension(fileName);
-                        this.txtpath.Text = Path.GetDirectoryName(fileName);
+                        this.txtsample.Text = Path.GetFileNameWithoutExtension(fileName);
+                        this.txtsamplepath.Text = Path.GetDirectoryName(fileName);
 
                         if (CComLibrary.GlobeVal.filesave == null)
                         {
@@ -899,357 +682,69 @@ namespace TabHeaderDemo
 
                         CComLibrary.GlobeVal.currentfilesavename = fileName;
 
-                        GlobeVal.putlistboxitem(listBox1);
+                        GlobeVal.putlistboxitem(listBox2);
 
-                       
+
                         ListViewItem lv = new ListViewItem();
-                        lv.Text = this.txtmethod.Text;
+                        lv.Text = this.txtsample.Text;
 
 
                         lv.SubItems.Add(ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind]);
                         lv.SubItems.Add(System.IO.File.GetLastWriteTime(fileName).ToLongDateString() + " " + System.IO.File.GetLastWriteTime(fileName).ToLongTimeString());
+                        lv.SubItems.Add(Path.GetDirectoryName(fileName));
 
-
-                        if (listView1.Items.Count > 0)
+                        if (this.txtsample.Text == listView2.Items[0].Text)
                         {
-                            if (this.txtmethod.Text == listView1.Items[0].Text)
-                            {
-                                listView1.Items.RemoveAt(0);
-                            }
+                            listView2.Items.RemoveAt(0);
+                        }
+
+
+                        if (listView2.Items.Count >= 20)
+                        {
+                            listView2.Items.RemoveAt(19);
+                        }
+                        listView2.Items.Insert(0, lv);
+
+
+
+                        for (int i = 0; i < listView2.Items.Count; i++)
+                        {
+
+                            GlobeVal.mysys.RecentSampleFilename[i] = listView2.Items[i].Text;
+                            GlobeVal.mysys.RecentSampleFilenameKind[i] = listView2.Items[i].SubItems[1].Text;
+                            GlobeVal.mysys.RecentSampleFilePath[i] = listView2.Items[i].SubItems[3].Text;
 
                         }
 
-                        if (listView1.Items.Count >= 20)
+                        for (int i = listView2.Items.Count; i < 20; i++)
                         {
-                            listView1.Items.RemoveAt(19);
-                        }
-                        listView1.Items.Insert(0, lv);
-
-
-
-                        for (int i = 0; i < listView1.Items.Count; i++)
-                        {
-
-                            GlobeVal.mysys.RecentFilename[i] = listView1.Items[i].Text;
-                            GlobeVal.mysys.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
-                        }
-
-                        for (int i = listView1.Items.Count; i < 20; i++)
-                        {
-                            GlobeVal.mysys.RecentFilename[i] = "";
-                            GlobeVal.mysys.RecentFilenameKind[i] = "";
+                            GlobeVal.mysys.RecentSampleFilename[i] = "";
+                            GlobeVal.mysys.RecentSampleFilenameKind[i] = "";
+                            GlobeVal.mysys.RecentSampleFilePath[i] = "";
                         }
 
                         ClsStaticStation.m_Global.mycls.initchannel();
                         ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
                         ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
 
-                        lblmethodkind.Text = ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind];
-                        lblmethod.Text = this.txtmethod.Text;
+                        //lblmethodkind.Text = ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind];
+                        //lblmethod.Text = this.txtmethod.Text;
 
                     }
-                }
-
-                controlex.Dispose();
-            }
-        }
-
-        private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            int t;
-            Color fcolor;
-
-            if (e.Index < 0)
-            {
-                return;
-            }
-
-            if (listBox1.SelectedIndex == e.Index)
-            {
-                fcolor = Color.Black;
-            }
-            else
-            {
-                fcolor = Color.Black;
-            }
-
-            Pen p = new Pen(Color.Gray, 2);
-
-            e.Graphics.DrawLine(p, e.Bounds.Left
-
-             ,
-             e.Bounds.Bottom,
-             e.Bounds.Right,
-             e.Bounds.Bottom);
-            p.Dispose();
-
-            //e.Graphics.DrawImage(this.imageList1.Images[0], e.Bounds.Left, e.Bounds.Top);
-
-            StringFormat sf = new StringFormat(StringFormatFlags.NoWrap);
-
-            SizeF sizef = e.Graphics.MeasureString(listBox1.Items[e.Index].ToString(), listBox1.Font, Int32.MaxValue, sf);
-
-            t = Convert.ToInt16(Math.Ceiling(sizef.Width / (listBox1.Width)));
 
 
-
-
-
-            RectangleF rf = new RectangleF(e.Bounds.X, e.Bounds.Y + 2, listBox1.Width, e.Font.Height * t);
-
-
-
-            e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), e.Font, new SolidBrush(fcolor), rf);
-            sf.Dispose();
-        }
-
-        private void listBox1_MeasureItem(object sender, MeasureItemEventArgs e)
-        {
-            int t;
-
-
-
-            StringFormat sf = new StringFormat(StringFormatFlags.NoWrap);
-
-
-            SizeF sizef = e.Graphics.MeasureString(listBox1.Items[e.Index].ToString(), listBox1.Font, Int32.MaxValue, sf);
-
-            t = Convert.ToInt16(Math.Ceiling(sizef.Width / (listBox1.Width)));
-
-
-            if (t == 0)
-            {
-                t = 1;
-            }
-            e.ItemHeight = t * listBox1.Font.Height + 5;
-
-
-            sf.Dispose();
-        }
-
-        public void LoadResentFile()
-        {
-            string s = "";
-
-            treeView1.CollapseAll();
-
-
-
-            this.treeView1.SelectedNode = treeView1.Nodes[0].Nodes[0];
-
-            tabControl1.SelectedIndex = 0;
-
-            btnenext.Visible = true;
-            btnelook.Visible = true;
-            btneback.Visible = false;
-            btneopen.Visible = true;
-
-
-
-            listView1.Items.Clear();
-            string fileName;
-            for (int i = 0; i < 20; i++)
-            {
-                if (GlobeVal.mysys.RecentFilename[i] == "")
-                {
                 }
                 else
                 {
-                    ListViewItem lv = new ListViewItem();
-                    lv.Text = GlobeVal.mysys.RecentFilename[i];
-
-
-
-                    lv.SubItems.Add(GlobeVal.mysys.RecentFilenameKind[i]);
-                    fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" + GlobeVal.mysys.RecentFilenameKind[i] + "\\" + GlobeVal.mysys.RecentFilename[i] + ".dat";
-
-                    if (File.Exists(fileName) == true)
-                    {
-                        lv.SubItems.Add(System.IO.File.GetLastWriteTime(fileName).ToLongDateString() + " " + System.IO.File.GetLastWriteTime(fileName).ToLongTimeString());
-                    }
-                    listView1.Items.Add(lv);
+                    MessageBox.Show("请选择最近使用的样本");
                 }
             }
-
-
-            listView2.Items.Clear();
-            for (int i = 0; i < 20; i++)
-            {
-                if (GlobeVal.mysys.RecentSampleFilename[i] == "")
-                {
-                }
-                else
-                {
-                    ListViewItem lv = new ListViewItem();
-                    lv.Text = GlobeVal.mysys.RecentSampleFilename[i];
-
-
-
-                    lv.SubItems.Add(GlobeVal.mysys.RecentSampleFilenameKind[i]);
-                    fileName = GlobeVal.mysys.RecentSampleFilePath[i] + "\\" + GlobeVal.mysys.RecentSampleFilename[i] + ".spe";
-
-
-
-                    if (File.Exists(fileName) == true)
-                    {
-                        lv.SubItems.Add(System.IO.File.GetLastWriteTime(fileName).ToLongDateString() + " " + System.IO.File.GetLastWriteTime(fileName).ToLongTimeString());
-                    }
-                    else
-                    {
-                        lv.SubItems.Add(" ");
-                    }
-                    lv.SubItems.Add(GlobeVal.mysys.RecentSampleFilePath[i]);
-
-                    listView2.Items.Add(lv);
-                }
-            }
-
-            if (GlobeVal.mysys.SamplePath == "")
-            {
-                s = System.Windows.Forms.Application.StartupPath;
-
-                if (Directory.Exists(s + "\\AppleLabJ") == true)
-                {
-                }
-                else
-                {
-                    Directory.CreateDirectory(s + "\\AppleLabJ");
-
-                    GlobeVal.mysys.SamplePath = s + "\\AppleLabJ";
-
-                }
-
-            }
-
-            lblpath.Text = GlobeVal.mysys.SamplePath;
-            txtsamplename.Text = GlobeVal.mysys.SampleFile;
         }
 
-        private void UserControlPretest_Load(object sender, EventArgs e)
-        {
-
-            LoadResentFile();
-
-        }
-
-        private void listBox2_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            int t;
-            Color fcolor;
-
-            if (e.Index < 0)
-            {
-                return;
-            }
-
-            if (listBox2.SelectedIndex == e.Index)
-            {
-                fcolor = Color.Black;
-            }
-            else
-            {
-                fcolor = Color.Black;
-            }
-
-            Pen p = new Pen(Color.Gray, 2);
-
-            e.Graphics.DrawLine(p, e.Bounds.Left
-
-             ,
-             e.Bounds.Bottom,
-             e.Bounds.Right,
-             e.Bounds.Bottom);
-            p.Dispose();
-
-            //e.Graphics.DrawImage(this.imageList1.Images[0], e.Bounds.Left, e.Bounds.Top);
-
-            StringFormat sf = new StringFormat(StringFormatFlags.NoWrap);
-
-            SizeF sizef = e.Graphics.MeasureString(listBox2.Items[e.Index].ToString(), listBox2.Font, Int32.MaxValue, sf);
-
-            t = Convert.ToInt16(Math.Ceiling(sizef.Width / (listBox2.Width)));
-
-
-
-
-
-            RectangleF rf = new RectangleF(e.Bounds.X, e.Bounds.Y + 2, listBox2.Width, e.Font.Height * t);
-
-
-
-            e.Graphics.DrawString(listBox2.Items[e.Index].ToString(), e.Font, new SolidBrush(fcolor), rf);
-            sf.Dispose();
-        }
-
-        private void listBox2_MeasureItem(object sender, MeasureItemEventArgs e)
-        {
-            int t;
-
-
-
-            StringFormat sf = new StringFormat(StringFormatFlags.NoWrap);
-
-
-            SizeF sizef = e.Graphics.MeasureString(listBox2.Items[e.Index].ToString(), listBox2.Font, Int32.MaxValue, sf);
-
-            t = Convert.ToInt16(Math.Ceiling(sizef.Width / (listBox2.Width)));
-
-
-            if (t == 0)
-            {
-                t = 1;
-            }
-            e.ItemHeight = t * listBox2.Font.Height + 5;
-
-
-            sf.Dispose();
-        }
-
-        private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            listView2.Items.Clear();
-            for (int i = 0; i < 20; i++)
-            {
-                GlobeVal.mysys.RecentSampleFilename[i] = "";
-                GlobeVal.mysys.RecentSampleFilenameKind[i] = "";
-                GlobeVal.mysys.RecentSampleFilePath[i] = "";
-            }
-
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            listView1.Items.Clear();
-            for (int i = 0; i < 20; i++)
-            {
-                GlobeVal.mysys.RecentFilename[i] = "";
-                GlobeVal.mysys.RecentFilenameKind[i] = "";
-
-            }
-        }
-
-        private void txtsamplename_TextChanged(object sender, EventArgs e)
-        {
-            GlobeVal.mysys.SampleFile = txtsamplename.Text;
-        }
-
-        private void txtsample_TextChanged(object sender, EventArgs e)
-        {
-            GlobeVal.mysys.SampleFile = txtsample.Text;
-        }
-
-        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            ListViewHitTestInfo info = listView1.HitTest(e.X, e.Y);
-            if (info.Item !=null)
-            {
-                btneopen_Click(null, null);  
-            }
-        }
     }
+
+
+
+       
+    
 }
