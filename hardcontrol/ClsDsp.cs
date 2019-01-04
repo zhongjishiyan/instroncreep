@@ -199,14 +199,7 @@ namespace ClsStaticStation
         public override void cleartime()
         {
             base.cleartime();
-          
-
-
-
-
-            
-
-
+         
             if (CComLibrary.GlobeVal.filesave.Samplingmode == 0)
             {
                 mt.WaitOne();
@@ -248,11 +241,6 @@ namespace ClsStaticStation
 
 
                 CComLibrary.GlobeVal.filesave.mseglist = new List<CComLibrary.CmdSeg>();
-
-
-               
-
-
 
                 int i = 0;
 

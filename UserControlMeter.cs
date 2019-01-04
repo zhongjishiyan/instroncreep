@@ -14,6 +14,11 @@ namespace TabHeaderDemo
         public UserControlMeter()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            this.tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel1, true, null);
+
             mlistmeter = new List<JMeter>();
             mlistmeter.Add(jMeter1);
             mlistmeter.Add(jMeter2);
@@ -120,8 +125,8 @@ namespace TabHeaderDemo
 
         private void UserControlMeter_SizeChanged(object sender, EventArgs e)
         {
-
-            
+            this.jMeter1.Refresh();
+            this.Refresh();
             
         }
        

@@ -309,7 +309,7 @@ namespace TabHeaderDemo
            
             ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]).SelectedIndex = 0;
             tabControl1.SelectedIndex = 0;
-            GlobeVal.FormmainLab.splitContainer1.Panel2Collapsed = false;
+           
 
         }
 
@@ -334,7 +334,14 @@ namespace TabHeaderDemo
                     GlobeVal.UserControlProcess1.Init();
 
                 }
+                if(GlobeVal.userControltest1 ==null)
+                {
 
+                }
+                else
+                {
+                    GlobeVal.userControltest1.Refresh();
+                }
                
 
 

@@ -740,9 +740,13 @@
     <None Include="Resources\50-1.ico" />
     <None Include="Resources\r2-2.ico" />
     <None Include="Resources\r2.ico" />
+    <None Include="Resources\小启动-1.ico" />
     <Content Include="Resources\报告提示1.ico" />
     <Content Include="Resources\方法提示1.ico" />
     <Content Include="Resources\管理器提示1.ico" />
+    <None Include="Resources\蓝色小停止.ico" />
+    <None Include="Resources\蓝色联机1.ico" />
+    <None Include="Resources\蓝色脱机1.ico" />
     <Content Include="Resources\试验提示1.ico" />
     <Content Include="说明\说明.txt" />
     <EmbeddedResource Include="Controls\OpenFileDialogEx.resx">

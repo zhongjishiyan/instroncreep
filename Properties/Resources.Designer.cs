@@ -101,6 +101,16 @@ namespace TabHeaderDemo.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon 小启动_1 {
+            get {
+                object obj = ResourceManager.GetObject("小启动_1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap 报告提示1 {
@@ -127,6 +137,36 @@ namespace TabHeaderDemo.Properties {
             get {
                 object obj = ResourceManager.GetObject("管理器提示1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon 蓝色小停止 {
+            get {
+                object obj = ResourceManager.GetObject("蓝色小停止", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon 蓝色联机1 {
+            get {
+                object obj = ResourceManager.GetObject("蓝色联机1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Icon 蓝色脱机1 {
+            get {
+                object obj = ResourceManager.GetObject("蓝色脱机1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

@@ -67,13 +67,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tlpsel = new System.Windows.Forms.TableLayoutPanel();
+            this.testpage = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnkeyimageList = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -94,12 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -394,7 +382,6 @@
             this.btnhand.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnhand.UseVisualStyleBackColor = false;
             this.btnhand.Visible = false;
-          
             // 
             // btntool
             // 
@@ -411,7 +398,6 @@
             this.toolTip1.SetToolTip(this.btntool, "数据处理");
             this.btntool.UseVisualStyleBackColor = false;
             this.btntool.Visible = false;
-         
             // 
             // btnpos
             // 
@@ -426,7 +412,6 @@
             this.btnpos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnpos, "位移设置");
             this.btnpos.UseVisualStyleBackColor = false;
-           
             // 
             // btnext2
             // 
@@ -442,7 +427,6 @@
             this.toolTip1.SetToolTip(this.btnext2, "引伸计2设置");
             this.btnext2.UseVisualStyleBackColor = false;
             this.btnext2.Visible = false;
-           
             // 
             // tlbmeterback
             // 
@@ -597,7 +581,7 @@
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.testpage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.ItemSize = new System.Drawing.Size(20, 20);
@@ -629,96 +613,15 @@
             this.panel5.Size = new System.Drawing.Size(1316, 560);
             this.panel5.TabIndex = 0;
             // 
-            // tabPage2
+            // testpage
             // 
-            this.tabPage2.Controls.Add(this.splitContainer1);
-            this.tabPage2.Location = new System.Drawing.Point(24, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1322, 566);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Panel2MinSize = 1;
-            this.splitContainer1.Size = new System.Drawing.Size(1316, 560);
-            this.splitContainer1.SplitterDistance = 1293;
-            this.splitContainer1.TabIndex = 0;
-            this.splitContainer1.SplitterMoving += new System.Windows.Forms.SplitterCancelEventHandler(this.splitContainer1_SplitterMoving);
-            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
-            this.splitContainer1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_MouseDown);
-            this.splitContainer1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_MouseUp);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(19, 560);
-            this.panel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(19, 560);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 41);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(13, 516);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.tlpsel);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(13, 32);
-            this.panel3.TabIndex = 1;
-            // 
-            // tlpsel
-            // 
-            this.tlpsel.ColumnCount = 2;
-            this.tlpsel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.tlpsel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpsel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpsel.Location = new System.Drawing.Point(0, 0);
-            this.tlpsel.Name = "tlpsel";
-            this.tlpsel.RowCount = 1;
-            this.tlpsel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpsel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tlpsel.Size = new System.Drawing.Size(13, 32);
-            this.tlpsel.TabIndex = 0;
+            this.testpage.Location = new System.Drawing.Point(24, 4);
+            this.testpage.Name = "testpage";
+            this.testpage.Padding = new System.Windows.Forms.Padding(3);
+            this.testpage.Size = new System.Drawing.Size(1322, 566);
+            this.testpage.TabIndex = 1;
+            this.testpage.Text = "tabPage2";
+            this.testpage.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -748,10 +651,6 @@
             // timermain
             // 
             this.timermain.Tick += new System.EventHandler(this.timermain_Tick);
-            // 
-            // timerRecord
-            // 
-           
             // 
             // openFileDialog1
             // 
@@ -798,12 +697,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -819,7 +712,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage testpage;
         private System.Windows.Forms.TableLayoutPanel tlbmeterback;
         private System.Windows.Forms.TableLayoutPanel tlbmeter;
         private JMeter jMeter1;
@@ -847,14 +740,8 @@
         private System.Windows.Forms.ToolStripStatusLabel tslbllimit;
         private System.Windows.Forms.ToolStripStatusLabel toolstatustest;
         private System.Windows.Forms.Timer timermain;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         public System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TableLayoutPanel tlpsel;
         public System.Windows.Forms.ToolStripStatusLabel tslblmachine;
-        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        public System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Timer timerRecord;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -864,7 +751,7 @@
         private System.Windows.Forms.ImageList imageList2;
         public System.Windows.Forms.ImageList imageListState;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblcontroller;
         private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.Label lblcontroller;
     }
 }

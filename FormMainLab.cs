@@ -412,7 +412,7 @@ namespace TabHeaderDemo
 
             this.Cursor = Cursors.WaitCursor;
 
-            ((SplitContainer)tabControl1.TabPages[1].Controls[0]).Panel2Collapsed = false;
+
 
             tabControl1.SelectedIndex = 0;
             GlobeVal.UserControlMain1.btnmtest.Visible = true;
@@ -436,7 +436,7 @@ namespace TabHeaderDemo
 
             this.Cursor = Cursors.WaitCursor;
 
-            ((SplitContainer)tabControl1.TabPages[1].Controls[0]).Panel2Collapsed = false;
+       
 
             double t = System.Environment.TickCount;
 
@@ -536,7 +536,7 @@ namespace TabHeaderDemo
 
             GlobeVal.FormmainLab = this;
 
-            GlobeVal.dopanel = panel2;
+           
 
             this.Left = 0;
             this.Top = 0;
@@ -563,7 +563,7 @@ namespace TabHeaderDemo
             panel5.Controls.Add(UTop);
             umain = new UserControlMain();
             umain.Dock = DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(umain);
+           testpage.Controls.Add(umain);
 
             backimage = new Bitmap(this.imageList1.Images[0], this.imageList1.Images[0].Size);
 
@@ -697,7 +697,7 @@ namespace TabHeaderDemo
 
             if (Screen.PrimaryScreen.Bounds.Width == 1366)
             {
-                splitContainer1.SplitterDistance = 1050;
+              
                 paneltop.Height = 106;
                 tlbmeterback.Height = 64;
             }
@@ -1146,67 +1146,7 @@ namespace TabHeaderDemo
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (GlobeVal.UserControlMain1.tabControl1.SelectedIndex == 6)
-            {
-
-
-                Frm.FormMachine f = new Frm.FormMachine();
-                f.ShowDialog();
-                lblcontroller.Text = GlobeVal.selcontroller.ToString().Trim();
-
-                if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\") == false)
-                {
-                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\");
-                }
-
-                if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\") == false)
-                {
-                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\");
-                }
-                if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\") == false)
-                {
-                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\");
-                }
-
-
-
-                string f1 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\setup.ini";
-
-                if(File.Exists(f1)==false )
-                {
-                    GlobeVal.mysys.SerializeNow(f1);
-                    
-                }
-
-                GlobeVal.mysys = GlobeVal.mysys.DeSerializeNow(f1);
-
-
-
-                string f2 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
-
-
-               
-
-
-
-                if (File.Exists(f2)==false)
-                {
-                    CComLibrary.GlobeVal.filesave.SerializeNow(f2);
-                }
-
-                CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(f2);
-
-                GlobeVal.userControlmethod1.OpenTheMethodSilently(f2);
-
-                GlobeVal.userControltest1.changeUI();
-                ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
-                ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
-
-            }
-            else
-            {
-                MessageBox.Show("请切换到群控模式");
-            }
+           
         }
 
         private void FormMainLab_FormClosing(object sender, FormClosingEventArgs e)

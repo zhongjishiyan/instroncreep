@@ -119,12 +119,12 @@ namespace TabHeaderDemo
 
         public void btntest_Click(object sender, EventArgs e)
         {
-            GlobeVal.mainlab._直接进入试验界面();
+            //GlobeVal.mainlab._直接进入试验界面();
           
-            /*
+            
 
             TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
-            ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed = false;
+         
 
 
             double t = System.Environment.TickCount;
@@ -138,14 +138,11 @@ namespace TabHeaderDemo
             }
             UserControlMain c = GlobeVal.FormmainLab.umain;
 
-            if (GlobeVal.mysys.machinekind == 3)
-            {
-                GlobeVal.FormmainLab.UserControl东光1.Init();
-            }
+            
             c.OpenTest();
             
             b.SelectedIndex = 1;
-            */
+           
 
 
 
@@ -192,13 +189,17 @@ namespace TabHeaderDemo
 
             TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
             UserControlMain c = GlobeVal.FormmainLab.umain;
-            ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed =true  ;
+           
             c.OpenReport();
             b.SelectedIndex = 1;
         }
 
         private void pnlback_Resize(object sender, EventArgs e)
         {
+            if(px ==null)
+            {
+                return;
+            }
             btntest.Left = Convert.ToInt16 ( px[0] / 1366 * pnlback.Width )+30;
             btnmethod.Left = Convert.ToInt16(px[1] / 1366 * pnlback.Width)+30;
             btnreport.Left = Convert.ToInt16(px[2] / 1366 * pnlback.Width)+30;
@@ -230,7 +231,7 @@ namespace TabHeaderDemo
 
             TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
             UserControlMain c = GlobeVal.FormmainLab.umain;
-            ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed  = true;
+          
             c.OpenAdmin();
             b.SelectedIndex = 1;
 
@@ -250,7 +251,7 @@ namespace TabHeaderDemo
                 }
             }
             TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
-            ((SplitContainer)b.TabPages[1].Controls[0]).Panel2Collapsed =true;
+          
 
             UserControlMain c = GlobeVal.FormmainLab.umain; ;
             c.OpenMethod();

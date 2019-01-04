@@ -20,7 +20,7 @@ namespace TabHeaderDemo
 {
     public partial class UserControlTest : UserControl
     {
-       
+
         private int mlaststepi = 0;
         class btnstep
         {
@@ -633,6 +633,7 @@ namespace TabHeaderDemo
 
                         GlobeVal.dynset.tlbetest.Controls.Add(ug);
                         ug.Visible = true;
+                     
 
                     }
                     if (f.ItemName[k] == "仪表2")
@@ -651,6 +652,7 @@ namespace TabHeaderDemo
                         GlobeVal.dynset.tlbetest.Controls.Add(ug);
 
                         ug.Visible = true;
+                   
 
                     }
 
@@ -738,7 +740,7 @@ namespace TabHeaderDemo
                 }
             }
 
-
+        
 
         }
 
@@ -1136,8 +1138,8 @@ namespace TabHeaderDemo
             }
 
 
-            GlobeVal.myarm.DeviceNum = Convert.ToInt16( GlobeVal.selcontroller);//对控制器号进行赋值
-           
+            GlobeVal.myarm.DeviceNum = Convert.ToInt16(GlobeVal.selcontroller);//对控制器号进行赋值
+
 
 
             if (CComLibrary.GlobeVal.filesave.dt.Rows[CComLibrary.GlobeVal.filesave.currentspenumber]["试样状态"] is DBNull)
@@ -1208,7 +1210,7 @@ namespace TabHeaderDemo
 
             }
 
-            
+
 
             if (GlobeVal.UserControlSpe1 != null)
             {
@@ -1229,11 +1231,11 @@ namespace TabHeaderDemo
 
             GlobeVal.myarm.cleartime();
 
-           
+
 
             if (GlobeVal.UserControlGraph1 != null)
             {
-              if  (GlobeVal.UserControlGraph1.startrun()==false)
+                if (GlobeVal.UserControlGraph1.startrun() == false)
                 {
                     btnStart.Enabled = true;
                     btnStart.BackgroundImage = imageList4.Images[0];
@@ -1248,8 +1250,8 @@ namespace TabHeaderDemo
 
             if (GlobeVal.UserControlGraph2 != null)
             {
-              
-              if (  GlobeVal.UserControlGraph2.startrun()==false)
+
+                if (GlobeVal.UserControlGraph2.startrun() == false)
                 {
                     btnStart.Enabled = true;
                     btnStart.BackgroundImage = imageList4.Images[0];
@@ -1266,7 +1268,7 @@ namespace TabHeaderDemo
             GlobeVal.myarm.starttest(CComLibrary.GlobeVal.filesave.currentspenumber + 1);
 
 
-            GlobeVal.UserControlGraph1.scatterGraph.ClearData(); 
+            GlobeVal.UserControlGraph1.scatterGraph.ClearData();
 
             if (GlobeVal.myarm.mtestrun == false)
             {
@@ -1309,7 +1311,7 @@ namespace TabHeaderDemo
             lstspe.Items[CComLibrary.GlobeVal.filesave.currentspenumber].Image = imageList2.Images[4];
             lstspe.Refresh();
 
-           
+
 
         }
 
@@ -1318,22 +1320,22 @@ namespace TabHeaderDemo
             Visible = false;
 
 
-           
 
-           tableLayoutPanelback.RowStyles[1].Height = 0;
 
-           tableLayoutPanelTop.Visible = false;
+            tableLayoutPanelback.RowStyles[1].Height = 0;
+
+            tableLayoutPanelTop.Visible = false;
 
 
 
 
             splitContainer1.SplitterDistance = 100;
 
-             paneltestright.Visible = false;
+            paneltestright.Visible = false;
 
 
 
-           lstspe.Visible = true;
+            lstspe.Visible = true;
 
 
             if (GlobeVal.dynset == null)
@@ -1345,7 +1347,7 @@ namespace TabHeaderDemo
 
 
             GlobeVal.dynset.Dock = DockStyle.Fill;
-           
+
             GlobeVal.dynset.tlbetest.Controls.Clear();
             GlobeVal.dynset.tlbetest.RowCount = 0;
             GlobeVal.dynset.tlbetest.ColumnCount = 0;
@@ -1371,6 +1373,8 @@ namespace TabHeaderDemo
 
             GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
 
+            
+
             paneltestright.Visible = true;
 
 
@@ -1381,7 +1385,7 @@ namespace TabHeaderDemo
             Visible = true;
             Visible = false;
             GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
-           
+
             Visible = true;
         }
 
@@ -1415,7 +1419,7 @@ namespace TabHeaderDemo
 
 
 
-           
+
 
             GlobeVal.myarm.endtest();
 
@@ -1531,7 +1535,7 @@ namespace TabHeaderDemo
 
             }
 
-           
+
 
             GlobeVal.MainStatusStrip.Items["toolstatustest"].Visible = false;
 
@@ -1541,15 +1545,15 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btnmain.Visible = true;
             GlobeVal.UserControlMain1.btngroupcontrol.Visible = true;
 
-            GlobeVal.dopanel.Visible = false;
-            
+           // GlobeVal.dopanel.Visible = false;
+
 
             double t1 = Environment.TickCount;
             while (Environment.TickCount - t1 < 5)
             {
                 // Application.DoEvents();
             }
-            GlobeVal.dopanel.Visible = true;
+           // GlobeVal.dopanel.Visible = true;
 
 
         }
@@ -1571,7 +1575,7 @@ namespace TabHeaderDemo
 
 
 
-           if ((CComLibrary.GlobeVal.filesave.mcontrolprocess == 1) )
+            if ((CComLibrary.GlobeVal.filesave.mcontrolprocess == 1))
             {
                 if ((GlobeVal.myarm.mcurseg + 1) > CComLibrary.GlobeVal.filesave.mseglist.Count)
                 {
@@ -1642,10 +1646,13 @@ namespace TabHeaderDemo
             imageList4.Images.Add(TabHeaderDemo.Properties.Resources._50_1);
             imageList4.Images.Add(TabHeaderDemo.Properties.Resources.r2_2);
             imageList4.Images.Add(TabHeaderDemo.Properties.Resources.r2);
+            imageList4.Images.Add(TabHeaderDemo.Properties.Resources.小启动_1);
+            imageList4.Images.Add(TabHeaderDemo.Properties.Resources.蓝色小停止);
+            imageList4.Images.Add(TabHeaderDemo.Properties.Resources.蓝色联机1);
+            imageList4.Images.Add(TabHeaderDemo.Properties.Resources.蓝色脱机1);
 
 
-            
-            
+
 
             timermain.Enabled = true;
 
@@ -1672,7 +1679,7 @@ namespace TabHeaderDemo
                 MessageBox.Show("方法中没设置报告打印");
                 return;
             }
-           
+
         }
 
         private void tableLayoutPanelback_Resize(object sender, EventArgs e)
@@ -1957,13 +1964,77 @@ namespace TabHeaderDemo
 
         private void btnepath_Click(object sender, EventArgs e)
         {
-            GlobeVal.UserControlMain1.tabControl1.SelectedIndex = 8;
-            
+
+
         }
 
         private void buttonEx14_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnlink_Click(object sender, EventArgs e)
+        {
+            if (btnlink.Text == "联机")
+            {
+            
+
+
+                if (CComLibrary.GlobeVal.filesave == null)
+                {
+                    MessageBox.Show("请先设置试验方法");
+                    
+                    return;
+                }
+                else
+                {
+                    GlobeVal.myarm.Init((int)this.Handle);
+                    GlobeVal.FormmainLab.timer1.Enabled = true;
+                    GlobeVal.FormmainLab.InitMeter();
+                    GlobeVal.FormmainLab.InitKey();
+
+                    if (GlobeVal.myarm.connected == true)
+                    {
+                       
+                    }
+                    else
+                    {
+
+                      
+
+                        MessageBox.Show("联机失败");
+                        return;
+                    }
+
+
+                    GlobeVal.myarm.connected = true;
+
+                }
+
+                btnlink.Text = "脱机";
+                btnlink.Image = imageList4.Images[7];
+            }
+            else
+            {
+                btnlink.Text = "联机";
+                btnlink.Image = imageList4.Images[6];
+            }
+          }
+
+        private void btnon_Click(object sender, EventArgs e)
+        {
+            if (btnon.Text == "启动")
+            {
+                btnon.Text = "关闭";
+                btnon.Image = imageList4.Images[5];
+                GlobeVal.myarm.DriveOn();
+            }
+            else
+            {
+                btnon.Text = "启动";
+                btnon.Image = imageList4.Images[4];
+                GlobeVal.myarm.DriveOff();
+            }
         }
     }
 }

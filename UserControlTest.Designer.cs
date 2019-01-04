@@ -30,18 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlTest));
-            IP.Components.Toolbox.Item item4 = new IP.Components.Toolbox.Item();
-            IP.Components.Toolbox.Item item5 = new IP.Components.Toolbox.Item();
-            IP.Components.Toolbox.Item item6 = new IP.Components.Toolbox.Item();
+            IP.Components.Toolbox.Item item1 = new IP.Components.Toolbox.Item();
+            IP.Components.Toolbox.Item item2 = new IP.Components.Toolbox.Item();
+            IP.Components.Toolbox.Item item3 = new IP.Components.Toolbox.Item();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button21 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.button6 = new TabHeaderDemo.ButtonExNew(this.components);
             this.panel6 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonEx1 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.buttonEx2 = new TabHeaderDemo.ButtonExNew(this.components);
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList4 = new System.Windows.Forms.ImageList(this.components);
@@ -56,29 +52,12 @@
             this.tableLayoutPanelTop = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btneafter = new TabHeaderDemo.ButtonEx(this.components);
-            this.btnebefore = new TabHeaderDemo.ButtonEx(this.components);
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnstep2 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnstep7 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnstep6 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnstep5 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnstep4 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnstep3 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnstep1 = new TabHeaderDemo.ButtonExNew(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnepath = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnStart = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnend = new TabHeaderDemo.ButtonExNew(this.components);
-            this.buttonEx14 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnfinish = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnsave = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnsaveas = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnprint = new TabHeaderDemo.ButtonExNew(this.components);
             this.panel8 = new System.Windows.Forms.Panel();
             this.paneltest = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -86,6 +65,27 @@
             this.paneltestright = new System.Windows.Forms.Panel();
             this.panelright = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.Panel();
+            this.btneafter = new TabHeaderDemo.ButtonEx(this.components);
+            this.btnebefore = new TabHeaderDemo.ButtonEx(this.components);
+            this.btnstep2 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnstep7 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnstep6 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnstep5 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnstep4 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnstep3 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnstep1 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnStart = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnfinish = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnsave = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnsaveas = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnprint = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnlink = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnend = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnon = new TabHeaderDemo.ButtonExNew(this.components);
+            this.button21 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.button6 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.buttonEx1 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.buttonEx2 = new TabHeaderDemo.ButtonExNew(this.components);
             this.button7 = new TabHeaderDemo.ButtonExNew(this.components);
             this.buttonEx3 = new TabHeaderDemo.ButtonExNew(this.components);
             this.tableLayoutPanel2.SuspendLayout();
@@ -161,50 +161,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // button21
-            // 
-            this.button21.BackColor = System.Drawing.Color.Transparent;
-            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.ForeColor = System.Drawing.Color.White;
-            this.button21.Image = ((System.Drawing.Image)(resources.GetObject("button21.Image")));
-            this.button21.Location = new System.Drawing.Point(3, 3);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(194, 14);
-            this.button21.TabIndex = 42;
-            this.button21.Text = "开始";
-            this.button21.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button21.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button21.UseMnemonic = false;
-            this.button21.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(3, 23);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(194, 14);
-            this.button6.TabIndex = 43;
-            this.button6.Text = "停止";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button6.UseMnemonic = false;
-            this.button6.UseVisualStyleBackColor = false;
-            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Transparent;
@@ -228,50 +184,6 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(200, 100);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
-            // buttonEx1
-            // 
-            this.buttonEx1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEx1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEx1.BackgroundImage")));
-            this.buttonEx1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEx1.FlatAppearance.BorderSize = 0;
-            this.buttonEx1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEx1.ForeColor = System.Drawing.Color.White;
-            this.buttonEx1.Image = ((System.Drawing.Image)(resources.GetObject("buttonEx1.Image")));
-            this.buttonEx1.Location = new System.Drawing.Point(3, 3);
-            this.buttonEx1.Name = "buttonEx1";
-            this.buttonEx1.Size = new System.Drawing.Size(194, 14);
-            this.buttonEx1.TabIndex = 42;
-            this.buttonEx1.Text = "开始";
-            this.buttonEx1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonEx1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonEx1.UseMnemonic = false;
-            this.buttonEx1.UseVisualStyleBackColor = false;
-            // 
-            // buttonEx2
-            // 
-            this.buttonEx2.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEx2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEx2.BackgroundImage")));
-            this.buttonEx2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEx2.FlatAppearance.BorderSize = 0;
-            this.buttonEx2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEx2.ForeColor = System.Drawing.Color.White;
-            this.buttonEx2.Image = ((System.Drawing.Image)(resources.GetObject("buttonEx2.Image")));
-            this.buttonEx2.Location = new System.Drawing.Point(3, 23);
-            this.buttonEx2.Name = "buttonEx2";
-            this.buttonEx2.Size = new System.Drawing.Size(194, 14);
-            this.buttonEx2.TabIndex = 43;
-            this.buttonEx2.Text = "停止";
-            this.buttonEx2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonEx2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonEx2.UseMnemonic = false;
-            this.buttonEx2.UseVisualStyleBackColor = false;
-            // 
             // imageList3
             // 
             this.imageList3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList3.ImageStream")));
@@ -291,11 +203,15 @@
             // imageList4
             // 
             this.imageList4.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList4.ImageStream")));
-            this.imageList4.TransparentColor = System.Drawing.Color.White;
+            this.imageList4.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList4.Images.SetKeyName(0, "50.ico");
             this.imageList4.Images.SetKeyName(1, "50-1.ico");
             this.imageList4.Images.SetKeyName(2, "r2-2.ico");
             this.imageList4.Images.SetKeyName(3, "r2.ico");
+            this.imageList4.Images.SetKeyName(4, "蓝色联机1.ico");
+            this.imageList4.Images.SetKeyName(5, "蓝色脱机1.ico");
+            this.imageList4.Images.SetKeyName(6, "小启动-1.ico");
+            this.imageList4.Images.SetKeyName(7, "蓝色小停止.ico");
             // 
             // timer1
             // 
@@ -342,7 +258,7 @@
             this.tableLayoutPanelback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanelback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanelback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+            this.tableLayoutPanelback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
             this.tableLayoutPanelback.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanelback.Controls.Add(this.paneltop, 1, 1);
             this.tableLayoutPanelback.Controls.Add(this.panel5, 2, 2);
@@ -367,7 +283,7 @@
             this.paneltop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.paneltop.Location = new System.Drawing.Point(53, 8);
             this.paneltop.Name = "paneltop";
-            this.paneltop.Size = new System.Drawing.Size(778, 78);
+            this.paneltop.Size = new System.Drawing.Size(940, 78);
             this.paneltop.TabIndex = 33;
             // 
             // tableLayoutPanelTop
@@ -384,9 +300,9 @@
             this.tableLayoutPanelTop.Margin = new System.Windows.Forms.Padding(6);
             this.tableLayoutPanelTop.Name = "tableLayoutPanelTop";
             this.tableLayoutPanelTop.RowCount = 1;
-            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1015F));
-            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1015F));
-            this.tableLayoutPanelTop.Size = new System.Drawing.Size(778, 78);
+            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1081F));
+            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1081F));
+            this.tableLayoutPanelTop.Size = new System.Drawing.Size(940, 78);
             this.tableLayoutPanelTop.TabIndex = 4;
             // 
             // tableLayoutPanel5
@@ -398,12 +314,12 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(522, 6);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(631, 6);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(250, 73);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(303, 73);
             this.tableLayoutPanel5.TabIndex = 37;
             // 
             // panel1
@@ -411,10 +327,202 @@
             this.panel1.Controls.Add(this.btneafter);
             this.panel1.Controls.Add(this.btnebefore);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(13, 3);
+            this.panel1.Location = new System.Drawing.Point(39, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(224, 67);
             this.panel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(225)))), ((int)(((byte)(208)))));
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 590F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 6);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(616, 70);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(16, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(584, 64);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel4.Controls.Add(this.btnstep2);
+            this.panel4.Controls.Add(this.btnstep7);
+            this.panel4.Controls.Add(this.btnstep6);
+            this.panel4.Controls.Add(this.btnstep5);
+            this.panel4.Controls.Add(this.btnstep4);
+            this.panel4.Controls.Add(this.btnstep3);
+            this.panel4.Controls.Add(this.btnstep1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(584, 64);
+            this.panel4.TabIndex = 3;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel7);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(999, 92);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(74, 550);
+            this.panel5.TabIndex = 34;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Transparent;
+            this.panel7.Controls.Add(this.tableLayoutPanel9);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(74, 550);
+            this.panel7.TabIndex = 38;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.btnStart, 0, 2);
+            this.tableLayoutPanel9.Controls.Add(this.btnfinish, 0, 4);
+            this.tableLayoutPanel9.Controls.Add(this.btnsave, 0, 5);
+            this.tableLayoutPanel9.Controls.Add(this.btnsaveas, 0, 6);
+            this.tableLayoutPanel9.Controls.Add(this.btnprint, 0, 7);
+            this.tableLayoutPanel9.Controls.Add(this.btnlink, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.btnend, 0, 3);
+            this.tableLayoutPanel9.Controls.Add(this.btnon, 0, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 8;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(74, 550);
+            this.tableLayoutPanel9.TabIndex = 53;
+            this.tableLayoutPanel9.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel9_Paint);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel8.Controls.Add(this.paneltest);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(53, 92);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(940, 550);
+            this.panel8.TabIndex = 0;
+            // 
+            // paneltest
+            // 
+            this.paneltest.AutoScroll = true;
+            this.paneltest.AutoSize = true;
+            this.paneltest.Controls.Add(this.splitContainer1);
+            this.paneltest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paneltest.Location = new System.Drawing.Point(0, 0);
+            this.paneltest.Name = "paneltest";
+            this.paneltest.Size = new System.Drawing.Size(940, 550);
+            this.paneltest.TabIndex = 0;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.lstspe);
+            this.splitContainer1.Panel1MinSize = 1;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.paneltestright);
+            this.splitContainer1.Size = new System.Drawing.Size(940, 550);
+            this.splitContainer1.SplitterDistance = 100;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // lstspe
+            // 
+            this.lstspe.AllowDrop = true;
+            this.lstspe.AllowToolboxItems = true;
+            this.lstspe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstspe.Dock = System.Windows.Forms.DockStyle.Fill;
+            item1.Image = ((System.Drawing.Image)(resources.GetObject("item1.Image")));
+            item1.Tag = null;
+            item1.Text = "试样1";
+            item1.Tooltip = "试样1";
+            item2.Image = ((System.Drawing.Image)(resources.GetObject("item2.Image")));
+            item2.Tag = null;
+            item2.Text = "试样2";
+            item2.Tooltip = "试样2";
+            item3.Image = ((System.Drawing.Image)(resources.GetObject("item3.Image")));
+            item3.Tag = null;
+            item3.Text = "试样3";
+            item3.Tooltip = "Item";
+            this.lstspe.Items.AddRange(new IP.Components.Toolbox.Item[] {
+            item1,
+            item2,
+            item3});
+            this.lstspe.Location = new System.Drawing.Point(0, 0);
+            this.lstspe.Name = "lstspe";
+            this.lstspe.ShowPointer = false;
+            this.lstspe.Size = new System.Drawing.Size(100, 550);
+            this.lstspe.TabIndex = 33;
+            this.lstspe.Text = "toolbox1";
+            this.lstspe.ContextMenuStripChanged += new System.EventHandler(this.lstspe_ContextMenuStripChanged);
+            this.lstspe.Click += new System.EventHandler(this.lstspe_Click_1);
+            // 
+            // paneltestright
+            // 
+            this.paneltestright.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.paneltestright.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paneltestright.Location = new System.Drawing.Point(0, 0);
+            this.paneltestright.Name = "paneltestright";
+            this.paneltestright.Size = new System.Drawing.Size(836, 550);
+            this.paneltestright.TabIndex = 37;
+            // 
+            // panelright
+            // 
+            this.panelright.BackColor = System.Drawing.Color.Transparent;
+            this.panelright.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelright.Location = new System.Drawing.Point(1079, 92);
+            this.panelright.Name = "panelright";
+            this.panelright.Size = new System.Drawing.Size(152, 550);
+            this.panelright.TabIndex = 35;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox1.Controls.Add(this.tableLayoutPanelback);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1239, 650);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // btneafter
             // 
@@ -462,49 +570,6 @@
             this.btnebefore.UseMnemonic = false;
             this.btnebefore.UseVisualStyleBackColor = false;
             this.btnebefore.Click += new System.EventHandler(this.btnebefore_Click);
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(225)))), ((int)(((byte)(208)))));
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 590F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 6);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(507, 70);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(-38, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(584, 64);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel4
-            // 
-            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel4.Controls.Add(this.btnstep2);
-            this.panel4.Controls.Add(this.btnstep7);
-            this.panel4.Controls.Add(this.btnstep6);
-            this.panel4.Controls.Add(this.btnstep5);
-            this.panel4.Controls.Add(this.btnstep4);
-            this.panel4.Controls.Add(this.btnstep3);
-            this.panel4.Controls.Add(this.btnstep1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(584, 64);
-            this.panel4.TabIndex = 3;
             // 
             // btnstep2
             // 
@@ -645,77 +710,6 @@
             this.btnstep1.UseMnemonic = false;
             this.btnstep1.UseVisualStyleBackColor = false;
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.panel7);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(837, 92);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(74, 550);
-            this.panel5.TabIndex = 34;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.Transparent;
-            this.panel7.Controls.Add(this.tableLayoutPanel9);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(74, 550);
-            this.panel7.TabIndex = 38;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 1;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Controls.Add(this.btnepath, 0, 1);
-            this.tableLayoutPanel9.Controls.Add(this.btnStart, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.btnend, 0, 1);
-            this.tableLayoutPanel9.Controls.Add(this.buttonEx14, 0, 2);
-            this.tableLayoutPanel9.Controls.Add(this.btnfinish, 0, 4);
-            this.tableLayoutPanel9.Controls.Add(this.btnsave, 0, 5);
-            this.tableLayoutPanel9.Controls.Add(this.btnsaveas, 0, 6);
-            this.tableLayoutPanel9.Controls.Add(this.btnprint, 0, 7);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 8;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(74, 550);
-            this.tableLayoutPanel9.TabIndex = 53;
-            this.tableLayoutPanel9.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel9_Paint);
-            // 
-            // btnepath
-            // 
-            this.btnepath.BackColor = System.Drawing.Color.Transparent;
-            this.btnepath.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnepath.BackgroundImage")));
-            this.btnepath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnepath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnepath.FlatAppearance.BorderSize = 0;
-            this.btnepath.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnepath.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnepath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnepath.ForeColor = System.Drawing.Color.White;
-            this.btnepath.Image = ((System.Drawing.Image)(resources.GetObject("btnepath.Image")));
-            this.btnepath.Location = new System.Drawing.Point(3, 139);
-            this.btnepath.Name = "btnepath";
-            this.btnepath.Size = new System.Drawing.Size(68, 62);
-            this.btnepath.TabIndex = 55;
-            this.btnepath.Text = "样品";
-            this.btnepath.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnepath.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnepath.UseMnemonic = false;
-            this.btnepath.UseVisualStyleBackColor = false;
-            this.btnepath.Click += new System.EventHandler(this.btnepath_Click);
-            // 
             // btnStart
             // 
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
@@ -727,7 +721,7 @@
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.ForeColor = System.Drawing.Color.White;
             this.btnStart.ImageIndex = 0;
-            this.btnStart.Location = new System.Drawing.Point(3, 3);
+            this.btnStart.Location = new System.Drawing.Point(3, 139);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(68, 62);
             this.btnStart.TabIndex = 42;
@@ -737,54 +731,6 @@
             this.btnStart.UseMnemonic = false;
             this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // btnend
-            // 
-            this.btnend.BackColor = System.Drawing.Color.Transparent;
-            this.btnend.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnend.BackgroundImage")));
-            this.btnend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnend.Enabled = false;
-            this.btnend.FlatAppearance.BorderSize = 0;
-            this.btnend.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnend.ForeColor = System.Drawing.Color.White;
-            this.btnend.ImageIndex = 3;
-            this.btnend.Location = new System.Drawing.Point(3, 71);
-            this.btnend.Name = "btnend";
-            this.btnend.Size = new System.Drawing.Size(68, 62);
-            this.btnend.TabIndex = 43;
-            this.btnend.Text = "停止";
-            this.btnend.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnend.UseMnemonic = false;
-            this.btnend.UseVisualStyleBackColor = false;
-            this.btnend.Click += new System.EventHandler(this.btnend_Click);
-            // 
-            // buttonEx14
-            // 
-            this.buttonEx14.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEx14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEx14.BackgroundImage")));
-            this.buttonEx14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEx14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEx14.FlatAppearance.BorderSize = 0;
-            this.buttonEx14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEx14.ForeColor = System.Drawing.Color.White;
-            this.buttonEx14.Image = ((System.Drawing.Image)(resources.GetObject("buttonEx14.Image")));
-            this.buttonEx14.Location = new System.Drawing.Point(3, 207);
-            this.buttonEx14.Name = "buttonEx14";
-            this.buttonEx14.Size = new System.Drawing.Size(68, 62);
-            this.buttonEx14.TabIndex = 44;
-            this.buttonEx14.Text = "返回";
-            this.buttonEx14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonEx14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonEx14.UseMnemonic = false;
-            this.buttonEx14.UseVisualStyleBackColor = false;
-            this.buttonEx14.Visible = false;
-            this.buttonEx14.Click += new System.EventHandler(this.buttonEx14_Click);
             // 
             // btnfinish
             // 
@@ -878,106 +824,160 @@
             this.btnprint.UseVisualStyleBackColor = false;
             this.btnprint.Click += new System.EventHandler(this.btnprint_Click);
             // 
-            // panel8
+            // btnlink
             // 
-            this.panel8.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel8.Controls.Add(this.paneltest);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(53, 92);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(778, 550);
-            this.panel8.TabIndex = 0;
+            this.btnlink.BackColor = System.Drawing.Color.Transparent;
+            this.btnlink.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnlink.BackgroundImage")));
+            this.btnlink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnlink.FlatAppearance.BorderSize = 0;
+            this.btnlink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnlink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnlink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnlink.ForeColor = System.Drawing.Color.White;
+            this.btnlink.Image = ((System.Drawing.Image)(resources.GetObject("btnlink.Image")));
+            this.btnlink.Location = new System.Drawing.Point(3, 3);
+            this.btnlink.Name = "btnlink";
+            this.btnlink.Size = new System.Drawing.Size(68, 62);
+            this.btnlink.TabIndex = 55;
+            this.btnlink.Text = "联机";
+            this.btnlink.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnlink.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnlink.UseMnemonic = false;
+            this.btnlink.UseVisualStyleBackColor = false;
+            this.btnlink.Click += new System.EventHandler(this.btnlink_Click);
             // 
-            // paneltest
+            // btnend
             // 
-            this.paneltest.AutoScroll = true;
-            this.paneltest.AutoSize = true;
-            this.paneltest.Controls.Add(this.splitContainer1);
-            this.paneltest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paneltest.Location = new System.Drawing.Point(0, 0);
-            this.paneltest.Name = "paneltest";
-            this.paneltest.Size = new System.Drawing.Size(778, 550);
-            this.paneltest.TabIndex = 0;
+            this.btnend.BackColor = System.Drawing.Color.Transparent;
+            this.btnend.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnend.BackgroundImage")));
+            this.btnend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnend.Enabled = false;
+            this.btnend.FlatAppearance.BorderSize = 0;
+            this.btnend.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnend.ForeColor = System.Drawing.Color.White;
+            this.btnend.ImageIndex = 3;
+            this.btnend.Location = new System.Drawing.Point(3, 207);
+            this.btnend.Name = "btnend";
+            this.btnend.Size = new System.Drawing.Size(68, 62);
+            this.btnend.TabIndex = 43;
+            this.btnend.Text = "结束";
+            this.btnend.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnend.UseMnemonic = false;
+            this.btnend.UseVisualStyleBackColor = false;
+            this.btnend.Click += new System.EventHandler(this.btnend_Click);
             // 
-            // splitContainer1
+            // btnon
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.btnon.BackColor = System.Drawing.Color.Transparent;
+            this.btnon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnon.BackgroundImage")));
+            this.btnon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnon.FlatAppearance.BorderSize = 0;
+            this.btnon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnon.ForeColor = System.Drawing.Color.White;
+            this.btnon.Image = ((System.Drawing.Image)(resources.GetObject("btnon.Image")));
+            this.btnon.Location = new System.Drawing.Point(3, 71);
+            this.btnon.Name = "btnon";
+            this.btnon.Size = new System.Drawing.Size(68, 62);
+            this.btnon.TabIndex = 44;
+            this.btnon.Text = "启动";
+            this.btnon.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnon.UseMnemonic = false;
+            this.btnon.UseVisualStyleBackColor = false;
+            this.btnon.Click += new System.EventHandler(this.btnon_Click);
             // 
-            // splitContainer1.Panel1
+            // button21
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lstspe);
-            this.splitContainer1.Panel1MinSize = 1;
+            this.button21.BackColor = System.Drawing.Color.Transparent;
+            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button21.FlatAppearance.BorderSize = 0;
+            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.ForeColor = System.Drawing.Color.White;
+            this.button21.Image = ((System.Drawing.Image)(resources.GetObject("button21.Image")));
+            this.button21.Location = new System.Drawing.Point(3, 3);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(194, 14);
+            this.button21.TabIndex = 42;
+            this.button21.Text = "开始";
+            this.button21.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button21.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button21.UseMnemonic = false;
+            this.button21.UseVisualStyleBackColor = false;
             // 
-            // splitContainer1.Panel2
+            // button6
             // 
-            this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Panel2.Controls.Add(this.paneltestright);
-            this.splitContainer1.Size = new System.Drawing.Size(778, 550);
-            this.splitContainer1.SplitterDistance = 100;
-            this.splitContainer1.TabIndex = 4;
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.Location = new System.Drawing.Point(3, 23);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(194, 14);
+            this.button6.TabIndex = 43;
+            this.button6.Text = "停止";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button6.UseMnemonic = false;
+            this.button6.UseVisualStyleBackColor = false;
             // 
-            // lstspe
+            // buttonEx1
             // 
-            this.lstspe.AllowDrop = true;
-            this.lstspe.AllowToolboxItems = true;
-            this.lstspe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lstspe.Dock = System.Windows.Forms.DockStyle.Fill;
-            item4.Image = ((System.Drawing.Image)(resources.GetObject("item4.Image")));
-            item4.Tag = null;
-            item4.Text = "试样1";
-            item4.Tooltip = "试样1";
-            item5.Image = ((System.Drawing.Image)(resources.GetObject("item5.Image")));
-            item5.Tag = null;
-            item5.Text = "试样2";
-            item5.Tooltip = "试样2";
-            item6.Image = ((System.Drawing.Image)(resources.GetObject("item6.Image")));
-            item6.Tag = null;
-            item6.Text = "试样3";
-            item6.Tooltip = "Item";
-            this.lstspe.Items.AddRange(new IP.Components.Toolbox.Item[] {
-            item4,
-            item5,
-            item6});
-            this.lstspe.Location = new System.Drawing.Point(0, 0);
-            this.lstspe.Name = "lstspe";
-            this.lstspe.ShowPointer = false;
-            this.lstspe.Size = new System.Drawing.Size(100, 550);
-            this.lstspe.TabIndex = 33;
-            this.lstspe.Text = "toolbox1";
-            this.lstspe.ContextMenuStripChanged += new System.EventHandler(this.lstspe_ContextMenuStripChanged);
-            this.lstspe.Click += new System.EventHandler(this.lstspe_Click_1);
+            this.buttonEx1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonEx1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEx1.BackgroundImage")));
+            this.buttonEx1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonEx1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonEx1.FlatAppearance.BorderSize = 0;
+            this.buttonEx1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonEx1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonEx1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEx1.ForeColor = System.Drawing.Color.White;
+            this.buttonEx1.Image = ((System.Drawing.Image)(resources.GetObject("buttonEx1.Image")));
+            this.buttonEx1.Location = new System.Drawing.Point(3, 3);
+            this.buttonEx1.Name = "buttonEx1";
+            this.buttonEx1.Size = new System.Drawing.Size(194, 14);
+            this.buttonEx1.TabIndex = 42;
+            this.buttonEx1.Text = "开始";
+            this.buttonEx1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonEx1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonEx1.UseMnemonic = false;
+            this.buttonEx1.UseVisualStyleBackColor = false;
             // 
-            // paneltestright
+            // buttonEx2
             // 
-            this.paneltestright.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.paneltestright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paneltestright.Location = new System.Drawing.Point(0, 0);
-            this.paneltestright.Name = "paneltestright";
-            this.paneltestright.Size = new System.Drawing.Size(674, 550);
-            this.paneltestright.TabIndex = 37;
-            // 
-            // panelright
-            // 
-            this.panelright.BackColor = System.Drawing.Color.Transparent;
-            this.panelright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelright.Location = new System.Drawing.Point(917, 92);
-            this.panelright.Name = "panelright";
-            this.panelright.Size = new System.Drawing.Size(314, 550);
-            this.panelright.TabIndex = 35;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox1.Controls.Add(this.tableLayoutPanelback);
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1239, 650);
-            this.pictureBox1.TabIndex = 33;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.buttonEx2.BackColor = System.Drawing.Color.Transparent;
+            this.buttonEx2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEx2.BackgroundImage")));
+            this.buttonEx2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonEx2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonEx2.FlatAppearance.BorderSize = 0;
+            this.buttonEx2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonEx2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonEx2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEx2.ForeColor = System.Drawing.Color.White;
+            this.buttonEx2.Image = ((System.Drawing.Image)(resources.GetObject("buttonEx2.Image")));
+            this.buttonEx2.Location = new System.Drawing.Point(3, 23);
+            this.buttonEx2.Name = "buttonEx2";
+            this.buttonEx2.Size = new System.Drawing.Size(194, 14);
+            this.buttonEx2.TabIndex = 43;
+            this.buttonEx2.Text = "停止";
+            this.buttonEx2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonEx2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonEx2.UseMnemonic = false;
+            this.buttonEx2.UseVisualStyleBackColor = false;
             // 
             // button7
             // 
@@ -1101,7 +1101,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         public ButtonExNew btnStart;
         public ButtonExNew btnend;
-        public ButtonExNew buttonEx14;
+        public ButtonExNew btnon;
         public ButtonExNew btnfinish;
         public ButtonExNew btnsave;
         public ButtonExNew btnsaveas;
@@ -1113,6 +1113,6 @@
         public System.Windows.Forms.Panel paneltestright;
         private System.Windows.Forms.Panel pictureBox1;
         public System.Windows.Forms.Panel panelright;
-        public ButtonExNew btnepath;
+        public ButtonExNew btnlink;
     }
 }

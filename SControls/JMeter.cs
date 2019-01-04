@@ -17,6 +17,12 @@ namespace TabHeaderDemo
         public JMeter()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint, true);
+            //SetStyle(ControlStyles.ResizeRedraw , true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+
+           this.tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel1, true, null);
+
             if (Screen.PrimaryScreen.Bounds.Width ==1366)
             {
                 this.lblcaption.Font = new Font("宋体", 8,FontStyle.Bold);
@@ -30,12 +36,7 @@ namespace TabHeaderDemo
                // lblunit.Font = new Font("宋体", 22, FontStyle.Bold);
             }
 
-            SetStyle(ControlStyles.UserPaint, true);
-           // SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-
-            this.tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel1, true, null);
-
+          
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -155,7 +156,7 @@ namespace TabHeaderDemo
 
         private void JMeter_Resize(object sender, EventArgs e)
         {
-
+           
         }
     }
 }

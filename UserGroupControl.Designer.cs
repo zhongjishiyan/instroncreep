@@ -40,14 +40,6 @@
             this.lstspe = new IP.Components.Toolbox(false);
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnStart = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnend = new TabHeaderDemo.ButtonExNew(this.components);
-            this.buttonEx14 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.button8 = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnfinish = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnsave = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnsaveas = new TabHeaderDemo.ButtonExNew(this.components);
-            this.btnprint = new TabHeaderDemo.ButtonExNew(this.components);
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -62,9 +54,6 @@
             this.yAxis1 = new NationalInstruments.UI.YAxis();
             this.xAxis2 = new NationalInstruments.UI.XAxis();
             this.yAxis2 = new NationalInstruments.UI.YAxis();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.legend = new NationalInstruments.UI.WindowsForms.Legend();
-            this.legendItem1 = new NationalInstruments.UI.LegendItem();
             this.toolStripLeft = new System.Windows.Forms.ToolStrip();
             this.tsbdefault = new System.Windows.Forms.ToolStripButton();
             this.tsbzoomin = new System.Windows.Forms.ToolStripButton();
@@ -81,9 +70,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboy = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboy1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbomachine = new System.Windows.Forms.ComboBox();
+            this.btnmachine = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
@@ -91,6 +86,14 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.aaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnStart = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnend = new TabHeaderDemo.ButtonExNew(this.components);
+            this.buttonEx14 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.button8 = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnfinish = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnsave = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnsaveas = new TabHeaderDemo.ButtonExNew(this.components);
+            this.btnprint = new TabHeaderDemo.ButtonExNew(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -108,8 +111,6 @@
             this.tableLayoutPanelCurve.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scatterGraph)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xyCursor1)).BeginInit();
-            this.tableLayoutPanel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.legend)).BeginInit();
             this.toolStripLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -237,188 +238,6 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(76, 573);
             this.tableLayoutPanel9.TabIndex = 54;
             // 
-            // btnStart
-            // 
-            this.btnStart.BackColor = System.Drawing.Color.Transparent;
-            this.btnStart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStart.BackgroundImage")));
-            this.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnStart.FlatAppearance.BorderSize = 0;
-            this.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(3, 3);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(70, 65);
-            this.btnStart.TabIndex = 42;
-            this.btnStart.Text = "开始";
-            this.btnStart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnStart.UseMnemonic = false;
-            this.btnStart.UseVisualStyleBackColor = false;
-            // 
-            // btnend
-            // 
-            this.btnend.BackColor = System.Drawing.Color.Transparent;
-            this.btnend.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnend.BackgroundImage")));
-            this.btnend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnend.Enabled = false;
-            this.btnend.FlatAppearance.BorderSize = 0;
-            this.btnend.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnend.ForeColor = System.Drawing.Color.White;
-            this.btnend.ImageIndex = 3;
-            this.btnend.Location = new System.Drawing.Point(3, 74);
-            this.btnend.Name = "btnend";
-            this.btnend.Size = new System.Drawing.Size(70, 65);
-            this.btnend.TabIndex = 43;
-            this.btnend.Text = "停止";
-            this.btnend.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnend.UseMnemonic = false;
-            this.btnend.UseVisualStyleBackColor = false;
-            // 
-            // buttonEx14
-            // 
-            this.buttonEx14.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEx14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEx14.BackgroundImage")));
-            this.buttonEx14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEx14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEx14.FlatAppearance.BorderSize = 0;
-            this.buttonEx14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonEx14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEx14.ForeColor = System.Drawing.Color.White;
-            this.buttonEx14.Image = ((System.Drawing.Image)(resources.GetObject("buttonEx14.Image")));
-            this.buttonEx14.Location = new System.Drawing.Point(3, 145);
-            this.buttonEx14.Name = "buttonEx14";
-            this.buttonEx14.Size = new System.Drawing.Size(70, 65);
-            this.buttonEx14.TabIndex = 44;
-            this.buttonEx14.Text = "返回";
-            this.buttonEx14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buttonEx14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonEx14.UseMnemonic = false;
-            this.buttonEx14.UseVisualStyleBackColor = false;
-            this.buttonEx14.Visible = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(3, 216);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(70, 65);
-            this.button8.TabIndex = 45;
-            this.button8.Text = "重设";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button8.UseMnemonic = false;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Visible = false;
-            // 
-            // btnfinish
-            // 
-            this.btnfinish.BackColor = System.Drawing.Color.Transparent;
-            this.btnfinish.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnfinish.BackgroundImage")));
-            this.btnfinish.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnfinish.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnfinish.FlatAppearance.BorderSize = 0;
-            this.btnfinish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnfinish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnfinish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnfinish.ForeColor = System.Drawing.Color.White;
-            this.btnfinish.Image = ((System.Drawing.Image)(resources.GetObject("btnfinish.Image")));
-            this.btnfinish.Location = new System.Drawing.Point(3, 287);
-            this.btnfinish.Name = "btnfinish";
-            this.btnfinish.Size = new System.Drawing.Size(70, 65);
-            this.btnfinish.TabIndex = 46;
-            this.btnfinish.Text = "完成";
-            this.btnfinish.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnfinish.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnfinish.UseMnemonic = false;
-            this.btnfinish.UseVisualStyleBackColor = false;
-            this.btnfinish.Visible = false;
-            // 
-            // btnsave
-            // 
-            this.btnsave.BackColor = System.Drawing.Color.Transparent;
-            this.btnsave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnsave.BackgroundImage")));
-            this.btnsave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnsave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnsave.FlatAppearance.BorderSize = 0;
-            this.btnsave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnsave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnsave.ForeColor = System.Drawing.Color.White;
-            this.btnsave.Image = ((System.Drawing.Image)(resources.GetObject("btnsave.Image")));
-            this.btnsave.Location = new System.Drawing.Point(3, 358);
-            this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(70, 65);
-            this.btnsave.TabIndex = 47;
-            this.btnsave.Text = "保存";
-            this.btnsave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnsave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnsave.UseMnemonic = false;
-            this.btnsave.UseVisualStyleBackColor = false;
-            this.btnsave.Visible = false;
-            // 
-            // btnsaveas
-            // 
-            this.btnsaveas.BackColor = System.Drawing.Color.Transparent;
-            this.btnsaveas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnsaveas.BackgroundImage")));
-            this.btnsaveas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnsaveas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnsaveas.FlatAppearance.BorderSize = 0;
-            this.btnsaveas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnsaveas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnsaveas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnsaveas.ForeColor = System.Drawing.Color.White;
-            this.btnsaveas.Image = ((System.Drawing.Image)(resources.GetObject("btnsaveas.Image")));
-            this.btnsaveas.Location = new System.Drawing.Point(3, 429);
-            this.btnsaveas.Name = "btnsaveas";
-            this.btnsaveas.Size = new System.Drawing.Size(70, 65);
-            this.btnsaveas.TabIndex = 48;
-            this.btnsaveas.Text = "另存为";
-            this.btnsaveas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnsaveas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnsaveas.UseMnemonic = false;
-            this.btnsaveas.UseVisualStyleBackColor = false;
-            this.btnsaveas.Visible = false;
-            // 
-            // btnprint
-            // 
-            this.btnprint.BackColor = System.Drawing.Color.Transparent;
-            this.btnprint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnprint.BackgroundImage")));
-            this.btnprint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnprint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnprint.FlatAppearance.BorderSize = 0;
-            this.btnprint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnprint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnprint.ForeColor = System.Drawing.Color.White;
-            this.btnprint.Image = ((System.Drawing.Image)(resources.GetObject("btnprint.Image")));
-            this.btnprint.Location = new System.Drawing.Point(3, 500);
-            this.btnprint.Name = "btnprint";
-            this.btnprint.Size = new System.Drawing.Size(70, 70);
-            this.btnprint.TabIndex = 49;
-            this.btnprint.Text = "打印";
-            this.btnprint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnprint.UseMnemonic = false;
-            this.btnprint.UseVisualStyleBackColor = false;
-            this.btnprint.Visible = false;
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -516,12 +335,11 @@
             // 
             // tableLayoutPanelCurve
             // 
-            this.tableLayoutPanelCurve.ColumnCount = 2;
+            this.tableLayoutPanelCurve.ColumnCount = 1;
             this.tableLayoutPanel5.SetColumnSpan(this.tableLayoutPanelCurve, 2);
             this.tableLayoutPanelCurve.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelCurve.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanelCurve.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelCurve.Controls.Add(this.scatterGraph, 0, 0);
-            this.tableLayoutPanelCurve.Controls.Add(this.tableLayoutPanel15, 1, 0);
             this.tableLayoutPanelCurve.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelCurve.Location = new System.Drawing.Point(0, 20);
             this.tableLayoutPanelCurve.Margin = new System.Windows.Forms.Padding(0);
@@ -534,7 +352,7 @@
             // scatterGraph
             // 
             this.scatterGraph.Border = NationalInstruments.UI.Border.None;
-            this.scatterGraph.Caption = "试样1";
+            this.scatterGraph.Caption = "双曲线比较";
             this.scatterGraph.CaptionBackColor = System.Drawing.Color.Transparent;
             this.scatterGraph.Cursors.AddRange(new NationalInstruments.UI.XYCursor[] {
             this.xyCursor1});
@@ -547,7 +365,7 @@
             this.scatterGraph.Plots.AddRange(new NationalInstruments.UI.ScatterPlot[] {
             this.scatterPlot3});
             this.scatterGraph.SelectionColor = System.Drawing.Color.Silver;
-            this.scatterGraph.Size = new System.Drawing.Size(628, 243);
+            this.scatterGraph.Size = new System.Drawing.Size(704, 243);
             this.scatterGraph.TabIndex = 5;
             this.scatterGraph.UseColorGenerator = true;
             this.scatterGraph.XAxes.AddRange(new NationalInstruments.UI.XAxis[] {
@@ -581,7 +399,7 @@
             // xAxis1
             // 
             this.xAxis1.BaseLineVisible = true;
-            this.xAxis1.Caption = "位移[mm]";
+            this.xAxis1.Caption = "时间[s]";
             this.xAxis1.Mode = NationalInstruments.UI.AxisMode.Fixed;
             // 
             // yAxis1
@@ -609,41 +427,6 @@
             this.yAxis2.CaptionPosition = NationalInstruments.UI.YAxisPosition.Right;
             this.yAxis2.Mode = NationalInstruments.UI.AxisMode.Fixed;
             this.yAxis2.Position = NationalInstruments.UI.YAxisPosition.Right;
-            // 
-            // tableLayoutPanel15
-            // 
-            this.tableLayoutPanel15.ColumnCount = 1;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.Controls.Add(this.legend, 0, 1);
-            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(634, 0);
-            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 3;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(76, 249);
-            this.tableLayoutPanel15.TabIndex = 4;
-            // 
-            // legend
-            // 
-            this.legend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.legend.Border = NationalInstruments.UI.Border.Solid;
-            this.legend.CaptionBackColor = System.Drawing.Color.Transparent;
-            this.legend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.legend.Items.AddRange(new NationalInstruments.UI.LegendItem[] {
-            this.legendItem1});
-            this.legend.ItemSize = new System.Drawing.Size(20, 3);
-            this.legend.Location = new System.Drawing.Point(3, 47);
-            this.legend.Name = "legend";
-            this.legend.Size = new System.Drawing.Size(70, 155);
-            this.legend.TabIndex = 4;
-            // 
-            // legendItem1
-            // 
-            this.legendItem1.Source = this.scatterPlot3;
-            this.legendItem1.Text = "Item 0";
             // 
             // toolStripLeft
             // 
@@ -839,61 +622,135 @@
             // 
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.comboBox1, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.label2, 0, 3);
-            this.tableLayoutPanel6.Controls.Add(this.comboBox2, 0, 4);
+            this.tableLayoutPanel6.Controls.Add(this.label1, 0, 5);
+            this.tableLayoutPanel6.Controls.Add(this.cboy, 0, 6);
+            this.tableLayoutPanel6.Controls.Add(this.label2, 0, 7);
+            this.tableLayoutPanel6.Controls.Add(this.cboy1, 0, 8);
+            this.tableLayoutPanel6.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.cbomachine, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.btnmachine, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutPanel6.Controls.Add(this.button1, 0, 9);
+            this.tableLayoutPanel6.Controls.Add(this.button2, 0, 10);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 6;
+            this.tableLayoutPanel6.RowCount = 11;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(250, 147);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(250, 244);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 20);
+            this.label1.Location = new System.Drawing.Point(3, 107);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 20);
+            this.label1.Size = new System.Drawing.Size(244, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Y轴左";
+            this.label1.Text = "Y轴左：";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // cboy
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(244, 20);
-            this.comboBox1.TabIndex = 1;
+            this.cboy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboy.FormattingEnabled = true;
+            this.cboy.Location = new System.Drawing.Point(3, 127);
+            this.cboy.Name = "cboy";
+            this.cboy.Size = new System.Drawing.Size(244, 20);
+            this.cboy.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 67);
+            this.label2.Location = new System.Drawing.Point(3, 149);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 24);
+            this.label2.Size = new System.Drawing.Size(244, 22);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Y轴右";
+            this.label2.Text = "Y轴右:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox2
+            // cboy1
             // 
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(3, 94);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(244, 20);
-            this.comboBox2.TabIndex = 3;
+            this.cboy1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboy1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboy1.FormattingEnabled = true;
+            this.cboy1.Location = new System.Drawing.Point(3, 174);
+            this.cboy1.Name = "cboy1";
+            this.cboy1.Size = new System.Drawing.Size(244, 20);
+            this.cboy1.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(244, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "主机查看选择：";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbomachine
+            // 
+            this.cbomachine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbomachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbomachine.FormattingEnabled = true;
+            this.cbomachine.Location = new System.Drawing.Point(3, 23);
+            this.cbomachine.Name = "cbomachine";
+            this.cbomachine.Size = new System.Drawing.Size(244, 20);
+            this.cbomachine.TabIndex = 5;
+            // 
+            // btnmachine
+            // 
+            this.btnmachine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnmachine.Location = new System.Drawing.Point(3, 48);
+            this.btnmachine.Name = "btnmachine";
+            this.btnmachine.Size = new System.Drawing.Size(244, 20);
+            this.btnmachine.TabIndex = 6;
+            this.btnmachine.Text = "确认";
+            this.btnmachine.UseVisualStyleBackColor = true;
+            this.btnmachine.Click += new System.EventHandler(this.btnmachine_Click);
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(3, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(244, 21);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "双曲线设置：";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(3, 194);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(244, 20);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "开始";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(3, 220);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(244, 21);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "结束";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -946,6 +803,188 @@
             this.aaToolStripMenuItem.Size = new System.Drawing.Size(90, 22);
             this.aaToolStripMenuItem.Text = "aa";
             // 
+            // btnStart
+            // 
+            this.btnStart.BackColor = System.Drawing.Color.Transparent;
+            this.btnStart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStart.BackgroundImage")));
+            this.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStart.FlatAppearance.BorderSize = 0;
+            this.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.ForeColor = System.Drawing.Color.White;
+            this.btnStart.Location = new System.Drawing.Point(3, 3);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(70, 65);
+            this.btnStart.TabIndex = 42;
+            this.btnStart.Text = "开始";
+            this.btnStart.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnStart.UseMnemonic = false;
+            this.btnStart.UseVisualStyleBackColor = false;
+            // 
+            // btnend
+            // 
+            this.btnend.BackColor = System.Drawing.Color.Transparent;
+            this.btnend.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnend.BackgroundImage")));
+            this.btnend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnend.Enabled = false;
+            this.btnend.FlatAppearance.BorderSize = 0;
+            this.btnend.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnend.ForeColor = System.Drawing.Color.White;
+            this.btnend.ImageIndex = 3;
+            this.btnend.Location = new System.Drawing.Point(3, 74);
+            this.btnend.Name = "btnend";
+            this.btnend.Size = new System.Drawing.Size(70, 65);
+            this.btnend.TabIndex = 43;
+            this.btnend.Text = "停止";
+            this.btnend.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnend.UseMnemonic = false;
+            this.btnend.UseVisualStyleBackColor = false;
+            // 
+            // buttonEx14
+            // 
+            this.buttonEx14.BackColor = System.Drawing.Color.Transparent;
+            this.buttonEx14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonEx14.BackgroundImage")));
+            this.buttonEx14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonEx14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonEx14.FlatAppearance.BorderSize = 0;
+            this.buttonEx14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonEx14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonEx14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEx14.ForeColor = System.Drawing.Color.White;
+            this.buttonEx14.Image = ((System.Drawing.Image)(resources.GetObject("buttonEx14.Image")));
+            this.buttonEx14.Location = new System.Drawing.Point(3, 145);
+            this.buttonEx14.Name = "buttonEx14";
+            this.buttonEx14.Size = new System.Drawing.Size(70, 65);
+            this.buttonEx14.TabIndex = 44;
+            this.buttonEx14.Text = "返回";
+            this.buttonEx14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonEx14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonEx14.UseMnemonic = false;
+            this.buttonEx14.UseVisualStyleBackColor = false;
+            this.buttonEx14.Visible = false;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.Location = new System.Drawing.Point(3, 216);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(70, 65);
+            this.button8.TabIndex = 45;
+            this.button8.Text = "重设";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button8.UseMnemonic = false;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Visible = false;
+            // 
+            // btnfinish
+            // 
+            this.btnfinish.BackColor = System.Drawing.Color.Transparent;
+            this.btnfinish.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnfinish.BackgroundImage")));
+            this.btnfinish.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnfinish.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnfinish.FlatAppearance.BorderSize = 0;
+            this.btnfinish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnfinish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnfinish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnfinish.ForeColor = System.Drawing.Color.White;
+            this.btnfinish.Image = ((System.Drawing.Image)(resources.GetObject("btnfinish.Image")));
+            this.btnfinish.Location = new System.Drawing.Point(3, 287);
+            this.btnfinish.Name = "btnfinish";
+            this.btnfinish.Size = new System.Drawing.Size(70, 65);
+            this.btnfinish.TabIndex = 46;
+            this.btnfinish.Text = "完成";
+            this.btnfinish.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnfinish.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnfinish.UseMnemonic = false;
+            this.btnfinish.UseVisualStyleBackColor = false;
+            this.btnfinish.Visible = false;
+            // 
+            // btnsave
+            // 
+            this.btnsave.BackColor = System.Drawing.Color.Transparent;
+            this.btnsave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnsave.BackgroundImage")));
+            this.btnsave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnsave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnsave.FlatAppearance.BorderSize = 0;
+            this.btnsave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnsave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsave.ForeColor = System.Drawing.Color.White;
+            this.btnsave.Image = ((System.Drawing.Image)(resources.GetObject("btnsave.Image")));
+            this.btnsave.Location = new System.Drawing.Point(3, 358);
+            this.btnsave.Name = "btnsave";
+            this.btnsave.Size = new System.Drawing.Size(70, 65);
+            this.btnsave.TabIndex = 47;
+            this.btnsave.Text = "保存";
+            this.btnsave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnsave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnsave.UseMnemonic = false;
+            this.btnsave.UseVisualStyleBackColor = false;
+            this.btnsave.Visible = false;
+            // 
+            // btnsaveas
+            // 
+            this.btnsaveas.BackColor = System.Drawing.Color.Transparent;
+            this.btnsaveas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnsaveas.BackgroundImage")));
+            this.btnsaveas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnsaveas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnsaveas.FlatAppearance.BorderSize = 0;
+            this.btnsaveas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnsaveas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnsaveas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsaveas.ForeColor = System.Drawing.Color.White;
+            this.btnsaveas.Image = ((System.Drawing.Image)(resources.GetObject("btnsaveas.Image")));
+            this.btnsaveas.Location = new System.Drawing.Point(3, 429);
+            this.btnsaveas.Name = "btnsaveas";
+            this.btnsaveas.Size = new System.Drawing.Size(70, 65);
+            this.btnsaveas.TabIndex = 48;
+            this.btnsaveas.Text = "另存为";
+            this.btnsaveas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnsaveas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnsaveas.UseMnemonic = false;
+            this.btnsaveas.UseVisualStyleBackColor = false;
+            this.btnsaveas.Visible = false;
+            // 
+            // btnprint
+            // 
+            this.btnprint.BackColor = System.Drawing.Color.Transparent;
+            this.btnprint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnprint.BackgroundImage")));
+            this.btnprint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnprint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnprint.FlatAppearance.BorderSize = 0;
+            this.btnprint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnprint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnprint.ForeColor = System.Drawing.Color.White;
+            this.btnprint.Image = ((System.Drawing.Image)(resources.GetObject("btnprint.Image")));
+            this.btnprint.Location = new System.Drawing.Point(3, 500);
+            this.btnprint.Name = "btnprint";
+            this.btnprint.Size = new System.Drawing.Size(70, 70);
+            this.btnprint.TabIndex = 49;
+            this.btnprint.Text = "打印";
+            this.btnprint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnprint.UseMnemonic = false;
+            this.btnprint.UseVisualStyleBackColor = false;
+            this.btnprint.Visible = false;
+            // 
             // UserGroupControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -972,8 +1011,6 @@
             this.tableLayoutPanelCurve.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scatterGraph)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xyCursor1)).EndInit();
-            this.tableLayoutPanel15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.legend)).EndInit();
             this.toolStripLeft.ResumeLayout(false);
             this.toolStripLeft.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1023,9 +1060,6 @@
         private NationalInstruments.UI.YAxis yAxis1;
         private NationalInstruments.UI.XAxis xAxis2;
         private NationalInstruments.UI.YAxis yAxis2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        public NationalInstruments.UI.WindowsForms.Legend legend;
-        private NationalInstruments.UI.LegendItem legendItem1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         public ButtonExNew btnStart;
         public ButtonExNew btnend;
@@ -1038,10 +1072,16 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboy;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboy1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aaToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbomachine;
+        private System.Windows.Forms.Button btnmachine;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

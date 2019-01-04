@@ -142,4 +142,16 @@
   <data name="试验提示1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\试验提示1.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="小启动_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\小启动-1.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="蓝色小停止" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\蓝色小停止.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="蓝色联机1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\蓝色联机1.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="蓝色脱机1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\蓝色脱机1.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

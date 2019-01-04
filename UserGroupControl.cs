@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
-
+using System.IO;
 namespace TabHeaderDemo
 {
 
 
-    public partial class UserGroupControl: UserControl
+    public partial class UserGroupControl : UserControl
     {
-        
-        
- 
+
+
+
         private void drawFigure(PaintEventArgs e, PointF[] points)
         {
             GraphicsPath path = new GraphicsPath();
@@ -32,9 +32,9 @@ namespace TabHeaderDemo
 
 
             Color c = (this.imageList3.Images[0] as Bitmap).GetPixel(this.imageList3.Images[0].Width - 5, this.imageList3.Images[0].Height / 2);
-            
 
-           
+
+
             drawPath(e, path, c);
 
             path.Reset();
@@ -46,8 +46,8 @@ namespace TabHeaderDemo
             path.Transform(matrix);
 
             c = (this.imageList3.Images[0] as Bitmap).GetPixel(this.imageList3.Images[0].Width / 2, this.imageList3.Images[0].Height / 2);
-            
-          
+
+
 
             drawPath(e, path, c);
 
@@ -55,7 +55,7 @@ namespace TabHeaderDemo
         }
         public void Init()
         {
-            
+
             listView1.Columns.Clear();
             listView1.Columns.Add("主机");
             listView1.Columns[0].Width = 40;
@@ -69,7 +69,7 @@ namespace TabHeaderDemo
             listView1.Columns.Add("控制值");
             listView1.Columns[3].Width = 60;
 
-            listView1.Columns.Add("负荷[kN]");
+            listView1.Columns.Add("力[kN]");
             listView1.Columns[4].Width = 60;
 
             listView1.Columns.Add("位移[mm]");
@@ -118,28 +118,57 @@ namespace TabHeaderDemo
             lstspe.Items.Clear();
 
             IP.Components.Toolbox.Item m;
+
+            this.cbomachine.Items.Clear();
+
+            for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
+            {
+                this.cbomachine.Items.Add((i + 1).ToString());
+            }
+            if ((GlobeVal.selcontroller >= 1) && (GlobeVal.selcontroller <= GlobeVal.myglobefile.ControllerCount))
+            {
+                this.cbomachine.SelectedIndex = GlobeVal.selcontroller - 1;
+            }
+            else
+            {
+                this.cbomachine.SelectedIndex = 0;
+            }
+
             for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
             {
                 m = new IP.Components.Toolbox.Item();
-                m.Text = "主机"+(i+1).ToString();
+                m.Text = "主机" + (i + 1).ToString();
 
                 m.Image = imageList4.Images[_Status_Testing.Selector_Status_Ready_For_Test.GetHashCode()];
                 lstspe.Items.Add(m);
 
                 ListViewItem lvi = new ListViewItem();
-                lvi.Text = (i+1).ToString();
+                lvi.Text = (i + 1).ToString();
 
                 for (int j = 0; j < 17; j++)
                 {
                     lvi.SubItems.Add("");
                 }
-                
+
 
                 listView1.Items.Add(lvi);
 
-             }
+            }
 
-            
+            cboy.Items.Clear();
+            for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
+            {
+                for (int j = 0; j < ClsStaticStation.m_Global.mycls.chsignals.Count; j++)
+                {
+                    cboy.Items.Add("主机" + (i + 1).ToString() + ClsStaticStation.m_Global.mycls.chsignals[j].cName);
+                    cboy1.Items.Add("主机" + (i + 1).ToString() + ClsStaticStation.m_Global.mycls.chsignals[j].cName);
+                }
+
+            }
+
+            cboy.SelectedIndex = 0;
+            cboy1.SelectedIndex = 0;
+
             timer1.Enabled = true;
 
         }
@@ -157,15 +186,15 @@ namespace TabHeaderDemo
         public UserGroupControl()
         {
             InitializeComponent();
-         
-           
+
+
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
 
 
             this.tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel1, true, null);
-           // this.tableLayoutPanel2.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel2, true, null);
+            // this.tableLayoutPanel2.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel2, true, null);
             this.tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel3, true, null);
 
             lstspe.ItemMenu = contextMenuStrip1;
@@ -175,20 +204,20 @@ namespace TabHeaderDemo
 
         }
 
-      
 
-       
+
+
 
         public void methodon(String t, String parent)
         {
-          
+
 
         }
 
-       
+
         private void UserManage_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void buttonEx1_Click(object sender, EventArgs e)
@@ -278,8 +307,8 @@ namespace TabHeaderDemo
             roundedRectangle[0].Y = 0;
             roundedRectangle[1].X = this.Width - 2 - 3;
             roundedRectangle[1].Y = 0;
-            roundedRectangle[2].X = this.Width - 2-3;
-            roundedRectangle[2].Y = this.Height - 2 ;
+            roundedRectangle[2].X = this.Width - 2 - 3;
+            roundedRectangle[2].Y = this.Height - 2;
             roundedRectangle[3].X = 1;
             roundedRectangle[3].Y = this.Height - 2;
             roundedRectangle[4].X = 1;
@@ -296,16 +325,16 @@ namespace TabHeaderDemo
 
 
             roundedRectangle = new PointF[5];
-            roundedRectangle[0].X = lstspe .Left - 10;
-            roundedRectangle[0].Y = lstspe.Top+4;
+            roundedRectangle[0].X = lstspe.Left - 10;
+            roundedRectangle[0].Y = lstspe.Top + 4;
             roundedRectangle[1].X = lstspe.Right;
-            roundedRectangle[1].Y = lstspe.Top+4;
+            roundedRectangle[1].Y = lstspe.Top + 4;
             roundedRectangle[2].X = lstspe.Right;
-            roundedRectangle[2].Y = roundedRectangle[0].Y + (lstspe.Bottom - lstspe .Top);
+            roundedRectangle[2].Y = roundedRectangle[0].Y + (lstspe.Bottom - lstspe.Top);
             roundedRectangle[3].X = lstspe.Left - 10;
-            roundedRectangle[3].Y = roundedRectangle[0].Y + (lstspe .Bottom - lstspe.Top);
+            roundedRectangle[3].Y = roundedRectangle[0].Y + (lstspe.Bottom - lstspe.Top);
             roundedRectangle[4].X = lstspe.Left - 10;
-            roundedRectangle[4].Y = lstspe.Top+4;
+            roundedRectangle[4].Y = lstspe.Top + 4;
             drawFigure1(e, roundedRectangle);
 
             e.Graphics.EndContainer(containerState);
@@ -321,11 +350,11 @@ namespace TabHeaderDemo
         {
 
 
-            if (GlobeVal.myarm.connected ==true)
+            if (GlobeVal.myarm.connected == true)
             {
 
-               
-                for (int i=0;i<listView1.Items.Count;i++)
+
+                for (int i = 0; i < listView1.Items.Count; i++)
                 {
                     listView1.Items[i].SubItems[1].Text = GlobeVal.myarm.MyTransferData.FuncID[i].ToString();
                     listView1.Items[i].SubItems[2].Text = GlobeVal.myarm.MyTransferData.EDC_STATE[i].ToString();
@@ -358,5 +387,69 @@ namespace TabHeaderDemo
         {
 
         }
+
+        private void btnmachine_Click(object sender, EventArgs e)
+        {
+            GlobeVal.selcontroller = cbomachine.SelectedIndex + 1;
+            ClsStaticStation.m_Global.currentmachineId = GlobeVal.selcontroller - 1;
+
+
+
+
+
+            (Application.OpenForms["FormMainLab"] as FormMainLab).lblcontroller.Text = GlobeVal.selcontroller.ToString().Trim();
+
+            if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\") == false)
+            {
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\");
+            }
+
+            if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\") == false)
+            {
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\");
+            }
+            if (Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\") == false)
+            {
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\");
+            }
+
+
+
+            string f1 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\sys\\setup.ini";
+
+            if (File.Exists(f1) == false)
+            {
+                GlobeVal.mysys.SerializeNow(f1);
+
+            }
+
+            GlobeVal.mysys = GlobeVal.mysys.DeSerializeNow(f1);
+
+
+
+            string f2 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
+
+
+
+
+
+
+            if (File.Exists(f2) == false)
+            {
+                CComLibrary.GlobeVal.filesave.SerializeNow(f2);
+            }
+
+            CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(f2);
+
+            GlobeVal.userControlmethod1.OpenTheMethodSilently(f2);
+
+            GlobeVal.userControltest1.changeUI();
+
+            ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
+            ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
+
+        }
     }
+
+
 }

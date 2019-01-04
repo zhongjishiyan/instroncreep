@@ -100,46 +100,29 @@ namespace TabHeaderDemo
 
             this.tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel1, true, null);
             this.tableLayoutPanel2.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel2, true, null);
-            this.tableLayoutPanel8.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel8, true, null);
-            this.tableLayoutPanel15.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel15, true, null);
-            this.tableLayoutPanel16.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel16, true, null);
-            this.tableLayoutPanel17.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel17, true, null);
+            this.tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel3, true, null);
+            this.tableLayoutPanel4.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel4, true, null);
 
+            this.tableLayoutPanel5.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel5, true, null);
+
+
+            this.tableLayoutPanel8.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel8, true, null);
+          
 
             this.tableLayoutPanel11.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel11, true, null);
 
             this.tableLayoutPanel9.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel9, true, null);
+            this.tableLayoutPanel10.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel10, true, null);
 
             this.tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel3, true, null);
+            
 
-
-            cbowave.Items.Clear();
-            cbowave.Items.Add("正弦波");
-            cbowave.Items.Add("三角波");
-            cbowave.Items.Add("方波");
-            cbowave.SelectedIndex = 0;
+        
 
         }
 
-        private void switch1_ValueChanged(object sender, EventArgs e)
-        {
-            if (switchDriver.Value == true)
-            {
-                GlobeVal.myarm.DriveOn();
-            }
-
-            else
-            {
-
-                GlobeVal.myarm.DriveOff();
-            }
-
-        }
-
-        private void switch1_StateChanged(object sender, NationalInstruments.UI.ActionEventArgs e)
-        {
-
-        }
+     
+      
         public void DelayS(double t)
         {
             double m = Environment.TickCount;
@@ -183,15 +166,7 @@ namespace TabHeaderDemo
             GlobeVal.myarm.DestStop(mlistbox1[cboctrl.SelectedIndex]);
         }
 
-        private void switch2_StateChanged(object sender, NationalInstruments.UI.ActionEventArgs e)
-        {
-
-        }
-
-        private void switch1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+     
 
         private void UserControl轴向_Paint(object sender, PaintEventArgs e)
         {
@@ -230,64 +205,6 @@ namespace TabHeaderDemo
             e.Graphics.EndContainer(containerState);
         }
 
-        private void switch2_ValueChanged_1(object sender, EventArgs e)
-        {
-            if (this.switchLink.Value==true)
-            {
-                   if (CComLibrary.GlobeVal.filesave == null)
-                  {
-                       MessageBox.Show("请先设置试验方法");
-                          return;
-                    }
-                  else
-                  {
-                
-                  }
-
-              
-
-               
-
-                    try
-                    {
-                        WaitFormService.CreateWaitForm();
-                        // Assembly asmb = Assembly.GetExecutingAssembly();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        WaitFormService.CloseWaitForm();
-                    }
-              
-               
- 
-                GlobeVal.myarm.Init((int)this.Handle);
-                
-                
-      
-            GlobeVal.FormmainLab.timer1.Enabled =true;
-             
-
-            GlobeVal.FormmainLab.InitMeter();
-            GlobeVal.FormmainLab.InitKey();
-
-            if (GlobeVal.myarm.connected ==true)
-                {
-                    WaitFormService.CloseWaitForm();
-                }
-            else
-                {
-                   
-                    WaitFormService.CloseWaitForm();
-
-                    MessageBox.Show("联机失败");
-                }
-
-
-             GlobeVal.myarm.connected = true;
-            }
-        }
-
     
         private void UserControl轴向_Load(object sender, EventArgs e)
         {
@@ -323,17 +240,7 @@ namespace TabHeaderDemo
                 lblalarm.Visible = false;
             }
 
-            if (GlobeVal.mysys.chk_cyclc ==true)
-            {
-                pnlcyclc.Visible = true;
-                tplcycle.Visible = true;
-            }
-            else
-
-            {
-                pnlcyclc.Visible = false;
-                tplcycle.Visible = false;
-            }
+           
 
             btnup.Text = GlobeVal.mysys.lbl_up;
             btnstop.Text = GlobeVal.mysys.lbl_stop;
@@ -350,20 +257,10 @@ namespace TabHeaderDemo
 
                 lblunit.Text = ClsStaticStation.m_Global.mycls.chsignals[mlistbox1[cboctrl.SelectedIndex]].cUnits[0] + "/min";
                 lblmunit.Text = ClsStaticStation.m_Global.mycls.chsignals[mlistbox1[cboctrl.SelectedIndex]].cUnits[0];
-                lblrangeunit.Text = ClsStaticStation.m_Global.mycls.chsignals[mlistbox1[cboctrl.SelectedIndex]].cUnits[0];
-                lblaveunit.Text = ClsStaticStation.m_Global.mycls.chsignals[mlistbox1[cboctrl.SelectedIndex]].cUnits[0];
+               
             }
         }
 
-        private void btnteststart_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void switchLink_StateChanged(object sender, NationalInstruments.UI.ActionEventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -371,14 +268,11 @@ namespace TabHeaderDemo
             f.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void btnfindzero_Click(object sender, EventArgs e)
         {
             GlobeVal.myarm.findzero(1);
         }
+
     }
 }

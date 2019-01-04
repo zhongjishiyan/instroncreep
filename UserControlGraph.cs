@@ -12,6 +12,14 @@ namespace TabHeaderDemo
 {
     public partial class UserControlGraph : UserControl
     {
+        double[] xarray = new double[5000];
+
+        double[] yarray = new double[5000];
+
+        double[] y1array = new double[5000];
+
+        double[][] yarrays = new double[25][];
+
         long mstartoldcount = -1;
         long mstartoldcount1 = -1;
 
@@ -224,7 +232,7 @@ namespace TabHeaderDemo
                 m_Global.mycls.structcopy_RawDataStruct(r[0].rdata, ref b);
 
 
-               
+
 
 
                 ll = ClsStatic.arraydata[mplot1 - 1].Read<RawDataDataGroup>(r, 0, 10);
@@ -845,7 +853,7 @@ namespace TabHeaderDemo
             this.tableLayoutPanelCurve.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanelCurve, true, null);
 
             tabControl1.ItemSize = new Size(1, 1);
-            
+
         }
 
         private void panelback_SizeChanged(object sender, EventArgs e)
@@ -865,6 +873,8 @@ namespace TabHeaderDemo
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
+
             double sensor5 = 0;
             double sensor6 = 0;
             double sensor7 = 0;
@@ -925,7 +935,7 @@ namespace TabHeaderDemo
                 }
             }
 
-
+            int md = 0;
 
             while (myarraydata.Count > 1)
             {
@@ -938,12 +948,7 @@ namespace TabHeaderDemo
 
                 count = count + 1;
 
-                tcount = tcount + 1;
-                if (tcount == 100)
-                {
-                    tcount = 0;
-                    //  Application.DoEvents();
-                }
+
 
                 for (int i = 0; i < m_Global.mycls.datalist.Count; i++)
                 {
@@ -1013,7 +1018,7 @@ namespace TabHeaderDemo
                                 {
                                     GlobeVal.UserControlSpe1.setspe(CComLibrary.GlobeVal.filesave.currentspenumber + 1, CComLibrary.TestStatus.RemoveExt);
 
-                                    if (CComLibrary.GlobeVal.filesave.Extensometer_DataFrozen==true)
+                                    if (CComLibrary.GlobeVal.filesave.Extensometer_DataFrozen == true)
                                     {
                                         CComLibrary.GlobeVal.filesave.Extensometer_DataFrozenFlag = true;
                                     }
@@ -1027,18 +1032,164 @@ namespace TabHeaderDemo
                 }
 
 
-                // if ( Math.Abs(mtime - mstarttime) >= 0.002)
+
+
+
+
+                yarray[md] = yi;
+                xarray[md] = xi;
+                y1array[md] = y1i;
+                md = md + 1;
+
+                double yarraymax = 0;
+                double yarraymin = 0;
+                double xarraymax = 0;
+                double xarraymin = 0;
+                double y1arraymax = 0;
+                double y1arraymin = 0;
+                double[] yarraysmax = new double[25];
+                double[] yarraysmin = new double[25];
+
+
+                if ((myplotsettings.curvekind == 0))
                 {
-
-
-
-
-
-
-                    if ((myplotsettings.curvekind == 0))
+                    #region  曲线方式1采集 
+                    if (CComLibrary.GlobeVal.filesave.Samplingmode == 1)//动态采集
                     {
-                        if (CComLibrary.GlobeVal.filesave.Samplingmode == 1)//动态采集
+                        mk = (CComLibrary.GlobeVal.filesave.currentspenumber + 1) % myplotsettings.curvecount;
+                        if (mk == 0)
                         {
+                            mk = myplotsettings.curvecount;
+                        }
+
+                        if (myplotsettings.curveoffset == 0)
+                        {
+                            if (myarraydata.Count == 1)
+                            {
+                                scatterGraph.Plots[mk - 1].PlotXYAppend(xarray, yarray, 0, md - 1);
+
+                            }
+
+                        }
+
+                        if (myplotsettings.curveoffset == 1)
+                        {
+                            if (myarraydata.Count == 1)
+                            {
+                                scatterGraph.Plots[mk - 1].PlotXYAppend(xarray, yarray, 0, md - 1);
+
+                            }
+                            // scatterGraph.Plots[mk - 1].PlotXYAppend(xi + 0.1 * (mk - 1), yi);
+                        }
+
+                        if (myplotsettings.curveoffset == 2)
+                        {
+                            if (myarraydata.Count == 1)
+                            {
+                                scatterGraph.Plots[mk - 1].PlotXYAppend(xarray, yarray, 0, md - 1);
+
+                            }
+                            // scatterGraph.Plots[mk - 1].PlotXYAppend(xi, yi + 0.1 * (mk - 1));
+                        }
+
+                        if (myplotsettings.curveoffset == 3)
+                        {
+                            if (myarraydata.Count == 1)
+                            {
+                                scatterGraph.Plots[mk - 1].PlotXYAppend(xarray, yarray, 0, md - 1);
+
+                            }
+                            //  scatterGraph.Plots[mk - 1].PlotXYAppend(xi + 0.1 * (mk - 1), yi + 0.1 * (mk - 1));
+                        }
+
+                        if (myplotsettings.dynamicdraw == true)
+                        {
+                            if (scatterGraph.Plots[mk - 1].HistoryCount >= myplotsettings.dynamicpointcount)
+
+                            {
+                                scatterGraph.Plots[mk - 1].ClearData();
+                            }
+                        }
+
+                        if (myarraydata.Count == 1)
+                        {
+                            xarraymin = xarray[0];
+                            xarraymax = xarray[0];
+                            yarraymin = yarray[0];
+                            yarraymax = yarray[0];
+                            y1arraymin = y1array[0];
+                            y1arraymax = y1array[0];
+
+
+                            for (int mj = 0; mj < md - 1; mj++)
+                            {
+                                if (xarraymin < xarray[mj])
+                                {
+                                    xarraymin = xarray[mj];
+                                }
+                                if (xarraymax > xarray[mj])
+                                {
+                                    xarraymax = xarray[mj];
+                                }
+
+                                if (yarraymin < yarray[mj])
+                                {
+                                    yarraymin = yarray[mj];
+                                }
+                                if (yarraymax > yarray[mj])
+                                {
+                                    yarraymax = yarray[mj];
+                                }
+
+                                if (y1arraymin < y1array[mj])
+                                {
+                                    y1arraymin = y1array[mj];
+                                }
+                                if (y1arraymax > y1array[mj])
+                                {
+                                    y1arraymax = y1array[mj];
+                                }
+                            }
+
+
+
+
+                            if (xarraymax > scatterGraph.Plots[mk - 1].XAxis.Range.Maximum)
+                            {
+                                scatterGraph.Plots[mk - 1].XAxis.Range = new NationalInstruments.UI.Range(xarraymax, xarraymax + (myplotsettings.xmax - myplotsettings.xmin));
+
+                            }
+
+                            if (myplotsettings.ychannelzoom == true)
+                            {
+
+                                if (yarraymax > scatterGraph.Plots[mk - 1].YAxis.Range.Maximum)
+                                {
+                                    scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[mk - 1].YAxis.Range.Minimum, yarraymax
+                                        + (scatterGraph.Plots[mk - 1].YAxis.Range.Maximum - scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1);
+
+
+                                }
+
+                                if (yarraymin < scatterGraph.Plots[mk - 1].YAxis.Range.Minimum)
+                                {
+                                    scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(yarraymin - (scatterGraph.Plots[mk - 1].YAxis.Range.Maximum -
+                                        scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[mk - 1].YAxis.Range.Maximum);
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                    {
+
+
+
+                        if (Math.Abs(Environment.TickCount/1000.0   - mstarttime) >= 1/20.0)   
+                       
+                        {
+                            mstarttime = Environment.TickCount/1000.0;
+
                             mk = (CComLibrary.GlobeVal.filesave.currentspenumber + 1) % myplotsettings.curvecount;
                             if (mk == 0)
                             {
@@ -1078,131 +1229,160 @@ namespace TabHeaderDemo
                                 }
                             }
 
+
                             if (xi > scatterGraph.Plots[mk - 1].XAxis.Range.Maximum)
                             {
-                                scatterGraph.Plots[mk - 1].XAxis.Range = new NationalInstruments.UI.Range(xi, xi + (myplotsettings.xmax - myplotsettings.xmin));
+                                scatterGraph.Plots[mk - 1].XAxis.Range = new NationalInstruments.UI.Range(myplotsettings.xmin, xi + (myplotsettings.xmax - myplotsettings.xmin));
 
                             }
+
 
                             if (myplotsettings.ychannelzoom == true)
                             {
 
                                 if (yi > scatterGraph.Plots[mk - 1].YAxis.Range.Maximum)
                                 {
-                                    scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[mk - 1].YAxis.Range.Minimum, scatterGraph.Plots[mk - 1].YAxis.Range.Maximum
-                                        + (scatterGraph.Plots[mk - 1].YAxis.Range.Maximum - scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1);
+                                    scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[mk - 1].YAxis.Range.Minimum, scatterGraph.Plots[mk - 1].YAxis.Range.Maximum + (
+                                         scatterGraph.Plots[mk - 1].YAxis.Range.Maximum - scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1);
 
 
                                 }
 
                                 if (yi < scatterGraph.Plots[mk - 1].YAxis.Range.Minimum)
                                 {
-                                    scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[mk - 1].YAxis.Range.Minimum - (scatterGraph.Plots[mk - 1].YAxis.Range.Maximum -
-                                        scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[mk - 1].YAxis.Range.Maximum);
+                                    scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[mk - 1].YAxis.Range.Minimum -
+                                        (scatterGraph.Plots[mk - 1].YAxis.Range.Maximum - scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[mk - 1].YAxis.Range.Maximum);
                                 }
                             }
 
-
                         }
-                        else
+                    }
+
+                    #endregion
+                }
+                if ((myplotsettings.curvekind == 1))
+                {
+                    #region 曲线方法2动态采集
+                    if (CComLibrary.GlobeVal.filesave.Samplingmode == 1)//动态采集
+                    {
+
+                        if (myarraydata.Count == 1)
                         {
+                            scatterGraph.Plots[0].PlotXYAppend(xarray, yarray, 0, md - 1);
+                            scatterGraph.Plots[1].PlotXYAppend(xarray, y1array, 0, md - 1);
 
-                            /*
-                            bool my1save = false;
+                        }
 
-                            for (int m = 0; m < CComLibrary.GlobeVal.filesave.chkcriteria.Length; m++)
+
+
+                        if (myplotsettings.dynamicdraw == true)
+                        {
+                            if (scatterGraph.Plots[0].HistoryCount >= myplotsettings.dynamicpointcount)
+
                             {
-                                if (CComLibrary.GlobeVal.filesave.chkcriteria[m] == true)
+                                scatterGraph.Plots[0].ClearData();
+                                scatterGraph.Plots[1].ClearData();
+                            }
+
+
+                        }
+                        if (myarraydata.Count == 1)
+                        {
+                            xarraymin = xarray[0];
+                            xarraymax = xarray[0];
+                            yarraymin = yarray[0];
+                            yarraymax = yarray[0];
+                            y1arraymin = y1array[0];
+                            y1arraymax = y1array[0];
+
+
+                            for (int mj = 0; mj < md - 1; mj++)
+                            {
+                                if (xarraymin < xarray[mj])
                                 {
+                                    xarraymin = xarray[mj];
+                                }
+                                if (xarraymax > xarray[mj])
+                                {
+                                    xarraymax = xarray[mj];
+                                }
 
+                                if (yarraymin < yarray[mj])
+                                {
+                                    yarraymin = yarray[mj];
+                                }
+                                if (yarraymax > yarray[mj])
+                                {
+                                    yarraymax = yarray[mj];
+                                }
 
-                                    if (Math.Abs(ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].cvalue - CComLibrary.GlobeVal.filesave.numintervallast1[m]) >= CComLibrary.GlobeVal.filesave.numinterval[m])
-                                    {
-                                        CComLibrary.GlobeVal.filesave.numintervallast1[m] = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].cvalue;
-                                        my1save = true;
-                                    }
-
-
+                                if (y1arraymin < y1array[mj])
+                                {
+                                    y1arraymin = y1array[mj];
+                                }
+                                if (y1arraymax > y1array[mj])
+                                {
+                                    y1arraymax = y1array[mj];
                                 }
                             }
-                            */
 
-                            if (Math.Abs(mtime - mstarttime) >= 1/20.0)
-                            //if (my1save ==true)
+                            if (xarraymax > scatterGraph.Plots[0].XAxis.Range.Maximum)
                             {
-                                mstarttime = mtime;
+                                scatterGraph.Plots[0].XAxis.Range = new NationalInstruments.UI.Range(xarraymax, xarraymax + (myplotsettings.xmax - myplotsettings.xmin));
 
-                                mk = (CComLibrary.GlobeVal.filesave.currentspenumber + 1) % myplotsettings.curvecount;
-                                if (mk == 0)
+                            }
+
+
+                            if (myplotsettings.ychannelzoom == true)
+                            {
+
+                                if (yarraymax > scatterGraph.Plots[0].YAxis.Range.Maximum)
                                 {
-                                    mk = myplotsettings.curvecount;
-                                }
-
-                                if (myplotsettings.curveoffset == 0)
-                                {
-
-                                    scatterGraph.Plots[mk - 1].PlotXYAppend(xi, yi);
-                                }
-
-                                if (myplotsettings.curveoffset == 1)
-                                {
-
-                                    scatterGraph.Plots[mk - 1].PlotXYAppend(xi + 0.1 * (mk - 1), yi);
-                                }
-
-                                if (myplotsettings.curveoffset == 2)
-                                {
-
-                                    scatterGraph.Plots[mk - 1].PlotXYAppend(xi, yi + 0.1 * (mk - 1));
-                                }
-
-                                if (myplotsettings.curveoffset == 3)
-                                {
-
-                                    scatterGraph.Plots[mk - 1].PlotXYAppend(xi + 0.1 * (mk - 1), yi + 0.1 * (mk - 1));
-                                }
-
-                                if (myplotsettings.dynamicdraw == true)
-                                {
-                                    if (scatterGraph.Plots[mk - 1].HistoryCount >= myplotsettings.dynamicpointcount)
-
-                                    {
-                                        scatterGraph.Plots[mk - 1].ClearData();
-                                    }
-                                }
-
-                                if (xi > scatterGraph.Plots[mk - 1].XAxis.Range.Maximum)
-                                {
-                                    scatterGraph.Plots[mk - 1].XAxis.Range = new NationalInstruments.UI.Range(myplotsettings.xmin, xi + (myplotsettings.xmax - myplotsettings.xmin));
+                                    scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[0].YAxis.Range.Minimum, yarraymax +
+                                         (scatterGraph.Plots[0].YAxis.Range.Maximum - scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1);
 
                                 }
 
-                                if (myplotsettings.ychannelzoom == true)
+                                if (yarraymin < scatterGraph.Plots[0].YAxis.Range.Minimum)
                                 {
+                                    scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(yarraymin -
+                                        (scatterGraph.Plots[0].YAxis.Range.Maximum - scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[0].YAxis.Range.Maximum);
 
-                                    if (yi > scatterGraph.Plots[mk - 1].YAxis.Range.Maximum)
-                                    {
-                                        scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[mk - 1].YAxis.Range.Minimum, scatterGraph.Plots[mk - 1].YAxis.Range.Maximum + (
-                                             scatterGraph.Plots[mk - 1].YAxis.Range.Maximum - scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1);
-
-
-                                    }
-
-                                    if (yi < scatterGraph.Plots[mk - 1].YAxis.Range.Minimum)
-                                    {
-                                        scatterGraph.Plots[mk - 1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[mk - 1].YAxis.Range.Minimum -
-                                            (scatterGraph.Plots[mk - 1].YAxis.Range.Maximum - scatterGraph.Plots[mk - 1].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[mk - 1].YAxis.Range.Maximum);
-                                    }
                                 }
+
+
+                            }
+
+                            if (myplotsettings.y1channelzoom == true)
+                            {
+                                if (y1arraymax > scatterGraph.Plots[1].YAxis.Range.Maximum)
+                                {
+                                    scatterGraph.Plots[1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[1].YAxis.Range.Minimum, y1arraymax +
+                                        (scatterGraph.Plots[1].YAxis.Range.Maximum - scatterGraph.Plots[1].YAxis.Range.Minimum) * 0.1);
+
+                                }
+
+                                if (y1arraymin < scatterGraph.Plots[1].YAxis.Range.Minimum)
+                                {
+                                    scatterGraph.Plots[1].YAxis.Range = new NationalInstruments.UI.Range(y1arraymin -
+                                        (scatterGraph.Plots[1].YAxis.Range.Maximum - scatterGraph.Plots[1].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[1].YAxis.Range.Maximum);
+
+                                }
+
 
                             }
                         }
+
+
 
                     }
-                    if ((myplotsettings.curvekind == 1))
+                    else
                     {
-                        if (CComLibrary.GlobeVal.filesave.Samplingmode == 1)//动态采集
+
+                        if (Math.Abs(mtime - mstarttime) >= 1 / 20.0)
+
                         {
+                            mstarttime = mtime;
                             scatterGraph.Plots[0].PlotXYAppend(xi, yi);
                             scatterGraph.Plots[1].PlotXYAppend(xi, y1i);
 
@@ -1223,19 +1403,20 @@ namespace TabHeaderDemo
                                 scatterGraph.Plots[0].XAxis.Range = new NationalInstruments.UI.Range(xi, xi + (myplotsettings.xmax - myplotsettings.xmin));
 
                             }
+
                             if (myplotsettings.ychannelzoom == true)
                             {
                                 if (yi > scatterGraph.Plots[0].YAxis.Range.Maximum)
                                 {
-                                    scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[0].YAxis.Range.Minimum, scatterGraph.Plots[0].YAxis.Range.Maximum +
-                                         (scatterGraph.Plots[0].YAxis.Range.Maximum - scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1);
+                                    scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[0].YAxis.Range.Minimum, scatterGraph.Plots[0].YAxis.Range.Maximum
+                                        + (scatterGraph.Plots[0].YAxis.Range.Maximum - scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1);
 
                                 }
 
                                 if (yi < scatterGraph.Plots[0].YAxis.Range.Minimum)
                                 {
-                                    scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[0].YAxis.Range.Minimum -
-                                        (scatterGraph.Plots[0].YAxis.Range.Maximum - scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[0].YAxis.Range.Maximum);
+                                    scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[0].YAxis.Range.Minimum - (scatterGraph.Plots[0].YAxis.Range.Maximum -
+                                        scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[0].YAxis.Range.Maximum);
 
                                 }
 
@@ -1261,86 +1442,145 @@ namespace TabHeaderDemo
 
                             }
 
-
-
                         }
-                        else
+                    }
+
+                    #endregion
+
+                }
+
+
+                if (myplotsettings.curvekind == 2)
+                {
+                    #region 曲线方式3动态采集
+                    if (CComLibrary.GlobeVal.filesave.Samplingmode == 1)//动态采集
+                    {
+
+                        for (k = 0; k < myplotsettings.curvecount; k++)
                         {
-                           
-                           if (Math.Abs(mtime - mstarttime) >= 1 / 20.0)
-
+                            for (int i = 0; i < m_Global.mycls.datalist.Count; i++)
                             {
-                                mstarttime = mtime;
-                                scatterGraph.Plots[0].PlotXYAppend(xi, yi);
-                                scatterGraph.Plots[1].PlotXYAppend(xi, y1i);
 
-                                if (myplotsettings.dynamicdraw == true)
+
+                                if (m_Global.mycls.datalist[i].SignName == ClsStaticStation.m_Global.mycls.allsignals[myplotsettings.ychannel[k]].SignName)
+
                                 {
-                                    if (scatterGraph.Plots[0].HistoryCount >= myplotsettings.dynamicpointcount)
 
+                                    yi = Convert.ToDouble(m_Global.mycls.allsignals[myplotsettings.ychannel[k]].GetValueFromUnit(b.data[m_Global.mycls.datalist[i].EdcId],
+                                       myplotsettings.ychannelunit[k]));
+                                    yarrays[k][md - 1] = yi;
+
+                                }
+                            }
+
+
+                            if (myarraydata.Count == 1)
+                            {
+                                scatterGraph.Plots[k].PlotXYAppend(xarray, yarrays[k], 0, md - 1);
+                            }
+
+
+                            if (myarraydata.Count == 1)
+                            {
+
+                                xarraymin = xarray[0];
+                                xarraymax = xarray[0];
+                                yarraysmin[k] = yarrays[k][0];
+                                yarraysmax[k] = yarrays[k][0];
+
+
+                                for (int mj = 0; mj < md - 1; mj++)
+                                {
+                                    if (xarraymin < xarray[mj])
                                     {
-                                        scatterGraph.Plots[0].ClearData();
-                                        scatterGraph.Plots[1].ClearData();
+                                        xarraymin = xarray[mj];
+                                    }
+                                    if (xarraymax > xarray[mj])
+                                    {
+                                        xarraymax = xarray[mj];
                                     }
 
+                                    if (yarraysmin[k] < yarrays[k][mj])
+                                    {
+                                        yarraysmin[k] = yarrays[k][mj];
+                                    }
+                                    if (yarraysmax[k] > yarrays[k][mj])
+                                    {
+                                        yarraysmax[k] = yarrays[k][mj];
+                                    }
 
                                 }
 
-                                if (xi > scatterGraph.Plots[0].XAxis.Range.Maximum)
+                                if (xarraymax > scatterGraph.Plots[k].XAxis.Range.Maximum)
                                 {
-                                    scatterGraph.Plots[0].XAxis.Range = new NationalInstruments.UI.Range(xi, xi + (myplotsettings.xmax - myplotsettings.xmin));
+                                    scatterGraph.Plots[k].XAxis.Range = new NationalInstruments.UI.Range(xarraymax, xarraymax + (myplotsettings.xmax - myplotsettings.xmin));
+
+                                }
+
+                                if (xarraymin < scatterGraph.Plots[k].XAxis.Range.Minimum)
+                                {
+                                    scatterGraph.Plots[k].XAxis.Range = new NationalInstruments.UI.Range(xarraymin, xarraymin + (myplotsettings.xmax - myplotsettings.xmin));
 
                                 }
 
                                 if (myplotsettings.ychannelzoom == true)
                                 {
-                                    if (yi > scatterGraph.Plots[0].YAxis.Range.Maximum)
+                                    if (yarraysmax[k] > scatterGraph.Plots[k].YAxis.Range.Maximum)
                                     {
-                                        scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[0].YAxis.Range.Minimum, scatterGraph.Plots[0].YAxis.Range.Maximum
-                                            + (scatterGraph.Plots[0].YAxis.Range.Maximum - scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1);
-
+                                        scatterGraph.Plots[k].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[k].YAxis.Range.Minimum, yarraysmax[k] +
+                                            (scatterGraph.Plots[k].YAxis.Range.Maximum - scatterGraph.Plots[k].YAxis.Range.Minimum) * 0.1);
                                     }
 
-                                    if (yi < scatterGraph.Plots[0].YAxis.Range.Minimum)
+                                    if (yarraysmin[k] < scatterGraph.Plots[k].YAxis.Range.Minimum)
                                     {
-                                        scatterGraph.Plots[0].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[0].YAxis.Range.Minimum - (scatterGraph.Plots[0].YAxis.Range.Maximum -
-                                            scatterGraph.Plots[0].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[0].YAxis.Range.Maximum);
-
+                                        scatterGraph.Plots[k].YAxis.Range = new NationalInstruments.UI.Range(yarraysmin[k] -
+                                            (scatterGraph.Plots[k].YAxis.Range.Maximum - scatterGraph.Plots[k].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[k].YAxis.Range.Maximum);
                                     }
-
-
                                 }
+                            }
 
-                                if (myplotsettings.y1channelzoom == true)
+
+                        }
+
+                        if (myplotsettings.dynamicdraw == true)
+                        {
+                            if (scatterGraph.Plots[0].HistoryCount >= myplotsettings.dynamicpointcount)
+
+                            {
+                                for (int i = 0; i < myplotsettings.curvecount; i++)
                                 {
-                                    if (y1i > scatterGraph.Plots[1].YAxis.Range.Maximum)
-                                    {
-                                        scatterGraph.Plots[1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[1].YAxis.Range.Minimum, scatterGraph.Plots[1].YAxis.Range.Maximum +
-                                            (scatterGraph.Plots[1].YAxis.Range.Maximum - scatterGraph.Plots[1].YAxis.Range.Minimum) * 0.1);
-
-                                    }
-
-                                    if (y1i < scatterGraph.Plots[1].YAxis.Range.Minimum)
-                                    {
-                                        scatterGraph.Plots[1].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[1].YAxis.Range.Minimum -
-                                            (scatterGraph.Plots[1].YAxis.Range.Maximum - scatterGraph.Plots[1].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[1].YAxis.Range.Maximum);
-
-                                    }
-
-
+                                    scatterGraph.Plots[i].ClearData();
                                 }
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        /*
+                        bool mysave = false;
+
+                        for (int m = 0; m < CComLibrary.GlobeVal.filesave.chkcriteria.Length; m++)
+                        {
+                            if (CComLibrary.GlobeVal.filesave.chkcriteria[m] == true)
+                            {
+
+
+                                if (Math.Abs(ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].cvalue - CComLibrary.GlobeVal.filesave.numintervallast[m]) >= CComLibrary.GlobeVal.filesave.numinterval[m])
+                                {
+                                    CComLibrary.GlobeVal.filesave.numintervallast[m] = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].cvalue;
+                                    mysave = true;
+                                }
+
 
                             }
                         }
+                        */
+                        if (Math.Abs(mtime - mstarttime) >= 1 / 10.0)
 
-                    }
-
-
-                    if (myplotsettings.curvekind == 2)
-                    {
-                        if (CComLibrary.GlobeVal.filesave.Samplingmode == 1)//动态采集
+                        // if (mysave ==true)
                         {
-
+                            mstarttime = mtime;
                             for (k = 0; k < myplotsettings.curvecount; k++)
                             {
                                 for (int i = 0; i < m_Global.mycls.datalist.Count; i++)
@@ -1371,24 +1611,6 @@ namespace TabHeaderDemo
                                     scatterGraph.Plots[k].XAxis.Range = new NationalInstruments.UI.Range(xi, xi + (myplotsettings.xmax - myplotsettings.xmin));
 
                                 }
-
-                                if (myplotsettings.ychannelzoom == true)
-                                {
-                                    if (yi > scatterGraph.Plots[k].YAxis.Range.Maximum)
-                                    {
-                                        scatterGraph.Plots[k].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[k].YAxis.Range.Minimum, scatterGraph.Plots[k].YAxis.Range.Maximum +
-                                            (scatterGraph.Plots[k].YAxis.Range.Maximum - scatterGraph.Plots[k].YAxis.Range.Minimum) * 0.1);
-                                    }
-
-                                    if (yi < scatterGraph.Plots[k].YAxis.Range.Minimum)
-                                    {
-                                        scatterGraph.Plots[k].YAxis.Range = new NationalInstruments.UI.Range(scatterGraph.Plots[k].YAxis.Range.Minimum -
-                                            (scatterGraph.Plots[k].YAxis.Range.Maximum - scatterGraph.Plots[k].YAxis.Range.Minimum) * 0.1, scatterGraph.Plots[k].YAxis.Range.Maximum);
-                                    }
-                                }
-
-
-
                             }
 
                             if (myplotsettings.dynamicdraw == true)
@@ -1403,80 +1625,10 @@ namespace TabHeaderDemo
                                 }
                             }
                         }
-
-                        else
-                        {
-                            /*
-                            bool mysave = false;
-
-                            for (int m = 0; m < CComLibrary.GlobeVal.filesave.chkcriteria.Length; m++)
-                            {
-                                if (CComLibrary.GlobeVal.filesave.chkcriteria[m] == true)
-                                {
-
-
-                                    if (Math.Abs(ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].cvalue - CComLibrary.GlobeVal.filesave.numintervallast[m]) >= CComLibrary.GlobeVal.filesave.numinterval[m])
-                                    {
-                                        CComLibrary.GlobeVal.filesave.numintervallast[m] = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].cvalue;
-                                        mysave = true;
-                                    }
-
-
-                                }
-                            }
-                            */
-                           if (Math.Abs(mtime - mstarttime) >= 1 / 10)
-
-                           // if (mysave ==true)
-                            {
-                                mstarttime = mtime;
-                                for (k = 0; k < myplotsettings.curvecount; k++)
-                                {
-                                    for (int i = 0; i < m_Global.mycls.datalist.Count; i++)
-                                    {
-
-
-                                        if (m_Global.mycls.datalist[i].SignName == ClsStaticStation.m_Global.mycls.allsignals[myplotsettings.ychannel[k]].SignName)
-
-                                        {
-
-                                            yi = Convert.ToDouble(m_Global.mycls.allsignals[myplotsettings.ychannel[k]].GetValueFromUnit(b.data[m_Global.mycls.datalist[i].EdcId],
-                                               myplotsettings.ychannelunit[k]));
-
-
-                                        }
-                                    }
-
-                                    scatterGraph.Plots[k].PlotXYAppend(xi, yi);
-
-                                    if (xi > scatterGraph.Plots[k].XAxis.Range.Maximum)
-                                    {
-                                        scatterGraph.Plots[k].XAxis.Range = new NationalInstruments.UI.Range(xi, xi + (myplotsettings.xmax - myplotsettings.xmin));
-
-                                    }
-
-                                    if (xi < scatterGraph.Plots[k].XAxis.Range.Minimum)
-                                    {
-                                        scatterGraph.Plots[k].XAxis.Range = new NationalInstruments.UI.Range(xi, xi + (myplotsettings.xmax - myplotsettings.xmin));
-
-                                    }
-                                }
-
-                                if (myplotsettings.dynamicdraw == true)
-                                {
-                                    if (scatterGraph.Plots[0].HistoryCount >= myplotsettings.dynamicpointcount)
-
-                                    {
-                                        for (int i = 0; i < myplotsettings.curvecount; i++)
-                                        {
-                                            scatterGraph.Plots[i].ClearData();
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
+                    #endregion
                 }
+
                 if (mplot1 == 1)
                 {
                     if (CComLibrary.GlobeVal.filesave.Samplingmode == 1)//动态采集
@@ -1881,7 +2033,7 @@ namespace TabHeaderDemo
                         //
                         bool madvancedsave = false;
 
-                       
+
 
                         //静态采集开始
 
@@ -1897,18 +2049,18 @@ namespace TabHeaderDemo
 
                                     for (int i = 0; i < CComLibrary.GlobeVal.filesave.mrawdata.Count; i++)
                                     {
-                                       
-                                            if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == CComLibrary.GlobeVal.filesave.mrawdata[i].SignName)
-                                            {
-                                                k = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].EdcId;
 
-                                              v = b.data[k];
+                                        if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == CComLibrary.GlobeVal.filesave.mrawdata[i].SignName)
+                                        {
+                                            k = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].EdcId;
+
+                                            v = b.data[k];
                                             //v = mrawdata.data[k];
-                                              //  double.TryParse(CComLibrary.GlobeVal.filesave.mrawdata[i].GetValueFromUnit(b.data[k], 0 ), out v);
-                                            }
-                                        
+                                            //  double.TryParse(CComLibrary.GlobeVal.filesave.mrawdata[i].GetValueFromUnit(b.data[k], 0 ), out v);
+                                        }
+
                                     }
-                                        if (Math.Abs( v - CComLibrary.GlobeVal.filesave.numintervallast[m]) >= CComLibrary.GlobeVal.filesave.numinterval[m])
+                                    if (Math.Abs(v - CComLibrary.GlobeVal.filesave.numintervallast[m]) >= CComLibrary.GlobeVal.filesave.numinterval[m])
                                     {
                                         CComLibrary.GlobeVal.filesave.numintervallast[m] = v;
                                         mysave = true;
@@ -1978,15 +2130,7 @@ namespace TabHeaderDemo
 
 
             }
-            /* 
-             if(count >5000)
-             {
-                 scatterGraph.ClearData();
-                 count = 0;
-             }
-
-             lblcaption.Text = count.ToString();
-             */
+          
             timer1.Enabled = true;
 
         }
@@ -2028,7 +2172,7 @@ namespace TabHeaderDemo
         }
         public void SetGraphStyle(int m)
         {
-            if (m==0)
+            if (m == 0)
             {
                 lblcaption.Text = "曲线图1";
                 lblcaption.Tag = false;
@@ -2036,7 +2180,7 @@ namespace TabHeaderDemo
                 toolStripLeft.Visible = true;
             }
 
-            if(m==1)
+            if (m == 1)
             {
                 lblcaption.Tag = true;
                 lblcaption.Text = "分析图1";

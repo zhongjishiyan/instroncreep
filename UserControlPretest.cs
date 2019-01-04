@@ -313,13 +313,12 @@ namespace TabHeaderDemo
                 GlobeVal.userControltest1.tableLayoutPanelback.RowStyles[1].Height = 0;
 
                 GlobeVal.userControltest1.tableLayoutPanelTop.Visible = false;
-
+                GlobeVal.userControltest1.panelright.Visible = false;
                 
               
 
                 GlobeVal.userControltest1.splitContainer1.SplitterDistance = 100;
 
-                GlobeVal.userControltest1.paneltestright.Visible = false;
 
 
 
@@ -364,7 +363,7 @@ namespace TabHeaderDemo
                 GlobeVal.userControltest1.paneltestright.Visible = true;
 
 
-
+               
 
 
 
@@ -385,14 +384,9 @@ namespace TabHeaderDemo
                 GlobeVal.userControltest1.Visible = true ;
                 GlobeVal.userControltest1.Visible = false;
                 GlobeVal.dynset.tlbetest.ResetSizeAndSizeTypes();
-                /*
-                double t = Environment.TickCount;
-                while((Environment.TickCount -t)<500)
-                        {
-                    Application.DoEvents();
-                }
-                */
+               
                 GlobeVal.userControltest1.Visible = true;
+                GlobeVal.userControltest1.panelright.Visible = true;
             }
 
             GlobeVal.UserControlMain1.btnmmethod.Visible = true;

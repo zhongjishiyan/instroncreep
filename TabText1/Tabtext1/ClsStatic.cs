@@ -2466,14 +2466,14 @@ namespace ClsStaticStation
                 }
                 if (mcUnitsel == 1)
                 {
-                    t = Convert.ToDouble(cValueOrigin) * 0.000278;
+                    t = Convert.ToDouble(cValueOrigin)/60.0/60.0;
                     precise = originprecise + 4;
                     return format(t, precise);
                 }
 
                 if (mcUnitsel == 2)
                 {
-                    t = Convert.ToDouble(cValueOrigin) * 0.0167;
+                    t = Convert.ToDouble(cValueOrigin)/60.0;
                     precise = originprecise + 2;
                     return format(t, precise);
                 }
