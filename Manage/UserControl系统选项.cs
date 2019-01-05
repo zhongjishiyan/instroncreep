@@ -17,15 +17,22 @@ namespace TabHeaderDemo
 
             tabControl1.SelectedIndex = sel;
 
-            if (GlobeVal.mysys.AppUserLevel == 0)
+            if (GlobeVal.mysys.safe == true)
             {
-                tabControl1.Enabled = false;
+
+                if (GlobeVal.mysys.AppUserLevel == 0)
+                {
+                    tabControl1.Enabled = false;
+                }
+                else
+                {
+                    tabControl1.Enabled = true;
+                }
             }
             else
             {
                 tabControl1.Enabled = true;
             }
-
             cbostartup.Items.Clear();
             cbostartup.Items.Add("在主屏幕");
             cbostartup.Items.Add("按照上次使用过的试验方法准备试验");

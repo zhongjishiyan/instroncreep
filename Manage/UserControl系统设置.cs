@@ -20,22 +20,27 @@ namespace TabHeaderDemo
         {
 
             tabControl1.SelectedIndex = sel;
-
-            if (GlobeVal.mysys.AppUserLevel == 0)
+            if (GlobeVal.mysys.safe == true)
             {
-                groupBox1.Enabled = false;
-                groupBox2.Enabled = false;
+
+                if (GlobeVal.mysys.AppUserLevel == 0)
+                {
+                    groupBox1.Enabled = false;
+                    groupBox2.Enabled = false;
+                }
+                else
+                {
+                    groupBox1.Enabled = true;
+                    groupBox2.Enabled = true;
+
+                }
             }
             else
             {
+
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
-
             }
-
-            groupBox1.Enabled = true;
-            groupBox2.Enabled = true;
-
             cbomachine.Items.Clear();
             for (int i = 0; i < GlobeVal.mysys.MachineCount; i++)
             {

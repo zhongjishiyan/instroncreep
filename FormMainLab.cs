@@ -722,16 +722,6 @@ namespace TabHeaderDemo
 
         }
 
-        void m_toolbox_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void userControl11_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
