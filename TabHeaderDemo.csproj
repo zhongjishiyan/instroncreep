@@ -365,7 +365,6 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClassSys.cs" />
     <Compile Include="Controls\AuthorAttribute.cs" />
     <Compile Include="ClassPrint.cs" />
     <Compile Include="FormUser.cs">

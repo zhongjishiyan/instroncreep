@@ -2037,6 +2037,8 @@ namespace TabHeaderDemo
 
                         //静态采集开始
 
+
+
                         if (madvancedsave == false)
                         {
 
@@ -2053,8 +2055,16 @@ namespace TabHeaderDemo
                                         if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == CComLibrary.GlobeVal.filesave.mrawdata[i].SignName)
                                         {
                                             k = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].EdcId;
-
-                                            v = b.data[k];
+                                            if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == "Ch Time")
+                                            {
+                                                v = Environment.TickCount /1000.0;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                v = b.data[k];
+                                                break;
+                                            }
                                             //v = mrawdata.data[k];
                                             //  double.TryParse(CComLibrary.GlobeVal.filesave.mrawdata[i].GetValueFromUnit(b.data[k], 0 ), out v);
                                         }

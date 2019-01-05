@@ -96,10 +96,12 @@ namespace ClsStaticStation
 
              for (i = 0; i < 4; i++)
              {
-                 ClsStatic.arraydata[i] = new CircularBuffer("MCTarraydata" + i.ToString(), 500, Marshal.SizeOf(typeof(RawDataDataGroup)));
-                 ClsStatic.arraydatacount[i] = 0;
+                
 
+                    ClsStatic.arraydata[i] = new CircularBuffer("MCTarraydata" + i.ToString(), 500, Marshal.SizeOf(typeof(RawDataDataGroup)));
+                    ClsStatic.arraydatacount[i] = 0;
 
+                
              }
             
 
@@ -1329,32 +1331,33 @@ namespace ClsStaticStation
 
              return;
          }
-         public ItemSignalStation(int m)
-         {
-             machinekind = m;
-             ItemSignal isi;
-             //teststep = new List<CTestStep>();
 
-             shapelist = new List<shapeitem>();
+        public ItemSignalStation(int m)
+        {
+            machinekind = m;
+            ItemSignal isi;
+            //teststep = new List<CTestStep>();
 
-             InitShape();
+            shapelist = new List<shapeitem>();
 
-             chsignals = new List<ItemSignal>();
+            InitShape();
 
-             allsignals = new List<ItemSignal>();
+            chsignals = new List<ItemSignal>();
 
-             TestkindList = new List<string>();
+            allsignals = new List<ItemSignal>();
 
-             originsignals = new List<ItemSignal>();
+            TestkindList = new List<string>();
+
+            originsignals = new List<ItemSignal>();
 
 
-             hardsignals = new List<ItemSignal>();
-             zerosignals = new List<ItemSignal>();
+            hardsignals = new List<ItemSignal>();
+            zerosignals = new List<ItemSignal>();
 
-             calcparameters = new List<ItemCalcedSignal>();
-             calcvariables = new List<ItemCalcedSignal>();
+            calcparameters = new List<ItemCalcedSignal>();
+            calcvariables = new List<ItemCalcedSignal>();
 
-             signalskindlist = new List<ItemSignal>();
+            signalskindlist = new List<ItemSignal>();
 
             ChannelControl = new bool[20];
             ChannelDimension = new int[20];
@@ -1362,203 +1365,435 @@ namespace ClsStaticStation
             ChannelSampling = new int[20];
 
             for (int i = 0; i <= 18; i++)
-             {
-                 isi = new ItemSignal();
-                 isi.cUnitKind = i;
-                 isi.cUnitsel = 0;
-                 isi.InitUnit();
-                 signalskindlist.Add(isi);
-               
-             }
+            {
+                isi = new ItemSignal();
+                isi.cUnitKind = i;
+                isi.cUnitsel = 0;
+                isi.InitUnit();
+                signalskindlist.Add(isi);
 
-             SignalsNames = new String[signalskindlist.Count];
+            }
 
-             SignalsNames[0] = "长度";
-             SignalsNames[1] = "力";
-             SignalsNames[2] = "长度速度";
-             SignalsNames[3] = "力速度";
-             SignalsNames[4] = "时间";
-             SignalsNames[5] = "电压";
-             SignalsNames[6] = "频率";
-             SignalsNames[7] = "段数";
-             SignalsNames[8] = "pid";
-             SignalsNames[9] = "命令";
-             SignalsNames[10] = "角度";
-             SignalsNames[11] = "扭矩";
-             SignalsNames[12] = "角度速度";
-             SignalsNames[13] = "扭矩速度";
-             SignalsNames[14] = "温度";
-             SignalsNames[15] = "应力";
-             SignalsNames[16] = "流量";
-             SignalsNames[17] = "刚度";
-             SignalsNames[18] = "应变";
+            SignalsNames = new String[signalskindlist.Count];
 
-
-             TestkindList.Add("拉伸");
-             TestkindList.Add("拉伸蠕变松弛");
-             TestkindList.Add("拉伸程序块循环");
-             TestkindList.Add("金属");
-             TestkindList.Add("沥青");
-
-             TestkindList.Add("压缩");
-             TestkindList.Add("压缩蠕变松弛");
-             TestkindList.Add("压缩程序块");
-
-             TestkindList.Add("弯曲");
-             TestkindList.Add("弯曲蠕变松弛");
-             TestkindList.Add("剥离");
-             TestkindList.Add("撕裂");
-             TestkindList.Add("摩擦");
-             TestkindList.Add("扭转");
-             TestkindList.Add("岩石压缩");
+            SignalsNames[0] = "长度";
+            SignalsNames[1] = "力";
+            SignalsNames[2] = "长度速度";
+            SignalsNames[3] = "力速度";
+            SignalsNames[4] = "时间";
+            SignalsNames[5] = "电压";
+            SignalsNames[6] = "频率";
+            SignalsNames[7] = "段数";
+            SignalsNames[8] = "pid";
+            SignalsNames[9] = "命令";
+            SignalsNames[10] = "角度";
+            SignalsNames[11] = "扭矩";
+            SignalsNames[12] = "角度速度";
+            SignalsNames[13] = "扭矩速度";
+            SignalsNames[14] = "温度";
+            SignalsNames[15] = "应力";
+            SignalsNames[16] = "流量";
+            SignalsNames[17] = "刚度";
+            SignalsNames[18] = "应变";
 
 
-             LName = new string[10];
+            TestkindList.Add("拉伸");
+            TestkindList.Add("拉伸蠕变松弛");
+            TestkindList.Add("拉伸程序块循环");
+            TestkindList.Add("金属");
+            TestkindList.Add("沥青");
+
+            TestkindList.Add("压缩");
+            TestkindList.Add("压缩蠕变松弛");
+            TestkindList.Add("压缩程序块");
+
+            TestkindList.Add("弯曲");
+            TestkindList.Add("弯曲蠕变松弛");
+            TestkindList.Add("剥离");
+            TestkindList.Add("撕裂");
+            TestkindList.Add("摩擦");
+            TestkindList.Add("扭转");
+            TestkindList.Add("岩石压缩");
 
 
-             isi = new ItemSignal();
-             isi.cName = "命令频率";
-             isi.LName[0] = "命令频率";
-             isi.LName[1] = "Command frequency";
-
-             isi.originprecise = 3;
-             isi.SignName = "Ch Command frequency";
-             isi.cUnitKind = 6;
-             isi.cUnitsel = 0;
-             isi.InitUnit();
-             isi.fullmaxbase = 10000;
-             isi.fullminbase = 0;
-
-             freqsignal = new ItemSignal();
-             freqsignal.originprecise = 3;
-             freqsignal.cName = "频率";
-             freqsignal.LName[0] = "频率";
-             freqsignal.LName[1] = "Freq";
-             freqsignal.SignName = "Ch Freq";
-             freqsignal.cUnitKind = 6;
-             freqsignal.cUnitsel = 0;
-             freqsignal.InitUnit();
-             freqsignal.fullmaxbase = 50;
-             freqsignal.fullminbase = 0;
-
-             timesignal = new ItemSignal();
-             timesignal.cName = "时间";
-             timesignal.LName[0] = "时间";
-             timesignal.LName[1] = "Time";
-             timesignal.originprecise = 1;
-             timesignal.SignName = "Time";
-             timesignal.cUnitKind = 4;
-             timesignal.cUnitsel = 0;
-             timesignal.InitUnit();
-             timesignal.fullmaxbase = 316000000;
-             timesignal.fullminbase = 0;
-
-             shorttimesignal = new ItemSignal();
-             shorttimesignal.cName = "短时间";
-             shorttimesignal.LName[0] = "短时间";
-             shorttimesignal.LName[1] = "Short Time";
-             shorttimesignal.originprecise = 1;
-             shorttimesignal.SignName = "Short Time";
-             shorttimesignal.cUnitKind = 4;
-             shorttimesignal.cUnitsel = 0;
-             shorttimesignal.InitUnit();
-             shorttimesignal.fullmaxbase = 1000;
-             shorttimesignal.fullminbase = 0;
-
-             lengthspeedsignal = new ItemSignal();
-             lengthspeedsignal.cName = "距离速度";
-             lengthspeedsignal.LName[0] = "距离速度";
-             lengthspeedsignal.LName[1] = "length speed";
-
-             lengthspeedsignal.originprecise = 3;
-             lengthspeedsignal.SignName = "length speed";
-             lengthspeedsignal.cUnitKind = 2;
-             lengthspeedsignal.cUnitsel = 0;
-             lengthspeedsignal.InitUnit();
-             lengthspeedsignal.fullmaxbase = 10000;
-             lengthspeedsignal.fullminbase = 0;
-
-             anglespeedsignal = new ItemSignal();
-             anglespeedsignal.cName = "角度速度";
-             anglespeedsignal.LName[0] = "角度速度";
-             anglespeedsignal.LName[1] = "angle speed";
-
-             anglespeedsignal.originprecise = 3;
-             anglespeedsignal.SignName = "angle speed";
-             anglespeedsignal.cUnitKind = 12;
-             anglespeedsignal.cUnitsel = 0;
-             anglespeedsignal.InitUnit();
-             anglespeedsignal.fullmaxbase = 10000;
-             anglespeedsignal.fullminbase = 0;
-
-             torquespeedsignal = new ItemSignal();
-             torquespeedsignal.cName = "扭矩速度";
-             torquespeedsignal.LName[0] = "扭矩速度";
-             torquespeedsignal.LName[1] = "torque speed";
-
-             torquespeedsignal.originprecise = 3;
-             torquespeedsignal.SignName = "torque speed";
-             torquespeedsignal.cUnitKind = 13;
-             torquespeedsignal.cUnitsel = 0;
-             torquespeedsignal.InitUnit();
-             torquespeedsignal.fullmaxbase = 10000;
-             torquespeedsignal.fullminbase = 0;
-
-             forcespeedsignal = new ItemSignal();
-             forcespeedsignal.cName = "力速度";
-             forcespeedsignal.LName[0] = "力速度";
-             forcespeedsignal.LName[1] = "length speed";
-
-             forcespeedsignal.originprecise = 3;
-             forcespeedsignal.SignName = "length speed";
-             forcespeedsignal.cUnitKind = 3;
-             forcespeedsignal.cUnitsel = 0;
-             forcespeedsignal.InitUnit();
-             forcespeedsignal.fullmaxbase = 10000;
-             forcespeedsignal.fullminbase = 0;
-
-             countsignal = new ItemSignal();
-             countsignal.cName = "计数";
-             countsignal.LName[0] = "计数";
-             countsignal.LName[1] = "Count";
-
-             countsignal.originprecise = 0;
-             countsignal.SignName = "Count";
-             countsignal.cUnitKind = 7;
-             countsignal.cUnitsel = 0;
-             countsignal.InitUnit();
-             countsignal.fullmaxbase = 10000000000000;
-             countsignal.fullminbase = 0;
+            LName = new string[10];
 
 
-             undefinesignal = new ItemSignal();
-             undefinesignal.cName = "未定义";
-             undefinesignal.LName[0] = "未定义";
-             undefinesignal.LName[1] = "undefine";
+            isi = new ItemSignal();
+            isi.cName = "命令频率";
+            isi.LName[0] = "命令频率";
+            isi.LName[1] = "Command frequency";
 
-             undefinesignal.originprecise = 0;
-             undefinesignal.SignName = "undefine";
-             undefinesignal.cUnitKind = 8;
-             undefinesignal.cUnitsel = 0;
-             undefinesignal.InitUnit();
-             undefinesignal.fullmaxbase = 100;
-             undefinesignal.fullminbase = -100;
+            isi.originprecise = 3;
+            isi.SignName = "Ch Command frequency";
+            isi.cUnitKind = 6;
+            isi.cUnitsel = 0;
+            isi.InitUnit();
+            isi.fullmaxbase = 10000;
+            isi.fullminbase = 0;
 
-             pidfsignal = new ItemSignal();
-             pidfsignal.cName = "pidf";
-             pidfsignal.LName[0] = "pidf";
-             pidfsignal.LName[1] = "pidf";
-             pidfsignal.originprecise = 2;
-             pidfsignal.SignName = "PIDF";
-             pidfsignal.cUnitKind = 8;
-             pidfsignal.cUnitsel = 0;
-             pidfsignal.InitUnit();
-             pidfsignal.fullmaxbase = 32767;
-             pidfsignal.fullminbase = 0;
+            freqsignal = new ItemSignal();
+            freqsignal.originprecise = 3;
+            freqsignal.cName = "频率";
+            freqsignal.LName[0] = "频率";
+            freqsignal.LName[1] = "Freq";
+            freqsignal.SignName = "Ch Freq";
+            freqsignal.cUnitKind = 6;
+            freqsignal.cUnitsel = 0;
+            freqsignal.InitUnit();
+            freqsignal.fullmaxbase = 50;
+            freqsignal.fullminbase = 0;
+
+            timesignal = new ItemSignal();
+            timesignal.cName = "时间";
+            timesignal.LName[0] = "时间";
+            timesignal.LName[1] = "Time";
+            timesignal.originprecise = 1;
+            timesignal.SignName = "Time";
+            timesignal.cUnitKind = 4;
+            timesignal.cUnitsel = 0;
+            timesignal.InitUnit();
+            timesignal.fullmaxbase = 316000000;
+            timesignal.fullminbase = 0;
+
+            shorttimesignal = new ItemSignal();
+            shorttimesignal.cName = "短时间";
+            shorttimesignal.LName[0] = "短时间";
+            shorttimesignal.LName[1] = "Short Time";
+            shorttimesignal.originprecise = 1;
+            shorttimesignal.SignName = "Short Time";
+            shorttimesignal.cUnitKind = 4;
+            shorttimesignal.cUnitsel = 0;
+            shorttimesignal.InitUnit();
+            shorttimesignal.fullmaxbase = 1000;
+            shorttimesignal.fullminbase = 0;
+
+            lengthspeedsignal = new ItemSignal();
+            lengthspeedsignal.cName = "距离速度";
+            lengthspeedsignal.LName[0] = "距离速度";
+            lengthspeedsignal.LName[1] = "length speed";
+
+            lengthspeedsignal.originprecise = 3;
+            lengthspeedsignal.SignName = "length speed";
+            lengthspeedsignal.cUnitKind = 2;
+            lengthspeedsignal.cUnitsel = 0;
+            lengthspeedsignal.InitUnit();
+            lengthspeedsignal.fullmaxbase = 10000;
+            lengthspeedsignal.fullminbase = 0;
+
+            anglespeedsignal = new ItemSignal();
+            anglespeedsignal.cName = "角度速度";
+            anglespeedsignal.LName[0] = "角度速度";
+            anglespeedsignal.LName[1] = "angle speed";
+
+            anglespeedsignal.originprecise = 3;
+            anglespeedsignal.SignName = "angle speed";
+            anglespeedsignal.cUnitKind = 12;
+            anglespeedsignal.cUnitsel = 0;
+            anglespeedsignal.InitUnit();
+            anglespeedsignal.fullmaxbase = 10000;
+            anglespeedsignal.fullminbase = 0;
+
+            torquespeedsignal = new ItemSignal();
+            torquespeedsignal.cName = "扭矩速度";
+            torquespeedsignal.LName[0] = "扭矩速度";
+            torquespeedsignal.LName[1] = "torque speed";
+
+            torquespeedsignal.originprecise = 3;
+            torquespeedsignal.SignName = "torque speed";
+            torquespeedsignal.cUnitKind = 13;
+            torquespeedsignal.cUnitsel = 0;
+            torquespeedsignal.InitUnit();
+            torquespeedsignal.fullmaxbase = 10000;
+            torquespeedsignal.fullminbase = 0;
+
+            forcespeedsignal = new ItemSignal();
+            forcespeedsignal.cName = "力速度";
+            forcespeedsignal.LName[0] = "力速度";
+            forcespeedsignal.LName[1] = "length speed";
+
+            forcespeedsignal.originprecise = 3;
+            forcespeedsignal.SignName = "length speed";
+            forcespeedsignal.cUnitKind = 3;
+            forcespeedsignal.cUnitsel = 0;
+            forcespeedsignal.InitUnit();
+            forcespeedsignal.fullmaxbase = 10000;
+            forcespeedsignal.fullminbase = 0;
+
+            countsignal = new ItemSignal();
+            countsignal.cName = "计数";
+            countsignal.LName[0] = "计数";
+            countsignal.LName[1] = "Count";
+
+            countsignal.originprecise = 0;
+            countsignal.SignName = "Count";
+            countsignal.cUnitKind = 7;
+            countsignal.cUnitsel = 0;
+            countsignal.InitUnit();
+            countsignal.fullmaxbase = 10000000000000;
+            countsignal.fullminbase = 0;
 
 
-             initchannel();
-             initdatalist();
+            undefinesignal = new ItemSignal();
+            undefinesignal.cName = "未定义";
+            undefinesignal.LName[0] = "未定义";
+            undefinesignal.LName[1] = "undefine";
+
+            undefinesignal.originprecise = 0;
+            undefinesignal.SignName = "undefine";
+            undefinesignal.cUnitKind = 8;
+            undefinesignal.cUnitsel = 0;
+            undefinesignal.InitUnit();
+            undefinesignal.fullmaxbase = 100;
+            undefinesignal.fullminbase = -100;
+
+            pidfsignal = new ItemSignal();
+            pidfsignal.cName = "pidf";
+            pidfsignal.LName[0] = "pidf";
+            pidfsignal.LName[1] = "pidf";
+            pidfsignal.originprecise = 2;
+            pidfsignal.SignName = "PIDF";
+            pidfsignal.cUnitKind = 8;
+            pidfsignal.cUnitsel = 0;
+            pidfsignal.InitUnit();
+            pidfsignal.fullmaxbase = 32767;
+            pidfsignal.fullminbase = 0;
+
+
+            initchannel();
+            initdatalist();
+
+        }
+         public ItemSignalStation()
+         {
+            machinekind = 0;
+            ItemSignal isi;
+            //teststep = new List<CTestStep>();
+
+            shapelist = new List<shapeitem>();
+
+            InitShape();
+
+            chsignals = new List<ItemSignal>();
+
+            allsignals = new List<ItemSignal>();
+
+            TestkindList = new List<string>();
+
+            originsignals = new List<ItemSignal>();
+
+
+            hardsignals = new List<ItemSignal>();
+            zerosignals = new List<ItemSignal>();
+
+            calcparameters = new List<ItemCalcedSignal>();
+            calcvariables = new List<ItemCalcedSignal>();
+
+            signalskindlist = new List<ItemSignal>();
+
+            ChannelControl = new bool[20];
+            ChannelDimension = new int[20];
+            ChannelRange = new double[20];
+            ChannelSampling = new int[20];
+
+            for (int i = 0; i <= 18; i++)
+            {
+                isi = new ItemSignal();
+                isi.cUnitKind = i;
+                isi.cUnitsel = 0;
+                isi.InitUnit();
+                signalskindlist.Add(isi);
+
+            }
+
+            SignalsNames = new String[signalskindlist.Count];
+
+            SignalsNames[0] = "长度";
+            SignalsNames[1] = "力";
+            SignalsNames[2] = "长度速度";
+            SignalsNames[3] = "力速度";
+            SignalsNames[4] = "时间";
+            SignalsNames[5] = "电压";
+            SignalsNames[6] = "频率";
+            SignalsNames[7] = "段数";
+            SignalsNames[8] = "pid";
+            SignalsNames[9] = "命令";
+            SignalsNames[10] = "角度";
+            SignalsNames[11] = "扭矩";
+            SignalsNames[12] = "角度速度";
+            SignalsNames[13] = "扭矩速度";
+            SignalsNames[14] = "温度";
+            SignalsNames[15] = "应力";
+            SignalsNames[16] = "流量";
+            SignalsNames[17] = "刚度";
+            SignalsNames[18] = "应变";
+
+
+            TestkindList.Add("拉伸");
+            TestkindList.Add("拉伸蠕变松弛");
+            TestkindList.Add("拉伸程序块循环");
+            TestkindList.Add("金属");
+            TestkindList.Add("沥青");
+
+            TestkindList.Add("压缩");
+            TestkindList.Add("压缩蠕变松弛");
+            TestkindList.Add("压缩程序块");
+
+            TestkindList.Add("弯曲");
+            TestkindList.Add("弯曲蠕变松弛");
+            TestkindList.Add("剥离");
+            TestkindList.Add("撕裂");
+            TestkindList.Add("摩擦");
+            TestkindList.Add("扭转");
+            TestkindList.Add("岩石压缩");
+
+
+            LName = new string[10];
+
+
+            isi = new ItemSignal();
+            isi.cName = "命令频率";
+            isi.LName[0] = "命令频率";
+            isi.LName[1] = "Command frequency";
+
+            isi.originprecise = 3;
+            isi.SignName = "Ch Command frequency";
+            isi.cUnitKind = 6;
+            isi.cUnitsel = 0;
+            isi.InitUnit();
+            isi.fullmaxbase = 10000;
+            isi.fullminbase = 0;
+
+            freqsignal = new ItemSignal();
+            freqsignal.originprecise = 3;
+            freqsignal.cName = "频率";
+            freqsignal.LName[0] = "频率";
+            freqsignal.LName[1] = "Freq";
+            freqsignal.SignName = "Ch Freq";
+            freqsignal.cUnitKind = 6;
+            freqsignal.cUnitsel = 0;
+            freqsignal.InitUnit();
+            freqsignal.fullmaxbase = 50;
+            freqsignal.fullminbase = 0;
+
+            timesignal = new ItemSignal();
+            timesignal.cName = "时间";
+            timesignal.LName[0] = "时间";
+            timesignal.LName[1] = "Time";
+            timesignal.originprecise = 1;
+            timesignal.SignName = "Time";
+            timesignal.cUnitKind = 4;
+            timesignal.cUnitsel = 0;
+            timesignal.InitUnit();
+            timesignal.fullmaxbase = 316000000;
+            timesignal.fullminbase = 0;
+
+            shorttimesignal = new ItemSignal();
+            shorttimesignal.cName = "短时间";
+            shorttimesignal.LName[0] = "短时间";
+            shorttimesignal.LName[1] = "Short Time";
+            shorttimesignal.originprecise = 1;
+            shorttimesignal.SignName = "Short Time";
+            shorttimesignal.cUnitKind = 4;
+            shorttimesignal.cUnitsel = 0;
+            shorttimesignal.InitUnit();
+            shorttimesignal.fullmaxbase = 1000;
+            shorttimesignal.fullminbase = 0;
+
+            lengthspeedsignal = new ItemSignal();
+            lengthspeedsignal.cName = "距离速度";
+            lengthspeedsignal.LName[0] = "距离速度";
+            lengthspeedsignal.LName[1] = "length speed";
+
+            lengthspeedsignal.originprecise = 3;
+            lengthspeedsignal.SignName = "length speed";
+            lengthspeedsignal.cUnitKind = 2;
+            lengthspeedsignal.cUnitsel = 0;
+            lengthspeedsignal.InitUnit();
+            lengthspeedsignal.fullmaxbase = 10000;
+            lengthspeedsignal.fullminbase = 0;
+
+            anglespeedsignal = new ItemSignal();
+            anglespeedsignal.cName = "角度速度";
+            anglespeedsignal.LName[0] = "角度速度";
+            anglespeedsignal.LName[1] = "angle speed";
+
+            anglespeedsignal.originprecise = 3;
+            anglespeedsignal.SignName = "angle speed";
+            anglespeedsignal.cUnitKind = 12;
+            anglespeedsignal.cUnitsel = 0;
+            anglespeedsignal.InitUnit();
+            anglespeedsignal.fullmaxbase = 10000;
+            anglespeedsignal.fullminbase = 0;
+
+            torquespeedsignal = new ItemSignal();
+            torquespeedsignal.cName = "扭矩速度";
+            torquespeedsignal.LName[0] = "扭矩速度";
+            torquespeedsignal.LName[1] = "torque speed";
+
+            torquespeedsignal.originprecise = 3;
+            torquespeedsignal.SignName = "torque speed";
+            torquespeedsignal.cUnitKind = 13;
+            torquespeedsignal.cUnitsel = 0;
+            torquespeedsignal.InitUnit();
+            torquespeedsignal.fullmaxbase = 10000;
+            torquespeedsignal.fullminbase = 0;
+
+            forcespeedsignal = new ItemSignal();
+            forcespeedsignal.cName = "力速度";
+            forcespeedsignal.LName[0] = "力速度";
+            forcespeedsignal.LName[1] = "length speed";
+
+            forcespeedsignal.originprecise = 3;
+            forcespeedsignal.SignName = "length speed";
+            forcespeedsignal.cUnitKind = 3;
+            forcespeedsignal.cUnitsel = 0;
+            forcespeedsignal.InitUnit();
+            forcespeedsignal.fullmaxbase = 10000;
+            forcespeedsignal.fullminbase = 0;
+
+            countsignal = new ItemSignal();
+            countsignal.cName = "计数";
+            countsignal.LName[0] = "计数";
+            countsignal.LName[1] = "Count";
+
+            countsignal.originprecise = 0;
+            countsignal.SignName = "Count";
+            countsignal.cUnitKind = 7;
+            countsignal.cUnitsel = 0;
+            countsignal.InitUnit();
+            countsignal.fullmaxbase = 10000000000000;
+            countsignal.fullminbase = 0;
+
+
+            undefinesignal = new ItemSignal();
+            undefinesignal.cName = "未定义";
+            undefinesignal.LName[0] = "未定义";
+            undefinesignal.LName[1] = "undefine";
+
+            undefinesignal.originprecise = 0;
+            undefinesignal.SignName = "undefine";
+            undefinesignal.cUnitKind = 8;
+            undefinesignal.cUnitsel = 0;
+            undefinesignal.InitUnit();
+            undefinesignal.fullmaxbase = 100;
+            undefinesignal.fullminbase = -100;
+
+            pidfsignal = new ItemSignal();
+            pidfsignal.cName = "pidf";
+            pidfsignal.LName[0] = "pidf";
+            pidfsignal.LName[1] = "pidf";
+            pidfsignal.originprecise = 2;
+            pidfsignal.SignName = "PIDF";
+            pidfsignal.cUnitKind = 8;
+            pidfsignal.cUnitsel = 0;
+            pidfsignal.InitUnit();
+            pidfsignal.fullmaxbase = 32767;
+            pidfsignal.fullminbase = 0;
+
+
+            initchannel();
+           
          }
 
 

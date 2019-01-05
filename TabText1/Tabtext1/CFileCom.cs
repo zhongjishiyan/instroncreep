@@ -4023,6 +4023,7 @@ namespace CComLibrary
 
         public void Init_databaselist(bool calced,int inum)
         {
+           
             mdatabaseitemlist.Clear();
             DatabaseItem m = new CComLibrary.DatabaseItem();
             m.Name = "方法名称";
@@ -4216,6 +4217,8 @@ namespace CComLibrary
 
             }
 
+          
+
             for (int i=0;i<mdatabaseitemlist.Count;i++)
             {
                 for (int j=0;j<mdatabaseitemselect.Count;j++)
@@ -4226,6 +4229,7 @@ namespace CComLibrary
                     }
                 }
             }
+          
 
         }
 
@@ -4238,6 +4242,7 @@ namespace CComLibrary
             b.Serialize(fileStream, this);
             fileStream.Close();
         }
+
         public FileStruct DeSerializeNow(string filename)
         {
             FileStruct c = new FileStruct();
@@ -4335,7 +4340,7 @@ namespace CComLibrary
                         }
                     }
 
-                 
+
 
 
                     if (c.mautozero == null)
@@ -4359,7 +4364,7 @@ namespace CComLibrary
 
                     }
 
-                    if (c.layfilename ==null)
+                    if (c.layfilename == null)
                     {
                         c.layfilename = " ";
                     }
@@ -4498,6 +4503,7 @@ namespace CComLibrary
 
                     }
 
+
                     if (c.mplotpara2.PlotLineStyle == null)
                     {
                         c.mplotpara2.PlotLineStyle = new NationalInstruments.UI.LineStyle[16];
@@ -4512,7 +4518,7 @@ namespace CComLibrary
                         c.mrawdata = new List<ItemSignal>();
                     }
 
-                    if ((c.numinterval == null)||(c.numinterval.Length ==3))
+                    if ((c.numinterval == null) || (c.numinterval.Length == 3))
                     {
                         c.numinterval = new double[4];
                         for (int i = 0; i < 4; i++)
@@ -4521,25 +4527,25 @@ namespace CComLibrary
                         }
                     }
 
-                    if((c.numintervallast ==null)||(c.numintervallast.Length ==3))
+                    if ((c.numintervallast == null) || (c.numintervallast.Length == 3))
                     {
                         c.numintervallast = new double[4];
-                        for (int i=0;i<4;i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             c.numintervallast[i] = 0;
-                        } 
+                        }
                     }
 
-                    if ((c.numintervallast1 ==null) ||(c.numintervallast1.Length ==3))
+                    if ((c.numintervallast1 == null) || (c.numintervallast1.Length == 3))
                     {
                         c.numintervallast1 = new double[4];
-                        for (int i=0;i<4;i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             c.numintervallast1[i] = 0;
                         }
                     }
 
-                    if ((c.cbomeasurement == null) ||(c.cbomeasurement.Length ==3))
+                    if ((c.cbomeasurement == null) || (c.cbomeasurement.Length == 3))
                     {
                         c.cbomeasurement = new int[4];
                         for (int i = 0; i < 4; i++)
@@ -4547,7 +4553,7 @@ namespace CComLibrary
                             c.cbomeasurement[i] = 0;
                         }
                     }
-                    if ((c.chkcriteria == null) ||(c.chkcriteria.Length ==3))
+                    if ((c.chkcriteria == null) || (c.chkcriteria.Length == 3))
                     {
                         c.chkcriteria = new bool[4];
                         for (int i = 0; i < 4; i++)
@@ -4555,6 +4561,7 @@ namespace CComLibrary
                             c.chkcriteria[i] = false;
                         }
                     }
+
 
                     if (c.teststep == null)
                     {
@@ -4596,7 +4603,7 @@ namespace CComLibrary
                     {
                         c.samplememo2 = " ";
                     }
-                    if (c.samplename ==null)
+                    if (c.samplename == null)
                     {
                         c.samplename = " ";
                     }
@@ -4639,10 +4646,10 @@ namespace CComLibrary
 
                     }
 
-                    if(c.msegtest ==null)
+                    if (c.msegtest == null)
                     {
                         c.msegtest = new SegTest[12];
-                       
+
                         for (int i = 0; i < 12; i++)
                         {
                             c.msegtest[i] = new CComLibrary.SegTest();
@@ -4665,6 +4672,7 @@ namespace CComLibrary
                     {
                         c.mFreeFormPromptsItem = new List<PromptsItem>();
                     }
+
 
                     //InitOutputExternal(ref c);
 
@@ -4693,10 +4701,10 @@ namespace CComLibrary
                         {
                             SegFile sf = new SegFile();
 
-                           
+
                             sf = sf.DeSerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\seg\\"
                                    + SegName);
-                            
+
                             int i = 0;
 
 
@@ -4728,30 +4736,36 @@ namespace CComLibrary
                         c.simple_cmd = new CmdSeg();
                     }
 
-                    if(c.mdatabaseitemlist==null)
+                    if (c.mdatabaseitemlist == null)
                     {
                         c.mdatabaseitemlist = new List<DatabaseItem>();
-                        
-                    }
-                    c.Init_databaselist(false,c.currentspenumber);
 
-                    if (c.mdatabaseitemselect==null)
+                    }
+
+
+                  
+                    c.Init_databaselist(false, c.currentspenumber);
+
+
+                  
+
+                    if (c.mdatabaseitemselect == null)
                     {
                         c.mdatabaseitemselect = new List<DatabaseItem>();
                     }
 
-                    if (c.mlongdata ==null)
+                    if (c.mlongdata == null)
                     {
                         c.mlongdata = new List<ClsStaticStation.ItemSignal>();
                     }
 
-                    if(c.mSaveCriteraiRow1 ==null)
+                    if (c.mSaveCriteraiRow1 == null)
                     {
-                        c.mSaveCriteraiRow1 = new int[5]; 
+                        c.mSaveCriteraiRow1 = new int[5];
                     }
-                    if (c.mSaveCriteraiRow2 ==null)
+                    if (c.mSaveCriteraiRow2 == null)
                     {
-                       c.mSaveCriteraiRow2 = new double[5];
+                        c.mSaveCriteraiRow2 = new double[5];
                     }
                     if (c.mSaveCriteraiRow3 == null)
                     {
@@ -4772,6 +4786,42 @@ namespace CComLibrary
                     fileStream.Close();
 
 
+
+
+
+                }
+            }
+            catch (Exception e1)
+            {
+                c = new FileStruct();
+
+                MessageBox.Show(e1.Message, "读取文件");
+            }
+            finally
+            {
+
+            }
+            return (c);
+        }
+        public FileStruct DeSerializeNowFor(string filename)
+        {
+            FileStruct c = new FileStruct();
+            try
+            {
+
+
+                using (FileStream fileStream =
+                 new FileStream(filename,
+                 FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    BinaryFormatter b = new BinaryFormatter();
+
+                    c = b.Deserialize(fileStream) as FileStruct;
+                 
+                    fileStream.Close();
+
+
+                  
 
 
                 }

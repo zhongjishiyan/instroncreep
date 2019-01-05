@@ -1545,21 +1545,69 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btnmain.Visible = true;
             GlobeVal.UserControlMain1.btngroupcontrol.Visible = true;
 
-           // GlobeVal.dopanel.Visible = false;
-
-
-            double t1 = Environment.TickCount;
-            while (Environment.TickCount - t1 < 5)
-            {
-                // Application.DoEvents();
-            }
-           // GlobeVal.dopanel.Visible = true;
+           
 
 
         }
 
         private void btnfinish_Click(object sender, EventArgs e)
         {
+            if (btnfinish.Text == "暂停")
+            {
+                if (GlobeVal.UserControlGraph1 != null)
+                {
+                    GlobeVal.UserControlGraph1.endrun();
+                }
+
+                if (GlobeVal.UserControlGraph2 != null)
+                {
+                    GlobeVal.UserControlGraph2.endrun();
+                }
+                btnfinish.Text = "继续";
+
+                GlobeVal.MainStatusStrip.Items["toolstatustest"].Visible = false;
+
+                GlobeVal.UserControlMain1.btnmmethod.Visible = true;
+                GlobeVal.UserControlMain1.btnmreport.Visible = true;
+                GlobeVal.UserControlMain1.btnmmanage.Visible = true;
+                GlobeVal.UserControlMain1.btnmain.Visible = true;
+                GlobeVal.UserControlMain1.btngroupcontrol.Visible = true;
+            }
+            else
+            {
+                btnfinish.Text = "暂停";
+                if (GlobeVal.UserControlGraph1 != null)
+                {
+                
+                    if (GlobeVal.UserControlGraph1.startrun() == false)
+                    {
+                        
+
+                        return;
+                    }
+                }
+
+                if (GlobeVal.UserControlGraph2 != null)
+                {
+
+                    if (GlobeVal.UserControlGraph2.startrun() == false)
+                    {
+                       
+                        return;
+                    }
+                }
+
+                GlobeVal.MainStatusStrip.Items["toolstatustest"].Visible = true;
+
+                GlobeVal.UserControlMain1.btnmmethod.Visible = false;
+                GlobeVal.UserControlMain1.btnmreport.Visible = false;
+                GlobeVal.UserControlMain1.btnmmanage.Visible = false;
+                GlobeVal.UserControlMain1.btnmain.Visible = false;
+                GlobeVal.UserControlMain1.btngroupcontrol.Visible = false;
+
+            }
+
+            return;
             ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]).SelectedIndex = 0;
 
             GlobeVal.MainStatusStrip.Items["tslblkind"].Text = "试验类型：空";
@@ -1571,7 +1619,10 @@ namespace TabHeaderDemo
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-
+            if(CComLibrary.GlobeVal.filesave==null)
+            {
+                return;
+            }
 
 
 
