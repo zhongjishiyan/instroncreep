@@ -32,8 +32,9 @@ namespace TabHeaderDemo
                 groupBox2.Enabled = true;
 
             }
-          
 
+            groupBox1.Enabled = true;
+            groupBox2.Enabled = true;
 
             cbomachine.Items.Clear();
             for (int i = 0; i < GlobeVal.mysys.MachineCount; i++)
