@@ -380,8 +380,8 @@
             this.btnhand.Size = new System.Drawing.Size(30, 33);
             this.btnhand.TabIndex = 46;
             this.btnhand.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnhand, "温控调节");
             this.btnhand.UseVisualStyleBackColor = false;
-            this.btnhand.Visible = false;
             // 
             // btntool
             // 
@@ -395,9 +395,8 @@
             this.btntool.TabIndex = 35;
             this.btntool.Tag = "";
             this.btntool.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btntool, "数据处理");
+            this.toolTip1.SetToolTip(this.btntool, "试验信息");
             this.btntool.UseVisualStyleBackColor = false;
-            this.btntool.Visible = false;
             // 
             // btnpos
             // 
@@ -410,7 +409,6 @@
             this.btnpos.Size = new System.Drawing.Size(37, 33);
             this.btnpos.TabIndex = 47;
             this.btnpos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnpos, "位移设置");
             this.btnpos.UseVisualStyleBackColor = false;
             // 
             // btnext2
@@ -709,7 +707,6 @@
         private System.Windows.Forms.Panel paneltop;
         private System.Windows.Forms.Button btnmethod;
         private System.Windows.Forms.Button btnon;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         
         private System.Windows.Forms.TabPage testpage;
@@ -753,5 +750,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
         public System.Windows.Forms.Label lblcontroller;
+        public System.Windows.Forms.TabControl tabControl1;
     }
 }

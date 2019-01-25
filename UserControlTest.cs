@@ -20,6 +20,7 @@ namespace TabHeaderDemo
 {
     public partial class UserControlTest : UserControl
     {
+        public IP.Components.Toolbox lstspe = new IP.Components.Toolbox();
 
         private int mlaststepi = 0;
         class btnstep
@@ -252,12 +253,12 @@ namespace TabHeaderDemo
 
 
             drawPath(e, path, c);
-            btnfinish.BackColor = c;
+            btncontinue.BackColor = c;
 
 
-            btnfinish.FlatAppearance.MouseOverBackColor = c;
-            btnfinish.FlatAppearance.MouseDownBackColor = c;
-            btnfinish.FlatAppearance.CheckedBackColor = c;
+            btncontinue.FlatAppearance.MouseOverBackColor = c;
+            btncontinue.FlatAppearance.MouseDownBackColor = c;
+            btncontinue.FlatAppearance.CheckedBackColor = c;
 
 
 
@@ -913,7 +914,7 @@ namespace TabHeaderDemo
 
                     {
 
-                        string mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+                        string mspefiledat = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
                  (CComLibrary.GlobeVal.filesave.currentspenumber + 1).ToString().Trim() + ".txt";
                         CComLibrary.GlobeVal.mscattergraph = GlobeVal.UserControlGraph1.userGraph1.scatterGraph1;
 
@@ -1122,15 +1123,11 @@ namespace TabHeaderDemo
 
         }
 
-        private void lstspe_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         public void btnStart_Click(object sender, EventArgs e)
         {
-
-
+           
             if (GlobeVal.myarm.connected == false)
             {
                 MessageBox.Show("您还没有联机");
@@ -1148,23 +1145,7 @@ namespace TabHeaderDemo
             }
             else
             {
-                /*
-                if (CComLibrary.GlobeVal.filesave.Samplingmode == 0)
-                {
-                    if (Convert.ToInt16(CComLibrary.GlobeVal.filesave.dt.Rows[CComLibrary.GlobeVal.filesave.currentspenumber]["试样状态"]) == Convert.ToInt16(CComLibrary.TestStatus.tested))
-                    {
-                        DialogResult r = MessageBox.Show("当前试样数据已存在,是否覆盖？", "提示", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    }
-                }
-                */
+               
             }
 
 
@@ -1310,6 +1291,8 @@ namespace TabHeaderDemo
 
             lstspe.Items[CComLibrary.GlobeVal.filesave.currentspenumber].Image = imageList2.Images[4];
             lstspe.Refresh();
+
+            btncontinue.Visible = true;
 
 
 
@@ -1458,7 +1441,7 @@ namespace TabHeaderDemo
 
                 {
 
-                    mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+                    mspefiledat = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
            (CComLibrary.GlobeVal.filesave.currentspenumber + 1).ToString().Trim() + ".txt";
                     CComLibrary.GlobeVal.mscattergraph = GlobeVal.UserControlGraph1.userGraph1.scatterGraph1;
 
@@ -1545,14 +1528,14 @@ namespace TabHeaderDemo
             GlobeVal.UserControlMain1.btnmain.Visible = true;
             GlobeVal.UserControlMain1.btngroupcontrol.Visible = true;
 
-           
 
+            btncontinue.Visible = false;
 
         }
 
         private void btnfinish_Click(object sender, EventArgs e)
         {
-            if (btnfinish.Text == "暂停")
+            if (btncontinue.Text == "暂停")
             {
                 if (GlobeVal.UserControlGraph1 != null)
                 {
@@ -1563,7 +1546,7 @@ namespace TabHeaderDemo
                 {
                     GlobeVal.UserControlGraph2.endrun();
                 }
-                btnfinish.Text = "继续";
+                btncontinue.Text = "继续";
 
                 GlobeVal.MainStatusStrip.Items["toolstatustest"].Visible = false;
 
@@ -1575,11 +1558,11 @@ namespace TabHeaderDemo
             }
             else
             {
-                btnfinish.Text = "暂停";
+                btncontinue.Text = "暂停";
                 if (GlobeVal.UserControlGraph1 != null)
                 {
                 
-                    if (GlobeVal.UserControlGraph1.startrun() == false)
+                    if (GlobeVal.UserControlGraph1.ContinueRun() == false)
                     {
                         
 
@@ -1590,7 +1573,7 @@ namespace TabHeaderDemo
                 if (GlobeVal.UserControlGraph2 != null)
                 {
 
-                    if (GlobeVal.UserControlGraph2.startrun() == false)
+                    if (GlobeVal.UserControlGraph2.ContinueRun() == false)
                     {
                        
                         return;
@@ -1607,13 +1590,7 @@ namespace TabHeaderDemo
 
             }
 
-            return;
-            ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]).SelectedIndex = 0;
-
-            GlobeVal.MainStatusStrip.Items["tslblkind"].Text = "试验类型：空";
-            GlobeVal.MainStatusStrip.Items["tslblsample"].Text = "样品：关闭";
-
-            GlobeVal.MainStatusStrip.Items["tslblmethod"].Text = "方法:关闭";
+           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1681,6 +1658,16 @@ namespace TabHeaderDemo
 
         private void UserControlTest_Load(object sender, EventArgs e)
         {
+            lstspe.Dock = DockStyle.Fill;
+            lstspe.ShowPointer = false;
+            lstspe.ShowAll = false;
+            lstspe.Text = "";
+            lstspe.CreateGeneralCategory = false;
+            lstspe.DrawTabLevel = false;
+            lstspe.AllowNestedTabs = true;
+            lstspe.AllowToolboxItems = true;
+            splitContainer1.Panel1.Controls.Add(lstspe);
+
             if (Screen.PrimaryScreen.Bounds.Width == 1366)
             {
                 splitContainer1.SplitterDistance = 40;
@@ -1790,7 +1777,7 @@ namespace TabHeaderDemo
 
 
 
-            mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+            mspefiledat = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
           (num).ToString().Trim() + ".txt";
 
             CComLibrary.GlobeVal.mscattergraph = GlobeVal.UserControlGraph1.userGraph1.scatterGraph1;
@@ -1912,7 +1899,7 @@ namespace TabHeaderDemo
                 }
             }
 
-            mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+            mspefiledat = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
        (num).ToString().Trim() + ".txt";
 
             StreamReader m_streamReader = new StreamReader(mspefiledat, System.Text.Encoding.Default);
@@ -2003,12 +1990,12 @@ namespace TabHeaderDemo
                 if (CComLibrary.GlobeVal.filesave.ReportFormat == 0)
                 {
                     GlobeVal.UserControlMain1.userreport1.document.SaveToFile(
-                        GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".docx", FileFormat.Docx);
+                        GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + ".docx", FileFormat.Docx);
                 }
                 else
                 {
                     Image image = GlobeVal.UserControlMain1.userreport1.document.SaveToImages(0, ImageType.Metafile);
-                    image.Save(GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + ".tif", ImageFormat.Tiff);
+                    image.Save(GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + ".tif", ImageFormat.Tiff);
                 }
             }
         }
@@ -2067,10 +2054,70 @@ namespace TabHeaderDemo
             }
             else
             {
+                GlobeVal.myarm.CloseConnection();
                 btnlink.Text = "联机";
                 btnlink.Image = imageList4.Images[6];
             }
           }
+
+
+        public void InitButtons()
+        {
+            if (GlobeVal.myarm.MyTransferData.EDC_STATE[GlobeVal.selcontroller - 1] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_NOT_READY))
+            {
+                btnlink.Image = imageList4.Images[6];
+                btnlink.Text = "联机";
+
+
+            }
+            else
+            {
+                btnlink.Text = "脱机";
+                btnlink.Image = imageList4.Images[7];
+            }
+
+            if (GlobeVal.myarm.MyTransferData.EDC_STATE[GlobeVal.selcontroller - 1] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_OFF ))
+            {
+                btnon.Text = "启动";
+                btnon.Image = imageList4.Images[4];
+
+            }
+            if (GlobeVal.myarm.MyTransferData.EDC_STATE[GlobeVal.selcontroller - 1] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_ON))
+            {
+                btnon.Text = "关闭";
+                btnon.Image = imageList4.Images[5];
+
+            }
+
+            if (GlobeVal.myarm.MyTransferData.EDC_STATE[GlobeVal.selcontroller - 1] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_TEST))
+            {
+                btnStart.Enabled = false;
+                btnStart.BackgroundImage = imageList4.Images[1];
+
+                btnend.Enabled = true;
+                btnend.BackgroundImage = imageList4.Images[2];
+
+                btnon.Text = "关闭";
+                btnon.Image = imageList4.Images[5];
+
+                btncontinue.Visible = true;
+
+            }
+            else
+            {
+                btnStart.Enabled = true;
+                btnStart.BackgroundImage = imageList4.Images[0];
+                
+                btnend.Enabled = false;
+                btnend.BackgroundImage = imageList4.Images[3];
+
+                btncontinue.Visible = false;
+            }
+
+
+
+
+        }
 
         private void btnon_Click(object sender, EventArgs e)
         {

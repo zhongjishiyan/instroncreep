@@ -17,7 +17,7 @@ namespace TabHeaderDemo
 
             tabControl1.SelectedIndex = sel;
 
-            if (GlobeVal.mysys.AppUserLevel == 0)
+            if (GlobeVal.myglobefile.AppUserLevel == 0)
             {
                 tabControl1.Enabled = false;
             }

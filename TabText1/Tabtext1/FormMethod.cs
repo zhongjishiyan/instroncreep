@@ -188,6 +188,7 @@ namespace AppleLabApplication
             txtinterval.Text = filesave.minterval.ToString();
             txtauthor.Text = filesave.methodauthor;
             txtexplain.Text = filesave.methodmemo;
+            txtcriterion.Text = filesave.criterionname;
 
            
             if (filesave.lprocedurename == null)
@@ -667,6 +668,7 @@ namespace AppleLabApplication
                 filesave.lprocedurename.Clear();
                 filesave.methodauthor = txtauthor.Text;
                 filesave.methodmemo = txtexplain.Text;
+                filesave.criterionname = txtcriterion.Text; 
 
                 filesave.filekind = 0;
                 filesave.m_namelist.Clear();
@@ -1073,24 +1075,28 @@ namespace AppleLabApplication
                     }
                 }
 
-               
-               // checklist.SetItemCheckState(0, filesave._flow测试前);
-
-                checklist.SetItemCheckState(0, filesave._flow测试结束);
-
-                checklist.SetItemCheckState(1, filesave._flow数据采集);
-
-                checklist.SetItemCheckState(2, filesave._flow应变);
-               
-               
-                checklist.SetItemCheckState(3, filesave._flow试验选项);
 
 
+              checklist.SetItemCheckState(0,filesave._flow测试前);
 
-                checklist.SetItemCheckState(4, filesave._flow测试);
+              checklist.SetItemCheckState(1,  filesave._flow测试结束);
+
+               checklist.SetItemCheckState(2, filesave._flow数据采集 );
+
+               checklist.SetItemCheckState(3, filesave._flow应变 );
+
+
+               checklist.SetItemCheckState(4, filesave._flow试验选项);
+
+
+
+              checklist.SetItemCheckState(5,  filesave._flow测试);
+
+              
 
 
                 chkcalcandresult.Checked =  filesave._flow计算和结果 ;
+                chkdatamode.Checked = filesave._flow数据采集方式;
 
             }
 
@@ -1445,6 +1451,11 @@ namespace AppleLabApplication
         private void chkcalcandresult_CheckedChanged(object sender, EventArgs e)
         {
              filesave._flow计算和结果= chkcalcandresult.Checked;
+        }
+
+        private void chkdatamode_CheckedChanged(object sender, EventArgs e)
+        {
+            filesave._flow数据采集方式 = chkdatamode.Checked;
         }
     }
 }

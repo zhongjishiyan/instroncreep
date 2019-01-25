@@ -2304,6 +2304,8 @@ namespace CComLibrary
         public int returnstep;
         public int cmd;
         public int action;
+
+
         
         public Sequence mseq;
 
@@ -2316,7 +2318,7 @@ namespace CComLibrary
         public double range;//幅值
         public double freq;//频率
         public int count;//次数
-
+        public int keeptimeunit = 0;
 
 
         public  double speedorigin()
@@ -2822,6 +2824,7 @@ namespace CComLibrary
 
         public bool  _flow计算和结果 =false;
 
+        public bool _flow数据采集方式 = true;
 
         public List<string> m_namelist;
 
@@ -2855,6 +2858,8 @@ namespace CComLibrary
 
         public string methodauthor = "";//方法作者
         public string methodmemo = "";//方法说明
+
+        public string criterionname = "";//标准名称
         public int methodkind = 0; //方法类型
         public List<shapeitem> mshapelist;
 
@@ -2946,7 +2951,25 @@ namespace CComLibrary
         public bool endoftest2tempbool = false;//作为变量使用
         public double endoftest2tempmax = 0;//作为变量使用
 
-        public int testaction = 0;//试验结束动作
+        public int[] mtestaction ;//试验结束动作
+        public double[] mtestactionreturnspeed;//试验结束返回速度
+
+
+
+
+        public double mtesttimeforend;//指定试验结束时的时间。
+
+
+        public int mtestactionfortesttime;//指定试验结束时的时间时的试验结束动作
+        public double mtestactionreturnspeedfortesttime;//指定试验结束时的时间的返回速度
+
+
+        public double mCREEP_EXTENSION_LIMIT;//变形累加触发值
+        public double mCREEP_REF_TIME;//动态校准时间
+
+        public int mKeepTest;//恢复试验，数据追加到原试验数据后面
+
+        public long mPARA_LOOPS;//试验12段的循环次数
 
 
         public List<CTestStep> teststep;
@@ -3115,8 +3138,16 @@ namespace CComLibrary
                 t = mshapelist[shapeselect].sizeitem[0].cvalue * mshapelist[shapeselect].sizeitem[0].cvalue / 4 * 3.1415926;
 
             }
+            if (m_Global.mNIsBaseUnit == true)
+            {
+                return l *t;
+            }
+            else
+            {
+                return l / 1000 * t;
 
-            return l / 1000 * t;
+            }
+                
 
         }
 
@@ -3136,9 +3167,14 @@ namespace CComLibrary
 
             }
 
-
-            return l / t * 1000;
-
+            if (m_Global.mNIsBaseUnit == true)
+            {
+                return l / t;
+            }
+            else
+            {
+                return l / t * 1000;
+            }
         }
 
         public double GetArea()
@@ -3221,7 +3257,7 @@ namespace CComLibrary
                 if (CComLibrary.GlobeVal.filesave.pretest_cmd.check == true)
                 {
                     mexplainlist.Add(CComLibrary.GlobeVal.filesave.pretest_cmd);
-                    mexplainlist[0].keeptime = 0;
+                    
 
                 }
 
@@ -3938,7 +3974,8 @@ namespace CComLibrary
             numinterval = new double[4];
             numintervallast = new double[4];
             numintervallast1 = new double[4];
-
+            mtestaction = new int[4];
+            mtestactionreturnspeed = new double[4];
             msegtest = new CComLibrary.SegTest[12];
             for (int i=0;i<12;i++)
             {
@@ -4017,6 +4054,7 @@ namespace CComLibrary
             this.mSaveCriteraiRow4 = new int[5];
             this.mSaveCriteraiRow5 = new double[5];
             this.mSaveCriteraiRow6 = new int[5];
+            
 
 
         }
@@ -4782,6 +4820,15 @@ namespace CComLibrary
                     if (c.mSaveCriteraiRow6 == null)
                     {
                         c.mSaveCriteraiRow6 = new int[5];
+                    }
+
+                    if(c.mtestaction==null)
+                    {
+                        c.mtestaction = new int[4];
+                    }
+                    if(c.mtestactionreturnspeed==null )
+                    {
+                        c.mtestactionreturnspeed = new double[4];
                     }
                     fileStream.Close();
 

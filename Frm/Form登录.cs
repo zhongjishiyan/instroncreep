@@ -20,9 +20,9 @@ namespace TabHeaderDemo.Frm
         private void Form登录_Load(object sender, EventArgs e)
         {
             cboname.Items.Clear();
-            for (int i = 0; i < GlobeVal.mysys.UserCount; i++)
+            for (int i = 0; i < GlobeVal.myglobefile.UserCount; i++)
             {
-                cboname.Items.Add(GlobeVal.mysys.UserName[i]);
+                cboname.Items.Add(GlobeVal.myglobefile.UserName[i]);
 
             }
 
@@ -33,10 +33,10 @@ namespace TabHeaderDemo.Frm
         {
             if (cboname.SelectedIndex >= 0)
             {
-                if (GlobeVal.mysys.UserPassword[cboname.SelectedIndex] == txtpassword.Text)
+                if (GlobeVal.myglobefile.UserPassword[cboname.SelectedIndex] == txtpassword.Text)
                 {
-                    GlobeVal.mysys.AppUserLevel = GlobeVal.mysys.UserLevels[cboname.SelectedIndex];
-                    GlobeVal.mysys.CurentUserIndex = cboname.SelectedIndex;
+                    GlobeVal.myglobefile.AppUserLevel = GlobeVal.myglobefile.UserLevels[cboname.SelectedIndex];
+                    GlobeVal.myglobefile.CurentUserIndex = cboname.SelectedIndex;
                     result = true;
                 }
                 else

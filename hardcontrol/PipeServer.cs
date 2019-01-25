@@ -125,7 +125,7 @@ namespace PipesServerTest
     }
 
 
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1,CharSet = CharSet.Unicode)]
     public struct TransferCmd
     {
 
@@ -135,16 +135,21 @@ namespace PipesServerTest
         public double cmdValue;//Variable3
         public int cmdUnit;//Variable4
 
-        public string strPara_FileName;//Variable5参数文件名
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
+        public char[]  strPara_FileName;//Variable5参数文件名
         public float Free6;//Variable6
         public float Free7;//Variable7
         public float Free8;//Variable8
         public Int64 Free9;//Variable9
         public Int64 Free10;//Variable10
         public Int64 Free11;//Variable11
-        public string Free12;//Variable12
-        public string Free13;//Variable13
-        public string Free14;//Variable14
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
+        public char[] Free12;//Variable12
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
+        public char[] Free13;//Variable13
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
+        public char[] Free14;//Variable14
+
         public float Free15;//Variable15
         public float Free16;//Variable16
         public float Free17;//Variable17
@@ -152,7 +157,7 @@ namespace PipesServerTest
 
         public ulong tcount;//Variable19
 
-
+       
 
     }
 
@@ -166,6 +171,15 @@ namespace PipesServerTest
         public TransferCmd _TransferCmd;
 
 
+        public PipeClient()
+        {
+            _TransferCmd.strPara_FileName = new char[100];
+            
+            _TransferCmd.Free12 = new char[100];
+            _TransferCmd.Free13 = new char[100];
+            _TransferCmd.Free14 = new char[100];
+        }
+
         public void Send(byte[] SendStr, string PipeName, int count, int TimeOut = 1000)
         {
             try
@@ -174,7 +188,7 @@ namespace PipesServerTest
 
                 // The connect function will indefinitely wait for the pipe to become available
                 // If that is not acceptable specify a maximum waiting time (in ms)
-                pipeStream.Connect(TimeOut);
+                pipeStream.Connect();
                 Debug.WriteLine("[Client] Pipe connection established");
 
 

@@ -227,6 +227,10 @@ namespace TabHeaderDemo
             string s;
 
 
+            CComLibrary.GlobeVal.filesave.SamplePath = GlobeVal.myglobefile.SamplePath;
+
+            CComLibrary.GlobeVal.filesave.samplename = GlobeVal.myglobefile.SampleFile;
+
             if (newfile ==true)
             {
                 CComLibrary.GlobeVal.continuetest = false;
@@ -241,6 +245,8 @@ namespace TabHeaderDemo
             if (newfile == true)
             {
                 CComLibrary.GlobeVal.filesave.InitTable();
+
+
                 CComLibrary.GlobeVal.filesave.SerializeNow(GlobeVal.spefilename);
 
 
@@ -421,9 +427,42 @@ namespace TabHeaderDemo
 
             GlobeVal.MainStatusStrip.Items["tslblmethod"].Text = "方法:" + CComLibrary.GlobeVal.filesave.methodname;
 
-           
 
-            
+            string f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device") == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device");
+            }
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim()) == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim());
+            }
+
+            if (System.IO.Directory.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para") == false)
+            {
+                System.IO.Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para");
+            }
+            GlobeVal.mmethodfilename = f;
+
+
+
+
+            CComLibrary.GlobeVal.filesave.SamplePath = GlobeVal.myglobefile.SamplePath;
+
+            CComLibrary.GlobeVal.filesave.samplename = GlobeVal.myglobefile.SampleFile;
+
+            CComLibrary.GlobeVal.filesave.SerializeNow(GlobeVal.mmethodfilename);
+
+            string f2 = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
+
+
+            GlobeVal.myarm.sendfilename(f2);
+
+            GlobeVal.myarm.machinekind[GlobeVal.selcontroller - 1] = ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind];
+
+           
 
         }
 
@@ -433,13 +472,13 @@ namespace TabHeaderDemo
 
             if (tabControl1.SelectedIndex == 2)
             {
-                if (GlobeVal.mysys.SamplePath == "")
+                if (GlobeVal.myglobefile.SamplePath == "")
                 {
                     MessageBox.Show("请设置数据保存路径");
 
                     return;
                 }
-                if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
+                if (System.IO.Directory.Exists(GlobeVal.myglobefile.SamplePath))
                 {
                 }
                 else
@@ -461,7 +500,7 @@ namespace TabHeaderDemo
 
                 SampleNextStep(false);
 
-              
+               
 
 
 
@@ -489,17 +528,17 @@ namespace TabHeaderDemo
                     MessageBox.Show("样品文件名不能为空");
                     return;
                 }
-                if (GlobeVal.mysys.SamplePath == "")
+                if (GlobeVal.myglobefile.SamplePath == "")
                 {
                     MessageBox.Show("请设置数据保存路径");
 
-                    GlobeVal.mysys.SamplePath = "c:\\data";
+                    GlobeVal.myglobefile.SamplePath = "c:\\data";
 
 
                     return;
                 }
 
-                if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
+                if (System.IO.Directory.Exists(GlobeVal.myglobefile.SamplePath))
                 {
                 }
                 else
@@ -530,6 +569,8 @@ namespace TabHeaderDemo
                 SampleNextStep(true);
 
                 CComLibrary.GlobeVal.filesave.currentspenumber = 0;
+
+                GlobeVal.userControltest1.InitButtons();
 
 
             }
@@ -611,14 +652,14 @@ namespace TabHeaderDemo
                         for (int i = 0; i < listView1.Items.Count; i++)
                         {
 
-                            GlobeVal.mysys.RecentFilename[i] = listView1.Items[i].Text;
-                            GlobeVal.mysys.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
+                            GlobeVal.myglobefile.RecentFilename[i] = listView1.Items[i].Text;
+                            GlobeVal.myglobefile.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
                         }
 
                         for (int i = listView1.Items.Count; i < 20; i++)
                         {
-                            GlobeVal.mysys.RecentFilename[i] = "";
-                            GlobeVal.mysys.RecentFilenameKind[i] = "";
+                            GlobeVal.myglobefile.RecentFilename[i] = "";
+                            GlobeVal.myglobefile.RecentFilenameKind[i] = "";
                         }
 
                         ClsStaticStation.m_Global.mycls.initchannel();
@@ -709,17 +750,17 @@ namespace TabHeaderDemo
                         for (int i = 0; i < listView2.Items.Count; i++)
                         {
 
-                            GlobeVal.mysys.RecentSampleFilename[i] = listView2.Items[i].Text;
-                            GlobeVal.mysys.RecentSampleFilenameKind[i] = listView2.Items[i].SubItems[1].Text;
-                            GlobeVal.mysys.RecentSampleFilePath[i] = listView2.Items[i].SubItems[3].Text;
+                            GlobeVal.myglobefile.RecentSampleFilename[i] = listView2.Items[i].Text;
+                            GlobeVal.myglobefile.RecentSampleFilenameKind[i] = listView2.Items[i].SubItems[1].Text;
+                            GlobeVal.myglobefile.RecentSampleFilePath[i] = listView2.Items[i].SubItems[3].Text;
 
                         }
 
                         for (int i = listView2.Items.Count; i < 20; i++)
                         {
-                            GlobeVal.mysys.RecentSampleFilename[i] = "";
-                            GlobeVal.mysys.RecentSampleFilenameKind[i] = "";
-                            GlobeVal.mysys.RecentSampleFilePath[i] = "";
+                            GlobeVal.myglobefile.RecentSampleFilename[i] = "";
+                            GlobeVal.myglobefile.RecentSampleFilenameKind[i] = "";
+                            GlobeVal.myglobefile.RecentSampleFilePath[i] = "";
                         }
 
                         ClsStaticStation.m_Global.mycls.initchannel();
@@ -812,17 +853,17 @@ namespace TabHeaderDemo
                         for (int i = 0; i < listView2.Items.Count; i++)
                         {
 
-                            GlobeVal.mysys.RecentSampleFilename[i] = listView2.Items[i].Text;
-                            GlobeVal.mysys.RecentSampleFilenameKind[i] = listView2.Items[i].SubItems[1].Text;
-                            GlobeVal.mysys.RecentSampleFilePath[i] = listView2.Items[i].SubItems[3].Text;
+                            GlobeVal.myglobefile.RecentSampleFilename[i] = listView2.Items[i].Text;
+                            GlobeVal.myglobefile.RecentSampleFilenameKind[i] = listView2.Items[i].SubItems[1].Text;
+                            GlobeVal.myglobefile.RecentSampleFilePath[i] = listView2.Items[i].SubItems[3].Text;
 
                         }
 
                         for (int i = listView2.Items.Count; i < 20; i++)
                         {
-                            GlobeVal.mysys.RecentSampleFilename[i] = "";
-                            GlobeVal.mysys.RecentSampleFilenameKind[i] = "";
-                            GlobeVal.mysys.RecentSampleFilePath[i] = "";
+                            GlobeVal.myglobefile.RecentSampleFilename[i] = "";
+                            GlobeVal.myglobefile.RecentSampleFilenameKind[i] = "";
+                            GlobeVal.myglobefile.RecentSampleFilePath[i] = "";
                         }
 
                         ClsStaticStation.m_Global.mycls.initchannel();
@@ -847,7 +888,7 @@ namespace TabHeaderDemo
 
                 lblpath.Text = this.folderBrowserDialog1.SelectedPath;
 
-                GlobeVal.mysys.SamplePath = lblpath.Text;
+                GlobeVal.myglobefile.SamplePath = lblpath.Text;
 
 
             }
@@ -924,14 +965,14 @@ namespace TabHeaderDemo
                         for (int i = 0; i < listView1.Items.Count; i++)
                         {
 
-                            GlobeVal.mysys.RecentFilename[i] = listView1.Items[i].Text;
-                            GlobeVal.mysys.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
+                            GlobeVal.myglobefile.RecentFilename[i] = listView1.Items[i].Text;
+                            GlobeVal.myglobefile.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
                         }
 
                         for (int i = listView1.Items.Count; i < 20; i++)
                         {
-                            GlobeVal.mysys.RecentFilename[i] = "";
-                            GlobeVal.mysys.RecentFilenameKind[i] = "";
+                            GlobeVal.myglobefile.RecentFilename[i] = "";
+                            GlobeVal.myglobefile.RecentFilenameKind[i] = "";
                         }
 
                         ClsStaticStation.m_Global.mycls.initchannel();
@@ -1044,18 +1085,18 @@ namespace TabHeaderDemo
             string fileName;
             for (int i = 0; i < 20; i++)
             {
-                if (GlobeVal.mysys.RecentFilename[i] == "")
+                if (GlobeVal.myglobefile.RecentFilename[i] == "")
                 {
                 }
                 else
                 {
                     ListViewItem lv = new ListViewItem();
-                    lv.Text = GlobeVal.mysys.RecentFilename[i];
+                    lv.Text = GlobeVal.myglobefile.RecentFilename[i];
 
 
 
-                    lv.SubItems.Add(GlobeVal.mysys.RecentFilenameKind[i]);
-                    fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" + GlobeVal.mysys.RecentFilenameKind[i] + "\\" + GlobeVal.mysys.RecentFilename[i] + ".dat";
+                    lv.SubItems.Add(GlobeVal.myglobefile.RecentFilenameKind[i]);
+                    fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" + GlobeVal.myglobefile.RecentFilenameKind[i] + "\\" + GlobeVal.myglobefile.RecentFilename[i] + ".dat";
 
                     if (File.Exists(fileName) == true)
                     {
@@ -1069,18 +1110,18 @@ namespace TabHeaderDemo
             listView2.Items.Clear();
             for (int i = 0; i < 20; i++)
             {
-                if (GlobeVal.mysys.RecentSampleFilename[i] == "")
+                if (GlobeVal.myglobefile.RecentSampleFilename[i] == "")
                 {
                 }
                 else
                 {
                     ListViewItem lv = new ListViewItem();
-                    lv.Text = GlobeVal.mysys.RecentSampleFilename[i];
+                    lv.Text = GlobeVal.myglobefile.RecentSampleFilename[i];
 
 
 
-                    lv.SubItems.Add(GlobeVal.mysys.RecentSampleFilenameKind[i]);
-                    fileName = GlobeVal.mysys.RecentSampleFilePath[i] + "\\" + GlobeVal.mysys.RecentSampleFilename[i] + ".spe";
+                    lv.SubItems.Add(GlobeVal.myglobefile.RecentSampleFilenameKind[i]);
+                    fileName = GlobeVal.myglobefile.RecentSampleFilePath[i] + "\\" + GlobeVal.myglobefile.RecentSampleFilename[i] + ".spe";
 
 
 
@@ -1092,13 +1133,13 @@ namespace TabHeaderDemo
                     {
                         lv.SubItems.Add(" ");
                     }
-                    lv.SubItems.Add(GlobeVal.mysys.RecentSampleFilePath[i]);
+                    lv.SubItems.Add(GlobeVal.myglobefile.RecentSampleFilePath[i]);
 
                     listView2.Items.Add(lv);
                 }
             }
 
-            if (GlobeVal.mysys.SamplePath == "")
+            if (GlobeVal.myglobefile.SamplePath == "")
             {
                 s = System.Windows.Forms.Application.StartupPath;
 
@@ -1109,14 +1150,14 @@ namespace TabHeaderDemo
                 {
                     Directory.CreateDirectory(s + "\\AppleLabJ");
 
-                    GlobeVal.mysys.SamplePath = s + "\\AppleLabJ";
+                    GlobeVal.myglobefile.SamplePath = s + "\\AppleLabJ";
 
                 }
 
             }
 
-            lblpath.Text = GlobeVal.mysys.SamplePath;
-            txtsamplename.Text = GlobeVal.mysys.SampleFile;
+            lblpath.Text = GlobeVal.myglobefile.SamplePath;
+            txtsamplename.Text = GlobeVal.myglobefile.SampleFile;
         }
 
         private void UserControlPretest_Load(object sender, EventArgs e)
@@ -1209,9 +1250,9 @@ namespace TabHeaderDemo
             listView2.Items.Clear();
             for (int i = 0; i < 20; i++)
             {
-                GlobeVal.mysys.RecentSampleFilename[i] = "";
-                GlobeVal.mysys.RecentSampleFilenameKind[i] = "";
-                GlobeVal.mysys.RecentSampleFilePath[i] = "";
+                GlobeVal.myglobefile.RecentSampleFilename[i] = "";
+                GlobeVal.myglobefile.RecentSampleFilenameKind[i] = "";
+                GlobeVal.myglobefile.RecentSampleFilePath[i] = "";
             }
 
         }
@@ -1221,20 +1262,20 @@ namespace TabHeaderDemo
             listView1.Items.Clear();
             for (int i = 0; i < 20; i++)
             {
-                GlobeVal.mysys.RecentFilename[i] = "";
-                GlobeVal.mysys.RecentFilenameKind[i] = "";
+                GlobeVal.myglobefile.RecentFilename[i] = "";
+                GlobeVal.myglobefile.RecentFilenameKind[i] = "";
 
             }
         }
 
         private void txtsamplename_TextChanged(object sender, EventArgs e)
         {
-            GlobeVal.mysys.SampleFile = txtsamplename.Text;
+            GlobeVal.myglobefile.SampleFile = txtsamplename.Text;
         }
 
         private void txtsample_TextChanged(object sender, EventArgs e)
         {
-            GlobeVal.mysys.SampleFile = txtsample.Text;
+            GlobeVal.myglobefile.SampleFile = txtsample.Text;
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)

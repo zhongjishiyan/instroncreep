@@ -24,10 +24,117 @@ namespace TabHeaderDemo
     public class ClassGlobeFile
     {
         public int ControllerCount;
+        public string softwareconfig = "AppleLab 静态试验软件";
+        public string softwareinstalldate;
+        public double softwareversion = 1.0;
+        public string SystemID;
+        public string KeyCode;
+
+        public int framemodel = 0;
+
+        public int frameserialnumber = 0;
+
+        public string macaddress = "ff ff ff ff ff ff";
+
+
+        public bool securityon = false;
+        public int UserCount = 0;
+        public string[] UserName;
+        public string[] UserPassword;
+        public int[] UserLevels;
+
+
+        public bool safe = false;//是否启用系统安全
+
+        public int startupscreen = 0;//启动模式
+
+
+
+        public int controllerkind = 0;//
+
+        public string[] RecentFilename;
+
+        public string[] RecentFilenameKind;
+
+        public string SamplePath = "";//样品文件保存路径
+
+        public string SampleFile = "TestSample";//样品文件名
+
+        public string[] RecentSampleFilename;
+        public string[] RecentSampleFilenameKind;
+        public string[] RecentSampleFilePath;
+
+        public int AppUserLevel = 0;
+
+
+
+
+
+        public int CurentUserIndex = 0;
+
+        public int machinekind = 0;//主机类型
+        public string[] MachineName;
+
+        public int MachineCount;
+
+        public string apptitle = "";
+
+        public bool showapptitle = false;
+
+        public string shorttitle = "";
+
+        public bool showshorttitle = false;
+
+
+        public string bmplogo = "";
+
+        public string demotxt = "";
+        public bool showlogo = false;
+
 
         public ClassGlobeFile()
         {
             ControllerCount = 1;
+
+            MachineName = new string[20];
+            MachineName[0] = "电子蠕变试验机";
+
+
+            MachineCount = 1;
+
+            UserName = new string[100];
+            UserPassword = new string[100];
+            UserLevels = new int[100];
+            for (int i = 0; i < 100; i++)
+            {
+                UserName[i] = "a";
+                UserPassword[i] = "a";
+                UserLevels[i] = 0;
+            }
+            UserCount = 1;
+            UserName[0] = "AppleLab";
+            UserPassword[0] = "AppleLab";
+            UserLevels[0] = 3;
+
+            RecentFilename = new string[20];
+            RecentFilenameKind = new string[20];
+            RecentSampleFilename = new string[20];
+            RecentSampleFilenameKind = new string[20];
+            RecentSampleFilePath = new string[20];
+
+
+            for (int i = 0; i < 20; i++)
+            {
+                RecentFilename[i] = "";
+                RecentFilenameKind[i] = "";
+                RecentSampleFilename[i] = "";
+                RecentSampleFilenameKind[i] = "";
+                RecentSampleFilePath[i] = "";
+
+             
+            }
+
+            SampleFile = "TestSample";
         }
 
         public void SerializeNow(string filename)
@@ -56,7 +163,70 @@ namespace TabHeaderDemo
 
                     c = b.Deserialize(fileStream) as ClassGlobeFile;
 
-                    
+                    if (c.RecentFilename == null)
+                    {
+                        c.RecentFilename = new string[20];
+                    }
+                    if (c.RecentFilenameKind == null)
+                    {
+                        c.RecentFilenameKind = new string[20];
+                    }
+
+                    if (c.UserName ==null)
+                    {
+                        c.UserName = new string[100];
+                        c.UserPassword = new string[100];
+                        c.UserLevels = new int[100];
+                        c.UserCount = 1;
+                        c.UserName[0] = "AppleLab";
+                        c.UserPassword[0] = "AppleLab";
+                        c.UserLevels[0] = 3;
+                    }
+
+
+                    if (c.SampleFile == null)
+                    {
+                        c.SampleFile = "TestSample";
+                    }
+
+                    if (c.SamplePath == null)
+                    {
+                        c.SamplePath = "";
+                    }
+
+                    if (c.demotxt == null)
+                    {
+                        c.demotxt = "";
+                    }
+                    if (c.RecentSampleFilename == null)
+                    {
+                        c.RecentSampleFilename = new string[20];
+                    }
+
+                    if (c.RecentSampleFilenameKind == null)
+                    {
+                        c.RecentSampleFilenameKind = new string[20];
+                    }
+                    if (c.RecentSampleFilePath == null)
+                    {
+                        c.RecentSampleFilePath = new string[20];
+
+                    }
+
+
+
+
+                    if (c.MachineName == null)
+                    {
+                        c.MachineName = new string[20];
+                    }
+
+
+                    c.MachineName[0] = "电子蠕变试验机";
+
+
+
+                    c.MachineCount = 1;
 
                     fileStream.Close();
 
@@ -89,73 +259,7 @@ namespace TabHeaderDemo
             Three_axis,
             standard1
         }
-        public string softwareconfig = "AppleLab 静态试验软件";
-        public string softwareinstalldate;
-        public double softwareversion = 1.0;
-        public string SystemID;
-        public string KeyCode;
-
-        public int framemodel = 0;
-
-        public int frameserialnumber = 0;
-
-        public string macaddress = "ff ff ff ff ff ff";
-
-
-        public bool securityon = false;
-        public int UserCount = 0;
-        public string[] UserName;
-        public string[] UserPassword;
-        public int[] UserLevels;
-
-
-        public bool safe = false;//是否启用系统安全
-
-        public int startupscreen = 0;//启动模式
-
-        
-
-        public int controllerkind = 0;//
-
-        public string[] RecentFilename;
-
-        public string[] RecentFilenameKind;
-
-        public string SamplePath = "";//样品文件保存路径
-
-        public string SampleFile = "TestSample";//样品文件名
-
-        public string[] RecentSampleFilename;
-        public string[] RecentSampleFilenameKind;
-        public string[] RecentSampleFilePath;
-
-        public int AppUserLevel = 0;
-
-       
-
-       
-
-        public int CurentUserIndex = 0;
-
-        public int machinekind = 0;//主机类型
-        public string[] MachineName;
-
-        public int MachineCount;
-
-        public string apptitle = "";
-
-        public bool showapptitle = false;
-
-        public string shorttitle = "";
-
-        public bool showshorttitle = false;
-
-
-        public string bmplogo = "";
-
-        public string demotxt = "";
-        public bool showlogo = false;
-
+    
         public string[] ChannelName;//通道名称
         public double[] ChannelRange;//通道量程
         public int[] ChannelDimension;//通道量纲
@@ -185,11 +289,7 @@ namespace TabHeaderDemo
 
             
 
-            MachineName = new string[20];
-            MachineName[0] = "电子蠕变试验机";
-
-
-            MachineCount = 1;
+          
 
             ChannelRange = new double[20];
             ChannelControl = new bool[20];
@@ -198,33 +298,11 @@ namespace TabHeaderDemo
             
 
 
-            UserName = new string[100];
-            UserPassword = new string[100];
-            UserLevels = new int[100];
-            for (int i = 0; i < 100; i++)
-            {
-                UserName[i] = "a";
-                UserPassword[i] = "a";
-                UserLevels[i] = 0;
-            }
-            UserCount = 1;
-            UserName[0] = "AppleLab";
-            UserPassword[0] = "AppleLab";
-            UserLevels[0] = 3;
-
-            RecentFilename = new string[20];
-            RecentFilenameKind = new string[20];
-            RecentSampleFilename = new string[20];
-            RecentSampleFilenameKind = new string[20];
-            RecentSampleFilePath = new string[20];
+            
 
             for (int i = 0; i < 20; i++)
             {
-                RecentFilename[i] = "";
-                RecentFilenameKind[i] = "";
-                RecentSampleFilename[i] = "";
-                RecentSampleFilenameKind[i] = "";
-                RecentSampleFilePath[i] = "";
+            
 
                 ChannelRange[i] = 10;
                 ChannelControl[i] = false;
@@ -234,7 +312,7 @@ namespace TabHeaderDemo
 
             }
 
-            SampleFile = "TestSample";
+           
 
 
         }
@@ -265,58 +343,7 @@ namespace TabHeaderDemo
 
                     c = b.Deserialize(fileStream) as ClassSys;
 
-                    if (c.RecentFilename == null)
-                    {
-                        c.RecentFilename = new string[20];
-                    }
-                    if (c.RecentFilenameKind == null)
-                    {
-                        c.RecentFilenameKind = new string[20];
-                    }
-
-                    if (c.SampleFile == null)
-                    {
-                        c.SampleFile = "TestSample";
-                    }
-
-                    if (c.SamplePath == null)
-                    {
-                        c.SamplePath = "";
-                    }
-
-                    if (c.demotxt == null)
-                    {
-                        c.demotxt = "";
-                    }
-                    if (c.RecentSampleFilename == null)
-                    {
-                        c.RecentSampleFilename = new string[20];
-                    }
-
-                    if (c.RecentSampleFilenameKind == null)
-                    {
-                        c.RecentSampleFilenameKind = new string[20];
-                    }
-                    if (c.RecentSampleFilePath == null)
-                    {
-                        c.RecentSampleFilePath = new string[20];
-
-                    }
-
-                   
-                   
-
-                    if (c.MachineName == null)
-                    {
-                        c.MachineName = new string[20];
-                    }
-
-
-                    c.MachineName[0] = "电子蠕变试验机";
-
-
-
-                    c.MachineCount = 1;
+                    
 
                     if (c.ChannelSamplemode == null)
                     {

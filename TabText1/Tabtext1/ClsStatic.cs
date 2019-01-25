@@ -136,6 +136,8 @@ namespace ClsStaticStation
          public ItemSignal pidfsignal;
          public ItemSignal anglespeedsignal;
          public ItemSignal torquespeedsignal;
+       
+
          public string cName;
          public string[] LName;
 
@@ -557,7 +559,7 @@ namespace ClsStaticStation
             isi.cUnitKind = 4;
             isi.cUnitsel = 0;
             isi.InitUnit();
-            isi.fullmaxbase = 316000000;
+            isi.fullmaxbase = 31600000000000;
             isi.fullminbase = 0;
             allsignals.Add(isi);
             originsignals.Add(isi);
@@ -590,6 +592,55 @@ namespace ClsStaticStation
             isi.InitUnit();
             isi.fullmaxbase = 1000000000000;
             isi.fullminbase = -100000000000;
+            allsignals.Add(isi);
+            originsignals.Add(isi);
+
+
+            isi = new ItemSignal();
+            isi.cName = "试验时间";
+            isi.LName[0] = "试验时间";
+            isi.LName[1] = "Test Time";
+            isi.originprecise = 3;
+            isi.SignName = "Ch Test Time";
+            isi.cUnitKind = 4;
+            isi.cUnitsel = 0;
+            isi.InitUnit();
+            isi.fullmaxbase = 31600000000000;
+            isi.fullminbase = 0;
+            allsignals.Add(isi);
+            originsignals.Add(isi);
+
+          
+
+
+            isi = new ItemSignal();
+
+            isi.cName = "循环次数";
+            isi.LName[0] = "循环次数";
+            isi.LName[1] = "Cycle Count";
+            isi.originprecise = 0;
+            isi.SignName = "Ch Cycle Count";
+            isi.cUnitKind = 20;
+            isi.cUnitsel = 0;
+            isi.InitUnit();
+            isi.fullmaxbase = 1000000000000;
+            isi.fullminbase = 0;
+            allsignals.Add(isi);
+            originsignals.Add(isi);
+
+
+            isi = new ItemSignal();
+
+            isi.cName = "加载段数";
+            isi.LName[0] = "加载段数";
+            isi.LName[1] = "Segment Count";
+            isi.originprecise = 0;
+            isi.SignName = "Ch Segment Count";
+            isi.cUnitKind = 20;
+            isi.cUnitsel = 0;
+            isi.InitUnit();
+            isi.fullmaxbase = 100000000000;
+            isi.fullminbase = 0;
             allsignals.Add(isi);
             originsignals.Add(isi);
 
@@ -1419,6 +1470,8 @@ namespace ClsStaticStation
             LName = new string[10];
 
 
+
+
             isi = new ItemSignal();
             isi.cName = "命令频率";
             isi.LName[0] = "命令频率";
@@ -1480,6 +1533,13 @@ namespace ClsStaticStation
             lengthspeedsignal.InitUnit();
             lengthspeedsignal.fullmaxbase = 10000;
             lengthspeedsignal.fullminbase = 0;
+
+
+           
+
+
+
+
 
             anglespeedsignal = new ItemSignal();
             anglespeedsignal.cName = "角度速度";
@@ -1801,7 +1861,7 @@ namespace ClsStaticStation
      }
     public sealed class m_Global
     {
-
+        public static bool mNIsBaseUnit=false ;
         public static  List<ECanTest.xyz> madlist = new List<ECanTest.xyz>();
         public static int languageselect = 0;
         public static Boolean savefile = false;
@@ -1895,6 +1955,9 @@ namespace ClsStaticStation
     [Serializable]
     public class ItemSignal : ItemBaseSignal, IDisposable  //模拟信号类
     {
+
+       
+
 
         public int SensorId;// 对应的硬件通道号
         public int originprecise;//小数点位数
@@ -2330,6 +2393,7 @@ namespace ClsStaticStation
             if (cUnitKind == 1)
             {
 
+
                 if (mcUnitsel == 0)
                 {
 
@@ -2338,8 +2402,15 @@ namespace ClsStaticStation
                     return format(t, precise);
                 }
 
+                if (m_Global.mNIsBaseUnit == true)
+                {
 
-                cValueOrigin = cValueOrigin * 1000;
+                }
+                else
+                {
+
+                    cValueOrigin = cValueOrigin * 1000;
+                }
 
                 if (mcUnitsel == 1)
                 {
@@ -2440,6 +2511,8 @@ namespace ClsStaticStation
                     return format(t, precise);
                 }
 
+                cValueOrigin = cValueOrigin / 60.0;
+
                 if (mcUnitsel == 1)
                 {
                     t = Convert.ToDouble(cValueOrigin) * 0.1;
@@ -2534,7 +2607,7 @@ namespace ClsStaticStation
 
                 if (mcUnitsel == 14)
                 {
-                    t = Convert.ToDouble(cValueOrigin) * 60;
+                    t = Convert.ToDouble(cValueOrigin);
                     precise = originprecise;
                     return format(t, precise);
                 }
@@ -2554,8 +2627,13 @@ namespace ClsStaticStation
 
                 }
 
-                cValueOrigin = cValueOrigin * 1000;
-
+                if (m_Global.mNIsBaseUnit == true)
+                {
+                }
+                else
+                {
+                    cValueOrigin = cValueOrigin * 1000;
+                }
                 if (mcUnitsel == 1)
                 {
                     t = Convert.ToDouble(cValueOrigin) * 100000;
@@ -3329,9 +3407,14 @@ namespace ClsStaticStation
                     precise = originprecise + 0;
                     return format(t, precise);
                 }
+                if (m_Global.mNIsBaseUnit == true)
+                {
 
-                cValueOrigin = cValueOrigin * 1000;
-
+                }
+                else
+                {
+                    cValueOrigin = cValueOrigin * 1000;
+                }
                 if (mcUnitsel == 1)
                 {
                     t = Convert.ToDouble(cValueOrigin) * 0.1;
@@ -3425,6 +3508,9 @@ namespace ClsStaticStation
                     precise = originprecise;
                     return format(t, precise);
                 }
+
+                cValueOrigin = cValueOrigin / 60.0;
+
 
                 if (mcUnitsel == 1)
                 {
@@ -3520,7 +3606,7 @@ namespace ClsStaticStation
 
                 if (mcUnitsel == 14)
                 {
-                    t = Convert.ToDouble(cValueOrigin) * 60;
+                    t = Convert.ToDouble(cValueOrigin);
                     precise = originprecise;
                     return format(t, precise);
                 }
@@ -3539,9 +3625,14 @@ namespace ClsStaticStation
                     return format(t, precise);
 
                 }
+                if (m_Global.mNIsBaseUnit == true)
+                {
 
-                cValueOrigin = cValueOrigin * 1000;
-
+                }
+                else
+                {
+                    cValueOrigin = cValueOrigin * 1000;
+                }
                 if (mcUnitsel == 1)
                 {
                     t = Convert.ToDouble(cValueOrigin) * 100000;
@@ -4249,27 +4340,52 @@ namespace ClsStaticStation
                 cUnitCount = 10;
 
             }
-            if (cUnitKind == 1)  //力
+
+            if (m_Global.mNIsBaseUnit == true)
             {
-                cUnits[0] = "kN";
-                cUnits[1] = "DaN";
-                cUnits[2] = "dyn";
-                cUnits[3] = "gf";
-                cUnits[4] = "kgf";
-                cUnits[5] = "kip";
-                cUnits[6] = "kN";
-                cUnits[7] = "lbf";
-                cUnits[8] = "mN";
-                cUnits[9] = "MT";
-                cUnits[10] = "ozf";
-                cUnits[11] = "N";
+                if (cUnitKind == 1)  //力
+                {
+                    cUnits[0] = "N";
+                    cUnits[1] = "DaN";
+                    cUnits[2] = "dyn";
+                    cUnits[3] = "gf";
+                    cUnits[4] = "kgf";
+                    cUnits[5] = "kip";
+                    cUnits[6] = "kN";
+                    cUnits[7] = "lbf";
+                    cUnits[8] = "mN";
+                    cUnits[9] = "MT";
+                    cUnits[10] = "ozf";
+                    cUnits[11] = "N";
 
 
-                cUnitCount = 12;
+                    cUnitCount = 12;
+                }
+            }
+            else
+            {
+                if (cUnitKind == 1)  //力
+                {
+                    cUnits[0] = "kN";
+                    cUnits[1] = "DaN";
+                    cUnits[2] = "dyn";
+                    cUnits[3] = "gf";
+                    cUnits[4] = "kgf";
+                    cUnits[5] = "kip";
+                    cUnits[6] = "kN";
+                    cUnits[7] = "lbf";
+                    cUnits[8] = "mN";
+                    cUnits[9] = "MT";
+                    cUnits[10] = "ozf";
+                    cUnits[11] = "N";
+
+
+                    cUnitCount = 12;
+                }
             }
             if (cUnitKind == 2)  //距离速度
             {
-                cUnits[0] = "mm/s";
+                cUnits[0] = "mm/min";
                 cUnits[1] = "cm/s";
                 cUnits[2] = "cm/min";
                 cUnits[3] = "ft/s";
@@ -4283,35 +4399,67 @@ namespace ClsStaticStation
                 cUnits[11] = "mil/min";
                 cUnits[12] = "mil/h";
                 cUnits[13] = "mile/h";
-                cUnits[14] = "mm/min";
+                cUnits[14] = "mm/s";
                 cUnitCount = 15;
 
             }
-            if (cUnitKind == 3)  //力速度
+            if (m_Global.mNIsBaseUnit == true)
             {
-                cUnits[0] = "KN/s";
-                cUnits[1] = "dyn/s";
-                cUnits[2] = "dyn/min";
-                cUnits[3] = "gf/s";
-                cUnits[4] = "gf/min";
-                cUnits[5] = "kgf/s";
-                cUnits[6] = "kgf/min";
-                cUnits[7] = "kip/s";
-                cUnits[8] = "kip/min";
-                cUnits[9] = "kN/s";
-                cUnits[10] = "kN/min";
-                cUnits[11] = "lbf/s";
-                cUnits[12] = "lbf/min";
-                cUnits[13] = "ozf/s";
-                cUnits[14] = "ozf/min";
-                cUnits[15] = "mN/s";
-                cUnits[16] = "mN/min";
-                cUnits[17] = "MT/s";
-                cUnits[18] = "MT/min";
-                cUnits[19] = "N/min";
+                if (cUnitKind == 3)  //力速度
+                {
+                    cUnits[0] = "N/s";
+                    cUnits[1] = "dyn/s";
+                    cUnits[2] = "dyn/min";
+                    cUnits[3] = "gf/s";
+                    cUnits[4] = "gf/min";
+                    cUnits[5] = "kgf/s";
+                    cUnits[6] = "kgf/min";
+                    cUnits[7] = "kip/s";
+                    cUnits[8] = "kip/min";
+                    cUnits[9] = "kN/s";
+                    cUnits[10] = "kN/min";
+                    cUnits[11] = "lbf/s";
+                    cUnits[12] = "lbf/min";
+                    cUnits[13] = "ozf/s";
+                    cUnits[14] = "ozf/min";
+                    cUnits[15] = "mN/s";
+                    cUnits[16] = "mN/min";
+                    cUnits[17] = "MT/s";
+                    cUnits[18] = "MT/min";
+                    cUnits[19] = "N/min";
 
-                cUnitCount = 20;
+                    cUnitCount = 20;
 
+                }
+            }
+            else
+            {
+                if (cUnitKind == 3)  //力速度
+                {
+                    cUnits[0] = "KN/s";
+                    cUnits[1] = "dyn/s";
+                    cUnits[2] = "dyn/min";
+                    cUnits[3] = "gf/s";
+                    cUnits[4] = "gf/min";
+                    cUnits[5] = "kgf/s";
+                    cUnits[6] = "kgf/min";
+                    cUnits[7] = "kip/s";
+                    cUnits[8] = "kip/min";
+                    cUnits[9] = "kN/s";
+                    cUnits[10] = "kN/min";
+                    cUnits[11] = "lbf/s";
+                    cUnits[12] = "lbf/min";
+                    cUnits[13] = "ozf/s";
+                    cUnits[14] = "ozf/min";
+                    cUnits[15] = "mN/s";
+                    cUnits[16] = "mN/min";
+                    cUnits[17] = "MT/s";
+                    cUnits[18] = "MT/min";
+                    cUnits[19] = "N/min";
+
+                    cUnitCount = 20;
+
+                }
             }
 
             if (cUnitKind == 4) //时间

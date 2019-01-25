@@ -20,13 +20,13 @@ namespace TabHeaderDemo
             grpuser.Visible = false;
             listBox1.Items.Clear();
            
-            for (int i = 0; i < GlobeVal.mysys.UserCount; i++)
+            for (int i = 0; i < GlobeVal.myglobefile.UserCount; i++)
             {
-                listBox1.Items.Add(GlobeVal.mysys.UserName[i]);
+                listBox1.Items.Add(GlobeVal.myglobefile.UserName[i]);
 
             }
 
-            chksafe.Checked = GlobeVal.mysys.safe  ;
+            chksafe.Checked = GlobeVal.myglobefile.safe  ;
 
 
         }
@@ -51,17 +51,17 @@ namespace TabHeaderDemo
             GlobeVal.suc = false;
             GlobeVal.username = "";
             GlobeVal.userpassword = "";
-            GlobeVal.userkind = GlobeVal.mysys.UserLevels[GlobeVal.mysys.UserCount];
+            GlobeVal.userkind = GlobeVal.myglobefile.UserLevels[GlobeVal.myglobefile.UserCount];
             f.ShowDialog();
 
             if (GlobeVal.suc  == true)
             {
 
-                GlobeVal.mysys.UserName[GlobeVal.mysys.UserCount] = GlobeVal.username;
-                GlobeVal.mysys.UserPassword[GlobeVal.mysys.UserCount] = GlobeVal.userpassword;
-                GlobeVal.mysys.UserLevels[GlobeVal.mysys.UserCount] = GlobeVal.userkind;
-                listBox1.Items.Add(GlobeVal.mysys.UserName[GlobeVal.mysys.UserCount]);
-                GlobeVal.mysys.UserCount = GlobeVal.mysys.UserCount + 1;
+                GlobeVal.myglobefile.UserName[GlobeVal.myglobefile.UserCount] = GlobeVal.username;
+                GlobeVal.myglobefile.UserPassword[GlobeVal.myglobefile.UserCount] = GlobeVal.userpassword;
+                GlobeVal.myglobefile.UserLevels[GlobeVal.myglobefile.UserCount] = GlobeVal.userkind;
+                listBox1.Items.Add(GlobeVal.myglobefile.UserName[GlobeVal.myglobefile.UserCount]);
+                GlobeVal.myglobefile.UserCount = GlobeVal.myglobefile.UserCount + 1;
                 GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
                
             }
@@ -74,18 +74,18 @@ namespace TabHeaderDemo
             if (listBox1.SelectedIndex > 0)
             {
                 GlobeVal.suc = false;
-                GlobeVal.username = GlobeVal.mysys.UserName[listBox1.SelectedIndex];
-                GlobeVal.userpassword = GlobeVal.mysys.UserPassword[listBox1.SelectedIndex];
-                GlobeVal.userkind = GlobeVal.mysys.UserLevels[listBox1.SelectedIndex];
+                GlobeVal.username = GlobeVal.myglobefile.UserName[listBox1.SelectedIndex];
+                GlobeVal.userpassword = GlobeVal.myglobefile.UserPassword[listBox1.SelectedIndex];
+                GlobeVal.userkind = GlobeVal.myglobefile.UserLevels[listBox1.SelectedIndex];
                 FormUser f = new FormUser();
                 f.ShowDialog();
 
                 if (GlobeVal.suc == true)
                 {
 
-                    GlobeVal.mysys.UserName[listBox1.SelectedIndex] = GlobeVal.username;
-                    GlobeVal.mysys.UserPassword[listBox1.SelectedIndex] = GlobeVal.userpassword;
-                    GlobeVal.mysys.UserLevels[listBox1.SelectedIndex] = GlobeVal.userkind;
+                    GlobeVal.myglobefile.UserName[listBox1.SelectedIndex] = GlobeVal.username;
+                    GlobeVal.myglobefile.UserPassword[listBox1.SelectedIndex] = GlobeVal.userpassword;
+                    GlobeVal.myglobefile.UserLevels[listBox1.SelectedIndex] = GlobeVal.userkind;
 
                     listBox1.Items[listBox1.SelectedIndex] = GlobeVal.username;
                     GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
@@ -108,16 +108,16 @@ namespace TabHeaderDemo
                 listBox1.Items.RemoveAt(listBox1.SelectedIndex);
 
 
-            for (int i = a; i < GlobeVal.mysys.UserCount-1; i++)
+            for (int i = a; i < GlobeVal.myglobefile.UserCount-1; i++)
             {
-                GlobeVal.mysys.UserName[i] = GlobeVal.mysys.UserName[i + 1];
-                GlobeVal.mysys.UserPassword[i] = GlobeVal.mysys.UserPassword[i + 1];
-                GlobeVal.mysys.UserLevels[i] = GlobeVal.mysys.UserLevels[i + 1];
+                GlobeVal.myglobefile.UserName[i] = GlobeVal.myglobefile.UserName[i + 1];
+                GlobeVal.myglobefile.UserPassword[i] = GlobeVal.myglobefile.UserPassword[i + 1];
+                GlobeVal.myglobefile.UserLevels[i] = GlobeVal.myglobefile.UserLevels[i + 1];
 
 
             }
 
-            GlobeVal.mysys.UserCount = GlobeVal.mysys.UserCount - 1;
+            GlobeVal.myglobefile.UserCount = GlobeVal.myglobefile.UserCount - 1;
             GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
 
             }
@@ -141,7 +141,7 @@ namespace TabHeaderDemo
                 if (f.suc == true)
                 {
 
-                    GlobeVal.mysys.safe = chksafe.Checked;
+                    GlobeVal.myglobefile.safe = chksafe.Checked;
 
                 }
                 else
@@ -151,7 +151,7 @@ namespace TabHeaderDemo
             }
             else
             {
-                GlobeVal.mysys.safe = chksafe.Checked;
+                GlobeVal.myglobefile.safe = chksafe.Checked;
             }
 
         }

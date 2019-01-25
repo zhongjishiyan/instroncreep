@@ -99,13 +99,9 @@ namespace TabHeaderDemo
 
 
             this.tableLayoutPanel1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel1, true, null);
-            this.tableLayoutPanel2.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel2, true, null);
-            this.tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel3, true, null);
             this.tableLayoutPanel4.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel4, true, null);
 
-            this.tableLayoutPanel5.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel5, true, null);
-
-
+         
             this.tableLayoutPanel8.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel8, true, null);
           
 
@@ -114,9 +110,7 @@ namespace TabHeaderDemo
             this.tableLayoutPanel9.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel9, true, null);
             this.tableLayoutPanel10.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel10, true, null);
 
-            this.tableLayoutPanel3.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(this.tableLayoutPanel3, true, null);
-            
-
+        
         
 
         }
@@ -208,37 +202,7 @@ namespace TabHeaderDemo
     
         private void UserControl轴向_Load(object sender, EventArgs e)
         {
-            if (GlobeVal.mysys.chk_hlimit==true)
-            {
-                ledhlimit.Visible = true;
-                lblhlimit.Visible = true;
-            }
-            else
-            {
-                ledhlimit.Visible = false;
-                ledslimit.Visible = false;
-            }
-            if(GlobeVal.mysys.chk_slimit ==true)
-            {
-                ledslimit.Visible = true;
-                lblslimit.Visible = true;
-            }
-            else
-            {
-                ledslimit.Visible = false ;
-                lblslimit.Visible = false ;
-            }
-
-            if (GlobeVal.mysys.chk_alarm ==true)
-            {
-                ledalarm.Visible = true;
-                lblalarm.Visible = true;
-            }
-            else
-            {
-                ledalarm.Visible = false;
-                lblalarm.Visible = false;
-            }
+           
 
            
 

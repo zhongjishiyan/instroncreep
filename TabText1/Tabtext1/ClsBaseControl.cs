@@ -54,7 +54,10 @@ namespace ClsStaticStation
 
         public double dogtime = 0;
 
+        public virtual void sendfilename(string filename)
+        {
 
+        }
 
         public virtual void  fatigstop()
         {

@@ -15,7 +15,7 @@ namespace TabHeaderDemo
     public partial class UserGroupControl : UserControl
     {
 
-
+        private IP.Components.Toolbox lstspe = new IP.Components.Toolbox(false);
 
         private void drawFigure(PaintEventArgs e, PointF[] points)
         {
@@ -61,10 +61,10 @@ namespace TabHeaderDemo
             listView1.Columns[0].Width = 40;
 
             listView1.Columns.Add("类型");
-            listView1.Columns[1].Width = 40;
+            listView1.Columns[1].Width = 100;
             listView1.Columns.Add("状态");
 
-            listView1.Columns[2].Width = 40;
+            listView1.Columns[2].Width = 100;
 
             listView1.Columns.Add("控制值");
             listView1.Columns[3].Width = 60;
@@ -158,13 +158,18 @@ namespace TabHeaderDemo
             cboy.Items.Clear();
             for (int i = 0; i < GlobeVal.myglobefile.ControllerCount; i++)
             {
-                for (int j = 0; j < ClsStaticStation.m_Global.mycls.chsignals.Count; j++)
-                {
-                    cboy.Items.Add("主机" + (i + 1).ToString() + ClsStaticStation.m_Global.mycls.chsignals[j].cName);
-                    cboy1.Items.Add("主机" + (i + 1).ToString() + ClsStaticStation.m_Global.mycls.chsignals[j].cName);
-                }
-
+                cbohy.Items.Add("主机" + (i + 1).ToString());
+                cbohy1.Items.Add("主机" + (i + 1).ToString());
             }
+            cbohy.SelectedIndex = 0;
+            cbohy1.SelectedIndex = 0;
+            for (int j = 0; j < ClsStaticStation.m_Global.mycls.chsignals.Count; j++)
+            {
+                cboy.Items.Add(ClsStaticStation.m_Global.mycls.chsignals[j].cName);
+                cboy1.Items.Add(ClsStaticStation.m_Global.mycls.chsignals[j].cName);
+            }
+
+            
 
             cboy.SelectedIndex = 0;
             cboy1.SelectedIndex = 0;
@@ -214,11 +219,6 @@ namespace TabHeaderDemo
 
         }
 
-
-        private void UserManage_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonEx1_Click(object sender, EventArgs e)
         {
@@ -275,6 +275,7 @@ namespace TabHeaderDemo
 
         private static void drawPath1(PaintEventArgs e, GraphicsPath path, System.Drawing.Color color)
         {
+            
             LinearGradientBrush brush = new LinearGradientBrush(path.GetBounds(),
                 color, color, LinearGradientMode.Horizontal);
             e.Graphics.FillPath(brush, path);
@@ -325,16 +326,16 @@ namespace TabHeaderDemo
 
 
             roundedRectangle = new PointF[5];
-            roundedRectangle[0].X = lstspe.Left - 10;
-            roundedRectangle[0].Y = lstspe.Top + 4;
-            roundedRectangle[1].X = lstspe.Right;
-            roundedRectangle[1].Y = lstspe.Top + 4;
-            roundedRectangle[2].X = lstspe.Right;
-            roundedRectangle[2].Y = roundedRectangle[0].Y + (lstspe.Bottom - lstspe.Top);
-            roundedRectangle[3].X = lstspe.Left - 10;
-            roundedRectangle[3].Y = roundedRectangle[0].Y + (lstspe.Bottom - lstspe.Top);
-            roundedRectangle[4].X = lstspe.Left - 10;
-            roundedRectangle[4].Y = lstspe.Top + 4;
+            roundedRectangle[0].X = panel4.Left - 10;
+            roundedRectangle[0].Y = panel4.Top + 4;
+            roundedRectangle[1].X = panel4.Right;
+            roundedRectangle[1].Y = panel4.Top + 4;
+            roundedRectangle[2].X = panel4.Right;
+            roundedRectangle[2].Y = roundedRectangle[0].Y + (panel4.Bottom - panel4.Top);
+            roundedRectangle[3].X = panel4.Left - 10;
+            roundedRectangle[3].Y = roundedRectangle[0].Y + (panel4 .Bottom - panel4.Top);
+            roundedRectangle[4].X = panel4.Left - 10;
+            roundedRectangle[4].Y = panel4.Top + 4;
             drawFigure1(e, roundedRectangle);
 
             e.Graphics.EndContainer(containerState);
@@ -355,25 +356,67 @@ namespace TabHeaderDemo
 
 
                 for (int i = 0; i < listView1.Items.Count; i++)
-                {
-                    listView1.Items[i].SubItems[1].Text = GlobeVal.myarm.MyTransferData.FuncID[i].ToString();
-                    listView1.Items[i].SubItems[2].Text = GlobeVal.myarm.MyTransferData.EDC_STATE[i].ToString();
-                    listView1.Items[i].SubItems[3].Text = GlobeVal.myarm.MyTransferData.ControlValue[i].ToString();
-                    listView1.Items[i].SubItems[4].Text = GlobeVal.myarm.MyTransferData.CHANNEL_F[i].ToString();
-                    listView1.Items[i].SubItems[5].Text = GlobeVal.myarm.MyTransferData.CHANNEL_S[i].ToString();
-                    listView1.Items[i].SubItems[6].Text = GlobeVal.myarm.MyTransferData.CHANNEL_4[i].ToString();
-                    listView1.Items[i].SubItems[7].Text = GlobeVal.myarm.MyTransferData.CHANNEL_5[i].ToString();
-                    listView1.Items[i].SubItems[8].Text = GlobeVal.myarm.MyTransferData.CHANNEL_E[i].ToString();
-                    listView1.Items[i].SubItems[9].Text = GlobeVal.myarm.MyTransferData.Unbalancedness[i].ToString();
-                    listView1.Items[i].SubItems[10].Text = GlobeVal.myarm.MyTransferData.TemperatureControl[i].ToString();//试验温度设定值
-                    listView1.Items[i].SubItems[11].Text = GlobeVal.myarm.MyTransferData.CHANNEL_7[i].ToString();//温度上
-                    listView1.Items[i].SubItems[12].Text = GlobeVal.myarm.MyTransferData.CHANNEL_8[i].ToString();//温度中
-                    listView1.Items[i].SubItems[13].Text = GlobeVal.myarm.MyTransferData.CHANNEL_9[i].ToString();//温度下
-                    listView1.Items[i].SubItems[14].Text = GlobeVal.myarm.MyTransferData.TemperatureGradient[i].ToString();//温度梯度
-                    listView1.Items[i].SubItems[15].Text = GlobeVal.myarm.MyTransferData.TEST_TIME[i].ToString();
-                    listView1.Items[i].SubItems[16].Text = GlobeVal.myarm.MyTransferData.LOOP_COUNT[i].ToString();//循环个数
-                    listView1.Items[i].SubItems[17].Text = GlobeVal.myarm.MyTransferData.CYCLE_COUNT[i].ToString();//波形次数
 
+
+                {
+
+                    
+                    listView1.Items[i].SubItems[1].Text = GlobeVal.myarm.MyTransferData.FuncID[i].ToString();
+
+                    listView1.Items[i].SubItems[1].Text = GlobeVal.myarm.machinekind[i];
+
+                    if (GlobeVal.myarm.MyTransferData.EDC_STATE[i] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_NOT_READY))
+                    {
+                        listView1.Items[i].SubItems[2].Text = "未联机";
+                    }
+                    if (GlobeVal.myarm.MyTransferData.EDC_STATE[i] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_OFF))
+                    {
+                        listView1.Items[i].SubItems[2].Text = "联机";
+                    }
+                    if (GlobeVal.myarm.MyTransferData.EDC_STATE[i] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_ON))
+                    {
+                        listView1.Items[i].SubItems[2].Text = "启动";
+                    }
+                    if (GlobeVal.myarm.MyTransferData.EDC_STATE[i] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_TEST))
+                    {
+                        listView1.Items[i].SubItems[2].Text = "试验中";
+                    }
+                    if (GlobeVal.myarm.MyTransferData.EDC_STATE[i] != Convert.ToInt16( ClsStaticStation.modMain.EDC_State.EDC_STATE_NOT_READY))
+                    {
+                        listView1.Items[i].SubItems[3].Text = GlobeVal.myarm.MyTransferData.ControlValue[i].ToString("F3");
+                        listView1.Items[i].SubItems[4].Text = GlobeVal.myarm.MyTransferData.CHANNEL_F[i].ToString("F3");
+                        listView1.Items[i].SubItems[5].Text = GlobeVal.myarm.MyTransferData.CHANNEL_S[i].ToString("F3");
+                        listView1.Items[i].SubItems[6].Text = GlobeVal.myarm.MyTransferData.CHANNEL_4[i].ToString("F3");
+                        listView1.Items[i].SubItems[7].Text = GlobeVal.myarm.MyTransferData.CHANNEL_5[i].ToString("F3");
+                        listView1.Items[i].SubItems[8].Text = GlobeVal.myarm.MyTransferData.CHANNEL_E[i].ToString("F3");
+                        listView1.Items[i].SubItems[9].Text = GlobeVal.myarm.MyTransferData.Unbalancedness[i].ToString("F3");
+                        listView1.Items[i].SubItems[10].Text = GlobeVal.myarm.MyTransferData.TemperatureControl[i].ToString("F3");//试验温度设定值
+                        listView1.Items[i].SubItems[11].Text = GlobeVal.myarm.MyTransferData.CHANNEL_7[i].ToString("F3");//温度上
+                        listView1.Items[i].SubItems[12].Text = GlobeVal.myarm.MyTransferData.CHANNEL_8[i].ToString("F3");//温度中
+                        listView1.Items[i].SubItems[13].Text = GlobeVal.myarm.MyTransferData.CHANNEL_9[i].ToString("F3");//温度下
+                        listView1.Items[i].SubItems[14].Text = GlobeVal.myarm.MyTransferData.TemperatureGradient[i].ToString("F3");//温度梯度
+                        listView1.Items[i].SubItems[15].Text = GlobeVal.myarm.MyTransferData.TEST_TIME[i].ToString("F3");
+                        listView1.Items[i].SubItems[16].Text = GlobeVal.myarm.MyTransferData.LOOP_COUNT[i].ToString();//循环个数
+                        listView1.Items[i].SubItems[17].Text = GlobeVal.myarm.MyTransferData.CYCLE_COUNT[i].ToString();//波形次数
+                    }
+                    else
+                    {
+                        listView1.Items[i].SubItems[3].Text = "";
+                        listView1.Items[i].SubItems[4].Text = "";
+                        listView1.Items[i].SubItems[5].Text = "";
+                        listView1.Items[i].SubItems[6].Text = "";
+                        listView1.Items[i].SubItems[7].Text = "";
+                        listView1.Items[i].SubItems[8].Text = "";
+                        listView1.Items[i].SubItems[9].Text = "";
+                        listView1.Items[i].SubItems[10].Text = "";//试验温度设定值
+                        listView1.Items[i].SubItems[11].Text = "";//温度上
+                        listView1.Items[i].SubItems[12].Text = "";//温度中
+                        listView1.Items[i].SubItems[13].Text = "";//温度下
+                        listView1.Items[i].SubItems[14].Text = "";//温度梯度
+                        listView1.Items[i].SubItems[15].Text = "";
+                        listView1.Items[i].SubItems[16].Text = "";//循环个数
+                        listView1.Items[i].SubItems[17].Text = "";//波形次数
+                    }
                 }
             }
         }
@@ -441,13 +484,61 @@ namespace TabHeaderDemo
 
             CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(f2);
 
+
+
             GlobeVal.userControlmethod1.OpenTheMethodSilently(f2);
 
             GlobeVal.userControltest1.changeUI();
+            GlobeVal.userControltest1.InitButtons();
 
             ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
             ((FormMainLab)Application.OpenForms["FormMainLab"]).InitMeter();
 
+
+            GlobeVal.myarm.sendfilename(f2);
+
+           GlobeVal.myarm.machinekind[GlobeVal.selcontroller-1]= ClsStaticStation.m_Global.mycls.TestkindList[CComLibrary.GlobeVal.filesave.methodkind];
+
+            
+
+        }
+
+        private void UserGroupControl_Load(object sender, EventArgs e)
+        {
+            lstspe.Dock = DockStyle.Fill;
+            lstspe.ShowPointer = false;
+            lstspe.ShowAll = false;
+            lstspe.Text = "";
+            lstspe.CreateGeneralCategory = false;
+            lstspe.DrawTabLevel = false;
+            lstspe.AllowNestedTabs = true;
+            lstspe.AllowToolboxItems = true ;
+            panel4.Controls.Add(lstspe);
+            
+        }
+
+        private void btnnew_Click(object sender, EventArgs e)
+        {
+            GlobeVal.selcontroller = cbomachine.SelectedIndex + 1;
+            ClsStaticStation.m_Global.currentmachineId = GlobeVal.selcontroller - 1;
+            (Application.OpenForms["FormMainLab"] as FormMainLab).lblcontroller.Text = GlobeVal.selcontroller.ToString().Trim();
+
+
+            if (GlobeVal.myarm.MyTransferData.EDC_STATE[GlobeVal.selcontroller - 1] == Convert.ToInt16(ClsStaticStation.modMain.EDC_State.EDC_STATE_TEST))
+
+            {
+                MessageBox.Show("试验进行中,请先结束试验");
+                return;
+            }
+
+                UserControlMain c = GlobeVal.FormmainLab.umain;
+
+
+            c.OpenTest();
+
+            (Application.OpenForms["FormMainLab"] as FormMainLab).tabControl1.SelectedIndex = 1;
+
+          
         }
     }
 

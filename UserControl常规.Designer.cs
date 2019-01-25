@@ -78,6 +78,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtmemo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtcriterion = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -261,8 +263,8 @@
             // 
             this.tableLayoutPanel7.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.78456F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.21544F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.62379F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.37621F));
             this.tableLayoutPanel7.Controls.Add(this.lblunit, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label12, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.listBox1, 1, 1);
@@ -271,8 +273,9 @@
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 55);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(623, 282);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
@@ -281,7 +284,7 @@
             this.lblunit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblunit.Location = new System.Drawing.Point(4, 1);
             this.lblunit.Name = "lblunit";
-            this.lblunit.Size = new System.Drawing.Size(284, 25);
+            this.lblunit.Size = new System.Drawing.Size(283, 22);
             this.lblunit.TabIndex = 0;
             this.lblunit.Text = "单位系统：";
             this.lblunit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -291,9 +294,9 @@
             this.label12.BackColor = System.Drawing.Color.DodgerBlue;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(295, 1);
+            this.label12.Location = new System.Drawing.Point(294, 1);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(324, 25);
+            this.label12.Size = new System.Drawing.Size(325, 22);
             this.label12.TabIndex = 1;
             this.label12.Text = "预览";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -305,9 +308,9 @@
             this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(295, 30);
+            this.listBox1.Location = new System.Drawing.Point(294, 27);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(324, 248);
+            this.listBox1.Size = new System.Drawing.Size(325, 251);
             this.listBox1.TabIndex = 3;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             this.listBox1.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.listBox1_MeasureItem);
@@ -318,9 +321,9 @@
             // 
             this.panel11.Controls.Add(this.tabControl2);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(4, 30);
+            this.panel11.Location = new System.Drawing.Point(4, 27);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(284, 248);
+            this.panel11.Size = new System.Drawing.Size(283, 251);
             this.panel11.TabIndex = 4;
             // 
             // tabControl2
@@ -331,7 +334,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(284, 248);
+            this.tabControl2.Size = new System.Drawing.Size(283, 251);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPage5
@@ -340,7 +343,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(276, 222);
+            this.tabPage5.Size = new System.Drawing.Size(275, 225);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
@@ -359,7 +362,7 @@
             this.listView1.HoverSelection = true;
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(270, 216);
+            this.listView1.Size = new System.Drawing.Size(269, 219);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -386,7 +389,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(276, 222);
+            this.tabPage6.Size = new System.Drawing.Size(275, 225);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
@@ -404,7 +407,7 @@
             this.grid1.GridToolTipActive = true;
             this.grid1.Location = new System.Drawing.Point(3, 3);
             this.grid1.Name = "grid1";
-            this.grid1.Size = new System.Drawing.Size(270, 216);
+            this.grid1.Size = new System.Drawing.Size(269, 219);
             this.grid1.SpecialKeys = ((SourceGrid2.GridSpecialKeys)(((((((((SourceGrid2.GridSpecialKeys.Ctrl_C | SourceGrid2.GridSpecialKeys.Ctrl_V) 
             | SourceGrid2.GridSpecialKeys.Ctrl_X) 
             | SourceGrid2.GridSpecialKeys.Delete) 
@@ -428,7 +431,7 @@
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 657F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 664F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(623, 55);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
@@ -482,7 +485,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(269, 651);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(269, 658);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // label7
@@ -592,9 +595,9 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.63344F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.36656F));
-            this.tableLayoutPanel2.Controls.Add(this.txtmethodmemo, 1, 5);
-            this.tableLayoutPanel2.Controls.Add(this.label25, 0, 5);
-            this.tableLayoutPanel2.Controls.Add(this.txtauthor, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.txtmethodmemo, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.label25, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.txtauthor, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.label17, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label18, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label19, 0, 2);
@@ -603,16 +606,19 @@
             this.tableLayoutPanel2.Controls.Add(this.txtmemo3, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.label20, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.txtmemo, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.label11, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.txtcriterion, 1, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(623, 328);
             this.tableLayoutPanel2.TabIndex = 3;
@@ -620,10 +626,10 @@
             // txtmethodmemo
             // 
             this.txtmethodmemo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtmethodmemo.Location = new System.Drawing.Point(151, 156);
+            this.txtmethodmemo.Location = new System.Drawing.Point(151, 180);
             this.txtmethodmemo.Multiline = true;
             this.txtmethodmemo.Name = "txtmethodmemo";
-            this.txtmethodmemo.Size = new System.Drawing.Size(468, 168);
+            this.txtmethodmemo.Size = new System.Drawing.Size(468, 144);
             this.txtmethodmemo.TabIndex = 11;
             this.txtmethodmemo.TextChanged += new System.EventHandler(this.txtmethodmemo_TextChanged);
             // 
@@ -631,19 +637,19 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label25.Location = new System.Drawing.Point(4, 153);
+            this.label25.Location = new System.Drawing.Point(4, 177);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(140, 174);
+            this.label25.Size = new System.Drawing.Size(140, 150);
             this.label25.TabIndex = 10;
             this.label25.Text = "方法说明：";
             // 
             // txtauthor
             // 
             this.txtauthor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtauthor.Location = new System.Drawing.Point(151, 122);
+            this.txtauthor.Location = new System.Drawing.Point(151, 149);
             this.txtauthor.Multiline = true;
             this.txtauthor.Name = "txtauthor";
-            this.txtauthor.Size = new System.Drawing.Size(468, 27);
+            this.txtauthor.Size = new System.Drawing.Size(468, 24);
             this.txtauthor.TabIndex = 9;
             this.txtauthor.TextChanged += new System.EventHandler(this.txtauthor_TextChanged);
             // 
@@ -729,11 +735,31 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(4, 119);
+            this.label4.Location = new System.Drawing.Point(4, 146);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 33);
+            this.label4.Size = new System.Drawing.Size(140, 30);
             this.label4.TabIndex = 8;
             this.label4.Text = "方法作者：";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(4, 119);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 26);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "试验标准：";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtcriterion
+            // 
+            this.txtcriterion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtcriterion.Location = new System.Drawing.Point(151, 122);
+            this.txtcriterion.Name = "txtcriterion";
+            this.txtcriterion.Size = new System.Drawing.Size(468, 21);
+            this.txtcriterion.TabIndex = 13;
+            this.txtcriterion.TextChanged += new System.EventHandler(this.txtcriterion_TextChanged);
             // 
             // tabPage4
             // 
@@ -1527,5 +1553,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtcriterion;
     }
 }

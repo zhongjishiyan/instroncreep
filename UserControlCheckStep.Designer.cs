@@ -101,8 +101,8 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.31F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.69F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 262F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.cbowave, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -119,9 +119,9 @@
             this.cbowave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbowave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbowave.FormattingEnabled = true;
-            this.cbowave.Location = new System.Drawing.Point(377, 3);
+            this.cbowave.Location = new System.Drawing.Point(265, 3);
             this.cbowave.Name = "cbowave";
-            this.cbowave.Size = new System.Drawing.Size(485, 20);
+            this.cbowave.Size = new System.Drawing.Size(597, 20);
             this.cbowave.TabIndex = 4;
             this.cbowave.SelectedIndexChanged += new System.EventHandler(this.cbowave_SelectedIndexChanged);
             this.cbowave.SelectedValueChanged += new System.EventHandler(this.cbowave_SelectedValueChanged);
@@ -132,7 +132,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(368, 27);
+            this.label2.Size = new System.Drawing.Size(256, 27);
             this.label2.TabIndex = 3;
             this.label2.Text = "控制模式：";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,8 +141,8 @@
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.31F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.69F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 262F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.cbocontrol, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -160,7 +160,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(368, 25);
+            this.label1.Size = new System.Drawing.Size(256, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "控制方式：";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,9 +170,9 @@
             this.cbocontrol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbocontrol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbocontrol.FormattingEnabled = true;
-            this.cbocontrol.Location = new System.Drawing.Point(377, 3);
+            this.cbocontrol.Location = new System.Drawing.Point(265, 3);
             this.cbocontrol.Name = "cbocontrol";
-            this.cbocontrol.Size = new System.Drawing.Size(485, 20);
+            this.cbocontrol.Size = new System.Drawing.Size(597, 20);
             this.cbocontrol.TabIndex = 1;
             this.cbocontrol.SelectionChangeCommitted += new System.EventHandler(this.cbocontrol_SelectionChangeCommitted);
             this.cbocontrol.SelectedValueChanged += new System.EventHandler(this.cbocontrol_SelectedValueChanged);
@@ -182,8 +182,8 @@
             this.tlp.AutoSize = true;
             this.tlp.BackColor = System.Drawing.Color.Transparent;
             this.tlp.ColumnCount = 2;
-            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.30617F));
-            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.69383F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 262F));
+            this.tlp.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlp.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlp.Location = new System.Drawing.Point(14, 52);
             this.tlp.Margin = new System.Windows.Forms.Padding(0);

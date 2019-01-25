@@ -14,21 +14,21 @@ using AForge.Video.FFMPEG;
 
 namespace TabHeaderDemo
 {
-    public sealed  class   GlobeVal
+    public sealed class GlobeVal
     {
 
         public static FormMainLab mainlab;
 
         [DllImport("kernel32.dll")]
-        public  static extern UIntPtr SetThreadAffinityMask(IntPtr hThread,
+        public static extern UIntPtr SetThreadAffinityMask(IntPtr hThread,
         UIntPtr dwThreadAffinityMask);
 
         //得到当前线程的handler  
         [DllImport("kernel32.dll")]
-        public  static extern IntPtr GetCurrentThread();
+        public static extern IntPtr GetCurrentThread();
 
         //获取cpu的id号  
-        public  static ulong SetCpuID(int id)
+        public static ulong SetCpuID(int id)
         {
             ulong cpuid = 0;
             if (id < 0 || id >= System.Environment.ProcessorCount)
@@ -46,31 +46,31 @@ namespace TabHeaderDemo
         public static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
         public GlobeVal()
         {
-          
+
         }
-        public static   string mmethodfilename;
+        public static string mmethodfilename;
 
         public static CComLibrary.FileStruct filesavecmp;
 
         public static int lastindex = -1;
 
-       // public static Panel dopanel;
+        // public static Panel dopanel;
 
-        public static  Panel backpanel;
-        public static  UserControlTest  userControltest1;
+        public static Panel backpanel;
+        public static UserControlTest userControltest1;
         public static UserControlMain UserControlMain1;
         public static UserControlPretest userControlpretest1;
         public static UserControlMethod userControlmethod1;
         public static UserGroupControl userGroupControl1;
-        
+
 
 
         public static int selcontroller = 1;//当前控制器
 
 
         public static Button mbtntest;
-        public static  UserControlDynSet dynset;
-        public static  UserControlWizard wizard;
+        public static UserControlDynSet dynset;
+        public static UserControlWizard wizard;
 
         public static UserControlProcess UserControlProcess1;
         public static bool resizing = false;
@@ -93,9 +93,9 @@ namespace TabHeaderDemo
 
         public static bool ShowCameraForm = false;
 
-        public static  VideoCaptureDevice cam1;     //视频的来源选择
+        public static VideoCaptureDevice cam1;     //视频的来源选择
 
-        public static ClsStaticStation.CDsp  myarm;
+        public static ClsStaticStation.CDsp myarm;
 
 
         public static UserReport muserreport;
@@ -148,14 +148,14 @@ namespace TabHeaderDemo
             {
                 listBox1.Items.Add("控制过程:" + "中级测控");
             }
-            
+
 
 
             CComLibrary.GlobeVal.filesave.InitExplainList();
 
             for (int i = 0; i < CComLibrary.GlobeVal.filesave.mexplainlist.Count; i++)
             {
-                string s = "   " + "步骤" + (i + 1).ToString() + " " + CComLibrary.GlobeVal.filesave.mexplainlist[i].explain(GlobeVal.mysys.machinekind);
+                string s = "   " + "步骤" + (i + 1).ToString() + " " + CComLibrary.GlobeVal.filesave.mexplainlist[i].explain(GlobeVal.myglobefile.machinekind);
                 listBox1.Items.Add(s);
             }
 
@@ -177,7 +177,7 @@ namespace TabHeaderDemo
             if (CComLibrary.GlobeVal.filesave.Samplingmode == 0)
             {
                 ms = "";
-                if ( CComLibrary.GlobeVal.filesave.chkcriteria[0] == true)
+                if (CComLibrary.GlobeVal.filesave.chkcriteria[0] == true)
                 {
                     ms = ms + "准则1";
                 }
@@ -191,7 +191,7 @@ namespace TabHeaderDemo
                     ms = ms + "准则3";
                 }
 
-                if (ms=="")
+                if (ms == "")
                 {
                     ms = "无";
                 }
@@ -232,169 +232,184 @@ namespace TabHeaderDemo
                 }
             }
         }
-        public static  void NewDatabase()
+        public static void NewDatabase()
         {
-            //CComLibrary.GlobeVal.filesave.SampleDefaultName
-
-            if (System.IO.Directory.Exists(Application.StartupPath + "\\mdb") == true)
+            try
             {
-                System.IO.Directory.CreateDirectory(Application.StartupPath + "\\mdb");
+
+                if (System.IO.Directory.Exists(Application.StartupPath + "\\mdb") == true)
+                {
+                    System.IO.Directory.CreateDirectory(Application.StartupPath + "\\mdb");
+                }
+
+
+                if (File.Exists(Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb") == true)
+                {
+                    File.Delete(Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb");
+                }
+
+                ADOX.Catalog catalog = new Catalog();
+                catalog.Create("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb;" + "Jet OLEDB:Engine Type=5");
+
+                ADODB.Connection cn = new ADODB.Connection();
+
+                cn.Open("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb", null, null, -1);
+
+
+
+                catalog.ActiveConnection = cn;
+
+                ADOX.Table table = new ADOX.Table();
+                table.Name = "FirstTable";
+
+                ADOX.Column column = new ADOX.Column();
+                column.ParentCatalog = catalog;
+                column.Name = "RecordId";
+                column.Type = DataTypeEnum.adInteger;
+                column.DefinedSize = 9;
+                column.Properties["AutoIncrement"].Value = true;
+                table.Columns.Append(column, DataTypeEnum.adInteger, 9);
+                table.Keys.Append("FirstTablePrimaryKey", KeyTypeEnum.adKeyPrimary, column, null, null);
+
+                for (int i = 0; i < CComLibrary.GlobeVal.filesave.mdatabaseitemselect.Count; i++)
+                {
+                    column = new ADOX.Column();
+
+                    column.Name = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[i].Name;
+                    column.Attributes = ColumnAttributesEnum.adColNullable;
+                    table.Columns.Append(column, DataTypeEnum.adVarWChar, 80);
+
+
+                }
+
+
+                // table.Columns.Append("CustomerName", DataTypeEnum.adVarWChar, 50);
+                // table.Columns.Append("Age", DataTypeEnum.adInteger, 9);
+                // table.Columns.Append("生日", DataTypeEnum.adVarWChar, 80);
+
+                catalog.Tables.Append(table);
+                cn.Close();
             }
-
-
-            if (File.Exists(Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb") == true)
+            
+            catch(Exception e)
             {
-                File.Delete(Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb");
+                MessageBox.Show("建立新数据库出错");
             }
-
-            ADOX.Catalog catalog = new Catalog();
-            catalog.Create("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb;" + "Jet OLEDB:Engine Type=5");
-
-            ADODB.Connection cn = new ADODB.Connection();
-
-            cn.Open("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb", null, null, -1);
-
-
-
-            catalog.ActiveConnection = cn;
-
-            ADOX.Table table = new ADOX.Table();
-            table.Name = "FirstTable";
-
-            ADOX.Column column = new ADOX.Column();
-            column.ParentCatalog = catalog;
-            column.Name = "RecordId";
-            column.Type = DataTypeEnum.adInteger;
-            column.DefinedSize = 9;
-            column.Properties["AutoIncrement"].Value = true;
-            table.Columns.Append(column, DataTypeEnum.adInteger, 9);
-            table.Keys.Append("FirstTablePrimaryKey", KeyTypeEnum.adKeyPrimary, column, null, null);
-
-            for (int i = 0; i < CComLibrary.GlobeVal.filesave.mdatabaseitemselect.Count; i++)
-            {
-                column = new ADOX.Column();
-
-                column.Name = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[i].Name;
-                column.Attributes = ColumnAttributesEnum.adColNullable;
-                table.Columns.Append(column, DataTypeEnum.adVarWChar, 80);
-
-               
-            }
-
-
-            // table.Columns.Append("CustomerName", DataTypeEnum.adVarWChar, 50);
-            // table.Columns.Append("Age", DataTypeEnum.adInteger, 9);
-            // table.Columns.Append("生日", DataTypeEnum.adVarWChar, 80);
-
-            catalog.Tables.Append(table);
-            cn.Close();
 
         }
-        public static  void SaveDatabase()
+        public static void SaveDatabase()
         {
-            ADODB.Connection cn = new ADODB.Connection();
-
-            cn.Open("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb", null, null, -1);
-            ADODB.Recordset rs;
-
-            rs = new ADODB.Recordset();
-
-            rs.LockType = ADODB.LockTypeEnum.adLockPessimistic;
-            rs.CursorType = ADODB.CursorTypeEnum.adOpenDynamic;
-
-            string sql = "select * from FirstTable";
-            rs.Open(sql, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, (int)ADODB.CommandTypeEnum.adCmdText);
-
-            if ((rs.RecordCount > 0))
+            try
             {
-                rs.MoveFirst();
-            }
-            string mshiyanghao = "";
-            string myangpinmingcheng = "";
-            int nshiyanhao = 0;
-            int nyangpinmingcheng = 0;
-            int nRecordId = 0;
-            for (int j = 0; j < CComLibrary.GlobeVal.filesave.mdatabaseitemselect.Count; j++)
-            {
+                ADODB.Connection cn = new ADODB.Connection();
 
+                cn.Open("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + "\\mdb\\" + CComLibrary.GlobeVal.filesave.methodname + ".mdb", null, null, -1);
+                ADODB.Recordset rs;
 
-                if (CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Name == "试样号")
+                rs = new ADODB.Recordset();
+
+                rs.LockType = ADODB.LockTypeEnum.adLockPessimistic;
+                rs.CursorType = ADODB.CursorTypeEnum.adOpenDynamic;
+
+                string sql = "select * from FirstTable";
+                rs.Open(sql, cn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic, (int)ADODB.CommandTypeEnum.adCmdText);
+
+                if ((rs.RecordCount > 0))
                 {
-                    mshiyanghao = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value;
-                    nshiyanhao = j;
+                    rs.MoveFirst();
                 }
-                if (CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Name == "样品名称")
-                {
-                    myangpinmingcheng = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value;
-                    nyangpinmingcheng = j;
-                }
-            }
-
-
-            bool mb = false;
-            string wshiyanghao = "";
-            string wyangpinmingcheng = "";
-            for (int i = 0; i < rs.RecordCount; i++)
-            {
-                wshiyanghao = Convert.ToString(rs.Fields[nshiyanhao + 1].Value);
-                wyangpinmingcheng = Convert.ToString(rs.Fields[nyangpinmingcheng + 1].Value);
-                if ((wshiyanghao == mshiyanghao) && (wyangpinmingcheng == myangpinmingcheng))
-                {
-                    mb = true;
-
-                    nRecordId = Convert.ToInt32(rs.Fields[0].Value);
-                    break;
-                }
-                else
-                {
-                    rs.MoveNext();
-                }
-
-            }
-
-            for (int i = 0; i < 1; i++)
-            {
-
-
-                object missing = System.Reflection.Missing.Value;
-                if (mb == false)
-                {
-
-                    rs.AddNew(missing, missing);
-                    rs.Fields["RecordId"].Value = rs.RecordCount;
-                }
-                else
-                {
-                    rs.Delete(ADODB.AffectEnum.adAffectCurrent);
-                    rs.AddNew(missing, missing);
-                    rs.Fields["RecordId"].Value = nRecordId;
-                }
-
-
-
+                string mshiyanghao = "";
+                string myangpinmingcheng = "";
+                int nshiyanhao = 0;
+                int nyangpinmingcheng = 0;
+                int nRecordId = 0;
                 for (int j = 0; j < CComLibrary.GlobeVal.filesave.mdatabaseitemselect.Count; j++)
                 {
-                    if (CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value == null)
+
+
+                    if (CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Name == "试样号")
                     {
-                        rs.Fields[j + 1].Value = "";
+                        mshiyanghao = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value;
+                        nshiyanhao = j;
+                    }
+                    if (CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Name == "样品名称")
+                    {
+                        myangpinmingcheng = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value;
+                        nyangpinmingcheng = j;
+                    }
+                }
+
+
+                bool mb = false;
+                string wshiyanghao = "";
+                string wyangpinmingcheng = "";
+                for (int i = 0; i < rs.RecordCount; i++)
+                {
+                    wshiyanghao = Convert.ToString(rs.Fields[nshiyanhao + 1].Value);
+                    wyangpinmingcheng = Convert.ToString(rs.Fields[nyangpinmingcheng + 1].Value);
+                    if ((wshiyanghao == mshiyanghao) && (wyangpinmingcheng == myangpinmingcheng))
+                    {
+                        mb = true;
+
+                        nRecordId = Convert.ToInt32(rs.Fields[0].Value);
+                        break;
                     }
                     else
                     {
-                        rs.Fields[j + 1].Value = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value;
+                        rs.MoveNext();
                     }
 
                 }
 
+                for (int i = 0; i < 1; i++)
+                {
 
-                rs.Update();
+
+                    object missing = System.Reflection.Missing.Value;
+                    if (mb == false)
+                    {
+
+                        rs.AddNew(missing, missing);
+                        rs.Fields["RecordId"].Value = rs.RecordCount;
+                    }
+                    else
+                    {
+                        rs.Delete(ADODB.AffectEnum.adAffectCurrent);
+                        rs.AddNew(missing, missing);
+                        rs.Fields["RecordId"].Value = nRecordId;
+                    }
+
+
+
+                    for (int j = 0; j < CComLibrary.GlobeVal.filesave.mdatabaseitemselect.Count; j++)
+                    {
+                        if (CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value == null)
+                        {
+                            rs.Fields[j + 1].Value = "";
+                        }
+                        else
+                        {
+                            rs.Fields[j + 1].Value = CComLibrary.GlobeVal.filesave.mdatabaseitemselect[j].Value;
+                        }
+
+                    }
+
+
+                    rs.Update();
+                }
+
+
+                rs.Close();
+                cn.Close();
+
             }
-
-
-            rs.Close();
-            cn.Close();
-
-
+            catch (Exception e)
+            {
+                MessageBox.Show("数据库保存出错");
+            }
         }
+
+
 
     }
 }

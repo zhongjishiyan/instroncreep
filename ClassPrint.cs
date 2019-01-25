@@ -372,7 +372,7 @@ namespace TabHeaderDemo
 
            if (mc.Name == "样品文件名")
            {
-               mc.txtresult = GlobeVal.mysys.SampleFile;
+               mc.txtresult = GlobeVal.myglobefile.SampleFile;
            }
 
            if (mc.Name == "样品说明")
@@ -406,7 +406,7 @@ namespace TabHeaderDemo
 
            if (mc.Name == "用户名")
            {
-               mc.txtresult = GlobeVal.mysys.UserName[GlobeVal.mysys.CurentUserIndex];
+               mc.txtresult = GlobeVal.myglobefile.UserName[GlobeVal.myglobefile.CurentUserIndex];
            }
 
            if (mc.Name == "控制过程")
@@ -425,7 +425,7 @@ namespace TabHeaderDemo
                for (int i = 0; i < CComLibrary.GlobeVal.filesave.mexplainlist.Count; i++)
                {
 
-                    s = s+"   " + "步骤" + (i + 1).ToString() + " " + CComLibrary.GlobeVal.filesave.mexplainlist[i].explain(Convert.ToInt32(GlobeVal.mysys.machinekind)) +"\r\n";
+                    s = s+"   " + "步骤" + (i + 1).ToString() + " " + CComLibrary.GlobeVal.filesave.mexplainlist[i].explain(Convert.ToInt32(GlobeVal.myglobefile.machinekind)) +"\r\n";
                  
                }
 

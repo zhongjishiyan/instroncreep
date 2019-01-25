@@ -18,6 +18,8 @@ namespace ClsStaticStation
     {
         public TransferData MyTransferData;
 
+        public string[] machinekind;
+
         private byte[] _vchar;
         private ulong _ctr = 0;
 
@@ -73,7 +75,7 @@ namespace ClsStaticStation
 
         private double time;
         private double count;
-       
+
 
         public List<CComLibrary.CmdSeg> mrunlist;
 
@@ -134,7 +136,7 @@ namespace ClsStaticStation
 
         public void SendTransferCmd()
         {
-            _pipeClient._TransferCmd.FuncID = this.DeviceNum;
+            _pipeClient._TransferCmd.FuncID = ClsStaticStation.m_Global.currentmachineId + 1;
             _pipeClient._TransferCmd.tcount = _ctr;
             _vchar = StructTOBytes(_pipeClient._TransferCmd);
 
@@ -150,10 +152,20 @@ namespace ClsStaticStation
         public override void DriveOn()
         {
 
+            _pipeClient._TransferCmd.cmdName = 124;
+
+
+
+            SendTransferCmd();
 
         }
         public override void DriveOff()
         {
+            _pipeClient._TransferCmd.cmdName = 125;
+
+
+
+            SendTransferCmd();
 
         }
 
@@ -199,7 +211,7 @@ namespace ClsStaticStation
         public override void cleartime()
         {
             base.cleartime();
-         
+
             if (CComLibrary.GlobeVal.filesave.Samplingmode == 0)
             {
                 mt.WaitOne();
@@ -210,6 +222,21 @@ namespace ClsStaticStation
 
 
             }
+        }
+        public override void sendfilename(string filename)
+        {
+            char[] s = new char[100];
+
+            _pipeClient._TransferCmd.cmdName = modMain.TestPara_Name;
+
+            s = filename.ToCharArray();
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                _pipeClient._TransferCmd.strPara_FileName[i] = s[i];
+            }
+            SendTransferCmd();
+
         }
 
         public override void starttest(int spenum)
@@ -232,7 +259,7 @@ namespace ClsStaticStation
 
             _pipeClient._TransferCmd.cmdName = 121;
 
-         
+
 
             SendTransferCmd();
 
@@ -281,7 +308,7 @@ namespace ClsStaticStation
                 if (CComLibrary.GlobeVal.filesave.pretest_cmd.check == true)
                 {
                     mrunlist.Add(CComLibrary.GlobeVal.filesave.pretest_cmd);
-                    mrunlist[0].keeptime = 0;
+                    
 
                     mrunlist[0].action = 0;
 
@@ -376,19 +403,17 @@ namespace ClsStaticStation
         public override void DestStart(int ctrlmode, double dest, double speed)
         {
 
-            short tan = 0;
-            double destination;
-            double mspeed;
 
 
 
+            return;
 
 
         }
 
         public override void DestStop(int ctrlmode)
         {
-            short tan = 0;
+            return;
 
 
 
@@ -398,10 +423,7 @@ namespace ClsStaticStation
 
         public override void CrossUp(int ctrlmode, double speed)
         {
-            short tan = 0;
-            double m = speed;
-
-
+            return;
 
 
 
@@ -410,15 +432,14 @@ namespace ClsStaticStation
 
         public override void CrossStop(int ctrlmode)
         {
-            short tan = 0;
-
+            return;
 
         }
         public override void endtest()
         {
 
             _pipeClient._TransferCmd.cmdName = 120;
-          
+
 
             SendTransferCmd();
 
@@ -670,6 +691,8 @@ namespace ClsStaticStation
         {
             _pipeClient = new PipeClient();
 
+            machinekind = new string[100];
+
             _pipeServer = new PipeServer();
             _pipeServer.PipeMessage += new PipeServer.DelegateMessage(PipesMessageHandler);
 
@@ -734,19 +757,45 @@ namespace ClsStaticStation
 
             m1.Sensor = new double[16];
 
-            m1.Sensor[0] = _pipeServer._TransferData.CHANNEL_S[m_Global.currentmachineId];
-            m1.Sensor[1] = _pipeServer._TransferData.CHANNEL_F[m_Global.currentmachineId];
+            if (_pipeServer._TransferData.EDC_STATE[m_Global.currentmachineId] == Convert.ToInt16(modMain.EDC_State.EDC_STATE_NOT_READY))
+            {
+                m1.Sensor[0] = 0;
+                m1.Sensor[1] = 0;
 
 
-            m1.Sensor[2] = _pipeServer._TransferData.CHANNEL_4[m_Global.currentmachineId];
-            m1.Sensor[3] = _pipeServer._TransferData.CHANNEL_5[m_Global.currentmachineId];
-            m1.Sensor[4] = _pipeServer._TransferData.CHANNEL_E[m_Global.currentmachineId];
-            m1.Sensor[5] = _pipeServer._TransferData.CHANNEL_7[m_Global.currentmachineId];
-            m1.Sensor[6] = _pipeServer._TransferData.CHANNEL_8[m_Global.currentmachineId];
-            m1.Sensor[7] = _pipeServer._TransferData.CHANNEL_9[m_Global.currentmachineId];
-            m1.Cycles =Convert.ToInt32( _pipeServer._TransferData.CYCLE_COUNT[m_Global.currentmachineId]);
+                m1.Sensor[2] = 0;
+                m1.Sensor[3] = 0;
+                m1.Sensor[4] = 0;
+                m1.Sensor[5] = 0;
+                m1.Sensor[6] = 0;
+                m1.Sensor[7] = 0;
+                m1.Cycles = 0;
 
-            m1.Time = _pipeServer._TransferData.TEST_TIME[m_Global.currentmachineId];
+                m1.Time = 0;
+            }
+            else
+            {
+                m1.Sensor[0] = _pipeServer._TransferData.CHANNEL_S[m_Global.currentmachineId];
+                m1.Sensor[1] = _pipeServer._TransferData.CHANNEL_F[m_Global.currentmachineId];
+
+
+                m1.Sensor[2] = _pipeServer._TransferData.CHANNEL_4[m_Global.currentmachineId];
+                m1.Sensor[3] = _pipeServer._TransferData.CHANNEL_5[m_Global.currentmachineId];
+                m1.Sensor[4] = _pipeServer._TransferData.CHANNEL_E[m_Global.currentmachineId];
+                m1.Sensor[5] = _pipeServer._TransferData.CHANNEL_7[m_Global.currentmachineId];
+                m1.Sensor[6] = _pipeServer._TransferData.CHANNEL_8[m_Global.currentmachineId];
+                m1.Sensor[7] = _pipeServer._TransferData.CHANNEL_9[m_Global.currentmachineId];
+                m1.Cycles = Convert.ToInt32(_pipeServer._TransferData.CYCLE_COUNT[m_Global.currentmachineId]);
+
+                m1.Test1 = _pipeServer._TransferData.TEST_TIME[m_Global.currentmachineId];
+
+                m1.Test2= Convert.ToInt32(_pipeServer._TransferData.LOOP_COUNT[m_Global.currentmachineId]);
+
+                m1.Test3 = Convert.ToInt32(_pipeServer._TransferData.TEST_STEP[m_Global.currentmachineId]);
+
+                m1.Time = _pipeServer._TransferData.TOTAL_TIME[m_Global.currentmachineId];
+
+            }
             XLDOPE.MDataIno ma = new XLDOPE.MDataIno();
             ma.Id = 0;
             ma.mydatainfo = m1;
@@ -790,7 +839,7 @@ namespace ClsStaticStation
         }
         public override int getrunstate() // 1运行 0 停止
         {
-           
+
 
             return m_runstate;
         }
@@ -968,7 +1017,7 @@ namespace ClsStaticStation
             int ii;
             if (connected == true)
             {
-               // SendTransferCmd();
+                // SendTransferCmd();
             }
 
             {
@@ -1004,13 +1053,13 @@ namespace ClsStaticStation
                     load = GGMsg.Sensor[1];
 
 
-
+                    
 
                     ext = GGMsg.Sensor[2];
 
 
 
-                    
+
 
                     cmd = GGMsg.Test1;
 
@@ -1018,7 +1067,10 @@ namespace ClsStaticStation
 
                     count = GGMsg.Cycles;
 
-                   
+                    if (CComLibrary.GlobeVal.filesave == null)
+                    {
+                        return;
+                    }
 
                     if (mtestrun == true)
                     {
@@ -1136,6 +1188,25 @@ namespace ClsStaticStation
 
                             }
 
+                        }
+                        //后增加
+                        if (m_Global.mycls.datalist[j].SignName == "Ch Test Time")
+                        {
+
+                            b.data[m_Global.mycls.datalist[j].EdcId] = GGMsg.Test1;
+
+                        }
+
+                        if( m_Global.mycls.datalist[j].SignName == "Ch Cycle Count")
+                        {
+
+                            b.data[m_Global.mycls.datalist[j].EdcId] = GGMsg.Test2;
+                        }
+
+                        if (m_Global.mycls.datalist[j].SignName == "Ch Segment Count")
+                        {
+
+                            b.data[m_Global.mycls.datalist[j].EdcId] = GGMsg.Test3;
                         }
 
                         if (m_Global.mycls.datalist[j].SignName == "Ch Time")
@@ -1542,6 +1613,21 @@ namespace ClsStaticStation
                     for (j = 0; j < m_Global.mycls.allsignals.Count; j++)
                     {
 
+                        if (m_Global.mycls.allsignals[j].SignName == "Ch Test Time")
+                        {
+                            m_Global.mycls.allsignals[j].cvalue = GGMsg.Test1;
+                        }
+
+                        if (m_Global.mycls.allsignals[j].SignName == "Ch Cycle Count")
+                        {
+                            m_Global.mycls.allsignals[j].cvalue = GGMsg.Test2;
+                        }
+
+                        if (m_Global.mycls.allsignals[j].SignName == "Ch Segment Count")
+                        {
+                            m_Global.mycls.allsignals[j].cvalue = GGMsg.Test3;
+                        }
+
                         if (m_Global.mycls.allsignals[j].SignName == "Ch Time")
                         {
                             m_Global.mycls.allsignals[j].cvalue = time;
@@ -1733,10 +1819,13 @@ namespace ClsStaticStation
             }
         }
 
+
+
         public override void Init(int handle)
         {
 
             OpenConnection();
+
 
 
         }
@@ -1750,6 +1839,15 @@ namespace ClsStaticStation
                 connected = true;
 
                 mtimer.Start();
+
+                DelayS(100);
+
+                _pipeClient._TransferCmd.cmdName = modMain.ConnectToEdcFuncID;
+
+
+
+
+                SendTransferCmd();
             }
             catch (Exception)
             {
@@ -1763,8 +1861,15 @@ namespace ClsStaticStation
         public override int CloseConnection()
         {
             mtimer.Stop();
+            if (_pipeClient == null)
+            {
+                return 0;
+            }
+            _pipeClient._TransferCmd.cmdName = modMain.CloseLink_FuncID;
 
 
+
+            SendTransferCmd();
 
 
             return 0;

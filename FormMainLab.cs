@@ -175,7 +175,7 @@ namespace TabHeaderDemo
 
             GlobeVal.myglobefile = new ClassGlobeFile();
             GlobeVal.mysys = new ClassSys();
-
+            m_Global.mNIsBaseUnit = true;
 
             //MessageBox.Show(System.Windows.Forms.Application.StartupPath.ToString());
 
@@ -200,7 +200,7 @@ namespace TabHeaderDemo
             }
 
 
-            m_Global.mycls = new ItemSignalStation(Convert.ToInt32(GlobeVal.mysys.machinekind));
+            m_Global.mycls = new ItemSignalStation(Convert.ToInt32(GlobeVal.myglobefile.machinekind));
 
 
 
@@ -217,13 +217,13 @@ namespace TabHeaderDemo
 
 
 
-            if (GlobeVal.mysys.controllerkind == 0)
+            if (GlobeVal.myglobefile.controllerkind == 0)
             {
                 myarm = new CDsp();
 
             }
 
-            if (GlobeVal.mysys.controllerkind == 1)
+            if (GlobeVal.myglobefile.controllerkind == 1)
             {
 
                 myarm = new CDsp();
@@ -442,22 +442,13 @@ namespace TabHeaderDemo
 
 
 
-            /*
-            while (System.Environment.TickCount - t <= 500)
-            {
-                Application.DoEvents();
-            }
-            */
+            
 
 
             umain.OpenTest();
 
             tabControl1.SelectedIndex = 0;
-            /*
-            string fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" +
-                GlobeVal.userControlpretest1.listView1.Items[0].SubItems[1].Text + "\\"
-                  + GlobeVal.userControlpretest1.listView1.Items[0].Text + ".dat";
-            */
+          
 
             string fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + GlobeVal.selcontroller.ToString().Trim() + "\\para\\方法.dat";
 
@@ -469,7 +460,7 @@ namespace TabHeaderDemo
             }
             CComLibrary.GlobeVal.filesave = CComLibrary.GlobeVal.filesave.DeSerializeNow(fileName);
 
-
+            
             if (UserControl操作面板1 == null)
             {
 
@@ -482,9 +473,10 @@ namespace TabHeaderDemo
             }
             GlobeVal.userControltest1.panelright.Controls.Clear();
 
-            UserControl操作面板1.Visible = false;
+          
             GlobeVal.userControltest1.panelright.Controls.Add(UserControl操作面板1);
 
+            
 
             ClsStaticStation.m_Global.mycls.initchannel();
             ((FormMainLab)Application.OpenForms["FormMainLab"]).InitKey();
@@ -494,20 +486,20 @@ namespace TabHeaderDemo
             GlobeVal.userControlpretest1.gfilename = fileName;
             CComLibrary.GlobeVal.currentfilesavename = fileName;
 
-            if (GlobeVal.mysys.SamplePath == "")
+            if (GlobeVal.myglobefile.SamplePath == "")
             {
                 MessageBox.Show("请设置数据保存路径");
 
                 return;
             }
 
-            if (System.IO.Directory.Exists(GlobeVal.mysys.SamplePath))
+            if (System.IO.Directory.Exists(GlobeVal.myglobefile.SamplePath))
             {
             }
             else
             {
                 MessageBox.Show("数据保存路径不存在,请点击浏览选择试验路径,将重新设置为c:\\data");
-                GlobeVal.mysys.SamplePath = "c:\\data";
+                GlobeVal.myglobefile.SamplePath = "c:\\data";
 
                 //return;
             }
@@ -516,14 +508,14 @@ namespace TabHeaderDemo
 
 
 
-            GlobeVal.spefilename = GlobeVal.mysys.SamplePath + "\\" + "未命名" + ".spe";
+            GlobeVal.spefilename = GlobeVal.myglobefile.SamplePath + "\\" + "未命名" + ".spe";
 
 
 
 
             GlobeVal.userControlpretest1.SampleNextStep(true);
 
-            UserControl操作面板1.Visible = true;
+           
 
             this.Cursor = Cursors.Default;
             tabControl1.SelectedIndex = 1;
@@ -618,24 +610,24 @@ namespace TabHeaderDemo
 
             software.Close();
 
-    */
+           */
 
 
-            if (GlobeVal.mysys.showshorttitle == false)
+            if (GlobeVal.myglobefile.showshorttitle == false)
             {
                 UTop.wordArt1.Caption = "AppleLab";
 
             }
             else
             {
-                UTop.wordArt1.Caption = GlobeVal.mysys.shorttitle;
+                UTop.wordArt1.Caption = GlobeVal.myglobefile.shorttitle;
             }
 
-            if (GlobeVal.mysys.showlogo == true)
+            if (GlobeVal.myglobefile.showlogo == true)
             {
-                if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\bmp\\" + GlobeVal.mysys.bmplogo))
+                if (System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\bmp\\" + GlobeVal.myglobefile.bmplogo))
                 {
-                    UTop.paneldefine.BackgroundImage = Image.FromFile(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\bmp\\" + GlobeVal.mysys.bmplogo);
+                    UTop.paneldefine.BackgroundImage = Image.FromFile(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\bmp\\" + GlobeVal.myglobefile.bmplogo);
                     UTop.panel6.Visible = false;
                     UTop.paneldefine.Visible = true;
                 }
@@ -657,7 +649,7 @@ namespace TabHeaderDemo
 
             timermain.Enabled = true;
 
-            if (GlobeVal.mysys.safe == true)
+            if (GlobeVal.myglobefile.safe == true)
             {
 
                 Frm.Form登录 f = new TabHeaderDemo.Frm.Form登录();
@@ -681,9 +673,9 @@ namespace TabHeaderDemo
 
             }
 
-            if (GlobeVal.mysys.controllerkind == 0)
+            if (GlobeVal.myglobefile.controllerkind == 0)
             {
-                if (GlobeVal.mysys.machinekind == 3)
+                if (GlobeVal.myglobefile.machinekind == 3)
                 {
                 }
                 else
@@ -707,7 +699,7 @@ namespace TabHeaderDemo
             }
 
 
-            if (GlobeVal.mysys.startupscreen == 1)
+            if (GlobeVal.myglobefile.startupscreen == 1)
             {
 
 
@@ -934,6 +926,7 @@ namespace TabHeaderDemo
             myarm.Exit();
             myarm.CloseConnection();
             GlobeVal.mysys.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\setup.ini");
+            GlobeVal.myglobefile.SerializeNow(System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\sys\\globe.ini");
         }
 
 
@@ -987,36 +980,36 @@ namespace TabHeaderDemo
 
         private void timermain_Tick(object sender, EventArgs e)
         {
-            if ((GlobeVal.mysys.CurentUserIndex >= 0) && (GlobeVal.mysys.CurentUserIndex < GlobeVal.mysys.UserCount))
+            if ((GlobeVal.myglobefile.CurentUserIndex >= 0) && (GlobeVal.myglobefile.CurentUserIndex < GlobeVal.myglobefile.UserCount))
             {
             }
             else
             {
-                GlobeVal.mysys.CurentUserIndex = 0;
+                GlobeVal.myglobefile.CurentUserIndex = 0;
             }
 
 
-            tsluser.Text = "用户名:" + GlobeVal.mysys.UserName[GlobeVal.mysys.CurentUserIndex];
+            tsluser.Text = "用户名:" + GlobeVal.myglobefile.UserName[GlobeVal.myglobefile.CurentUserIndex];
 
-            if (GlobeVal.mysys.showapptitle == false)
+            if (GlobeVal.myglobefile.showapptitle == false)
             {
-                tslblmachine.Text = GlobeVal.mysys.MachineName[GlobeVal.mysys.machinekind];
-                this.Text = "AppleLab-" + GlobeVal.mysys.MachineName[GlobeVal.mysys.machinekind];
+                tslblmachine.Text = GlobeVal.myglobefile.MachineName[GlobeVal.myglobefile.machinekind];
+                this.Text = "AppleLab-" + GlobeVal.myglobefile.MachineName[GlobeVal.myglobefile.machinekind];
             }
             else
             {
-                tslblmachine.Text = GlobeVal.mysys.apptitle;
-                this.Text = GlobeVal.mysys.apptitle;
+                tslblmachine.Text = GlobeVal.myglobefile.apptitle;
+                this.Text = GlobeVal.myglobefile.apptitle;
             }
 
-            if (GlobeVal.mysys.showshorttitle == false)
+            if (GlobeVal.myglobefile.showshorttitle == false)
             {
                 UTop.wordArt1.Caption = "AppleLab";
 
             }
             else
             {
-                UTop.wordArt1.Caption = GlobeVal.mysys.shorttitle;
+                UTop.wordArt1.Caption = GlobeVal.myglobefile.shorttitle;
             }
 
         }
@@ -1027,7 +1020,7 @@ namespace TabHeaderDemo
             int i;
             bool b = false;
             CComLibrary.FileStruct f = new CComLibrary.FileStruct();
-            if (GlobeVal.mysys.AppUserLevel < 1)
+            if (GlobeVal.myglobefile.AppUserLevel < 1)
             {
                 MessageBox.Show("您的当前权限不够，请使用试验经理或管理员权限登录");
                 return;

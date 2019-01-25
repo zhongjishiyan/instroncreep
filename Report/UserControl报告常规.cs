@@ -136,7 +136,7 @@ namespace TabHeaderDemo
                 cboLandscape.SelectedIndex = 1;
             }
 
-            if (GlobeVal.mysys.AppUserLevel == 0)
+            if (GlobeVal.myglobefile.AppUserLevel == 0)
             {
                 grp1.Enabled = false;
             }

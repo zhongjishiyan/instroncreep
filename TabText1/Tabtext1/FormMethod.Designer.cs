@@ -36,9 +36,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btndel = new System.Windows.Forms.Button();
             this.btnadd = new System.Windows.Forms.Button();
-            this.listBox2 = new AppleLabApplication.ListExt(this.components);
             this.label12 = new System.Windows.Forms.Label();
-            this.listBox1 = new AppleLabApplication.ListExt(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cbokind = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -66,26 +64,31 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.cboshape = new System.Windows.Forms.ComboBox();
-            this.listEditor1 = new SampleProject.Extensions.ListEditor();
             this.intermediateStep5 = new WizardBase.IntermediateStep();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.uListEditor1 = new AppleLabApplication.Extensions.UListEditor();
-            this.listEditor4 = new SampleProject.Extensions.ListEditorText();
-            this.listEditor5 = new SampleProject.Extensions.ListEditorText();
             this.intermediateStep3 = new WizardBase.IntermediateStep();
             this.button1 = new System.Windows.Forms.Button();
-            this.listEditor2 = new SampleProject.Extensions.ListEditor();
             this.intermediateStep4 = new WizardBase.IntermediateStep();
-            this.listEditor3 = new SampleProject.Extensions.ListEditorEx();
             this.intermediateStep6 = new WizardBase.IntermediateStep();
+            this.chkdatamode = new System.Windows.Forms.CheckBox();
             this.chkcalcandresult = new System.Windows.Forms.CheckBox();
             this.checklist = new System.Windows.Forms.CheckedListBox();
             this.finishStep1 = new WizardBase.FinishStep();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtcriterion = new System.Windows.Forms.TextBox();
+            this.listBox2 = new AppleLabApplication.ListExt(this.components);
+            this.listBox1 = new AppleLabApplication.ListExt(this.components);
+            this.listEditor1 = new SampleProject.Extensions.ListEditor();
+            this.uListEditor1 = new AppleLabApplication.Extensions.UListEditor();
+            this.listEditor4 = new SampleProject.Extensions.ListEditorText();
+            this.listEditor5 = new SampleProject.Extensions.ListEditorText();
+            this.listEditor2 = new SampleProject.Extensions.ListEditor();
+            this.listEditor3 = new SampleProject.Extensions.ListEditorEx();
             this.intermediateStep1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -145,6 +148,8 @@
             // intermediateStep1
             // 
             this.intermediateStep1.BindingImage = ((System.Drawing.Image)(resources.GetObject("intermediateStep1.BindingImage")));
+            this.intermediateStep1.Controls.Add(this.txtcriterion);
+            this.intermediateStep1.Controls.Add(this.label15);
             this.intermediateStep1.Controls.Add(this.panel2);
             this.intermediateStep1.Controls.Add(this.tableLayoutPanel2);
             this.intermediateStep1.Controls.Add(this.txtpath);
@@ -200,16 +205,6 @@
             this.btnadd.UseVisualStyleBackColor = true;
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
-            // listBox2
-            // 
-            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 12;
-            this.listBox2.Location = new System.Drawing.Point(1, 168);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(260, 86);
-            this.listBox2.TabIndex = 2;
-            // 
             // label12
             // 
             this.label12.Dock = System.Windows.Forms.DockStyle.Top;
@@ -219,16 +214,6 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "形状选择：";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // listBox1
-            // 
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(1, 25);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(260, 98);
-            this.listBox1.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -278,10 +263,10 @@
             // 
             // txtexplain
             // 
-            this.txtexplain.Location = new System.Drawing.Point(142, 235);
+            this.txtexplain.Location = new System.Drawing.Point(142, 263);
             this.txtexplain.Multiline = true;
             this.txtexplain.Name = "txtexplain";
-            this.txtexplain.Size = new System.Drawing.Size(236, 218);
+            this.txtexplain.Size = new System.Drawing.Size(236, 190);
             this.txtexplain.TabIndex = 19;
             // 
             // txtauthor
@@ -313,7 +298,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(70, 239);
+            this.label6.Location = new System.Drawing.Point(70, 263);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 10;
@@ -500,19 +485,6 @@
             this.cboshape.TabIndex = 1;
             this.cboshape.SelectionChangeCommitted += new System.EventHandler(this.cboshape_SelectionChangeCommitted);
             // 
-            // listEditor1
-            // 
-            this.listEditor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listEditor1.Editors = null;
-            this.listEditor1.ItemType = null;
-            this.listEditor1.List = null;
-            this.listEditor1.Location = new System.Drawing.Point(25, 261);
-            this.listEditor1.Name = "listEditor1";
-            this.listEditor1.Properties = null;
-            this.listEditor1.Size = new System.Drawing.Size(604, 169);
-            this.listEditor1.TabIndex = 0;
-            this.listEditor1.ListChanged += new SampleProject.Extensions.ListEditor.ListEventHandler(this.listEditor1_ListChanged);
-            // 
             // intermediateStep5
             // 
             this.intermediateStep5.BindingImage = ((System.Drawing.Image)(resources.GetObject("intermediateStep5.BindingImage")));
@@ -556,41 +528,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // uListEditor1
-            // 
-            this.uListEditor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.uListEditor1.Location = new System.Drawing.Point(12, 315);
-            this.uListEditor1.Name = "uListEditor1";
-            this.uListEditor1.Size = new System.Drawing.Size(656, 136);
-            this.uListEditor1.TabIndex = 4;
-            this.uListEditor1.addevent += new AppleLabApplication.Extensions.UListEditor.AddEventHandler(this.uListEditor1_addevent);
-            this.uListEditor1.removeevent += new AppleLabApplication.Extensions.UListEditor.RemoveEventHandler(this.uListEditor1_removeevent);
-            this.uListEditor1.cboevent += new AppleLabApplication.Extensions.UListEditor.CboEventHandler(this.uListEditor1_cboevent);
-            // 
-            // listEditor4
-            // 
-            this.listEditor4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listEditor4.Editors = null;
-            this.listEditor4.ItemType = null;
-            this.listEditor4.List = null;
-            this.listEditor4.Location = new System.Drawing.Point(12, 67);
-            this.listEditor4.Name = "listEditor4";
-            this.listEditor4.Properties = null;
-            this.listEditor4.Size = new System.Drawing.Size(657, 110);
-            this.listEditor4.TabIndex = 9;
-            // 
-            // listEditor5
-            // 
-            this.listEditor5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listEditor5.Editors = null;
-            this.listEditor5.ItemType = null;
-            this.listEditor5.List = null;
-            this.listEditor5.Location = new System.Drawing.Point(12, 183);
-            this.listEditor5.Name = "listEditor5";
-            this.listEditor5.Properties = null;
-            this.listEditor5.Size = new System.Drawing.Size(657, 126);
-            this.listEditor5.TabIndex = 10;
-            // 
             // intermediateStep3
             // 
             this.intermediateStep3.BindingImage = ((System.Drawing.Image)(resources.GetObject("intermediateStep3.BindingImage")));
@@ -612,23 +549,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listEditor2
-            // 
-            this.listEditor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listEditor2.Editors = null;
-            this.listEditor2.ItemType = null;
-            this.listEditor2.List = null;
-            this.listEditor2.Location = new System.Drawing.Point(41, 84);
-            this.listEditor2.Name = "listEditor2";
-            this.listEditor2.Properties = null;
-            this.listEditor2.Size = new System.Drawing.Size(596, 337);
-            this.listEditor2.TabIndex = 1;
-            this.listEditor2.ListChanged += new SampleProject.Extensions.ListEditor.ListEventHandler(this.listEditor2_ListChanged);
-            this.listEditor2.Click += new System.EventHandler(this.listEditor2_Click);
-            this.listEditor2.DoubleClick += new System.EventHandler(this.listEditor2_DoubleClick);
-            this.listEditor2.Enter += new System.EventHandler(this.listEditor2_Enter);
-            this.listEditor2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEditor2_MouseDoubleClick);
-            // 
             // intermediateStep4
             // 
             this.intermediateStep4.BindingImage = ((System.Drawing.Image)(resources.GetObject("intermediateStep4.BindingImage")));
@@ -639,22 +559,10 @@
             this.intermediateStep4.Title = "第五步";
             this.intermediateStep4.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             // 
-            // listEditor3
-            // 
-            this.listEditor3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listEditor3.Editors = null;
-            this.listEditor3.ItemType = null;
-            this.listEditor3.List = null;
-            this.listEditor3.Location = new System.Drawing.Point(12, 89);
-            this.listEditor3.Name = "listEditor3";
-            this.listEditor3.Properties = null;
-            this.listEditor3.Size = new System.Drawing.Size(656, 336);
-            this.listEditor3.TabIndex = 0;
-            this.listEditor3.Load += new System.EventHandler(this.listEditor3_Load);
-            // 
             // intermediateStep6
             // 
             this.intermediateStep6.BindingImage = ((System.Drawing.Image)(resources.GetObject("intermediateStep6.BindingImage")));
+            this.intermediateStep6.Controls.Add(this.chkdatamode);
             this.intermediateStep6.Controls.Add(this.chkcalcandresult);
             this.intermediateStep6.Controls.Add(this.checklist);
             this.intermediateStep6.Name = "intermediateStep6";
@@ -662,6 +570,17 @@
             this.intermediateStep6.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.intermediateStep6.Title = "第六步";
             this.intermediateStep6.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            // 
+            // chkdatamode
+            // 
+            this.chkdatamode.AutoSize = true;
+            this.chkdatamode.Location = new System.Drawing.Point(111, 306);
+            this.chkdatamode.Name = "chkdatamode";
+            this.chkdatamode.Size = new System.Drawing.Size(72, 16);
+            this.chkdatamode.TabIndex = 2;
+            this.chkdatamode.Text = "数据采集";
+            this.chkdatamode.UseVisualStyleBackColor = true;
+            this.chkdatamode.CheckedChanged += new System.EventHandler(this.chkdatamode_CheckedChanged);
             // 
             // chkcalcandresult
             // 
@@ -711,6 +630,120 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(46, 234);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(89, 12);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "试验标准名称：";
+            // 
+            // txtcriterion
+            // 
+            this.txtcriterion.Location = new System.Drawing.Point(141, 230);
+            this.txtcriterion.Name = "txtcriterion";
+            this.txtcriterion.Size = new System.Drawing.Size(237, 21);
+            this.txtcriterion.TabIndex = 23;
+            // 
+            // listBox2
+            // 
+            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 12;
+            this.listBox2.Location = new System.Drawing.Point(1, 168);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(260, 86);
+            this.listBox2.TabIndex = 2;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(1, 25);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(260, 98);
+            this.listBox1.TabIndex = 0;
+            // 
+            // listEditor1
+            // 
+            this.listEditor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listEditor1.Editors = null;
+            this.listEditor1.ItemType = null;
+            this.listEditor1.List = null;
+            this.listEditor1.Location = new System.Drawing.Point(25, 261);
+            this.listEditor1.Name = "listEditor1";
+            this.listEditor1.Properties = null;
+            this.listEditor1.Size = new System.Drawing.Size(604, 169);
+            this.listEditor1.TabIndex = 0;
+            this.listEditor1.ListChanged += new SampleProject.Extensions.ListEditor.ListEventHandler(this.listEditor1_ListChanged);
+            // 
+            // uListEditor1
+            // 
+            this.uListEditor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.uListEditor1.Location = new System.Drawing.Point(12, 315);
+            this.uListEditor1.Name = "uListEditor1";
+            this.uListEditor1.Size = new System.Drawing.Size(656, 136);
+            this.uListEditor1.TabIndex = 4;
+            this.uListEditor1.addevent += new AppleLabApplication.Extensions.UListEditor.AddEventHandler(this.uListEditor1_addevent);
+            this.uListEditor1.removeevent += new AppleLabApplication.Extensions.UListEditor.RemoveEventHandler(this.uListEditor1_removeevent);
+            this.uListEditor1.cboevent += new AppleLabApplication.Extensions.UListEditor.CboEventHandler(this.uListEditor1_cboevent);
+            // 
+            // listEditor4
+            // 
+            this.listEditor4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listEditor4.Editors = null;
+            this.listEditor4.ItemType = null;
+            this.listEditor4.List = null;
+            this.listEditor4.Location = new System.Drawing.Point(12, 67);
+            this.listEditor4.Name = "listEditor4";
+            this.listEditor4.Properties = null;
+            this.listEditor4.Size = new System.Drawing.Size(657, 110);
+            this.listEditor4.TabIndex = 9;
+            // 
+            // listEditor5
+            // 
+            this.listEditor5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listEditor5.Editors = null;
+            this.listEditor5.ItemType = null;
+            this.listEditor5.List = null;
+            this.listEditor5.Location = new System.Drawing.Point(12, 183);
+            this.listEditor5.Name = "listEditor5";
+            this.listEditor5.Properties = null;
+            this.listEditor5.Size = new System.Drawing.Size(657, 126);
+            this.listEditor5.TabIndex = 10;
+            // 
+            // listEditor2
+            // 
+            this.listEditor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listEditor2.Editors = null;
+            this.listEditor2.ItemType = null;
+            this.listEditor2.List = null;
+            this.listEditor2.Location = new System.Drawing.Point(41, 84);
+            this.listEditor2.Name = "listEditor2";
+            this.listEditor2.Properties = null;
+            this.listEditor2.Size = new System.Drawing.Size(596, 337);
+            this.listEditor2.TabIndex = 1;
+            this.listEditor2.ListChanged += new SampleProject.Extensions.ListEditor.ListEventHandler(this.listEditor2_ListChanged);
+            this.listEditor2.Click += new System.EventHandler(this.listEditor2_Click);
+            this.listEditor2.DoubleClick += new System.EventHandler(this.listEditor2_DoubleClick);
+            this.listEditor2.Enter += new System.EventHandler(this.listEditor2_Enter);
+            this.listEditor2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listEditor2_MouseDoubleClick);
+            // 
+            // listEditor3
+            // 
+            this.listEditor3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listEditor3.Editors = null;
+            this.listEditor3.ItemType = null;
+            this.listEditor3.List = null;
+            this.listEditor3.Location = new System.Drawing.Point(12, 89);
+            this.listEditor3.Name = "listEditor3";
+            this.listEditor3.Properties = null;
+            this.listEditor3.Size = new System.Drawing.Size(656, 336);
+            this.listEditor3.TabIndex = 0;
+            this.listEditor3.Load += new System.EventHandler(this.listEditor3_Load);
             // 
             // FormMethod
             // 
@@ -804,5 +837,8 @@
         private WizardBase.IntermediateStep intermediateStep6;
         private System.Windows.Forms.CheckedListBox checklist;
         private System.Windows.Forms.CheckBox chkcalcandresult;
+        private System.Windows.Forms.CheckBox chkdatamode;
+        private System.Windows.Forms.TextBox txtcriterion;
+        private System.Windows.Forms.Label label15;
     }
 }

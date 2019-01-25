@@ -114,6 +114,11 @@ namespace TabHeaderDemo
 			}
 			
 			float cH = System.Convert.ToSingle((this.ClientSize.Height / this.GetRowHeights().Length) - 1);
+            if(cH <=0)
+            {
+                cH = 1;
+            }
+
 			for (int r = 0; r <= this.GetRowHeights().Length - 1; r++)
 			{
 				this.RowStyles[r].SizeType = SizeType.Absolute;

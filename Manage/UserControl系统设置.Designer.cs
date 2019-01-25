@@ -221,6 +221,8 @@
             this.grid1.TabIndex = 3;
             this.grid1.CellGotFocus += new SourceGrid2.PositionCancelEventHandler(this.grid1_CellGotFocus);
             this.grid1.CellLostFocus += new SourceGrid2.PositionCancelEventHandler(this.grid1_CellLostFocus);
+            this.grid1.GettingCell += new SourceGrid2.PositionEventHandler(this.grid1_GettingCell);
+            this.grid1.SettingCell += new SourceGrid2.PositionEventHandler(this.grid1_SettingCell);
             // 
             // groupBox2
             // 
@@ -290,7 +292,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -305,7 +307,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(823, 4);
+            this.panel4.Location = new System.Drawing.Point(822, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(39, 42);
             this.panel4.TabIndex = 1;
@@ -319,7 +321,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(812, 84);
+            this.panel3.Size = new System.Drawing.Size(811, 84);
             this.panel3.TabIndex = 2;
             // 
             // label6

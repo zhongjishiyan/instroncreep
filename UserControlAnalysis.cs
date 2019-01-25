@@ -451,7 +451,7 @@ namespace TabHeaderDemo
 
 
 
-            mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+            mspefiledat = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
           (num).ToString().Trim() + ".txt";
 
 
@@ -563,7 +563,7 @@ namespace TabHeaderDemo
                 }
             }
 
-            mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+            mspefiledat = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
        (num).ToString().Trim() + ".txt";
 
             StreamReader m_streamReader = new StreamReader(mspefiledat, System.Text.Encoding.Default);

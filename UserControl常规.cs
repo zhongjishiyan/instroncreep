@@ -163,14 +163,14 @@ namespace TabHeaderDemo
                     for (int i = 0; i < listView1.Items.Count; i++)
                     {
 
-                        GlobeVal.mysys.RecentFilename[i] = listView1.Items[i].Text;
-                        GlobeVal.mysys.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
+                        GlobeVal.myglobefile.RecentFilename[i] = listView1.Items[i].Text;
+                        GlobeVal.myglobefile.RecentFilenameKind[i] = listView1.Items[i].SubItems[1].Text;
                     }
 
                     for (int i = listView1.Items.Count; i < 20; i++)
                     {
-                        GlobeVal.mysys.RecentFilename[i] = "";
-                        GlobeVal.mysys.RecentFilenameKind[i] = "";
+                        GlobeVal.myglobefile.RecentFilename[i] = "";
+                        GlobeVal.myglobefile.RecentFilenameKind[i] = "";
                     }
 
 
@@ -210,18 +210,18 @@ namespace TabHeaderDemo
                 string fileName;
                 for (int i = 0; i < 20; i++)
                 {
-                    if (GlobeVal.mysys.RecentFilename[i] == "")
+                    if (GlobeVal.myglobefile.RecentFilename[i] == "")
                     {
                     }
                     else
                     {
                         ListViewItem lv = new ListViewItem();
-                        lv.Text = GlobeVal.mysys.RecentFilename[i];
+                        lv.Text = GlobeVal.myglobefile.RecentFilename[i];
 
 
 
-                        lv.SubItems.Add(GlobeVal.mysys.RecentFilenameKind[i]);
-                        fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" + GlobeVal.mysys.RecentFilenameKind[i] + "\\" + GlobeVal.mysys.RecentFilename[i] + ".dat";
+                        lv.SubItems.Add(GlobeVal.myglobefile.RecentFilenameKind[i]);
+                        fileName = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ" + "\\Method\\" + GlobeVal.myglobefile.RecentFilenameKind[i] + "\\" + GlobeVal.myglobefile.RecentFilename[i] + ".dat";
 
                         if (System.IO.File.Exists(fileName) == true)
                         {
@@ -256,7 +256,7 @@ namespace TabHeaderDemo
                 txtmemo.Text = CComLibrary.GlobeVal.filesave.samplememo;
                 txtauthor.Text = CComLibrary.GlobeVal.filesave.methodauthor;
                 txtmethodmemo.Text = CComLibrary.GlobeVal.filesave.methodmemo;
-
+                txtcriterion.Text = CComLibrary.GlobeVal.filesave.criterionname;
 
             }
 
@@ -1444,6 +1444,11 @@ namespace TabHeaderDemo
 
                 OpenRecentMethod();
             }
+        }
+
+        private void txtcriterion_TextChanged(object sender, EventArgs e)
+        {
+            CComLibrary.GlobeVal.filesave.criterionname = txtcriterion.Text;
         }
     }
 }

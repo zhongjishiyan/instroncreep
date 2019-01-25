@@ -141,6 +141,7 @@ namespace TabHeaderDemo
             timer1.Enabled = false;
 
         }
+
         public bool startrun()
         {
             RawDataDataGroup d;
@@ -275,7 +276,7 @@ namespace TabHeaderDemo
             {
 
 
-                mspefiledat = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+                mspefiledat = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
                     (CComLibrary.GlobeVal.filesave.currentspenumber + 1).ToString().Trim() + ".txt";
 
 
@@ -443,6 +444,144 @@ namespace TabHeaderDemo
             timer1.Enabled = true;
             return true;
         }
+        public bool ContinueRun()
+        {
+            RawDataDataGroup d;
+            mstartoldcount = -1;
+            mstartoldcount1 = -1;
+
+            string s;
+            count = 0;
+            int mk;
+            tstart = 0;
+            maxload = 0;
+            mstarttime = 0;
+
+            mdogtimelast = 0;
+
+            mdogstarttime = 0;
+
+            mrawdatalist = new List<TabHeaderDemo.UserControlGraph.rawdata>();
+
+            s_sensor5state0 = "";
+            s_sensor6state0 = "";
+            s_sensor7state0 = "";
+            s_sensor5state1 = "";
+            s_sensor6state1 = "";
+            s_sensor7state1 = "";
+            s_sensor5state2 = "";
+            s_sensor6state2 = "";
+            s_sensor7state2 = "";
+            s_sensor5state3 = "";
+            s_sensor6state3 = "";
+            s_sensor7state3 = "";
+            s_sensor5state4 = "";
+            s_sensor6state4 = "";
+            s_sensor7state4 = "";
+            s_sensor5state5 = "";
+            s_sensor6state5 = "";
+            s_sensor7state5 = "";
+
+
+            m_sensor5state0 = false;
+            m_sensor5state1 = false;
+            m_sensor5state2 = false;
+            m_sensor6state0 = false;
+            m_sensor6state1 = false;
+            m_sensor6state2 = false;
+            m_sensor7state0 = false;
+            m_sensor7state1 = false;
+            m_sensor7state2 = false;
+
+            m_sensor5state3 = false;
+            m_sensor5state4 = false;
+            m_sensor5state5 = false;
+            m_sensor5state3count = 0;
+            m_sensor5state4count = 0;
+            m_sensor5state5count = 0;
+            m_sensor6state3 = false;
+            m_sensor6state4 = false;
+            m_sensor6state5 = false;
+            m_sensor6state3count = 0;
+            m_sensor6state4count = 0;
+            m_sensor6state5count = 0;
+            m_sensor7state3 = false;
+            m_sensor7state4 = false;
+            m_sensor7state5 = false;
+            m_sensor7state3count = 0;
+            m_sensor7state4count = 0;
+            m_sensor7state5count = 0;
+
+
+            int ll = 0;
+
+            ll = ClsStatic.arraydata[mplot1 - 1].Read<RawDataDataGroup>(r, 0, 10);
+
+            if (ll == 0)
+            {
+            }
+            else
+            {
+                ClsStatic.arraydatacount[mplot1 - 1] = ClsStatic.arraydatacount[mplot1 - 1] - 1;
+            }
+
+
+            while (ll != 0)
+            {
+                b = new RawDataStruct();
+                b.data = new double[24];
+
+
+                m_Global.mycls.structcopy_RawDataStruct(r[0].rdata, ref b);
+
+
+
+
+
+                ll = ClsStatic.arraydata[mplot1 - 1].Read<RawDataDataGroup>(r, 0, 10);
+
+                if (ll == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    ClsStatic.arraydatacount[mplot1 - 1] = ClsStatic.arraydatacount[mplot1 - 1] - 1;
+                }
+            }
+
+            if (myplotsettings.curvekind == 1)
+            {
+                scatterGraph.ClearData();
+            }
+            else
+            {
+                mk = (CComLibrary.GlobeVal.filesave.currentspenumber + 1) % myplotsettings.curvecount;
+                if (mk == 0)
+                {
+                    mk = myplotsettings.curvecount;
+                }
+                if (mk == 1)
+                {
+                    scatterGraph.ClearData();
+                }
+                scatterGraph.Plots[mk - 1].ClearData();
+            }
+
+
+            xAxis1.Range = new NationalInstruments.UI.Range(myplotsettings.xmin, myplotsettings.xmax);
+
+
+         
+
+            
+
+            myarraydata.Clear();
+
+
+            timer1.Enabled = true;
+            return true;
+        }
 
         public void endrun()
         {
@@ -451,7 +590,7 @@ namespace TabHeaderDemo
         }
         public void Init曲线(int plot)
         {
-            userGraph1.datapath = GlobeVal.mysys.SamplePath;
+            userGraph1.datapath = GlobeVal.myglobefile.SamplePath;
 
             tabControl1.ItemSize = new Size(1, 1);
 
@@ -1669,7 +1808,7 @@ namespace TabHeaderDemo
                         }
 
 
-
+                        #region  动态峰值与曲线保存
                         if ((GlobeVal.myarm.mcurseg >= 0) && (GlobeVal.myarm.mcurseg < CComLibrary.GlobeVal.filesave.mseglist.Count))
                         {
                             //峰值记录
@@ -1777,7 +1916,7 @@ namespace TabHeaderDemo
                                     }
                                 }
                             }
-
+                           
                             //曲线保存
                             if (CComLibrary.GlobeVal.filesave.mseglist[GlobeVal.myarm.mcurseg].mseq.msavetracking == true)
                             {
@@ -1829,7 +1968,7 @@ namespace TabHeaderDemo
                                 {
 
 
-                                    fname = GlobeVal.mysys.SamplePath + "\\" + GlobeVal.mysys.SampleFile + "-" +
+                                    fname = GlobeVal.myglobefile.SamplePath + "\\" + GlobeVal.myglobefile.SampleFile + "-" +
                                        (CComLibrary.GlobeVal.filesave.currentspenumber + 1).ToString().Trim() + "_" + GlobeVal.myarm.count.ToString() + ".txt";
 
 
@@ -1885,6 +2024,8 @@ namespace TabHeaderDemo
                             }
                         }
 
+                        #endregion
+
 
 
                     }
@@ -1903,237 +2044,246 @@ namespace TabHeaderDemo
                             mrawdatalist.Add(mrawdata);
                         }
 
-                        //静态断裂检测判断开始
 
-                        if (CComLibrary.GlobeVal.filesave.endoftest1 == true)
+                        if (CComLibrary.GlobeVal.filesave._flow数据采集方式 == true)
                         {
-                            if (CComLibrary.GlobeVal.filesave.endoftest1criteria == 0)//准则1判断
+                            //静态断裂检测判断开始
+
+                            #region 静态试验结束条件判断
+
+                            if (CComLibrary.GlobeVal.filesave.endoftest1 == true)
                             {
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
-                                   CComLibrary.GlobeVal.filesave.endoftest1tempmax)
+                                if (CComLibrary.GlobeVal.filesave.endoftest1criteria == 0)//准则1判断
                                 {
-                                    CComLibrary.GlobeVal.filesave.endoftest1tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue;
-                                }
-
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
-                                    ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].fullmaxbase * 1 / 100.0)
-                                {
-                                    CComLibrary.GlobeVal.filesave.endoftest1tempbool = true;
-                                }
-
-                                if (CComLibrary.GlobeVal.filesave.endoftest1tempbool == true)
-                                {
-                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue <=
-                                        CComLibrary.GlobeVal.filesave.endoftest1tempmax * CComLibrary.GlobeVal.filesave.endoftest1value / 100.0)
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
+                                       CComLibrary.GlobeVal.filesave.endoftest1tempmax)
                                     {
-                                        timer2.Enabled = true;
+                                        CComLibrary.GlobeVal.filesave.endoftest1tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue;
                                     }
-                                }
 
-                            }
-                            if (CComLibrary.GlobeVal.filesave.endoftest1criteria == 1) //准则2判断
-                            {
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
-                                   CComLibrary.GlobeVal.filesave.endoftest1tempmax)
-                                {
-                                    CComLibrary.GlobeVal.filesave.endoftest1tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue;
-                                }
-
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
-                                    ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].fullmaxbase * 1 / 100.0)
-                                {
-                                    CComLibrary.GlobeVal.filesave.endoftest1tempbool = true;
-                                }
-
-                                if (CComLibrary.GlobeVal.filesave.endoftest1tempbool == true)
-                                {
-                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue <=
-                                        CComLibrary.GlobeVal.filesave.endoftest1value)
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
+                                        ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].fullmaxbase * 1 / 100.0)
                                     {
-                                        timer2.Enabled = true;
+                                        CComLibrary.GlobeVal.filesave.endoftest1tempbool = true;
                                     }
-                                }
-                            }
 
-                            if (CComLibrary.GlobeVal.filesave.endoftest1criteria == 2) //准则3判断
-                            {
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >= CComLibrary.GlobeVal.filesave.endoftest1value)
-                                {
-                                    timer2.Enabled = true;
-
-
-
-
-                                }
-                            }
-                        }
-
-                        //静态断裂检测判断开始
-
-                        if (CComLibrary.GlobeVal.filesave.endoftest2 == true)
-                        {
-                            if (CComLibrary.GlobeVal.filesave.endoftest2criteria == 0)//准则1判断
-                            {
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
-                                   CComLibrary.GlobeVal.filesave.endoftest2tempmax)
-                                {
-                                    CComLibrary.GlobeVal.filesave.endoftest2tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue;
-                                }
-
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
-                                    ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].fullmaxbase * 1 / 100.0)
-                                {
-                                    CComLibrary.GlobeVal.filesave.endoftest2tempbool = true;
-                                }
-
-                                if (CComLibrary.GlobeVal.filesave.endoftest2tempbool == true)
-                                {
-                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue <=
-                                        CComLibrary.GlobeVal.filesave.endoftest2tempmax * CComLibrary.GlobeVal.filesave.endoftest2value / 100.0)
+                                    if (CComLibrary.GlobeVal.filesave.endoftest1tempbool == true)
                                     {
-                                        timer2.Enabled = true;
-                                    }
-                                }
-                            }
-                            if (CComLibrary.GlobeVal.filesave.endoftest2criteria == 1) //准则2判断
-                            {
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
-                                  CComLibrary.GlobeVal.filesave.endoftest2tempmax)
-                                {
-                                    CComLibrary.GlobeVal.filesave.endoftest2tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue;
-                                }
-
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
-                                    ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].fullmaxbase * 1 / 100.0)
-                                {
-                                    CComLibrary.GlobeVal.filesave.endoftest2tempbool = true;
-                                }
-
-                                if (CComLibrary.GlobeVal.filesave.endoftest2tempbool == true)
-                                {
-                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue <=
-                                        CComLibrary.GlobeVal.filesave.endoftest2value)
-                                    {
-                                        timer2.Enabled = true;
-                                    }
-                                }
-                            }
-
-                            if (CComLibrary.GlobeVal.filesave.endoftest2criteria == 2) //准则3判断
-                            {
-                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >= CComLibrary.GlobeVal.filesave.endoftest2value)
-                                {
-                                    timer2.Enabled = true;
-
-                                }
-                            }
-                        }
-
-
-                        //
-                        bool madvancedsave = false;
-
-
-
-                        //静态采集开始
-
-
-
-                        if (madvancedsave == false)
-                        {
-
-                            bool mysave = false;
-
-                            for (int m = 0; m < CComLibrary.GlobeVal.filesave.chkcriteria.Length; m++)
-                            {
-                                if (CComLibrary.GlobeVal.filesave.chkcriteria[m] == true)
-                                {
-
-                                    for (int i = 0; i < CComLibrary.GlobeVal.filesave.mrawdata.Count; i++)
-                                    {
-
-                                        if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == CComLibrary.GlobeVal.filesave.mrawdata[i].SignName)
+                                        if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue <=
+                                            CComLibrary.GlobeVal.filesave.endoftest1tempmax * CComLibrary.GlobeVal.filesave.endoftest1value / 100.0)
                                         {
-                                            k = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].EdcId;
-                                            if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == "Ch Time")
-                                            {
-                                                v = Environment.TickCount /1000.0;
-                                                break;
-                                            }
-                                            else
-                                            {
-                                                v = b.data[k];
-                                                break;
-                                            }
-                                            //v = mrawdata.data[k];
-                                            //  double.TryParse(CComLibrary.GlobeVal.filesave.mrawdata[i].GetValueFromUnit(b.data[k], 0 ), out v);
+                                            timer2.Enabled = true;
                                         }
-
                                     }
-                                    if (Math.Abs(v - CComLibrary.GlobeVal.filesave.numintervallast[m]) >= CComLibrary.GlobeVal.filesave.numinterval[m])
+
+                                }
+                                if (CComLibrary.GlobeVal.filesave.endoftest1criteria == 1) //准则2判断
+                                {
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
+                                       CComLibrary.GlobeVal.filesave.endoftest1tempmax)
                                     {
-                                        CComLibrary.GlobeVal.filesave.numintervallast[m] = v;
-                                        mysave = true;
+                                        CComLibrary.GlobeVal.filesave.endoftest1tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue;
                                     }
 
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >=
+                                        ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].fullmaxbase * 1 / 100.0)
+                                    {
+                                        CComLibrary.GlobeVal.filesave.endoftest1tempbool = true;
+                                    }
 
+                                    if (CComLibrary.GlobeVal.filesave.endoftest1tempbool == true)
+                                    {
+                                        if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue <=
+                                            CComLibrary.GlobeVal.filesave.endoftest1value)
+                                        {
+                                            timer2.Enabled = true;
+                                        }
+                                    }
+                                }
+
+                                if (CComLibrary.GlobeVal.filesave.endoftest1criteria == 2) //准则3判断
+                                {
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest1usechannel].cvalue >= CComLibrary.GlobeVal.filesave.endoftest1value)
+                                    {
+                                        timer2.Enabled = true;
+
+
+
+
+                                    }
                                 }
                             }
 
-                            if (mysave == true)
+                            //静态断裂检测判断开始
+
+                            if (CComLibrary.GlobeVal.filesave.endoftest2 == true)
                             {
-                                tstart = mtime;
-                                using (StreamWriter w = File.AppendText(mspefiledat))
+                                if (CComLibrary.GlobeVal.filesave.endoftest2criteria == 0)//准则1判断
                                 {
-
-                                    s = "";
-                                    object[] mt = new object[CComLibrary.GlobeVal.filesave.mrawdata.Count];
-
-                                    for (int i = 0; i < CComLibrary.GlobeVal.filesave.mrawdata.Count; i++)
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
+                                       CComLibrary.GlobeVal.filesave.endoftest2tempmax)
                                     {
-                                        DataGridViewRow m = new DataGridViewRow();
+                                        CComLibrary.GlobeVal.filesave.endoftest2tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue;
+                                    }
 
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
+                                        ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].fullmaxbase * 1 / 100.0)
+                                    {
+                                        CComLibrary.GlobeVal.filesave.endoftest2tempbool = true;
+                                    }
 
-                                        for (j = 0; j < ClsStaticStation.m_Global.mycls.datalist.Count; j++)
+                                    if (CComLibrary.GlobeVal.filesave.endoftest2tempbool == true)
+                                    {
+                                        if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue <=
+                                            CComLibrary.GlobeVal.filesave.endoftest2tempmax * CComLibrary.GlobeVal.filesave.endoftest2value / 100.0)
                                         {
-                                            if (ClsStaticStation.m_Global.mycls.datalist[j].SignName == CComLibrary.GlobeVal.filesave.mrawdata[i].SignName)
+                                            timer2.Enabled = true;
+                                        }
+                                    }
+                                }
+                                if (CComLibrary.GlobeVal.filesave.endoftest2criteria == 1) //准则2判断
+                                {
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
+                                      CComLibrary.GlobeVal.filesave.endoftest2tempmax)
+                                    {
+                                        CComLibrary.GlobeVal.filesave.endoftest2tempmax = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue;
+                                    }
+
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >=
+                                        ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].fullmaxbase * 1 / 100.0)
+                                    {
+                                        CComLibrary.GlobeVal.filesave.endoftest2tempbool = true;
+                                    }
+
+                                    if (CComLibrary.GlobeVal.filesave.endoftest2tempbool == true)
+                                    {
+                                        if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue <=
+                                            CComLibrary.GlobeVal.filesave.endoftest2value)
+                                        {
+                                            timer2.Enabled = true;
+                                        }
+                                    }
+                                }
+
+                                if (CComLibrary.GlobeVal.filesave.endoftest2criteria == 2) //准则3判断
+                                {
+                                    if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.endoftest2usechannel].cvalue >= CComLibrary.GlobeVal.filesave.endoftest2value)
+                                    {
+                                        timer2.Enabled = true;
+
+                                    }
+                                }
+                            }
+
+
+                            #endregion
+
+                            //
+                            bool madvancedsave = false;
+
+
+
+                            //静态采集开始
+
+                            #region 静态采集
+
+                            if (madvancedsave == false)
+                            {
+
+                                bool mysave = false;
+
+                                for (int m = 0; m < CComLibrary.GlobeVal.filesave.chkcriteria.Length; m++)
+                                {
+                                    if (CComLibrary.GlobeVal.filesave.chkcriteria[m] == true)
+                                    {
+
+                                        for (int i = 0; i < CComLibrary.GlobeVal.filesave.mrawdata.Count; i++)
+                                        {
+
+                                            if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == CComLibrary.GlobeVal.filesave.mrawdata[i].SignName)
                                             {
-                                                k = ClsStaticStation.m_Global.mycls.datalist[j].EdcId;
-
-
-                                                double.TryParse(CComLibrary.GlobeVal.filesave.mrawdata[i].GetValueFromUnit(b.data[k],
-                                                    CComLibrary.GlobeVal.filesave.mrawdata[i].cUnitsel), out v);
-                                                s = s + v.ToString("F" + CComLibrary.GlobeVal.filesave.mrawdata[i].precise.ToString()) + " ";
-                                                mt[i] = v.ToString("F" + CComLibrary.GlobeVal.filesave.mrawdata[i].precise.ToString());
-
-                                                break;
+                                                k = ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].EdcId;
+                                                if (ClsStaticStation.m_Global.mycls.allsignals[CComLibrary.GlobeVal.filesave.cbomeasurement[m]].SignName == "Ch Time")
+                                                {
+                                                    v = Environment.TickCount / 1000.0;
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    v = b.data[k];
+                                                    break;
+                                                }
+                                                //v = mrawdata.data[k];
+                                                //  double.TryParse(CComLibrary.GlobeVal.filesave.mrawdata[i].GetValueFromUnit(b.data[k], 0 ), out v);
                                             }
+
+                                        }
+                                        if (Math.Abs(v - CComLibrary.GlobeVal.filesave.numintervallast[m]) >= CComLibrary.GlobeVal.filesave.numinterval[m])
+                                        {
+                                            CComLibrary.GlobeVal.filesave.numintervallast[m] = v;
+                                            mysave = true;
                                         }
 
 
                                     }
+                                }
 
-                                    if (GlobeVal.UserControlRawdata1 == null)
+                                if (mysave == true)
+                                {
+                                    tstart = mtime;
+                                    using (StreamWriter w = File.AppendText(mspefiledat))
                                     {
+
+                                        s = "";
+                                        object[] mt = new object[CComLibrary.GlobeVal.filesave.mrawdata.Count];
+
+                                        for (int i = 0; i < CComLibrary.GlobeVal.filesave.mrawdata.Count; i++)
+                                        {
+                                            DataGridViewRow m = new DataGridViewRow();
+
+
+                                            for (j = 0; j < ClsStaticStation.m_Global.mycls.datalist.Count; j++)
+                                            {
+                                                if (ClsStaticStation.m_Global.mycls.datalist[j].SignName == CComLibrary.GlobeVal.filesave.mrawdata[i].SignName)
+                                                {
+                                                    k = ClsStaticStation.m_Global.mycls.datalist[j].EdcId;
+
+
+                                                    double.TryParse(CComLibrary.GlobeVal.filesave.mrawdata[i].GetValueFromUnit(b.data[k],
+                                                        CComLibrary.GlobeVal.filesave.mrawdata[i].cUnitsel), out v);
+                                                    s = s + v.ToString("F" + CComLibrary.GlobeVal.filesave.mrawdata[i].precise.ToString()) + " ";
+                                                    mt[i] = v.ToString("F" + CComLibrary.GlobeVal.filesave.mrawdata[i].precise.ToString());
+
+                                                    break;
+                                                }
+                                            }
+
+
+                                        }
+
+                                        if (GlobeVal.UserControlRawdata1 == null)
+                                        {
+                                        }
+                                        else
+                                        {
+
+
+                                            GlobeVal.UserControlRawdata1.dataGridView1.Rows.Add(mt);
+                                        }
+
+                                        w.WriteLine(s);
+
+
+
+
                                     }
-                                    else
-                                    {
-
-
-                                        GlobeVal.UserControlRawdata1.dataGridView1.Rows.Add(mt);
-                                    }
-
-                                    w.WriteLine(s);
-
-
-
-
                                 }
                             }
-                        }
-                        else
-                        {
+                            else
+                            {
 
+                            }
+                            #endregion
                         }
                     }
                 }

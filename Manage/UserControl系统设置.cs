@@ -20,10 +20,10 @@ namespace TabHeaderDemo
         {
 
             tabControl1.SelectedIndex = sel;
-            if (GlobeVal.mysys.safe == true)
+            if (GlobeVal.myglobefile.safe == true)
             {
 
-                if (GlobeVal.mysys.AppUserLevel == 0)
+                if (GlobeVal.myglobefile.AppUserLevel == 0)
                 {
                     groupBox1.Enabled = false;
                     groupBox2.Enabled = false;
@@ -42,14 +42,14 @@ namespace TabHeaderDemo
                 groupBox2.Enabled = true;
             }
             cbomachine.Items.Clear();
-            for (int i = 0; i < GlobeVal.mysys.MachineCount; i++)
+            for (int i = 0; i < GlobeVal.myglobefile.MachineCount; i++)
             {
-                cbomachine.Items.Add(GlobeVal.mysys.MachineName[i]);
+                cbomachine.Items.Add(GlobeVal.myglobefile.MachineName[i]);
 
             }
 
             cbomachine.Enabled = true;
-            cbomachine.SelectedIndex = GlobeVal.mysys.machinekind;
+            cbomachine.SelectedIndex = GlobeVal.myglobefile.machinekind;
 
 
             numnumber.Value = GlobeVal.myglobefile.ControllerCount;
@@ -381,6 +381,9 @@ namespace TabHeaderDemo
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
+            button2.Focus();
+           
             int a = cbonum.SelectedIndex + 1;
             string f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\device\\" + a.ToString().Trim() + "\\sys\\setup.ini";
 
@@ -400,6 +403,10 @@ namespace TabHeaderDemo
             }
             GlobeVal.mysys.SerializeNow(f);
 
+            f = System.Windows.Forms.Application.StartupPath + "\\AppleLabJ\\sys\\setup.ini";
+
+            GlobeVal.mysys.SerializeNow(f);
+
         }
 
         private void cboEdc_SelectedValueChanged(object sender, EventArgs e)
@@ -410,6 +417,16 @@ namespace TabHeaderDemo
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void grid1_GettingCell(object sender, SourceGrid2.PositionEventArgs e)
+        {
+           
+        }
+
+        private void grid1_SettingCell(object sender, SourceGrid2.PositionEventArgs e)
+        {
+           
         }
     }
 }

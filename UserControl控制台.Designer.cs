@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl控制台));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -36,7 +35,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lstavail = new TabHeaderDemo.ListExtObject(this.components);
+            this.lstavail = new TabHeaderDemo.ListExtObject();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btndownmeter = new System.Windows.Forms.Button();
             this.btnupmeter = new System.Windows.Forms.Button();
@@ -51,7 +50,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtprecise = new NationalInstruments.UI.WindowsForms.NumericEdit();
             this.button1 = new System.Windows.Forms.Button();
-            this.lstinclude = new TabHeaderDemo.ListExtObject(this.components);
+            this.lstinclude = new TabHeaderDemo.ListExtObject();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -60,14 +59,14 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.listavail = new TabHeaderDemo.ListExtObject(this.components);
+            this.listavail = new TabHeaderDemo.ListExtObject();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btndownkey = new System.Windows.Forms.Button();
             this.btnupkey = new System.Windows.Forms.Button();
             this.btnremovekey = new System.Windows.Forms.Button();
             this.btnaddkey = new System.Windows.Forms.Button();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.listinclude = new TabHeaderDemo.ListExtObject(this.components);
+            this.listinclude = new TabHeaderDemo.ListExtObject();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -381,7 +380,7 @@
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -399,7 +398,7 @@
             this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(502, 36);
+            this.label1.Size = new System.Drawing.Size(499, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "设置控制台-实时显示";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -408,7 +407,7 @@
             // 
             this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Location = new System.Drawing.Point(513, 4);
+            this.panel4.Location = new System.Drawing.Point(510, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(31, 30);
             this.panel4.TabIndex = 1;
@@ -573,7 +572,7 @@
             this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -591,7 +590,7 @@
             this.label4.ForeColor = System.Drawing.Color.Teal;
             this.label4.Location = new System.Drawing.Point(4, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(514, 36);
+            this.label4.Size = new System.Drawing.Size(511, 36);
             this.label4.TabIndex = 0;
             this.label4.Text = "设置控制台-按键";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -600,7 +599,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(525, 4);
+            this.panel2.Location = new System.Drawing.Point(522, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(47, 30);
             this.panel2.TabIndex = 1;

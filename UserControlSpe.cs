@@ -248,7 +248,10 @@ namespace TabHeaderDemo
 
         private void UserControlSpe_Load(object sender, EventArgs e)
         {
-
+            if (CComLibrary.GlobeVal.filesave==null)
+            {
+                return;
+            }
             this.AutoScroll = true;
             if (CComLibrary.GlobeVal.filesave.mwizard==true)
             {

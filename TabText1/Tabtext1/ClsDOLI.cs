@@ -1765,8 +1765,7 @@ namespace ClsStaticStation
                 if (CComLibrary.GlobeVal.filesave.pretest_cmd.check == true)
                 {
                     mrunlist.Add(CComLibrary.GlobeVal.filesave.pretest_cmd);
-                    mrunlist[0].keeptime = 0;
-
+                    
                     mrunlist[0].action = 0;
 
                 }

@@ -119,29 +119,11 @@ namespace TabHeaderDemo
 
         public void btntest_Click(object sender, EventArgs e)
         {
-            //GlobeVal.mainlab._直接进入试验界面();
-          
             
+            GlobeVal.mainlab._直接进入试验界面();
 
-            TabControl b = ((TabControl)Application.OpenForms["FormMainLab"].Controls["tabcontrol1"]);
-         
-
-
-            double t = System.Environment.TickCount;
-         
-
-            
-
-            while (System.Environment.TickCount - t <= 500)
-            {
-                Application.DoEvents();
-            }
-            UserControlMain c = GlobeVal.FormmainLab.umain;
-
-            
-            c.OpenTest();
-            
-            b.SelectedIndex = 1;
+            return;
+           
            
 
 
@@ -178,9 +160,9 @@ namespace TabHeaderDemo
                 MessageBox.Show("请先读取试验方法");
                 return;
             }
-            if (GlobeVal.mysys.safe == true)
+            if (GlobeVal.myglobefile.safe == true)
             {
-                if (GlobeVal.mysys.AppUserLevel < 1)
+                if (GlobeVal.myglobefile.AppUserLevel < 1)
                 {
                     MessageBox.Show("您的当前权限不够，请使用试验经理或管理员权限登录");
                     return;
@@ -220,9 +202,9 @@ namespace TabHeaderDemo
 
         private void btnmanage_Click(object sender, EventArgs e)
         {
-            if (GlobeVal.mysys.safe == true)
+            if (GlobeVal.myglobefile.safe == true)
             {
-                if (GlobeVal.mysys.AppUserLevel < 2)
+                if (GlobeVal.myglobefile.AppUserLevel < 2)
                 {
                     MessageBox.Show("您的当前权限不够，请使用管理员权限登录");
                     return;
@@ -240,11 +222,11 @@ namespace TabHeaderDemo
         private void btnmethod_Click(object sender, EventArgs e)
         {
           
-            if (GlobeVal.mysys.safe == true)
+            if (GlobeVal.myglobefile.safe == true)
             {
 
 
-                if (GlobeVal.mysys.AppUserLevel < 1)
+                if (GlobeVal.myglobefile.AppUserLevel < 1)
                 {
                     MessageBox.Show("您的当前权限不够，请使用试验经理或管理员权限登录");
                     return;
@@ -268,7 +250,7 @@ namespace TabHeaderDemo
 
         private void btnuser_Click(object sender, EventArgs e)
         {
-            if (GlobeVal.mysys.safe == true)
+            if (GlobeVal.myglobefile.safe == true)
             {
                 Frm.Form登录 f = new TabHeaderDemo.Frm.Form登录();
                 f.result = false;

@@ -25,7 +25,7 @@ namespace TabHeaderDemo
             m1.Nodes.Add("样品注释3");
             m1.Nodes.Add("样品说明");
 
-            m1=treeView1.Nodes.Add("数据采集");
+            m1=treeView1.Nodes.Add("数据");
             m1.Nodes.Add("数据采集方式");
             m1.Nodes.Add("准侧1");
             m1.Nodes.Add("测量1");
